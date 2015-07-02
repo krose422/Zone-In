@@ -1,0 +1,1 @@
+<h1>REGISTER VIEW</h1>

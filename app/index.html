@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="css/vendor/font-awesome.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body ng-app="ZoneInApp">
 
-  <div class="container">
+  <div class="container" ui-view>
 
   </div>
 
@@ -19,9 +19,16 @@
   <script src="js/vendor/angular.js"></script>
   <script src="js/vendor/angular-ui-router.js"></script>
 
+  <script src="js/main.js"></script>
+
+  <script src="js/users/user.service.js"></script>
+  <script src="js/users/user.controller.js"></script>
+
+
+
 
   <!-- MAIN -->
-  <script src="js/main.js"></script>
+
 
 
 </body>
