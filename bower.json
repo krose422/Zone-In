@@ -1,0 +1,30 @@
+{
+  "name": "Template",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tiy-atl-js-q2-2015/Template",
+  "authors": [
+    "JD Isaacks",
+    "Tim Whitacre"
+  ],
+  "description": "A template for building new apps",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "normalize.css": "~3.0.3",
+    "angular": "~1.4.1",
+    "angular-ui-router": "~0.2.15",
+    "font-awesome": "~4.3.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.0.0"
+  }
+}
