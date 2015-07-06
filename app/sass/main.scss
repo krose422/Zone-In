@@ -7,6 +7,7 @@
 $background: #FAFAFA;
 $darkpurple: #2E313D;
 $blue: #176785;
+$darkblue: #0F4559;
 $teal: #499989;
 $darkteal: #187062;
 $green: #BED194;
@@ -35,7 +36,7 @@ $gentium: 'Gentium Book Basic', serif;
   cursor: pointer;
   text-align: center;
   padding: 10px;
-  color: $offwhite;
+  color: $background;
   @include border($color);
   background-color: $color;
   @include transition(.3s);
@@ -65,18 +66,13 @@ body {
   font-family: $tinos;
   font-size: 62.5%;
   color: $darkgrey;
-  font-family: Helvetica;
-  background-color: Helvetica;
+  background-color: $background;
   width: 100%;
-}
-
-button {
-  display: block;
 }
 
 input, button {
   border: none;
-  @include border($grey);
+  @include border($blue);
   border-radius: 2px;
   @include transition(.3s);
   font-size: 1.5em;
@@ -112,16 +108,16 @@ li {
 }
 
 button {
-  @include button($teal);
+  @include button($blue);
 
   &:hover {
-    background-color: $darkteal;
+    background-color: $darkblue;
   }
   &:active {
-    background-color: $darkteal;
+    background-color: $darkblue;
   }
   &:visited {
-    background-color: $darkteal;
+    background-color: $darkblue;
   }
 }
 
@@ -176,10 +172,10 @@ label.css-label {
 --------------- */
 
   header {
-    // margin-bottom: 2em;
+    margin-bottom: 2em;
     overflow: hidden;
     width: 100%;
-    background-color: $red;
+    background-color: #fff;
     -webkit-box-shadow: 0px .5px 2px $grey;
     -moz-box-shadow: 0px .5px 2px $grey;
     -o-box-shadow: 0px .5px 2px $grey;
@@ -194,31 +190,30 @@ label.css-label {
         float: left;
         display: inline-block;
         overflow: hidden;
-        background-color: $red;
         margin: 0;
 
         h2 {
           font-family: $fjalla;
           margin: 0;
-          color: $background;
+          color: $red;
         }
       }
 
       .rightheader {
         overflow: hidden;
-        float: left;
+        float: right;
 
         nav {
           display: inline-block;
 
           li {
             font-family: $fjalla;
-            color: $background;
+            color: $darkgrey;
             display: inline-block;
             padding: 1em;
 
             a {
-              color: $background;
+              color: $darkgrey;
             }
           }
         }
@@ -235,7 +230,6 @@ label.css-label {
   .homepage-content {
     margin: 1em auto;
   }
-
 }
 
 /* DASHBOARD VIEW
@@ -250,90 +244,131 @@ label.css-label {
 
   .content {
     font-family: $tinos;
-    @include outer-container(100%);
-    margin: 0;
+    @include outer-container(90%);
+    margin: 0 auto;
+
+    div {
+      margin-bottom: 2em;
+      // padding: 2em;
+    }
 
     h4 {
       color: $background;
       font-family: $fjalla;
     }
 
-    .row {
-      max-width: 100rem;
-
-      i {
-        margin-right: .5em;
-      }
+    i {
+      margin-right: .5em;
     }
 
-    .top-row {
-      @include row(table);
+    .left-dash {
+      @include span-columns(4);
+      overflow: hidden;
+      float: left;
+      padding: 0;
 
       .team-list {
-        @include span-columns(8);
-        @include pad();
+        padding: 2em;
         background-color: $blue;
+
+        a {
+          color: $background;
+
+          li {
+            font-size: 1.2em;
+            margin-bottom: .5em;
+          }
+
+          img {
+            height: 3em;
+            border-radius: 50%;
+          }
+        }
       }
 
       .calendar {
-        @include span-columns(4);
-        @include reset-display;
-        @include pad();
-        background-color: $darkgrey;
-        @include omega();
-      }
-    }
+        overflow: hidden;
+        position: relative;
+        // background-color: $darkgrey;
+        img {
+          width: 100%;
+        }
 
-    .middle-row {
-      @include row(table);
+        .overlay {
+          overflow: hidden;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(66, 66, 66, .9);
+          @include transition(.3s);
+          cursor: pointer;
 
-      .upcoming {
-        @include span-columns(8);
-        @include pad();
-        background-color: $grey;
+          &:hover {
+            background-color: rgba(66, 66, 66, .7);
+          }
 
-        h5 {
-          color: $darkgrey;
+          h4 {
+            text-align: center;
+            // font-size: 0;
+            padding-top: 20%;
+          }
         }
       }
 
       .training-plans {
-        @include span-columns(4);
-        @include reset-display;
-        @include pad();
-        // @include omega();
+        padding: 2em;
         background-color: $green;
       }
-    }
-
-    .bottom-row {
-      @include row(table);
 
       .create-plan {
-        @include span-columns(4);
-        @include pad();
-        // @include omega();
+        padding: 2em;
         background-color: $darkpurple;
       }
 
       .workouts {
-        @include span-columns(4);
-        @include pad();
-        // @include omega();
-        background-color: $green;
+        padding: 2em;
+        background-color: $grey;
       }
 
       .create-workout {
-        @include span-columns(4);
-        @include reset-display;
-        @include pad();
-        // @include omega();
+        padding: 2em;
         background-color: $teal;
       }
-
     }
 
+      .upcoming {
+        padding: 2em;
+        @include span-columns(8);
+        background-color: $red;
 
+        h4 {
+          display: inline-block;
+          float: left;
+        }
+
+        a {
+          color: $background;
+
+          p {
+            @include border($background);
+            padding: .5em;
+            display: inline-block;
+            float: right;
+
+            &:hover {
+              background-color: $background;
+              color: $red;
+            }
+          }
+        }
+
+        h5 {
+          color: $darkgrey;
+          font-family: $tinos;
+        }
+      }
 
   }
 }

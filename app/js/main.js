@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule'])
+  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule'])
 
     // .constant('HEROKU', {
     //   URL: 'https://api.parse.com/1/',
@@ -47,6 +47,30 @@
             url: '/dash',
             templateUrl: 'js/templates/dashboard.tpl.html',
             controller: 'UserCtrl'
+          })
+
+          .state('calendar', {
+            url: '/calendar',
+            templateUrl: 'js/templates/calendar.tpl.html',
+            controller: 'PlanCtrl'
+          })
+
+          .state('trainingplans', {
+            url: '/training-plans',
+            templateUrl: 'js/templates/trainingplans.tpl.html',
+            controller: 'PlanCtrl'
+          })
+
+          .state('workoutplans', {
+            url: '/workouts',
+            templateUrl: 'js/templates/workouts.tpl.html',
+            controller: 'PlanCtrl'
+          })
+
+          .state('team', {
+            url: '/teamtemplate',
+            templateUrl: 'js/templates/team.tpl.html',
+            controller: 'TeamCtrl'
           });
 
 

@@ -19,16 +19,12 @@ body {
   font-family: "Tinos", serif;
   font-size: 62.5%;
   color: #424242;
-  font-family: Helvetica;
-  background-color: Helvetica;
+  background-color: #FAFAFA;
   width: 100%; }
-
-button {
-  display: block; }
 
 input, button {
   border: none;
-  border: 1px solid #D0C8C5;
+  border: 1px solid #176785;
   border-radius: 4px;
   border-radius: 2px;
   transition: 0.3s all ease;
@@ -58,17 +54,17 @@ button {
   cursor: pointer;
   text-align: center;
   padding: 10px;
-  color: #FFD7BA;
-  border: 1px solid #499989;
+  color: #FAFAFA;
+  border: 1px solid #176785;
   border-radius: 4px;
-  background-color: #499989;
+  background-color: #176785;
   transition: 0.3s all ease; }
   button:hover {
-    background-color: #187062; }
+    background-color: #0F4559; }
   button:active {
-    background-color: #187062; }
+    background-color: #0F4559; }
   button:visited {
-    background-color: #187062; }
+    background-color: #0F4559; }
 
 p {
   font-size: 1.5em; }
@@ -114,9 +110,10 @@ label.css-label {
 /* HEADER STYLE
 --------------- */
 header {
+  margin-bottom: 2em;
   overflow: hidden;
   width: 100%;
-  background-color: #FF534E;
+  background-color: #fff;
   -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
   -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
   -o-box-shadow: 0px 0.5px 2px #D0C8C5;
@@ -129,24 +126,23 @@ header {
       float: left;
       display: inline-block;
       overflow: hidden;
-      background-color: #FF534E;
       margin: 0; }
       header .innerheader .logo h2 {
         font-family: "Fjalla One", sans-serif;
         margin: 0;
-        color: #FAFAFA; }
+        color: #FF534E; }
     header .innerheader .rightheader {
       overflow: hidden;
-      float: left; }
+      float: right; }
       header .innerheader .rightheader nav {
         display: inline-block; }
         header .innerheader .rightheader nav li {
           font-family: "Fjalla One", sans-serif;
-          color: #FAFAFA;
+          color: #424242;
           display: inline-block;
           padding: 1em; }
           header .innerheader .rightheader nav li a {
-            color: #FAFAFA; }
+            color: #424242; }
 
 /* HOMEPAGE VIEW
 ---------------- */
@@ -169,68 +165,97 @@ header {
     width: 100%; }
   .dashboard-page .content {
     font-family: "Tinos", serif;
-    max-width: 100%;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin: 0; }
+    margin: 0 auto; }
     .dashboard-page .content::after {
       clear: both;
       content: "";
       display: table; }
+    .dashboard-page .content div {
+      margin-bottom: 2em; }
     .dashboard-page .content h4 {
       color: #FAFAFA;
       font-family: "Fjalla One", sans-serif; }
-    .dashboard-page .content .row {
-      max-width: 100rem; }
-      .dashboard-page .content .row i {
-        margin-right: .5em; }
-    .dashboard-page .content .top-row {
-      display: table;
-      width: 100%;
-      table-layout: fixed; }
-      .dashboard-page .content .top-row .team-list {
-        display: table-cell;
-        width: 66.66667%;
-        padding: 2.35765%;
-        background-color: #176785; }
-      .dashboard-page .content .top-row .calendar {
-        display: table-cell;
-        width: 33.33333%;
-        padding: 2.35765%;
-        background-color: #424242;
+    .dashboard-page .content i {
+      margin-right: .5em; }
+    .dashboard-page .content .left-dash {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      overflow: hidden;
+      float: left;
+      padding: 0; }
+      .dashboard-page .content .left-dash:last-child {
         margin-right: 0; }
-    .dashboard-page .content .middle-row {
-      display: table;
-      width: 100%;
-      table-layout: fixed; }
-      .dashboard-page .content .middle-row .upcoming {
-        display: table-cell;
-        width: 66.66667%;
-        padding: 2.35765%;
-        background-color: #D0C8C5; }
-        .dashboard-page .content .middle-row .upcoming h5 {
-          color: #424242; }
-      .dashboard-page .content .middle-row .training-plans {
-        display: table-cell;
-        width: 33.33333%;
-        padding: 2.35765%;
+      .dashboard-page .content .left-dash .team-list {
+        padding: 2em;
+        background-color: #176785; }
+        .dashboard-page .content .left-dash .team-list a {
+          color: #FAFAFA; }
+          .dashboard-page .content .left-dash .team-list a li {
+            font-size: 1.2em;
+            margin-bottom: .5em; }
+          .dashboard-page .content .left-dash .team-list a img {
+            height: 3em;
+            border-radius: 50%; }
+      .dashboard-page .content .left-dash .calendar {
+        overflow: hidden;
+        position: relative; }
+        .dashboard-page .content .left-dash .calendar img {
+          width: 100%; }
+        .dashboard-page .content .left-dash .calendar .overlay {
+          overflow: hidden;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(66, 66, 66, 0.9);
+          transition: 0.3s all ease;
+          cursor: pointer; }
+          .dashboard-page .content .left-dash .calendar .overlay:hover {
+            background-color: rgba(66, 66, 66, 0.7); }
+          .dashboard-page .content .left-dash .calendar .overlay h4 {
+            text-align: center;
+            padding-top: 20%; }
+      .dashboard-page .content .left-dash .training-plans {
+        padding: 2em;
         background-color: #BED194; }
-    .dashboard-page .content .bottom-row {
-      display: table;
-      width: 100%;
-      table-layout: fixed; }
-      .dashboard-page .content .bottom-row .create-plan {
-        display: table-cell;
-        width: 33.33333%;
-        padding: 2.35765%;
+      .dashboard-page .content .left-dash .create-plan {
+        padding: 2em;
         background-color: #2E313D; }
-      .dashboard-page .content .bottom-row .workouts {
-        display: table-cell;
-        width: 33.33333%;
-        padding: 2.35765%;
-        background-color: #BED194; }
-      .dashboard-page .content .bottom-row .create-workout {
-        display: table-cell;
-        width: 33.33333%;
-        padding: 2.35765%;
+      .dashboard-page .content .left-dash .workouts {
+        padding: 2em;
+        background-color: #D0C8C5; }
+      .dashboard-page .content .left-dash .create-workout {
+        padding: 2em;
         background-color: #499989; }
+    .dashboard-page .content .upcoming {
+      padding: 2em;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%;
+      background-color: #FF534E; }
+      .dashboard-page .content .upcoming:last-child {
+        margin-right: 0; }
+      .dashboard-page .content .upcoming h4 {
+        display: inline-block;
+        float: left; }
+      .dashboard-page .content .upcoming a {
+        color: #FAFAFA; }
+        .dashboard-page .content .upcoming a p {
+          border: 1px solid #FAFAFA;
+          border-radius: 4px;
+          padding: .5em;
+          display: inline-block;
+          float: right; }
+          .dashboard-page .content .upcoming a p:hover {
+            background-color: #FAFAFA;
+            color: #FF534E; }
+      .dashboard-page .content .upcoming h5 {
+        color: #424242;
+        font-family: "Tinos", serif; }
