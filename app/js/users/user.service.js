@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('ZoneInApp')
+  angular.module('UserModule')
     .service('UserService', ['$http',
       function ($http) {
 

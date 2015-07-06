@@ -1,0 +1,339 @@
+@import "../css/vendor/bourbon/bourbon";
+@import "../css/vendor/neat/neat";
+
+/* DECLARATIONS
+---------------- */
+
+$background: #FAFAFA;
+$darkpurple: #2E313D;
+$blue: #176785;
+$teal: #499989;
+$darkteal: #187062;
+$green: #BED194;
+$offwhite: #FFD7BA;
+$red: #FF534E;
+$grey: #D0C8C5;
+$darkgrey: #424242;
+
+$tinos: 'Tinos', serif;
+$fjalla: 'Fjalla One', sans-serif;
+$gentium: 'Gentium Book Basic', serif;
+
+/* MIXINS
+---------- */
+
+@mixin border ($color) {
+  border: 1px solid $color;
+  border-radius: 4px;
+}
+
+@mixin transition($time) {
+  transition: $time all ease;
+}
+
+@mixin button($color) {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  color: $offwhite;
+  @include border($color);
+  background-color: $color;
+  @include transition(.3s);
+}
+
+@mixin backhome() {
+  font-size: .5em;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  opacity: .6;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+/* GLOBAL STYLES
+---------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $tinos;
+  font-size: 62.5%;
+  color: $darkgrey;
+  font-family: Helvetica;
+  background-color: Helvetica;
+  width: 100%;
+}
+
+button {
+  display: block;
+}
+
+input, button {
+  border: none;
+  @include border($grey);
+  border-radius: 2px;
+  @include transition(.3s);
+  font-size: 1.5em;
+  margin: 1em;
+
+  &:focus {
+    outline: none;
+  }
+
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: $teal;
+
+  &:hover {
+    color: $darkteal;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+  font-size: 1.5em;
+}
+
+button {
+  @include button($teal);
+
+  &:hover {
+    background-color: $darkteal;
+  }
+  &:active {
+    background-color: $darkteal;
+  }
+  &:visited {
+    background-color: $darkteal;
+  }
+}
+
+p {
+  font-size: 1.5em;
+}
+
+/* CHECKBOX STYLE
+----------------- */
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 30px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 2em;
+    vertical-align: middle;
+    cursor: pointer;
+    color: $darkgrey;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -25px;
+}
+
+label.css-label {
+    background-image: url(http://csscheckbox.com/checkboxes/u/csscheckbox_d8cf819d987183169052b27a166a28e3.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* HEADER STYLE
+--------------- */
+
+  header {
+    // margin-bottom: 2em;
+    overflow: hidden;
+    width: 100%;
+    background-color: $red;
+    -webkit-box-shadow: 0px .5px 2px $grey;
+    -moz-box-shadow: 0px .5px 2px $grey;
+    -o-box-shadow: 0px .5px 2px $grey;
+    box-shadow: 0px .5px 2px $grey;
+
+    .innerheader {
+      overflow: hidden;
+      width: 98%;
+      margin: auto;
+
+      .logo {
+        float: left;
+        display: inline-block;
+        overflow: hidden;
+        background-color: $red;
+        margin: 0;
+
+        h2 {
+          font-family: $fjalla;
+          margin: 0;
+          color: $background;
+        }
+      }
+
+      .rightheader {
+        overflow: hidden;
+        float: left;
+
+        nav {
+          display: inline-block;
+
+          li {
+            font-family: $fjalla;
+            color: $background;
+            display: inline-block;
+            padding: 1em;
+
+            a {
+              color: $background;
+            }
+          }
+        }
+      }
+    }
+  }
+
+/* HOMEPAGE VIEW
+---------------- */
+
+.homepage-wrapper {
+  overflow: hidden;
+
+  .homepage-content {
+    margin: 1em auto;
+  }
+
+}
+
+/* DASHBOARD VIEW
+----------------- */
+
+.dashboard-page {
+  @include outer-container(100%);
+
+  header {
+    @include fill-parent();
+  }
+
+  .content {
+    font-family: $tinos;
+    @include outer-container(100%);
+    margin: 0;
+
+    h4 {
+      color: $background;
+      font-family: $fjalla;
+    }
+
+    .row {
+      max-width: 100rem;
+
+      i {
+        margin-right: .5em;
+      }
+    }
+
+    .top-row {
+      @include row(table);
+
+      .team-list {
+        @include span-columns(8);
+        @include pad();
+        background-color: $blue;
+      }
+
+      .calendar {
+        @include span-columns(4);
+        @include reset-display;
+        @include pad();
+        background-color: $darkgrey;
+        @include omega();
+      }
+    }
+
+    .middle-row {
+      @include row(table);
+
+      .upcoming {
+        @include span-columns(8);
+        @include pad();
+        background-color: $grey;
+
+        h5 {
+          color: $darkgrey;
+        }
+      }
+
+      .training-plans {
+        @include span-columns(4);
+        @include reset-display;
+        @include pad();
+        // @include omega();
+        background-color: $green;
+      }
+    }
+
+    .bottom-row {
+      @include row(table);
+
+      .create-plan {
+        @include span-columns(4);
+        @include pad();
+        // @include omega();
+        background-color: $darkpurple;
+      }
+
+      .workouts {
+        @include span-columns(4);
+        @include pad();
+        // @include omega();
+        background-color: $green;
+      }
+
+      .create-workout {
+        @include span-columns(4);
+        @include reset-display;
+        @include pad();
+        // @include omega();
+        background-color: $teal;
+      }
+
+    }
+
+
+
+  }
+}

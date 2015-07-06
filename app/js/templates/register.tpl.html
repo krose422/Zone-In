@@ -1,1 +1,30 @@
-<h1>REGISTER VIEW</h1>
+
+  <header class="home-header">
+    <div class="outerheader">
+      <div class="innerheader">
+        <a href="#/"><div class="logo">
+          <h2>zone in</h2>
+        </div></a>
+        <!-- <div class="rightheader"> -->
+          <!-- <nav> -->
+            <!-- <li><a href="#/">Home</a></li> -->
+            <!-- <li><a href="#">What it Is</a></li> -->
+            <!-- <li><a href="#/register">Sign Up</a></li> -->
+            <!-- <li><a href="#/login">Sign In</a></li> -->
+          <!-- </nav> -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
+  </header>
+
+<div class="register-page" ui-view>
+
+  <form ng-submit="registerUser()">
+    <input type="email" placeholder="Email Address">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Register</button>
+  </form>
+
+</div>

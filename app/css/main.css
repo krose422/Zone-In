@@ -1,0 +1,236 @@
+html {
+  box-sizing: border-box; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+/* DECLARATIONS
+---------------- */
+/* MIXINS
+---------- */
+/* GLOBAL STYLES
+---------------- */
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Tinos", serif;
+  font-size: 62.5%;
+  color: #424242;
+  font-family: Helvetica;
+  background-color: Helvetica;
+  width: 100%; }
+
+button {
+  display: block; }
+
+input, button {
+  border: none;
+  border: 1px solid #D0C8C5;
+  border-radius: 4px;
+  border-radius: 2px;
+  transition: 0.3s all ease;
+  font-size: 1.5em;
+  margin: 1em; }
+  input:focus, button:focus {
+    outline: none; }
+
+.container {
+  width: 100%;
+  margin: auto; }
+
+a {
+  text-decoration: none;
+  color: #499989; }
+  a:hover {
+    color: #187062; }
+
+ul {
+  list-style: none; }
+
+li {
+  list-style: none;
+  font-size: 1.5em; }
+
+button {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  color: #FFD7BA;
+  border: 1px solid #499989;
+  border-radius: 4px;
+  background-color: #499989;
+  transition: 0.3s all ease; }
+  button:hover {
+    background-color: #187062; }
+  button:active {
+    background-color: #187062; }
+  button:visited {
+    background-color: #187062; }
+
+p {
+  font-size: 1.5em; }
+
+/* CHECKBOX STYLE
+----------------- */
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
+
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 30px;
+  height: 25px;
+  display: inline-block;
+  line-height: 25px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 2em;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #424242; }
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -25px; }
+
+label.css-label {
+  background-image: url(http://csscheckbox.com/checkboxes/u/csscheckbox_d8cf819d987183169052b27a166a28e3.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* HEADER STYLE
+--------------- */
+header {
+  overflow: hidden;
+  width: 100%;
+  background-color: #FF534E;
+  -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+  -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+  -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+  box-shadow: 0px 0.5px 2px #D0C8C5; }
+  header .innerheader {
+    overflow: hidden;
+    width: 98%;
+    margin: auto; }
+    header .innerheader .logo {
+      float: left;
+      display: inline-block;
+      overflow: hidden;
+      background-color: #FF534E;
+      margin: 0; }
+      header .innerheader .logo h2 {
+        font-family: "Fjalla One", sans-serif;
+        margin: 0;
+        color: #FAFAFA; }
+    header .innerheader .rightheader {
+      overflow: hidden;
+      float: left; }
+      header .innerheader .rightheader nav {
+        display: inline-block; }
+        header .innerheader .rightheader nav li {
+          font-family: "Fjalla One", sans-serif;
+          color: #FAFAFA;
+          display: inline-block;
+          padding: 1em; }
+          header .innerheader .rightheader nav li a {
+            color: #FAFAFA; }
+
+/* HOMEPAGE VIEW
+---------------- */
+.homepage-wrapper {
+  overflow: hidden; }
+  .homepage-wrapper .homepage-content {
+    margin: 1em auto; }
+
+/* DASHBOARD VIEW
+----------------- */
+.dashboard-page {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  .dashboard-page::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .dashboard-page header {
+    width: 100%; }
+  .dashboard-page .content {
+    font-family: "Tinos", serif;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0; }
+    .dashboard-page .content::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .dashboard-page .content h4 {
+      color: #FAFAFA;
+      font-family: "Fjalla One", sans-serif; }
+    .dashboard-page .content .row {
+      max-width: 100rem; }
+      .dashboard-page .content .row i {
+        margin-right: .5em; }
+    .dashboard-page .content .top-row {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+      .dashboard-page .content .top-row .team-list {
+        display: table-cell;
+        width: 66.66667%;
+        padding: 2.35765%;
+        background-color: #176785; }
+      .dashboard-page .content .top-row .calendar {
+        display: table-cell;
+        width: 33.33333%;
+        padding: 2.35765%;
+        background-color: #424242;
+        margin-right: 0; }
+    .dashboard-page .content .middle-row {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+      .dashboard-page .content .middle-row .upcoming {
+        display: table-cell;
+        width: 66.66667%;
+        padding: 2.35765%;
+        background-color: #D0C8C5; }
+        .dashboard-page .content .middle-row .upcoming h5 {
+          color: #424242; }
+      .dashboard-page .content .middle-row .training-plans {
+        display: table-cell;
+        width: 33.33333%;
+        padding: 2.35765%;
+        background-color: #BED194; }
+    .dashboard-page .content .bottom-row {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+      .dashboard-page .content .bottom-row .create-plan {
+        display: table-cell;
+        width: 33.33333%;
+        padding: 2.35765%;
+        background-color: #2E313D; }
+      .dashboard-page .content .bottom-row .workouts {
+        display: table-cell;
+        width: 33.33333%;
+        padding: 2.35765%;
+        background-color: #BED194; }
+      .dashboard-page .content .bottom-row .create-workout {
+        display: table-cell;
+        width: 33.33333%;
+        padding: 2.35765%;
+        background-color: #499989; }
