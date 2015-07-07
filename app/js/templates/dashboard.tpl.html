@@ -20,13 +20,23 @@
     <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-  <div class="content" ui-view>
+  <div class="dash-content" ui-view>
 
-    <!-- <h3>Welcome back, username.</h3> -->
+  <div class="top-dash-progress">
+    <i class="fa fa-minus-square" ng-click="toggleHide('.progress-bars')"></i>
+    <i class="hide fa fa-plus-square" ng-click="toggleHide('.progress-bars')"></i>
+    <h4>Training Plan Progress</h4>
+    <div class="progress-bars">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+    </div>
+  </div>
 
-<div class="left-dash">
+    <div class="left-dash">
       <div class="team-list">
-        <h4 ng-click="toggleHide()"><i class="fa fa-plus-circle"></i>My Teams</h4>
+        <h4 ng-click="toggleHide('.team-list-ul')"><i class="fa fa-plus-circle"></i>My Teams</h4>
         <ul class="team-list-ul hide">
           <a href="#/teamtemplate">
           <li>
@@ -49,10 +59,10 @@
           </li>
           </a>
 
-        </ul>
+         </ul>
       </div>
 
-      <a href="#/calendar">
+      <a href="#/dash/calendar">
       <div class="calendar">
         <img src="http://i.huffpost.com/gen/1908890/images/o-CALENDAR-facebook.jpg">
         <div class="overlay">
@@ -67,23 +77,23 @@
       </div>
       </a>
 
-<!--       <div class="create-plan">
-        <h4><i class="fa fa-plus-circle"></i>Create New Plan</h4>
-      </div> -->
+  <!--       <div class="create-plan">
+          <h4><i class="fa fa-plus-circle"></i>Create New Plan</h4>
+        </div> -->
 
       <a href="#/workouts">
       <div class="workouts">
         <h4><i class="fa fa-external-link-square"></i>My Workouts</h4>
       </div>
       </a>
-<!--
-      <div class="create-workout">
-        <h4><i class="fa fa-plus-circle"></i>Create New Workout</h4>
-      </div> -->
-    </div>
+  <!--
+        <div class="create-workout">
+          <h4><i class="fa fa-plus-circle"></i>Create New Workout</h4>
+        </div> -->
+    </div> <!-- end left dash div -->
 
-      <div class="upcoming">
-        <h4>What I Have Going On</h4>
+    <div class="upcoming">
+      <h4>What I Have Going On</h4>
         <a href="#/calendar"><p><i class="fa fa-calendar"></i>Calendar View</p></a>
         <hr />
 
@@ -94,29 +104,27 @@
         consequat. </p>
         <hr />
 
-        <h5>Tuesday, July 7</h5>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <hr />
+          <h5>Tuesday, July 7</h5>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <hr />
 
-        <h5>Tuesday, July 8</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. </p>
-        <hr />
+          <h5>Tuesday, July 8</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. </p>
+          <hr />
 
-        <h5>Wednesday, July 9</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. </p>
+          <h5>Wednesday, July 9</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. </p>
 
-      </div>
+    </div> <!-- end upcoming div -->
 
+  </div> <!-- end dash-content -->
 
-
-  </div>
-
-</div>
+</div> <!-- end dashboard view -->

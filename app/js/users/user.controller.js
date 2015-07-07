@@ -6,9 +6,13 @@
     .controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams',
       function ($scope, UserService, $state, $stateParams) {
 
+        $scope.eventSources = [{
+          name: 'kelley event',
+        }];
+
+
         $scope.loginUser = function () {
           UserService.loginUser();
-          // console.log('logging in');
         };
 
         $scope.registerUser = function (user) {
@@ -23,10 +27,9 @@
           UserService.logoutUser();
         };
 
-        $scope.toggleHide = function () {
-          $('.team-list-ul').toggleClass('hide');
+        $scope.toggleHide = function (element) {
+          $(element).toggleClass('hide');
         };
-
 
       }
 

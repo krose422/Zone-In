@@ -8,24 +8,32 @@
 
         var endpoint = HEROKU.URL;
 
+        var isLoggedIn;
+
+        // On successful registration, set cookies, update headers, route to welcom
         var _successReg = function (data) {
-          $cookies.put('access_token', data.access_token);
-          $cookies.putObject('currentUser', data);
-          HEROKU.CONFIG.headers['access_token'] = data.access_token;
-          $state.go('home.register.welcome');
+          _putCookies(data);
+          _updateConfig(data);
+          $state.go('welcome');
         };
 
+        // On successful login, set cookies, update headers, route to dash
         var _successLog = function (data) {
           console.log('successful login');
-
-          $cookies.put('access_token', data.access_token);
-          $cookies.putObject('currentUser', data);
+          _putCookies(data);
           _updateConfig(data);
+          $state.go('dashboard');
         };
 
+        // Set cookies for user
+        var _putCookies = function (data) {
+          $cookies.put('access_token', data.access_token);
+          $cookies.putObject('currentUser', data);
+        };
+
+        // Update headers with access token
         var _updateConfig = function (user) {
           HEROKU.CONFIG.headers['access_token'] = user.access_token;
-          $state.go('dashboard');
         };
 
         // User constructor
@@ -44,17 +52,16 @@
             });
         };
 
+        // Update user data from welcome page after initial registration page
         this.updateUserReg = function (user) {
-          // var currentUser = $cookies.get('currentUser');
-          // console.log(currentUser);
-          // console.log(user);
           return $http.patch(endpoint + '/athletes/register', user, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);
-              // $state.go('dashboard');
+              $state.go('dashboard');
             });
         };
 
+        // Log in user
         this.loginUser = function (user) {
           return $http.post(endpoint + '/athletes/signin')
             .success( function (data) {
@@ -62,6 +69,7 @@
             });
         };
 
+        // Log out user - remove all cookies
         this.logoutUser = function () {
           $cookies.remove('access_token');
           $cookies.remove('currentUser');
@@ -69,21 +77,21 @@
           $state.go('home');
         };
 
-        this.checkStatus = function () {
-          var user = $cookies.getObject('currentUser');
-          var token = $cookies.get('access_token');
-          var LoggedIn = token !== undefined;
-            // if (!LoggedIn) {
-            //   $state.go('home');
-            // }
-
-          if (user !== undefined) {
-            _updateConfig(user);
-          } else {
-            $state.go('home.login');
+        // If visitor routes to home page and is logged in, route to dashboard
+        this.homeCheckLogin = function () {
+          isLoggedIn = $cookies.get('access_token') !== undefined;
+          if (isLoggedIn) {
+            $state.go('dashboard');
           }
         };
 
+        // If user is not logged in and tries to navigate inside app, routes home
+        this.checkLogin = function () {
+          isLoggedIn = $cookies.get('access_token') !== undefined;
+          if (isLoggedIn !== true) {
+            $state.go('home');
+          }
+        };
 
       }
 

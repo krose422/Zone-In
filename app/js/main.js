@@ -37,8 +37,8 @@
             controller: 'UserCtrl'
           })
 
-          .state('home.register.welcome', {
-            url: '/userinfo',
+          .state('welcome', {
+            url: '/welcomeinfo',
             templateUrl: 'js/templates/welcome.tpl.html',
             controller: 'UserCtrl'
           })
@@ -49,10 +49,10 @@
             controller: 'UserCtrl'
           })
 
-          .state('calendar', {
+          .state('dashboard.calendar', {
             url: '/calendar',
             templateUrl: 'js/templates/calendar.tpl.html',
-            controller: 'PlanCtrl'
+            controller: 'UserCtrl'
           })
 
           .state('trainingplans', {
@@ -71,6 +71,24 @@
             url: '/teamtemplate',
             templateUrl: 'js/templates/team.tpl.html',
             controller: 'TeamCtrl'
+          })
+
+          .state('team.directory', {
+            url: '/directory',
+            templateUrl: 'js/templates/teamdirectory.tpl.html',
+            controller: 'TeamCtrl'
+          })
+
+          .state('team.calendar', {
+            url: '/calendar',
+            templateUrl: 'js/templates/teamcalendar.tpl.html',
+            controller: 'TeamCtrl'
+          })
+
+          .state('team.media', {
+            url: '/media',
+            templateUrl: 'js/templates/teammedia.tpl.html',
+            controller: 'TeamCtrl'
           });
 
       }
@@ -83,45 +101,12 @@
 
         $rootScope.$on('$stateChangeSuccess', function () {
 
-          console.log($state.current.name);
-
-          var isLoggedIn;
-
-          var homeCheckLogin = function () {
-            isLoggedIn = $cookies.get('access_token') !== undefined;
-            if (isLoggedIn) {
-              $state.go('dashboard');
-            }
-          };
-
-          var checkLogin = function () {
-            isLoggedIn = $cookies.get('access_token') !== undefined;
-            if (isLoggedIn !== true) {
-              $state.go('home');
-            }
-          };
-
-          if ($state.current.name === 'home') {
-            homeCheckLogin();
-          }
-          if ($state.current.name === 'home.login') {
-            homeCheckLogin();
-          }
-          if ($state.current.name === 'home.register') {
-            homeCheckLogin();
-          }
-          if ($state.current.name === 'home.register.welcome') {
-            homeCheckLogin();
-          }
-
-          // if current state is not login or register or home, check if logged in and if not, route home
-          if ($state.current.name === 'home.login') {
-            console.log('ok');
+          if($state.includes('home')){
+            UserService.homeCheckLogin();
           } else {
-            checkLogin();
+            UserService.checkLogin();
           }
 
-          // UserService.checkStatus();
         });
       }
 

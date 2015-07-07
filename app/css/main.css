@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   box-sizing: border-box; }
 
@@ -171,25 +170,46 @@ header {
     display: table; }
   .dashboard-page header {
     width: 100%; }
-  .dashboard-page .content {
+  .dashboard-page .dash-content {
     font-family: "Tinos", serif;
     max-width: 96%;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto; }
-    .dashboard-page .content::after {
+    .dashboard-page .dash-content::after {
       clear: both;
       content: "";
       display: table; }
-    .dashboard-page .content div {
+    .dashboard-page .dash-content div {
       margin-bottom: 2em; }
-    .dashboard-page .content h4 {
+    .dashboard-page .dash-content h4 {
       color: #FAFAFA;
       font-family: "Fjalla One", sans-serif; }
-    .dashboard-page .content i {
+    .dashboard-page .dash-content i {
       margin-right: .5em;
       font-size: 1.5em; }
-    .dashboard-page .content .left-dash {
+    .dashboard-page .dash-content .top-dash-progress {
+      padding: 2em;
+      overflow: hidden;
+      width: 100%;
+      background-color: #fff;
+      -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+      box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .dashboard-page .dash-content .top-dash-progress i {
+        display: inline-block;
+        float: left;
+        font-size: 2.5em;
+        color: #D0C8C5; }
+      .dashboard-page .dash-content .top-dash-progress .fa-minus-square:hover {
+        color: #FF534E; }
+      .dashboard-page .dash-content .top-dash-progress .fa-plus-square:hover {
+        color: #BED194; }
+      .dashboard-page .dash-content .top-dash-progress h4 {
+        text-align: center;
+        color: #424242; }
+    .dashboard-page .dash-content .left-dash {
       float: left;
       display: block;
       margin-right: 2.35765%;
@@ -197,32 +217,32 @@ header {
       overflow: hidden;
       float: left;
       padding: 0; }
-      .dashboard-page .content .left-dash:last-child {
+      .dashboard-page .dash-content .left-dash:last-child {
         margin-right: 0; }
-      .dashboard-page .content .left-dash .team-list {
+      .dashboard-page .dash-content .left-dash .team-list {
         padding: 2em;
         background-color: #176785; }
-        .dashboard-page .content .left-dash .team-list h4 {
+        .dashboard-page .dash-content .left-dash .team-list h4 {
           cursor: pointer; }
-        .dashboard-page .content .left-dash .team-list ul {
+        .dashboard-page .dash-content .left-dash .team-list ul {
           text-align: left;
           padding: 0;
           margin: 0; }
-        .dashboard-page .content .left-dash .team-list a {
+        .dashboard-page .dash-content .left-dash .team-list a {
           color: #FAFAFA; }
-          .dashboard-page .content .left-dash .team-list a li {
+          .dashboard-page .dash-content .left-dash .team-list a li {
             padding: 0;
             font-size: 1.2em;
             margin-bottom: .5em; }
-          .dashboard-page .content .left-dash .team-list a img {
+          .dashboard-page .dash-content .left-dash .team-list a img {
             height: 3em;
             border-radius: 50%; }
-      .dashboard-page .content .left-dash .calendar {
+      .dashboard-page .dash-content .left-dash .calendar {
         overflow: hidden;
         position: relative; }
-        .dashboard-page .content .left-dash .calendar img {
+        .dashboard-page .dash-content .left-dash .calendar img {
           width: 100%; }
-        .dashboard-page .content .left-dash .calendar .overlay {
+        .dashboard-page .dash-content .left-dash .calendar .overlay {
           overflow: hidden;
           position: absolute;
           left: 0;
@@ -232,90 +252,120 @@ header {
           background-color: rgba(66, 66, 66, 0.9);
           transition: 0.3s all ease;
           cursor: pointer; }
-          .dashboard-page .content .left-dash .calendar .overlay:hover {
+          .dashboard-page .dash-content .left-dash .calendar .overlay:hover {
             background-color: rgba(66, 66, 66, 0.7); }
-          .dashboard-page .content .left-dash .calendar .overlay h4 {
+          .dashboard-page .dash-content .left-dash .calendar .overlay h4 {
             text-align: center;
             padding-top: 20%; }
-      .dashboard-page .content .left-dash .training-plans {
+      .dashboard-page .dash-content .left-dash .training-plans {
         padding: 2em;
         background-color: #BED194; }
-      .dashboard-page .content .left-dash .create-plan {
+      .dashboard-page .dash-content .left-dash .create-plan {
         padding: 2em;
         background-color: #2E313D; }
-      .dashboard-page .content .left-dash .workouts {
+      .dashboard-page .dash-content .left-dash .workouts {
         padding: 2em;
         background-color: #D0C8C5; }
-      .dashboard-page .content .left-dash .create-workout {
+      .dashboard-page .dash-content .left-dash .create-workout {
         padding: 2em;
         background-color: #499989; }
-    .dashboard-page .content .upcoming {
+    .dashboard-page .dash-content .upcoming {
       padding: 2em;
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 65.88078%;
       background-color: #FF534E; }
-      .dashboard-page .content .upcoming:last-child {
+      .dashboard-page .dash-content .upcoming:last-child {
         margin-right: 0; }
-      .dashboard-page .content .upcoming h4 {
+      .dashboard-page .dash-content .upcoming h4 {
         display: inline-block;
         float: left; }
-      .dashboard-page .content .upcoming a {
+      .dashboard-page .dash-content .upcoming a {
         color: #FAFAFA; }
-        .dashboard-page .content .upcoming a p {
+        .dashboard-page .dash-content .upcoming a p {
           border: 1px solid #FAFAFA;
           border-radius: 4px;
           padding: .5em;
           display: inline-block;
           float: right; }
-          .dashboard-page .content .upcoming a p:hover {
+          .dashboard-page .dash-content .upcoming a p:hover {
             background-color: #FAFAFA;
             color: #FF534E; }
-      .dashboard-page .content .upcoming h5 {
+      .dashboard-page .dash-content .upcoming h5 {
         color: #424242;
         font-family: "Tinos", serif; }
 
 /* TEAM PAGE
 ------------ */
+.team-page {
+  background-color: #424242;
+  height: 100vh; }
+  .team-page .team-page-content {
+    overflow: hidden;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+    .team-page .team-page-content::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .team-page .team-page-content h3 {
+      width: 100%;
+      color: #FAFAFA;
+      text-align: center;
+      font-family: "Fjalla One", sans-serif;
+      font-size: 4em; }
+    .team-page .team-page-content .team-content-sections {
+      overflow: hidden;
+      width: 100%; }
+      .team-page .team-page-content .team-content-sections .team-left-content {
+        overflow: hidden;
+        background-color: #BED194;
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 40.29137%; }
+        .team-page .team-page-content .team-content-sections .team-left-content:last-child {
+          margin-right: 0; }
+        .team-page .team-page-content .team-content-sections .team-left-content ul {
+          padding: 1em; }
+          .team-page .team-page-content .team-content-sections .team-left-content ul p {
+            font-family: "Fjalla One", sans-serif; }
+          .team-page .team-page-content .team-content-sections .team-left-content ul li {
+            padding-left: 1em;
+            font-size: 1.5em; }
+        .team-page .team-page-content .team-content-sections .team-left-content h5 {
+          font-family: "Fjalla One", sans-serif;
+          font-size: 3em;
+          color: #424242;
+          background-color: #FAFAFA;
+          padding: .5em;
+          margin: 0;
+          -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+          -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+          -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+          box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .team-page .team-page-content .team-content-sections .team-right-content {
+        overflow: hidden;
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 57.35098%;
+        background-color: #FAFAFA;
+        padding: 1em; }
+        .team-page .team-page-content .team-content-sections .team-right-content:last-child {
+          margin-right: 0; }
+
 /* CENTER NAV
 ------------- */
 .centered-navigation {
-  background-color: #E7F1EC;
-  border-bottom: 1px solid #d4e6dd;
+  border-bottom: 1px solid #c2b8b4;
   min-height: 60px;
   width: 100%;
   z-index: 9999;
   font-family: "Fjalla One", sans-serif;
   font-size: 1.5em; }
-  .centered-navigation .mobile-logo {
-    display: inline;
-    float: left;
-    max-height: 60px;
-    padding-left: 1em; }
-    .centered-navigation .mobile-logo img {
-      max-height: 60px;
-      opacity: .6;
-      padding: .8em 0; }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation .mobile-logo {
-        display: none; } }
-  .centered-navigation .centered-navigation-mobile-menu {
-    color: rgba(51, 51, 51, 0.7);
-    display: block;
-    float: right;
-    font-weight: 700;
-    line-height: 60px;
-    margin: 0;
-    padding-right: 1em;
-    text-decoration: none;
-    text-transform: uppercase; }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation .centered-navigation-mobile-menu {
-        display: none; } }
-    .centered-navigation .centered-navigation-mobile-menu:focus,
-    .centered-navigation .centered-navigation-mobile-menu:hover {
-      color: #333; }
   .centered-navigation .centered-navigation-wrapper {
     max-width: 68em;
     margin-left: auto;
@@ -349,14 +399,15 @@ header {
     .centered-navigation .nav-link:first-child {
       margin-left: 2.2em; } }
   .centered-navigation ul li.nav-link {
-    background: #E7F1EC;
+    background: #fff;
     display: block;
     line-height: 60px;
     overflow: hidden;
     padding-right: 1em;
     text-align: right;
     width: 100%;
-    z-index: 9999; }
+    z-index: 9999;
+    font-size: 1.2em; }
     .centered-navigation ul li.nav-link a {
       color: rgba(51, 51, 51, 0.7);
       display: inline-block;
@@ -378,86 +429,7 @@ header {
     @media screen and (min-width: 53.75em) {
       .centered-navigation li.logo.nav-link {
         display: inline; } }
-  .centered-navigation .logo img {
-    margin-bottom: -0.66667em;
+  .centered-navigation .team-logo img {
+    margin: .5em;
     max-height: 2em;
-    opacity: 0.6; }
-  .centered-navigation li.more.nav-link {
-    padding-right: 0; }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation li.more.nav-link {
-        padding-right: 1em; } }
-    .centered-navigation li.more.nav-link > ul > li:first-child a {
-      padding-top: 1em; }
-    .centered-navigation li.more.nav-link a {
-      margin-right: 1em; }
-    .centered-navigation li.more.nav-link > a {
-      padding-right: 0.6em; }
-    .centered-navigation li.more.nav-link > a:after {
-      position: absolute;
-      top: auto;
-      right: -0.4em;
-      bottom: auto;
-      left: auto;
-      color: rgba(51, 51, 51, 0.7);
-      content: "\25BE"; }
-  .centered-navigation li.more {
-    overflow: visible;
-    padding-right: 0; }
-    .centered-navigation li.more a {
-      padding-right: 1em; }
-    .centered-navigation li.more > a {
-      padding-right: 1.6em;
-      position: relative; }
-      @media screen and (min-width: 53.75em) {
-        .centered-navigation li.more > a {
-          margin-right: 1em; } }
-      .centered-navigation li.more > a:after {
-        content: "›";
-        font-size: 1.2em;
-        position: absolute;
-        right: 0.5em; }
-    .centered-navigation li.more:focus > .submenu,
-    .centered-navigation li.more:hover > .submenu {
-      display: block; }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation li.more {
-        padding-right: 1em;
-        position: relative; } }
-  .centered-navigation ul.submenu {
-    display: none;
-    padding-left: 0; }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation ul.submenu {
-        left: -1em;
-        position: absolute;
-        top: 1.5em; } }
-    @media screen and (min-width: 53.75em) {
-      .centered-navigation ul.submenu .submenu {
-        left: 11.8em;
-        top: 0; } }
-    .centered-navigation ul.submenu li {
-      display: block;
-      padding-right: 0; }
-      @media screen and (min-width: 53.75em) {
-        .centered-navigation ul.submenu li {
-          line-height: 46.15385px; }
-          .centered-navigation ul.submenu li:first-child > a {
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px; }
-          .centered-navigation ul.submenu li:last-child > a {
-            border-bottom-left-radius: 3px;
-            border-bottom-right-radius: 3px;
-            padding-bottom: .7em; } }
-      .centered-navigation ul.submenu li a {
-        background-color: #ddebe4;
-        display: inline-block;
-        text-align: right;
-        text-decoration: none;
-        width: 100%; }
-        @media screen and (min-width: 53.75em) {
-          .centered-navigation ul.submenu li a {
-            background-color: #E7F1EC;
-            padding-left: 1em;
-            text-align: left;
-            width: 12em; } }
+    opacity: 1; }

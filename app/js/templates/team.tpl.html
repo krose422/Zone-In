@@ -1,6 +1,6 @@
 <div class="team-page">
 
-  <header class="home-header">
+  <header class="home-header team-page-header">
     <div class="outerheader">
       <div class="innerheader">
         <a href="#/dash"><div class="logo">
@@ -20,27 +20,57 @@
     <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-  <header class="centered-navigation" role="banner">
+<header class="centered-navigation" role="banner">
   <div class="centered-navigation-wrapper">
-    <a href="javascript:void(0)" class="mobile-logo">
-      <img src="https://www.placehold.it/200x200" alt="Logo image">
-    </a>
     <nav role="navigation">
       <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-        <li class="nav-link"><a href="javascript:void(0)">team home</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">team directory</a></li>
-        <li class="nav-link logo">
-          <img src="https://www.placehold.it/200x200" alt="Logo image">
+        <li class="nav-link"><a href="#/teamtemplate">team home</a></li>
+        <li class="nav-link"><a href="#/teamtemplate/directory">team directory</a></li>
+        <li class="nav-link team-logo">
+          <img src="http://www.sirugby.com/images/lg-kennesawSt.jpg">
         </li>
-        <li class="nav-link"><a href="javascript:void(0)">team calendar</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">team videos & photos</a></li>
+        <li class="nav-link"><a href="#/teamtemplate/calendar">team calendar</a></li>
+        <li class="nav-link"><a href="#/teamtemplate/media">team videos & photos</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<div class="team-page-content" ui-view>
 
-<h2>This will be the TEAM page.</h2>
+
+<h3>KSU Rugby Fall 2015</h3>
+
+<div class="team-content-sections">
+  <div class="team-left-content">
+    <h5>KSU Rugby Fall 2015's Team Members</h5>
+    <ul class="team-coach-list">
+      <p>Coaches</p>
+      <li>Josh Smith</li>
+      <li>Tim Rose</li>
+    </ul>
+    <ul class="team-athlete-list">
+      <p>Athletes</p>
+      <li>Kelley Rose ------------------- 32%</li>
+      <li>Bob Smiles ------------------- 45%</li>
+      <li>Michael Hand ------------------- 89%</li>
+      <li>Jerry Springer ------------------- 21%</li>
+      <li>Laura Grange ------------------- 54%</li>
+    </ul>
+  </div>
+
+  <div class="team-right-content">
+    <h5>Message Board</h5>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+
+</div>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -68,5 +98,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+</div><!-- end of team page content -->
 
 </div> <!-- end of team page -->
