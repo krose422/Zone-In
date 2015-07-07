@@ -2,16 +2,16 @@
 
   'use strict';
 
-  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule'])
+  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule', 'ngCookies'])
 
-    // .constant('HEROKU', {
-    //   URL: 'https://api.parse.com/1/',
-    //   CONFIG: {
-    //     headers: {
-
-    //     }
-    //   }
-    // })
+    .constant('HEROKU', {
+      URL: 'https://thawing-mountain-6062.herokuapp.com',
+      CONFIG: {
+        headers: {
+          'access_token': ''
+        }
+      }
+    })
 
     .config(['$stateProvider', '$urlRouterProvider',
       function ($stateProvider, $urlRouterProvider) {
@@ -73,9 +73,21 @@
             controller: 'TeamCtrl'
           });
 
+      }
 
+    ])
+
+    .run(['$rootScope', 'UserService', '$stateParams', '$state',
+
+      function ($rootScope, UserService, $stateParams, $state) {
+
+        $rootScope.$on('$stateChangeSuccess', function () {
+          // console.log($state.current);
+          // UserService.checkStatus();
+        });
       }
 
     ]);
+
 
 }());

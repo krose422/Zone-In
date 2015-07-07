@@ -129,11 +129,15 @@ header {
       margin: 0; }
       header .innerheader .logo img {
         height: 5em;
-        margin: 0; }
+        margin: 0;
+        float: left; }
       header .innerheader .logo h2 {
         font-family: "Fjalla One", sans-serif;
-        margin: 0;
-        color: #FF534E; }
+        font-size: 2.4em;
+        transform: rotateZ(-16deg);
+        padding: 0.2em 0.5em;
+        color: #499989;
+        float: left; }
     header .innerheader .rightheader {
       overflow: hidden;
       float: right; }
@@ -270,3 +274,19 @@ header {
       .dashboard-page .content .upcoming h5 {
         color: #424242;
         font-family: "Tinos", serif; }
+
+/* TEAM PAGE
+------------ */
+.team-page .team-header {
+  overflow: hidden; }
+  .team-page .team-header .team-logo {
+    overflow: hidden;
+    display: inline-block;
+    float: left; }
+  .team-page .team-header .team-nav nav {
+    overflow: hidden;
+    float: right; }
+    .team-page .team-header .team-nav nav ul li {
+      font-family: "Fjalla One", sans-serif;
+      font-size: 1em;
+      display: inline-block; }

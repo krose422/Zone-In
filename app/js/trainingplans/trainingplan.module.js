@@ -2,6 +2,6 @@
 
   'use strict';
 
-  angular.module('PlanModule', ['ui.router']);
+  angular.module('PlanModule', ['ui.router',  'ui.calendar']);
 
 }());

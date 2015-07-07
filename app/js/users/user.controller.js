@@ -3,27 +3,24 @@
   'use strict';
 
   angular.module('UserModule')
-    .controller('UserCtrl', ['$scope', 'UserService', '$state',
-      function ($scope, UserService, $state) {
+    .controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams',
+      function ($scope, UserService, $state, $stateParams) {
 
         $scope.loginUser = function () {
-          console.log('logging in');
-          $state.go('dashboard');
+          UserService.loginUser();
+          // console.log('logging in');
         };
 
-        $scope.registerUser = function () {
-          console.log('registering user');
-          $state.go('home.register.welcome');
+        $scope.registerUser = function (user) {
+          UserService.registerUser(user);
         };
 
-        $scope.updateUserInfo = function () {
-          console.log('updating user info');
-          $state.go('dashboard');
+        $scope.updateUserReg = function (user) {
+          UserService.updateUserReg(user);
         };
 
         $scope.logoutUser = function () {
-          console.log('logging out');
-          $state.go('home');
+          UserService.logoutUser();
         };
 
         $scope.toggleHide = function () {

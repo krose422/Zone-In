@@ -195,12 +195,17 @@ label.css-label {
         img {
           height: 5em;
           margin: 0;
+          float: left;
         }
 
         h2 {
           font-family: $fjalla;
-          margin: 0;
-          color: $red;
+          // font-style: italic;
+          font-size: 2.4em;
+          transform: rotateZ(-16deg);
+          padding: .2em .5em;
+          color: $teal;
+          float: left;
         }
       }
 
@@ -386,5 +391,39 @@ label.css-label {
         }
       }
 
+  }
+}
+
+/* TEAM PAGE
+------------ */
+
+.team-page {
+  .team-header {
+    overflow: hidden;
+
+    .team-logo {
+      overflow: hidden;
+      display: inline-block;
+      float: left;
+
+      img {
+
+      }
+    }
+
+    .team-nav {
+      nav {
+        overflow: hidden;
+        float: right;
+
+        ul {
+          li {
+            font-family: $fjalla;
+            font-size: 1em;
+            display: inline-block;
+          }
+        }
+      }
+    }
   }
 }
