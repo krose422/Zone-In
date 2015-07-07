@@ -9,17 +9,18 @@
         var endpoint = HEROKU.URL;
 
         var _successReg = function (data) {
-          console.log('successful registration');
           $cookies.put('access_token', data.access_token);
           $cookies.putObject('currentUser', data);
+          HEROKU.CONFIG.headers['access_token'] = data.access_token;
           $state.go('home.register.welcome');
         };
 
         var _successLog = function (data) {
           console.log('successful login');
+
           $cookies.put('access_token', data.access_token);
           $cookies.putObject('currentUser', data);
-          $state.go('dashboard');
+          _updateConfig(data);
         };
 
         var _updateConfig = function (user) {
@@ -62,7 +63,7 @@
         };
 
         this.logoutUser = function () {
-          $cookies.remove('session_token');
+          $cookies.remove('access_token');
           $cookies.remove('currentUser');
           HEROKU.CONFIG.headers['access_token'] = '';
           $state.go('home');
@@ -71,6 +72,11 @@
         this.checkStatus = function () {
           var user = $cookies.getObject('currentUser');
           var token = $cookies.get('access_token');
+          var LoggedIn = token !== undefined;
+            // if (!LoggedIn) {
+            //   $state.go('home');
+            // }
+
           if (user !== undefined) {
             _updateConfig(user);
           } else {

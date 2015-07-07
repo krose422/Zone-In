@@ -77,12 +77,50 @@
 
     ])
 
-    .run(['$rootScope', 'UserService', '$stateParams', '$state',
+    .run(['$rootScope', 'UserService', '$stateParams', '$state', '$cookies',
 
-      function ($rootScope, UserService, $stateParams, $state) {
+      function ($rootScope, UserService, $stateParams, $state, $cookies) {
 
         $rootScope.$on('$stateChangeSuccess', function () {
-          // console.log($state.current);
+
+          console.log($state.current.name);
+
+          var isLoggedIn;
+
+          var homeCheckLogin = function () {
+            isLoggedIn = $cookies.get('access_token') !== undefined;
+            if (isLoggedIn) {
+              $state.go('dashboard');
+            }
+          };
+
+          var checkLogin = function () {
+            isLoggedIn = $cookies.get('access_token') !== undefined;
+            if (isLoggedIn !== true) {
+              $state.go('home');
+            }
+          };
+
+          if ($state.current.name === 'home') {
+            homeCheckLogin();
+          }
+          if ($state.current.name === 'home.login') {
+            homeCheckLogin();
+          }
+          if ($state.current.name === 'home.register') {
+            homeCheckLogin();
+          }
+          if ($state.current.name === 'home.register.welcome') {
+            homeCheckLogin();
+          }
+
+          // if current state is not login or register or home, check if logged in and if not, route home
+          if ($state.current.name === 'home.login') {
+            console.log('ok');
+          } else {
+            checkLogin();
+          }
+
           // UserService.checkStatus();
         });
       }
