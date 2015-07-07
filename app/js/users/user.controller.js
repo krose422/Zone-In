@@ -26,6 +26,10 @@
           $state.go('home');
         };
 
+        $scope.toggleHide = function () {
+          $('.team-list-ul').toggleClass('hide');
+        };
+
 
       }
 

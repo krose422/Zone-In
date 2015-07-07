@@ -192,6 +192,11 @@ label.css-label {
         overflow: hidden;
         margin: 0;
 
+        img {
+          height: 5em;
+          margin: 0;
+        }
+
         h2 {
           font-family: $fjalla;
           margin: 0;
@@ -244,12 +249,11 @@ label.css-label {
 
   .content {
     font-family: $tinos;
-    @include outer-container(90%);
+    @include outer-container(96%);
     margin: 0 auto;
 
     div {
       margin-bottom: 2em;
-      // padding: 2em;
     }
 
     h4 {
@@ -259,6 +263,7 @@ label.css-label {
 
     i {
       margin-right: .5em;
+      font-size: 1.5em;
     }
 
     .left-dash {
@@ -271,10 +276,21 @@ label.css-label {
         padding: 2em;
         background-color: $blue;
 
+        h4 {
+          cursor: pointer;
+        }
+
+        ul {
+          text-align: left;
+          padding: 0;
+          margin: 0;
+        }
+
         a {
           color: $background;
 
           li {
+            padding: 0;
             font-size: 1.2em;
             margin-bottom: .5em;
           }

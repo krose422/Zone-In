@@ -4,7 +4,8 @@
     <div class="outerheader">
       <div class="innerheader">
         <a href="#/dash"><div class="logo">
-          <h2>zone in</h2>
+          <img src="images/zone-in.png">
+          <!-- <h2>zone in</h2> -->
         </div></a>
         <div class="rightheader">
 
@@ -25,8 +26,8 @@
 
 <div class="left-dash">
       <div class="team-list">
-        <h4><i class="fa fa-plus-circle"></i>My Teams</h4>
-        <ul>
+        <h4 ng-click="toggleHide()"><i class="fa fa-plus-circle"></i>My Teams</h4>
+        <ul class="team-list-ul hide">
           <a href="#/teamtemplate">
           <li>
           <img src="http://www.placehold.it/60x60">
@@ -66,19 +67,19 @@
       </div>
       </a>
 
-      <div class="create-plan">
+<!--       <div class="create-plan">
         <h4><i class="fa fa-plus-circle"></i>Create New Plan</h4>
-      </div>
+      </div> -->
 
       <a href="#/workouts">
       <div class="workouts">
         <h4><i class="fa fa-external-link-square"></i>My Workouts</h4>
       </div>
       </a>
-
+<!--
       <div class="create-workout">
         <h4><i class="fa fa-plus-circle"></i>Create New Workout</h4>
-      </div>
+      </div> -->
     </div>
 
       <div class="upcoming">

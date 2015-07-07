@@ -127,6 +127,9 @@ header {
       display: inline-block;
       overflow: hidden;
       margin: 0; }
+      header .innerheader .logo img {
+        height: 5em;
+        margin: 0; }
       header .innerheader .logo h2 {
         font-family: "Fjalla One", sans-serif;
         margin: 0;
@@ -165,7 +168,7 @@ header {
     width: 100%; }
   .dashboard-page .content {
     font-family: "Tinos", serif;
-    max-width: 90%;
+    max-width: 96%;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto; }
@@ -179,7 +182,8 @@ header {
       color: #FAFAFA;
       font-family: "Fjalla One", sans-serif; }
     .dashboard-page .content i {
-      margin-right: .5em; }
+      margin-right: .5em;
+      font-size: 1.5em; }
     .dashboard-page .content .left-dash {
       float: left;
       display: block;
@@ -193,9 +197,16 @@ header {
       .dashboard-page .content .left-dash .team-list {
         padding: 2em;
         background-color: #176785; }
+        .dashboard-page .content .left-dash .team-list h4 {
+          cursor: pointer; }
+        .dashboard-page .content .left-dash .team-list ul {
+          text-align: left;
+          padding: 0;
+          margin: 0; }
         .dashboard-page .content .left-dash .team-list a {
           color: #FAFAFA; }
           .dashboard-page .content .left-dash .team-list a li {
+            padding: 0;
             font-size: 1.2em;
             margin-bottom: .5em; }
           .dashboard-page .content .left-dash .team-list a img {
