@@ -63,7 +63,7 @@
 
         // Log in user
         this.loginUser = function (user) {
-          return $http.post(endpoint + '/athletes/signin')
+          return $http.post(endpoint + '/athletes/signin', user)
             .success( function (data) {
               _successLog(data);
             });

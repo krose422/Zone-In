@@ -11,8 +11,8 @@
         }];
 
 
-        $scope.loginUser = function () {
-          UserService.loginUser();
+        $scope.loginUser = function (user) {
+          UserService.loginUser(user);
         };
 
         $scope.registerUser = function (user) {

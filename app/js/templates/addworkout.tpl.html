@@ -1,0 +1,53 @@
+<div class="addworkout-form">
+
+<p>Fill out information below to add workout.</p>
+
+  <form ng-submit="addWorkout(workout)">
+    <input type="text" placeholder="Workout Name" ng-model="workout.name">
+<!--     <input type="checkbox" name="strength" label="Strength" ng-model="workout.type">
+    <input type="checkbox" name="endurance" label="Endurance" ng-model="workout.type">
+    <input type="checkbox" name="agility" label="Agility" ng-model="workout.type"> -->
+
+      <label>What type of workout is this?</label>
+
+      <input id="strengthradio" type="radio" ng-model="workout.description" value="Strength"><label for="strengthradio">Strength</label>
+
+      <input id="enduranceradio" type="radio" ng-model="workout.description" value="Endurance"><label for="enduranceradio">Endurance</label>
+
+      <input id="agilityradio" type="radio" ng-model="workout.description" value="Agility"><label for="agilityradio">Agility</label>
+
+    <div class="check">
+      <label>Running Workout</label>
+      <input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Yes" ng-model="workout.running">
+    </div>
+    <div class="check">
+      <label>Weight Lifting Workout</label>
+      <input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Yes" ng-model="workout.weightlifting">
+    </div>
+
+    <input type="text" placeholder="Estimated length" ng-model="workout.time">
+    <input type="text" placeholder="Workout leg" ng-model="workout.steps">
+    <!-- need to add + to show more inputs for more legs here -->
+
+    <div class="row collapse">
+      <div class="small-3 large-2 columns">
+        <span class="prefix">http://</span>
+      </div>
+      <div class="small-9 large-10 columns">
+        <input type="text" placeholder="Image URL (optional)" ng-model="workout.image_url">
+      </div>
+    </div>
+
+    <div class="row collapse">
+      <div class="small-3 large-2 columns">
+        <span class="prefix">http://</span>
+      </div>
+      <div class="small-9 large-10 columns">
+        <input type="text" placeholder="Video URL (optional)" ng-model="workout.image_url">
+      </div>
+    </div>
+
+    <button>Add Workout</button>
+  </form>
+
+</div>

@@ -147,12 +147,46 @@ header {
       header .innerheader .rightheader nav {
         display: inline-block; }
         header .innerheader .rightheader nav li {
-          font-family: "Fjalla One", sans-serif;
-          color: #424242;
           display: inline-block;
+          font-family: "Fjalla One", sans-serif;
           padding: 1em; }
           header .innerheader .rightheader nav li a {
             color: #424242; }
+      header .innerheader .rightheader .nav-item {
+        overflow: hidden;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid rgba(18, 81, 105, 0.8);
+        border-radius: 4px;
+        background-color: rgba(18, 81, 105, 0.8);
+        transition: 0.3s all ease;
+        border: none;
+        display: inline-block;
+        padding: 0;
+        margin: .5em;
+        float: right;
+        height: 3.5em; }
+        header .innerheader .rightheader .nav-item:hover {
+          background-color: #125169; }
+        header .innerheader .rightheader .nav-item i {
+          font-size: 1.6em;
+          padding: .5em; }
+        header .innerheader .rightheader .nav-item .user-avatar {
+          float: left;
+          height: 100%;
+          overflow: hidden;
+          display: inline-block;
+          border-radius: 0; }
+          header .innerheader .rightheader .nav-item .user-avatar img {
+            height: 100%; }
+        header .innerheader .rightheader .nav-item .user-name {
+          display: inline-block;
+          float: right;
+          padding: 0.5em 1.5em;
+          font-size: 1.4em;
+          font-family: "Fjalla One", sans-serif; }
 
 /* HOMEPAGE VIEW
 ---------------- */
@@ -173,41 +207,6 @@ header {
     display: table; }
   .dashboard-page header {
     width: 100%; }
-    .dashboard-page header nav .nav-item {
-      overflow: hidden;
-      cursor: pointer;
-      text-align: center;
-      padding: 10px;
-      color: #FAFAFA;
-      border: 1px solid rgba(18, 81, 105, 0.8);
-      border-radius: 4px;
-      background-color: rgba(18, 81, 105, 0.8);
-      transition: 0.3s all ease;
-      border: none;
-      display: inline-block;
-      padding: 0;
-      margin: .5em;
-      float: right;
-      height: 3.5em; }
-      .dashboard-page header nav .nav-item:hover {
-        background-color: #125169; }
-      .dashboard-page header nav .nav-item i {
-        font-size: 1.6em;
-        padding: .5em; }
-      .dashboard-page header nav .nav-item .user-avatar {
-        float: left;
-        height: 100%;
-        overflow: hidden;
-        display: inline-block;
-        border-radius: 0; }
-        .dashboard-page header nav .nav-item .user-avatar img {
-          height: 100%; }
-      .dashboard-page header nav .nav-item .user-name {
-        display: inline-block;
-        float: right;
-        padding: 0.5em 1.5em;
-        font-size: 1.4em;
-        font-family: "Fjalla One", sans-serif; }
   .dashboard-page .dash-content {
     font-family: "Tinos", serif;
     max-width: 96%;
@@ -345,9 +344,7 @@ header {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  height: 100vh; }
+  overflow: hidden; }
   .team-page h3 {
     width: 100%;
     color: #FAFAFA;
@@ -528,3 +525,10 @@ header {
     margin: .5em;
     max-height: 2em;
     opacity: 1; }
+
+/* ADD WORKOUT FORM
+-------------------- */
+.addworkout-form {
+  overflow: hidden;
+  padding: 4em;
+  margin: auto; }

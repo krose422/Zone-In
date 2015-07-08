@@ -221,19 +221,60 @@ label.css-label {
           display: inline-block;
 
           li {
-            font-family: $fjalla;
-            color: $darkgrey;
             display: inline-block;
+            font-family: $fjalla;
             padding: 1em;
+
 
             a {
               color: $darkgrey;
             }
           }
         }
+
+        .nav-item {
+          overflow: hidden;
+          @include button(rgba(18, 81, 105, .8));
+          border: none;
+          display: inline-block;
+          padding: 0;
+          margin: .5em;
+          float: right;
+          height: 3.5em;
+
+          &:hover {
+            background-color: rgba(18, 81, 105, 1);
+          }
+
+          i {
+            font-size: 1.6em;
+            padding: .5em;
+          }
+
+          .user-avatar {
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            display: inline-block;
+            border-radius: 0;
+
+            img {
+              height: 100%;
+            }
+          }
+
+          .user-name {
+            display: inline-block;
+            float: right;
+            padding: .5em 1.5em;
+            font-size: 1.4em;
+            font-family: $fjalla;
+          }
+        }
       }
     }
   }
+
 
 /* HOMEPAGE VIEW
 ---------------- */
@@ -255,48 +296,7 @@ label.css-label {
   header {
     @include fill-parent();
 
-    nav {
-      .nav-item {
-        overflow: hidden;
-        @include button(rgba(18, 81, 105, .8));
-        border: none;
-        // opacity: .6;
-        display: inline-block;
-        padding: 0;
-        margin: .5em;
-        float: right;
-        height: 3.5em;
 
-        &:hover {
-          background-color: rgba(18, 81, 105, 1);
-        }
-
-        i {
-          font-size: 1.6em;
-          padding: .5em;
-        }
-
-        .user-avatar {
-          float: left;
-          height: 100%;
-          overflow: hidden;
-          display: inline-block;
-          border-radius: 0;
-
-          img {
-            height: 100%;
-          }
-        }
-
-        .user-name {
-          display: inline-block;
-          float: right;
-          padding: .5em 1.5em;
-          font-size: 1.4em;
-          font-family: $fjalla;
-        }
-      }
-    }
   }
 
   .dash-content {
@@ -489,9 +489,7 @@ label.css-label {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
-  height: 100vh;
 
   h3 {
     @include fill-parent;
@@ -740,4 +738,15 @@ label.css-label {
     max-height: $centered-navigation-logo-height;
     opacity: 1;
   }
+}
+
+
+/* ADD WORKOUT FORM
+-------------------- */
+
+.addworkout-form {
+  overflow: hidden;
+  padding: 4em;
+  // width: 50%;
+  margin: auto;
 }

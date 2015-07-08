@@ -20,9 +20,9 @@
     <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-  <form ng-submit="loginUser()">
-    <input type="text" placeholder="Email address">
-    <input type="password" placeholder="Password">
+  <form ng-submit="loginUser(logUser)">
+    <input type="text" placeholder="Email address" ng-model="logUser.email">
+    <input type="password" placeholder="Password" ng-model="logUser.password">
     <button>Login</button>
   </form>
 

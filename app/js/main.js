@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule', 'ngCookies'])
+  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule', 'ngCookies', 'ngDialog'])
 
     .constant('HEROKU', {
       URL: 'https://thawing-mountain-6062.herokuapp.com',
@@ -55,13 +55,13 @@
             controller: 'UserCtrl'
           })
 
-          .state('trainingplans', {
-            url: '/training-plans',
+          .state('training', {
+            url: '/training',
             templateUrl: 'js/templates/trainingplans.tpl.html',
             controller: 'PlanCtrl'
           })
 
-          .state('workoutplans', {
+          .state('training.workouts', {
             url: '/workouts',
             templateUrl: 'js/templates/workouts.tpl.html',
             controller: 'PlanCtrl'

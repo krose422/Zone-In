@@ -25,7 +25,8 @@
     "cookies-js": "~1.2.1",
     "foundation": "~5.5.2",
     "angular-ui-calendar": "~1.0.0",
-    "angular-cookies": "~1.4.2"
+    "angular-cookies": "~1.4.2",
+    "ngDialog": "~0.4.0"
   },
   "devDependencies": {
     "mocha": "~2.2.5",
