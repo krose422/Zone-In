@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('PlanModule')
-    .controller('PlanCtrl', ['$scope', 'PlanService', '$state', 'ngDialog',
-      function ($scope, PlanService, $state, ngDialog) {
+    .controller('PlanCtrl', ['$scope', 'PlanService', '$state', 'ngDialog', '$http', 'HEROKU',
+      function ($scope, PlanService, $state, ngDialog, $http, HEROKU) {
 
         $scope.clickToOpen = function () {
           ngDialog.open({
@@ -15,9 +15,7 @@
 
         $scope.addWorkout = function (workout) {
           console.log(workout);
-          // send post request
-          $scope.closeThisDialog();
-          $state.go('training.workouts');
+          PlanService.addWorkout(workout);
         };
 
       }

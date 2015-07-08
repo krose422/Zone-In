@@ -129,49 +129,6 @@ div {
   border-radius: 4px;
 }
 
-/* CHECKBOX STYLE
------------------ */
-input[type=checkbox].css-checkbox {
-    position: absolute;
-    z-index: -1000;
-    left: -1000px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].css-checkbox + label.css-label {
-    padding-left: 30px;
-    height: 25px;
-    display: inline-block;
-    line-height: 25px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font-size: 2em;
-    vertical-align: middle;
-    cursor: pointer;
-    color: $darkgrey;
-}
-
-input[type=checkbox].css-checkbox:checked + label.css-label {
-    background-position: 0 -25px;
-}
-
-label.css-label {
-    background-image: url(http://csscheckbox.com/checkboxes/u/csscheckbox_d8cf819d987183169052b27a166a28e3.png);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-
 /* HEADER STYLE
 --------------- */
 

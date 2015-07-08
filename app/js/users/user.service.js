@@ -56,7 +56,7 @@
         this.updateUserReg = function (user) {
           return $http.patch(endpoint + '/athletes/register', user, HEROKU.CONFIG)
             .success( function (data) {
-              console.log(data);
+              // console.log(data);
               $state.go('dashboard');
             });
         };

@@ -20,6 +20,7 @@
         };
 
         $scope.updateUserReg = function (user) {
+          console.log(user);
           UserService.updateUserReg(user);
         };
 
