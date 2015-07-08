@@ -69,6 +69,9 @@ button {
 p {
   font-size: 1.5em; }
 
+div {
+  border-radius: 4px; }
+
 /* CHECKBOX STYLE
 ----------------- */
 input[type=checkbox].css-checkbox {
@@ -170,6 +173,41 @@ header {
     display: table; }
   .dashboard-page header {
     width: 100%; }
+    .dashboard-page header nav .nav-item {
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      color: #FAFAFA;
+      border: 1px solid rgba(18, 81, 105, 0.8);
+      border-radius: 4px;
+      background-color: rgba(18, 81, 105, 0.8);
+      transition: 0.3s all ease;
+      border: none;
+      display: inline-block;
+      padding: 0;
+      margin: .5em;
+      float: right;
+      height: 3.5em; }
+      .dashboard-page header nav .nav-item:hover {
+        background-color: #125169; }
+      .dashboard-page header nav .nav-item i {
+        font-size: 1.6em;
+        padding: .5em; }
+      .dashboard-page header nav .nav-item .user-avatar {
+        float: left;
+        height: 100%;
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 0; }
+        .dashboard-page header nav .nav-item .user-avatar img {
+          height: 100%; }
+      .dashboard-page header nav .nav-item .user-name {
+        display: inline-block;
+        float: right;
+        padding: 0.5em 1.5em;
+        font-size: 1.4em;
+        font-family: "Fjalla One", sans-serif; }
   .dashboard-page .dash-content {
     font-family: "Tinos", serif;
     max-width: 96%;
@@ -300,9 +338,23 @@ header {
 ------------ */
 .team-page {
   background-color: #424242;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   height: 100vh; }
+  .team-page h3 {
+    width: 100%;
+    color: #FAFAFA;
+    text-align: center;
+    font-family: "Fjalla One", sans-serif;
+    font-size: 4em; }
   .team-page .team-page-content {
-    overflow: hidden;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto; }
@@ -310,22 +362,17 @@ header {
       clear: both;
       content: "";
       display: table; }
-    .team-page .team-page-content h3 {
-      width: 100%;
-      color: #FAFAFA;
-      text-align: center;
-      font-family: "Fjalla One", sans-serif;
-      font-size: 4em; }
     .team-page .team-page-content .team-content-sections {
       overflow: hidden;
       width: 100%; }
       .team-page .team-page-content .team-content-sections .team-left-content {
         overflow: hidden;
-        background-color: #BED194;
+        background-color: rgba(190, 209, 148, 0.8);
         float: left;
         display: block;
         margin-right: 2.35765%;
-        width: 40.29137%; }
+        width: 36.02647%;
+        margin: 2em; }
         .team-page .team-page-content .team-content-sections .team-left-content:last-child {
           margin-right: 0; }
         .team-page .team-page-content .team-content-sections .team-left-content ul {
@@ -335,11 +382,29 @@ header {
           .team-page .team-page-content .team-content-sections .team-left-content ul li {
             padding-left: 1em;
             font-size: 1.5em; }
+        .team-page .team-page-content .team-content-sections .team-left-content p {
+          text-align: center;
+          margin: 0; }
+          .team-page .team-page-content .team-content-sections .team-left-content p a {
+            font-size: 1.2em;
+            text-align: center;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            color: #FAFAFA;
+            border: 1px solid #176785;
+            border-radius: 4px;
+            background-color: #176785;
+            transition: 0.3s all ease;
+            color: #FAFAFA; }
+            .team-page .team-page-content .team-content-sections .team-left-content p a:hover {
+              color: #FAFAFA;
+              background-color: #176785; }
         .team-page .team-page-content .team-content-sections .team-left-content h5 {
           font-family: "Fjalla One", sans-serif;
           font-size: 3em;
           color: #424242;
-          background-color: #FAFAFA;
+          background-color: rgba(254, 255, 255, 0.8);
           padding: .5em;
           margin: 0;
           -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
@@ -352,10 +417,40 @@ header {
         display: block;
         margin-right: 2.35765%;
         width: 57.35098%;
-        background-color: #FAFAFA;
-        padding: 1em; }
+        background-color: rgba(254, 255, 255, 0.8);
+        padding: 1em;
+        margin: 2em; }
         .team-page .team-page-content .team-content-sections .team-right-content:last-child {
           margin-right: 0; }
+
+.sub-nav {
+  padding: 0;
+  margin-top: 1em;
+  border-top: 1px solid #D0C8C5;
+  border-bottom: 1px solid #D0C8C5; }
+  .sub-nav .active {
+    background-color: #176785;
+    padding: .5em;
+    color: #FAFAFA; }
+  .sub-nav dt {
+    padding: .5em;
+    font-family: "Fjalla One", sans-serif; }
+  .sub-nav dd {
+    font-family: "Fjalla One", sans-serif;
+    padding: .5em;
+    cursor: pointer; }
+    .sub-nav dd a {
+      padding: 0; }
+  .sub-nav dd:hover {
+    background-color: #D0C8C5;
+    color: #FAFAFA; }
+    .sub-nav dd:hover a {
+      color: #FAFAFA;
+      padding: 0; }
+  .sub-nav dd.active a {
+    background-color: #176785;
+    color: #FAFAFA;
+    padding: 0; }
 
 /* CENTER NAV
 ------------- */

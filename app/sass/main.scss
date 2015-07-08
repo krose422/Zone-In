@@ -125,6 +125,10 @@ p {
   font-size: 1.5em;
 }
 
+div {
+  border-radius: 4px;
+}
+
 /* CHECKBOX STYLE
 ----------------- */
 input[type=checkbox].css-checkbox {
@@ -250,6 +254,49 @@ label.css-label {
 
   header {
     @include fill-parent();
+
+    nav {
+      .nav-item {
+        overflow: hidden;
+        @include button(rgba(18, 81, 105, .8));
+        border: none;
+        // opacity: .6;
+        display: inline-block;
+        padding: 0;
+        margin: .5em;
+        float: right;
+        height: 3.5em;
+
+        &:hover {
+          background-color: rgba(18, 81, 105, 1);
+        }
+
+        i {
+          font-size: 1.6em;
+          padding: .5em;
+        }
+
+        .user-avatar {
+          float: left;
+          height: 100%;
+          overflow: hidden;
+          display: inline-block;
+          border-radius: 0;
+
+          img {
+            height: 100%;
+          }
+        }
+
+        .user-name {
+          display: inline-block;
+          float: right;
+          padding: .5em 1.5em;
+          font-size: 1.4em;
+          font-family: $fjalla;
+        }
+      }
+    }
   }
 
   .dash-content {
@@ -434,28 +481,50 @@ label.css-label {
 
 .team-page {
   background-color: $darkgrey;
+  // background: url(https://scontent-atl1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11016837_10153505519810166_8252283888886455957_n.jpg?oh=dbeea0799f2951798dadf1629008de62&oe=5624081B) no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   height: 100vh;
 
-  .team-page-content {
-    overflow: hidden;
-    @include outer-container(100%);
+  h3 {
+    @include fill-parent;
+    color: $background;
+    text-align: center;
+    font-family: $fjalla;
+    font-size: 4em;
+  }
 
-    h3 {
-      @include fill-parent;
-      color: $background;
-      text-align: center;
-      font-family: $fjalla;
-      font-size: 4em;
-    }
+  .team-page-content {
+    // background: url(https://scontent-atl1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11016837_10153505519810166_8252283888886455957_n.jpg?oh=dbeea0799f2951798dadf1629008de62&oe=5624081B) no-repeat center fixed;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
+    // overflow: hidden;
+    // position: relative;
+    // width: 100%;
+    // height: 100vh;
+    // overflow: hidden;
+    @include outer-container(100%);
 
     .team-content-sections {
       overflow: hidden;
       @include fill-parent;
 
+
       .team-left-content {
         overflow: hidden;
-        background-color: $green;
-        @include span-columns(5);
+        background-color: rgba(190, 209, 148, .8);
+        // background-color: rgba(66, 66, 66, .6);
+        @include span-columns(4.5);
+        margin: 2em;
 
         ul {
           padding: 1em;
@@ -469,11 +538,28 @@ label.css-label {
           }
         }
 
+        p {
+          text-align: center;
+          margin: 0;
+
+          a {
+            font-size: 1.2em;
+            text-align: center;
+            @include button($blue);
+            color: $background;
+
+            &:hover {
+              color: $background;
+              background-color: $blue;
+            }
+          }
+        }
+
         h5 {
           font-family: $fjalla;
           font-size: 3em;
           color: $darkgrey;
-          background-color: $background;
+          background-color: rgba(254, 255, 255, .8);
           padding: .5em;
           margin: 0;
           -webkit-box-shadow: 0px .5px 2px $grey;
@@ -486,12 +572,57 @@ label.css-label {
       .team-right-content {
         overflow: hidden;
         @include span-columns(7);
-        background-color: $background;
+        background-color: rgba(254, 255, 255, .8);
         padding: 1em;
+        margin: 2em;
       }
 
     }
 
+  }
+}
+
+.sub-nav {
+  padding: 0;
+  margin-top: 1em;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+
+  .active {
+    background-color: $blue;
+    padding: .5em;
+    color: $background;
+  }
+
+  dt {
+    padding: .5em;
+    font-family: $fjalla;
+  }
+
+  dd {
+    font-family: $fjalla;
+    padding: .5em;
+    cursor: pointer;
+    a {
+      padding: 0;
+    }
+  }
+
+  dd:hover {
+    background-color: $grey;
+    color: $background;
+    a {
+      color: $background;
+      padding: 0;
+    }
+  }
+
+  dd.active {
+    a {
+      background-color: $blue;
+      color: $background;
+      padding: 0;
+    }
   }
 }
 
