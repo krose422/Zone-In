@@ -11,10 +11,12 @@ $darkblue: #0F4559;
 $teal: #499989;
 $darkteal: #187062;
 $green: #BED194;
+$greenrgb: rgba(190, 209, 148, .7);
 $offwhite: #FFD7BA;
 $red: #FF534E;
 $grey: #D0C8C5;
 $darkgrey: #424242;
+$darkgreyrgb: rgba(66, 66, 66, .9);
 
 $tinos: 'Tinos', serif;
 $fjalla: 'Fjalla One', sans-serif;
@@ -52,6 +54,35 @@ $gentium: 'Gentium Book Basic', serif;
 
   &:hover {
     opacity: .9;
+  }
+}
+
+@mixin boxShadow() {
+  -webkit-box-shadow: 0px .5px 2px $grey;
+  -moz-box-shadow: 0px .5px 2px $grey;
+  -o-box-shadow: 0px .5px 2px $grey;
+  box-shadow: 0px .5px 2px $grey;
+}
+
+@mixin overlay($color) {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color;
+  @include transition(.3s);
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(66, 66, 66, .7);
+  }
+
+  h4 {
+    text-align: center;
+    // font-size: 0;
+    padding-top: 17%;
   }
 }
 
@@ -100,6 +131,7 @@ a {
 
 ul {
   list-style: none;
+  margin-left: 0;
 }
 
 li {
@@ -129,18 +161,19 @@ div {
   border-radius: 4px;
 }
 
-/* HEADER STYLE
---------------- */
+h1, h2, h3, h4, h5 {
+  font-family: $fjalla;
+}
+
+/* GENERAL HEADER STYLE
+----------------------- */
 
   header {
     margin-bottom: 2em;
     overflow: hidden;
     width: 100%;
     background-color: #fff;
-    -webkit-box-shadow: 0px .5px 2px $grey;
-    -moz-box-shadow: 0px .5px 2px $grey;
-    -o-box-shadow: 0px .5px 2px $grey;
-    box-shadow: 0px .5px 2px $grey;
+    @include boxShadow();
 
     .innerheader {
       overflow: hidden;
@@ -160,12 +193,12 @@ div {
         }
 
         h2 {
-          font-family: $fjalla;
+          // font-family: $fjalla;
           // font-style: italic;
           font-size: 2.4em;
           transform: rotateZ(-16deg);
           padding: .2em .5em;
-          color: $teal;
+          color: $darkgrey;
           float: left;
         }
       }
@@ -252,8 +285,6 @@ div {
 
   header {
     @include fill-parent();
-
-
   }
 
   .dash-content {
@@ -267,7 +298,7 @@ div {
 
     h4 {
       color: $background;
-      font-family: $fjalla;
+      // font-family: $fjalla;
     }
 
     i {
@@ -280,16 +311,14 @@ div {
       overflow: hidden;
       @include fill-parent;
       background-color: #fff;
-      -webkit-box-shadow: 0px .5px 2px $grey;
-      -moz-box-shadow: 0px .5px 2px $grey;
-      -o-box-shadow: 0px .5px 2px $grey;
-      box-shadow: 0px .5px 2px $grey;
+      @include boxShadow();
 
-      i {
+      .fa {
         display: inline-block;
         float: left;
         font-size: 2.5em;
         color: $grey;
+        @include transition(.3s);
       }
 
       .fa-minus-square {
@@ -302,6 +331,10 @@ div {
         &:hover {
           color: $green;
         }
+      }
+
+      .hide {
+        display: none;
       }
 
       h4 {
@@ -320,8 +353,27 @@ div {
         padding: 2em;
         background-color: $blue;
 
-        h4 {
+        .fa {
+          @include transition(.3s);
           cursor: pointer;
+          color: $background;
+          font-size: 3em;
+        }
+
+        .fa-plus-circle {
+          &:hover {
+            color: $green;
+          }
+        }
+
+        .fa-minus-circle {
+          &:hover {
+            color: $red;
+          }
+        }
+
+        h4 {
+          display: inline-block;
         }
 
         ul {
@@ -429,8 +481,27 @@ div {
           font-family: $tinos;
         }
       }
-
   }
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  border-radius: 0px;
+  width: 70em;
+  background-color: $background;
+  border: 7px solid $blue;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:before {
+  background-color: $blue;
+  top: 3px;
+  right: 3px;
+  border-radius: 0;
+  color: $background;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:hover:before {
+  color: #FEFFFF;
+  background-color: #FF534E;
 }
 
 /* TEAM PAGE
@@ -452,7 +523,7 @@ div {
     @include fill-parent;
     color: $background;
     text-align: center;
-    font-family: $fjalla;
+    // font-family: $fjalla;
     font-size: 4em;
   }
 
@@ -511,16 +582,13 @@ div {
         }
 
         h5 {
-          font-family: $fjalla;
+          // font-family: $fjalla;
           font-size: 3em;
           color: $darkgrey;
           background-color: rgba(254, 255, 255, .8);
           padding: .5em;
           margin: 0;
-          -webkit-box-shadow: 0px .5px 2px $grey;
-          -moz-box-shadow: 0px .5px 2px $grey;
-          -o-box-shadow: 0px .5px 2px $grey;
-          box-shadow: 0px .5px 2px $grey;
+          @include boxShadow();
         }
       }
 
@@ -582,8 +650,224 @@ div {
 }
 
 
-/* CENTER NAV
-------------- */
+/* ADD WORKOUT FORM
+-------------------- */
+
+.addworkout-form {
+  overflow: hidden;
+  padding: 1em;
+  // width: 100%;
+  margin: auto;
+
+  .check {
+    label {
+
+    }
+  }
+
+  .addStep {
+    color: $grey;
+    font-size: 1.5em;
+    cursor: pointer;
+
+    &:hover {
+      color: $darkgrey;
+      i {
+        color: $darkgrey
+      }
+    }
+
+    i {
+      font-size: 1em;
+      color: $grey;
+      margin-right: .5em;
+    }
+  }
+}
+
+
+/* TRAINING PLANS PAGE
+---------------------- */
+
+.train-content {
+  width: 90%;
+  margin: auto;
+  @include outer-container(100%);
+
+  .addWorkBtn {
+    position: relative;
+    @include span-columns(6);
+
+    img {
+      height: 20em;
+    }
+
+    .overlay {
+      @include overlay(rgba(66, 66, 66, .5));
+    }
+  }
+
+  .addTrainingBtn {
+    position: relative;
+    @include span-columns(6);
+    @include omega();
+
+    img {
+      height: 20em;
+    }
+
+    .overlay {
+      @include overlay(rgba(66, 66, 66, .5));
+    }
+  }
+
+  .create-new-button {
+    cursor: pointer;
+    // padding: 2em;
+    // background-color: $blue;
+
+    h4 {
+      color: $background;
+
+      i {
+        margin-right: .5em;
+      }
+    }
+  }
+}
+
+ul {
+  clear: both;
+  padding-top: 2em;
+  overflow: hidden;
+
+  .allplans {
+    @include fill-parent;
+    overflow: hidden;
+    clear: both;
+    @include border(#EDEEEE);
+    padding: 1em;
+    // margin: 1em;
+    background-color: white;
+
+    .check {
+      display: inline-block;
+
+      p {
+        display: inline-block;
+        margin-right: 1em;
+        font-size: 1em;
+      }
+    }
+
+    .fa {
+      float: left;
+      padding: 0 10px 0 0;
+      font-size: 1em;
+      color: $darkgrey;
+      @include transition(.3s);
+      &:hover {
+        color: $green;
+      }
+    }
+
+    .fa-minus-square:hover {
+      color: $red;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .top {
+
+      h4 {
+        color: $darkgrey;
+        font-family: $tinos;
+        display: inline-block;
+        float: left;
+        margin: 0;
+      }
+
+      .top-bottom {
+        overflow: hidden;
+        @include fill-parent();
+        margin: .5em 0;
+
+        .progress-bar-indication {
+          p {
+            font-size: 1em;
+          }
+        }
+      }
+
+      .top-right {
+        overflow: hidden;
+
+        .dates {
+          display: inline-block;
+          float: right;
+          font-size: .8em;
+          font-family: $fjalla;
+          margin: 0;
+        }
+      }
+    }
+
+    .bottom {
+      @include outer-container(100%);
+    }
+
+    .left-info {
+      @include span-columns(3);
+      overflow: hidden;
+      clear: both;
+
+      .plan-name {
+        display: inline-block;
+      }
+
+      .plan-image {
+        width: 12em;
+        height: 12em;
+        overflow: hidden;
+        margin: 10px;
+        position: relative;
+
+        img {
+          position: absolute;
+          left: -100%;
+          right: -100%;
+          top: -100%;
+          bottom: -100%;
+          margin: auto;
+          height: auto;
+          width: auto;
+        }
+      }
+    }
+
+    .right-info {
+      @include span-columns(9);
+      display: inline-block;
+      float: left;
+      overflow: hidden;
+
+      p {
+        font-size: .6em;
+      }
+    }
+  }
+}
+
+
+
+/* ----------------------- */
+/* BOURBON REFILLS STYLING */
+/* ----------------------- */
+
+/* CENTER NAV ON TEAM PAGE
+-------------------------- */
 
 .centered-navigation {
   $base-border-radius: 3px !default;
@@ -697,13 +981,41 @@ div {
   }
 }
 
+/* PRORGRESS BAR STYLE
+---------------------- */
 
-/* ADD WORKOUT FORM
--------------------- */
+.progress-bar-indication {
+  $base-border-color: $green !default;
+  $base-border-radius: 4px !default;
+  $base-background-color: white !default;
+  $base-line-height: 1.2em !default;
+  $action-color: $green !default;
+  $progress-background: darken($base-background-color, 5);
+  $progress-animation-duration: 0.7s;
 
-.addworkout-form {
-  overflow: hidden;
-  padding: 4em;
-  // width: 50%;
-  margin: auto;
+  background-color: $progress-background;
+  border-radius: $base-border-radius;
+  margin: 0 auto;
+  width: 100%;
+
+  > span.meter {
+    @include box-sizing(border-box);
+    background-color: $blue;
+    background-repeat: repeat-x;
+    background-size: 40px 40px;
+    border-bottom-right-radius: 0;
+    border-radius: $base-border-radius /1.5;
+    border-top-right-radius: 0;
+    display: block;
+    height: 100%;
+    width: 60%;
+  }
+
+  p {
+    font-family: $fjalla;
+    color: $background;
+    line-height: $base-line-height;
+    margin: 0;
+    padding: .1em .5em;
+  }
 }

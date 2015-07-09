@@ -7,9 +7,18 @@
       function ($scope, UserService, $state, $stateParams) {
 
         $scope.eventSources = [{
-          name: 'kelley event',
+
         }];
 
+        $scope.interests = [
+          'Rugby',
+          'Lacrosse',
+          'Running'
+        ];
+
+        $scope.userInterests = {
+          interests: []
+        };
 
         $scope.loginUser = function (user) {
           UserService.loginUser(user);
@@ -20,7 +29,8 @@
         };
 
         $scope.updateUserReg = function (user) {
-          console.log(user);
+          // user.interests = $scope.userInterests.interests;
+          // console.log(user);
           UserService.updateUserReg(user);
         };
 
@@ -28,9 +38,25 @@
           UserService.logoutUser();
         };
 
-        $scope.toggleHide = function (element) {
-          $(element).toggleClass('hide');
+        $scope.toggleHide = function () {
+          // $(element).toggleClass('hide');
+          // $(event.target).toggleClass('hide');
+
+          $(event.target).siblings().not('h4').toggleClass('hide');
+          $(event.target).toggleClass('hide');
         };
+
+
+        // $scope.checkAll = function() {
+        //   $scope.user.interests = angular.copy($scope.interests);
+        // };
+        // $scope.uncheckAll = function() {
+        //   $scope.user.interests = [];
+        // };
+        // $scope.checkFirst = function() {
+        //   $scope.user.interests.splice(0, $scope.user.interests.length);
+        //   $scope.user.interests.push('guest');
+        // };
 
       }
 

@@ -9,6 +9,7 @@
         var endpoint = HEROKU.URL;
 
         var isLoggedIn;
+        console.log(HEROKU.CONFIG);
 
         // On successful registration, set cookies, update headers, route to welcom
         var _successReg = function (data) {
@@ -33,7 +34,9 @@
 
         // Update headers with access token
         var _updateConfig = function (user) {
+          console.log(user.access_token);
           HEROKU.CONFIG.headers['access_token'] = user.access_token;
+          console.log(HEROKU.CONFIG);
         };
 
         // User constructor
@@ -56,7 +59,6 @@
         this.updateUserReg = function (user) {
           return $http.patch(endpoint + '/athletes/register', user, HEROKU.CONFIG)
             .success( function (data) {
-              // console.log(data);
               $state.go('dashboard');
             });
         };
@@ -87,9 +89,12 @@
 
         // If user is not logged in and tries to navigate inside app, routes home
         this.checkLogin = function () {
+          var accessToken = $cookies.get('access_token');
           isLoggedIn = $cookies.get('access_token') !== undefined;
           if (isLoggedIn !== true) {
             $state.go('home');
+          } else {
+            HEROKU.CONFIG.headers['access_token'] = accessToken;
           }
         };
 

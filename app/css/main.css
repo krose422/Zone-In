@@ -44,7 +44,8 @@ a {
     color: #187062; }
 
 ul {
-  list-style: none; }
+  list-style: none;
+  margin-left: 0; }
 
 li {
   list-style: none;
@@ -72,8 +73,11 @@ p {
 div {
   border-radius: 4px; }
 
-/* HEADER STYLE
---------------- */
+h1, h2, h3, h4, h5 {
+  font-family: "Fjalla One", sans-serif; }
+
+/* GENERAL HEADER STYLE
+----------------------- */
 header {
   margin-bottom: 2em;
   overflow: hidden;
@@ -97,11 +101,10 @@ header {
         margin: 0;
         float: left; }
       header .innerheader .logo h2 {
-        font-family: "Fjalla One", sans-serif;
         font-size: 2.4em;
         transform: rotateZ(-16deg);
         padding: 0.2em 0.5em;
-        color: #499989;
+        color: #424242;
         float: left; }
     header .innerheader .rightheader {
       overflow: hidden;
@@ -182,8 +185,7 @@ header {
     .dashboard-page .dash-content div {
       margin-bottom: 2em; }
     .dashboard-page .dash-content h4 {
-      color: #FAFAFA;
-      font-family: "Fjalla One", sans-serif; }
+      color: #FAFAFA; }
     .dashboard-page .dash-content i {
       margin-right: .5em;
       font-size: 1.5em; }
@@ -196,15 +198,18 @@ header {
       -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
       -o-box-shadow: 0px 0.5px 2px #D0C8C5;
       box-shadow: 0px 0.5px 2px #D0C8C5; }
-      .dashboard-page .dash-content .top-dash-progress i {
+      .dashboard-page .dash-content .top-dash-progress .fa {
         display: inline-block;
         float: left;
         font-size: 2.5em;
-        color: #D0C8C5; }
+        color: #D0C8C5;
+        transition: 0.3s all ease; }
       .dashboard-page .dash-content .top-dash-progress .fa-minus-square:hover {
         color: #FF534E; }
       .dashboard-page .dash-content .top-dash-progress .fa-plus-square:hover {
         color: #BED194; }
+      .dashboard-page .dash-content .top-dash-progress .hide {
+        display: none; }
       .dashboard-page .dash-content .top-dash-progress h4 {
         text-align: center;
         color: #424242; }
@@ -221,8 +226,17 @@ header {
       .dashboard-page .dash-content .left-dash .team-list {
         padding: 2em;
         background-color: #176785; }
+        .dashboard-page .dash-content .left-dash .team-list .fa {
+          transition: 0.3s all ease;
+          cursor: pointer;
+          color: #FAFAFA;
+          font-size: 3em; }
+        .dashboard-page .dash-content .left-dash .team-list .fa-plus-circle:hover {
+          color: #BED194; }
+        .dashboard-page .dash-content .left-dash .team-list .fa-minus-circle:hover {
+          color: #FF534E; }
         .dashboard-page .dash-content .left-dash .team-list h4 {
-          cursor: pointer; }
+          display: inline-block; }
         .dashboard-page .dash-content .left-dash .team-list ul {
           text-align: left;
           padding: 0;
@@ -295,6 +309,23 @@ header {
         color: #424242;
         font-family: "Tinos", serif; }
 
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  border-radius: 0px;
+  width: 70em;
+  background-color: #FAFAFA;
+  border: 7px solid #176785; }
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:before {
+  background-color: #176785;
+  top: 3px;
+  right: 3px;
+  border-radius: 0;
+  color: #FAFAFA; }
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:hover:before {
+  color: #FEFFFF;
+  background-color: #FF534E; }
+
 /* TEAM PAGE
 ------------ */
 .team-page {
@@ -311,7 +342,6 @@ header {
     width: 100%;
     color: #FAFAFA;
     text-align: center;
-    font-family: "Fjalla One", sans-serif;
     font-size: 4em; }
   .team-page .team-page-content {
     max-width: 100%;
@@ -360,7 +390,6 @@ header {
               color: #FAFAFA;
               background-color: #176785; }
         .team-page .team-page-content .team-content-sections .team-left-content h5 {
-          font-family: "Fjalla One", sans-serif;
           font-size: 3em;
           color: #424242;
           background-color: rgba(254, 255, 255, 0.8);
@@ -411,8 +440,197 @@ header {
     color: #FAFAFA;
     padding: 0; }
 
-/* CENTER NAV
-------------- */
+/* ADD WORKOUT FORM
+-------------------- */
+.addworkout-form {
+  overflow: hidden;
+  padding: 1em;
+  margin: auto; }
+  .addworkout-form .addStep {
+    color: #D0C8C5;
+    font-size: 1.5em;
+    cursor: pointer; }
+    .addworkout-form .addStep:hover {
+      color: #424242; }
+      .addworkout-form .addStep:hover i {
+        color: #424242; }
+    .addworkout-form .addStep i {
+      font-size: 1em;
+      color: #D0C8C5;
+      margin-right: .5em; }
+
+/* TRAINING PLANS PAGE
+---------------------- */
+.train-content {
+  width: 90%;
+  margin: auto;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  .train-content::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .train-content .addWorkBtn {
+    position: relative;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%; }
+    .train-content .addWorkBtn:last-child {
+      margin-right: 0; }
+    .train-content .addWorkBtn img {
+      height: 20em; }
+    .train-content .addWorkBtn .overlay {
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(66, 66, 66, 0.5);
+      transition: 0.3s all ease;
+      cursor: pointer; }
+      .train-content .addWorkBtn .overlay:hover {
+        background-color: rgba(66, 66, 66, 0.7); }
+      .train-content .addWorkBtn .overlay h4 {
+        text-align: center;
+        padding-top: 17%; }
+  .train-content .addTrainingBtn {
+    position: relative;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-right: 0; }
+    .train-content .addTrainingBtn:last-child {
+      margin-right: 0; }
+    .train-content .addTrainingBtn img {
+      height: 20em; }
+    .train-content .addTrainingBtn .overlay {
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(66, 66, 66, 0.5);
+      transition: 0.3s all ease;
+      cursor: pointer; }
+      .train-content .addTrainingBtn .overlay:hover {
+        background-color: rgba(66, 66, 66, 0.7); }
+      .train-content .addTrainingBtn .overlay h4 {
+        text-align: center;
+        padding-top: 17%; }
+  .train-content .create-new-button {
+    cursor: pointer; }
+    .train-content .create-new-button h4 {
+      color: #FAFAFA; }
+      .train-content .create-new-button h4 i {
+        margin-right: .5em; }
+
+ul {
+  clear: both;
+  padding-top: 2em;
+  overflow: hidden; }
+  ul .allplans {
+    width: 100%;
+    overflow: hidden;
+    clear: both;
+    border: 1px solid #EDEEEE;
+    border-radius: 4px;
+    padding: 1em;
+    background-color: white; }
+    ul .allplans .check {
+      display: inline-block; }
+      ul .allplans .check p {
+        display: inline-block;
+        margin-right: 1em;
+        font-size: 1em; }
+    ul .allplans .fa {
+      float: left;
+      padding: 0 10px 0 0;
+      font-size: 1em;
+      color: #424242;
+      transition: 0.3s all ease; }
+      ul .allplans .fa:hover {
+        color: #BED194; }
+    ul .allplans .fa-minus-square:hover {
+      color: #FF534E; }
+    ul .allplans .hide {
+      display: none; }
+    ul .allplans .top h4 {
+      color: #424242;
+      font-family: "Tinos", serif;
+      display: inline-block;
+      float: left;
+      margin: 0; }
+    ul .allplans .top .top-bottom {
+      overflow: hidden;
+      width: 100%;
+      margin: .5em 0; }
+      ul .allplans .top .top-bottom .progress-bar-indication p {
+        font-size: 1em; }
+    ul .allplans .top .top-right {
+      overflow: hidden; }
+      ul .allplans .top .top-right .dates {
+        display: inline-block;
+        float: right;
+        font-size: .8em;
+        font-family: "Fjalla One", sans-serif;
+        margin: 0; }
+    ul .allplans .bottom {
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto; }
+      ul .allplans .bottom::after {
+        clear: both;
+        content: "";
+        display: table; }
+    ul .allplans .left-info {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      overflow: hidden;
+      clear: both; }
+      ul .allplans .left-info:last-child {
+        margin-right: 0; }
+      ul .allplans .left-info .plan-name {
+        display: inline-block; }
+      ul .allplans .left-info .plan-image {
+        width: 12em;
+        height: 12em;
+        overflow: hidden;
+        margin: 10px;
+        position: relative; }
+        ul .allplans .left-info .plan-image img {
+          position: absolute;
+          left: -100%;
+          right: -100%;
+          top: -100%;
+          bottom: -100%;
+          margin: auto;
+          height: auto;
+          width: auto; }
+    ul .allplans .right-info {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%;
+      display: inline-block;
+      float: left;
+      overflow: hidden; }
+      ul .allplans .right-info:last-child {
+        margin-right: 0; }
+      ul .allplans .right-info p {
+        font-size: .6em; }
+
+/* ----------------------- */
+/* BOURBON REFILLS STYLING */
+/* ----------------------- */
+/* CENTER NAV ON TEAM PAGE
+-------------------------- */
 .centered-navigation {
   border-bottom: 1px solid #c2b8b4;
   min-height: 60px;
@@ -488,9 +706,29 @@ header {
     max-height: 2em;
     opacity: 1; }
 
-/* ADD WORKOUT FORM
--------------------- */
-.addworkout-form {
-  overflow: hidden;
-  padding: 4em;
-  margin: auto; }
+/* PRORGRESS BAR STYLE
+---------------------- */
+.progress-bar-indication {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  margin: 0 auto;
+  width: 100%; }
+  .progress-bar-indication > span.meter {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #176785;
+    background-repeat: repeat-x;
+    background-size: 40px 40px;
+    border-bottom-right-radius: 0;
+    border-radius: 2.66667px;
+    border-top-right-radius: 0;
+    display: block;
+    height: 100%;
+    width: 60%; }
+  .progress-bar-indication p {
+    font-family: "Fjalla One", sans-serif;
+    color: #FAFAFA;
+    line-height: 1.2em;
+    margin: 0;
+    padding: 0.1em 0.5em; }

@@ -34,20 +34,37 @@
   <div class="dash-content" ui-view>
 
   <div class="top-dash-progress">
-    <i class="fa fa-minus-square" ng-click="toggleHide('.progress-bars')"></i>
-    <i class="hide fa fa-plus-square" ng-click="toggleHide('.progress-bars')"></i>
+    <i class="fa fa-minus-square" ng-click="toggleHide()"></i>
+    <i class="fa fa-plus-square hide" ng-click="toggleHide()"></i>
     <h4>Training Plan Progress</h4>
+
     <div class="progress-bars">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat.</p>
-    </div>
+      <div class="progress-bar-indication">
+        <span class="meter" style="width: 60%">
+          <p>60%</p>
+        </span>
+      </div>
+
+      <div class="progress-bar-indication">
+        <span class="meter" style="width: 45%">
+          <p>45%</p>
+        </span>
+      </div>
+
+      <div class="progress-bar-indication">
+        <span class="meter" style="width: 92%">
+          <p>92%</p>
+        </span>
+      </div>
+    </div> <!-- end progress bars div -->
+
   </div>
 
     <div class="left-dash">
       <div class="team-list">
-        <h4 ng-click="toggleHide('.team-list-ul')"><i class="fa fa-plus-circle"></i>My Teams</h4>
+      <i class="fa fa-minus-circle hide" ng-click="toggleHide()"></i>
+      <i class="fa fa-plus-circle" ng-click="toggleHide()"></i>
+        <h4>My Teams</h4>
         <ul class="team-list-ul hide">
           <a href="#/teamtemplate">
           <li>

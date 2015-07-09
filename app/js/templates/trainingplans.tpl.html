@@ -32,9 +32,106 @@
 
   <div class="train-content" ui-view>
 
-  <p ng-click="clickToOpen()"><i class="fa fa-plus-circle"></i> Create New Workout</p>
-  <p ng-click="clickToOpen()"><i class="fa fa-plus-circle"></i> Create New Training Plan</p>
+  <div class="create-new-button addWorkBtn" ng-click="clickToOpenAddW()">
+    <img src="images/running.png">
+    <div class="overlay">
+      <h4><i class="fa fa-plus-circle"></i>New Workout</h4>
+    </div>
+  </div>
 
+  <div class="create-new-button addTrainingBtn" ng-click="clickToOpenAddT()">
+    <img src="images/sport_mix.png">
+    <div class="overlay">
+      <h4><i class="fa fa-plus-circle"></i>New Training Plan</h4>
+    </div>
+  </div>
+
+  <!-- <p ng-click="clickToOpenAddW()"><i class="fa fa-plus-circle"></i> Create New Workout</p> -->
+  <!-- <p ng-click="clickToOpenAddT()"><i class="fa fa-plus-circle"></i> Create New Training Plan</p> -->
+
+
+  <ul class="allplans-ul">
+  <h4>Training In Progress</h4>
+    <li class="allplans" ng-repeat="t in trainingPlans">
+      <i class="fa fa-plus-square" ng-click="expand()"></i>
+      <i class="fa fa-minus-square hide" ng-click="expand()"></i>
+
+      <div class="top">
+        <h4 class="plan-name"> {{ t.name }} </h4>
+        <div class="top-right">
+          <p class="dates">{{ t.start_date }} - {{ t.end_date }}</p>
+        </div>
+
+        <div class="top-bottom">
+          <div class="progress-bar-indication">
+            <span class="meter" style="width: 60%">
+              <p>60%</p>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom hide">
+        <div class="left-info">
+          <div class="routeimage">
+            <img ng-src=" {{ t.image_url }} ">
+          </div>
+        </div>
+
+        <div class="right-info">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+
+
+
+      </div>
+
+    </li>
+  </ul>
+
+  <ul>
+  <h4>Completed Training</h4>
+    <li class="allplans" ng-repeat="t in trainingPlans">
+      <i class="fa fa-plus-square" ng-click="expand()"></i>
+      <i class="fa fa-minus-square hide" ng-click="expand()"></i>
+
+      <div class="top">
+        <h4 class="plan-name"> {{ t.name }} </h4>
+        <div class="top-right">
+          <p class="dates">{{ t.start_date }} - {{ t.end_date }}</p>
+        </div>
+
+        <div class="top-bottom">
+          <div class="progress-bar-indication">
+            <span class="meter" style="width: 40%">
+              <p>40%</p>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bottom hide">
+        <div class="left-info">
+          <div class="plan-image">
+            <img ng-src=" {{ t.image_url }} ">
+          </div>
+        </div>
+
+        <div class="right-info">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+
+    </li>
+  </ul>
 
   </div>
 
