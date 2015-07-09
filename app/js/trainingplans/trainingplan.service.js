@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('PlanModule')
-    .service('PlanService', ['$http', 'HEROKU',
-      function ($http, HEROKU) {
+    .service('PlanService', ['$http', 'HEROKU', '$state',
+      function ($http, HEROKU, $state) {
 
         var endpoint = HEROKU.URL;
 
@@ -12,7 +12,6 @@
           $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);
-              $scope.closeThisDialog();
               $state.go('training.workouts');
             });
         };

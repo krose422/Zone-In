@@ -16,6 +16,7 @@
         $scope.addWorkout = function (workout) {
           console.log(workout);
           PlanService.addWorkout(workout);
+          $scope.closeThisDialog();
         };
 
       }
