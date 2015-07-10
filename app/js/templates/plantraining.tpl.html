@@ -6,20 +6,30 @@
     <ul class="workout-library-ul">
       <p>Click + to add any workouts to your training plan</p>
 
-      <li ng-repeat="w in workoutList">
-        <p>{{ w.name }}</p>
-        <p>{{ w.description }}</p>
-        <p>{{ w.steps }}</p>
+      <li class="workout-card block" ng-repeat="w in workoutList">
+        <div class="workout-title">
+          <h4>Workout: {{ w.name }}</h4>
+        </div>
+        <div class="workout-descrip">
+          <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+        </div>
+        <div class="workout-image">
+          <img src="{{ w.image_url }}">
+        </div>
+        <!-- <p>{{ w.steps }}</p> -->
+
+        <p>Created by: {{ w.creator_id }}</p>
         <div class="icon">
           <img ng-src="{{ checkType(w.running, w.weightlifting) }}">
         </div>
       </li>
+
     </ul>
   </div><!-- end workout library div -->
 
 
   <div class="create-plan">
-    <h4>training plan name here</h4>
+    <h4>{{ trainingPlan.name }}</h4>
 <!--     <p>{{ start date here }}</p>
     <p>{{ end date here }}</p>
 

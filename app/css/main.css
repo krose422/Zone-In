@@ -635,14 +635,7 @@ ul {
 /* CREATE TRAINING PLAN PAGE
 --------------------- */
 .plan-training-page {
-  overflow: hidden;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto; }
-  .plan-training-page::after {
-    clear: both;
-    content: "";
-    display: table; }
+  overflow: hidden; }
   .plan-training-page .workout-library {
     float: left;
     display: block;
@@ -656,6 +649,55 @@ ul {
     box-shadow: 0px 0.5px 2px #D0C8C5; }
     .plan-training-page .workout-library:last-child {
       margin-right: 0; }
+    .plan-training-page .workout-library .workout-library-ul {
+      max-width: 68em;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: hidden; }
+      .plan-training-page .workout-library .workout-library-ul::after {
+        clear: both;
+        content: "";
+        display: table; }
+      .plan-training-page .workout-library .workout-library-ul li.block {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        border: 1px solid #D0C8C5;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+        -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+        -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+        box-shadow: 0px 0.5px 2px #D0C8C5;
+        overflow: hidden; }
+        .plan-training-page .workout-library .workout-library-ul li.block:last-child {
+          margin-right: 0; }
+        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n) {
+          margin-right: 0; }
+        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n+1) {
+          clear: left; }
+        .plan-training-page .workout-library .workout-library-ul li.block p {
+          font-size: .5em;
+          display: inline-block;
+          margin: 0;
+          padding: 0 0.5em; }
+        .plan-training-page .workout-library .workout-library-ul li.block .workout-title {
+          overflow: hidden;
+          background-color: #499989;
+          border-radius: 0; }
+          .plan-training-page .workout-library .workout-library-ul li.block .workout-title h4 {
+            font-size: .7em;
+            margin: 0;
+            padding: .5em;
+            color: #FAFAFA; }
+        .plan-training-page .workout-library .workout-library-ul li.block .icon {
+          overflow: hidden;
+          height: 2em;
+          display: inline-block;
+          float: right;
+          padding: 0 0.5em; }
+          .plan-training-page .workout-library .workout-library-ul li.block .icon img {
+            height: 1em; }
   .plan-training-page .create-plan {
     float: left;
     display: block;

@@ -11,6 +11,7 @@
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
+            console.log($scope.workoutList);
           });
 
         $scope.checkType = function (running, weights) {
@@ -25,17 +26,16 @@
         PlanService.getUserWorkouts()
           .success(function (data) {
             $scope.userWorkoutList = data;
-            console.log($scope.userWorkoutList);
           });
 
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
 
-        $scope.trainingPlans = [{
+        $scope.trainingPlan = {
           name: 'Three Week Strength',
           start_date: 'July 9',
           end_date: 'July 27',
           image_url: 'http://www.placehold.it/300x300'
-        }];
+        };
 
         $scope.logoutUser = function () {
           UserService.logoutUser();

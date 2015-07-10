@@ -872,13 +872,66 @@ ul {
 
 .plan-training-page {
   overflow: hidden;
-  @include outer-container(100%);
+  // @include outer-container(100%);
 
   .workout-library {
     @include span-columns(5);
     background-color: #fff;
     padding: 2em;
     @include boxShadow();
+
+    .workout-library-ul {
+      @include outer-container();
+      overflow: hidden;
+
+      li.block {
+        @include span-columns(6);
+        @include omega(2n);
+        @include border($grey);
+        @include boxShadow();
+        overflow: hidden;
+        // padding: .5em;
+        // height: 10em;
+
+        .workout-descrip {
+          // padding: 0 .5em;
+        }
+
+        p {
+          font-size: .5em;
+          display: inline-block;
+          margin: 0;
+          padding: 0 .5em;
+        }
+
+        .workout-title {
+          overflow: hidden;
+          background-color: $teal;
+          border-radius: 0;
+
+          h4 {
+            font-size: .7em;
+            margin: 0;
+            padding: .5em;
+            color: $background;
+          }
+        }
+
+        .icon {
+          overflow: hidden;
+          height: 2em;
+          display: inline-block;
+          float: right;
+          padding: 0 .5em;
+
+          img {
+            height: 1em;
+
+          }
+        }
+      }
+    }
+
   }
 
   .create-plan {
@@ -887,6 +940,8 @@ ul {
     padding: 2em;
     @include boxShadow();
   }
+
+
 }
 
 /* ----------------------- */
