@@ -9,14 +9,16 @@
         var endpoint = HEROKU.URL;
 
         this.getWorkouts = function () {
-          console.log(HEROKU.CONFIG);
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);
+        };
+
+        this.getUserWorkouts = function () {
+          return $http.get(endpoint + '/workouts/athlete', HEROKU.CONFIG);
         };
 
         this.addWorkout = function (workout) {
           $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
             .success( function (data) {
-              console.log(data);
               // $state.go('training.workouts');
             });
         };

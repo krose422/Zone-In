@@ -34,9 +34,7 @@
 
         // Update headers with access token
         var _updateConfig = function (user) {
-          console.log(user.access_token);
           HEROKU.CONFIG.headers['access_token'] = user.access_token;
-          console.log(HEROKU.CONFIG);
         };
 
         // User constructor

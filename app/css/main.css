@@ -198,6 +198,9 @@ header {
       -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
       -o-box-shadow: 0px 0.5px 2px #D0C8C5;
       box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .dashboard-page .dash-content .top-dash-progress p {
+        font-size: 1.8em;
+        padding: .5em; }
       .dashboard-page .dash-content .top-dash-progress .fa {
         display: inline-block;
         float: left;
@@ -492,10 +495,11 @@ header {
       transition: 0.3s all ease;
       cursor: pointer; }
       .train-content .addWorkBtn .overlay:hover {
-        background-color: rgba(66, 66, 66, 0.7); }
+        background-color: rgba(66, 66, 66, 0.3); }
       .train-content .addWorkBtn .overlay h4 {
         text-align: center;
-        padding-top: 17%; }
+        padding-top: 12%;
+        font-size: 4em; }
   .train-content .addTrainingBtn {
     position: relative;
     float: left;
@@ -518,10 +522,11 @@ header {
       transition: 0.3s all ease;
       cursor: pointer; }
       .train-content .addTrainingBtn .overlay:hover {
-        background-color: rgba(66, 66, 66, 0.7); }
+        background-color: rgba(66, 66, 66, 0.3); }
       .train-content .addTrainingBtn .overlay h4 {
         text-align: center;
-        padding-top: 17%; }
+        padding-top: 12%;
+        font-size: 4em; }
   .train-content .create-new-button {
     cursor: pointer; }
     .train-content .create-new-button h4 {
@@ -570,7 +575,8 @@ ul {
       width: 100%;
       margin: .5em 0; }
       ul .allplans .top .top-bottom .progress-bar-indication p {
-        font-size: 1em; }
+        font-size: .8em;
+        padding: .5em; }
     ul .allplans .top .top-right {
       overflow: hidden; }
       ul .allplans .top .top-right .dates {
@@ -625,6 +631,44 @@ ul {
         margin-right: 0; }
       ul .allplans .right-info p {
         font-size: .6em; }
+
+/* CREATE TRAINING PLAN PAGE
+--------------------- */
+.plan-training-page {
+  overflow: hidden;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  .plan-training-page::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .plan-training-page .workout-library {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 40.29137%;
+    background-color: #fff;
+    padding: 2em;
+    -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+    box-shadow: 0px 0.5px 2px #D0C8C5; }
+    .plan-training-page .workout-library:last-child {
+      margin-right: 0; }
+  .plan-training-page .create-plan {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 57.35098%;
+    background-color: #fff;
+    padding: 2em;
+    -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+    box-shadow: 0px 0.5px 2px #D0C8C5; }
+    .plan-training-page .create-plan:last-child {
+      margin-right: 0; }
 
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */

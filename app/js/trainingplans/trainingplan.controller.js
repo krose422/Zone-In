@@ -11,20 +11,24 @@
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            console.log(data);
           });
 
-        $scope.trainingLength = [
-          30,
-          45,
-          60,
-          75,
-          90,
-          105,
-          120,
-          150,
-          180
-        ];
+        $scope.checkType = function (running, weights) {
+            if (running === true) {
+              return 'images/running_icon.png';
+            }
+            if (weights === true) {
+              return 'images/weight.png'
+            }
+        };
+
+        PlanService.getUserWorkouts()
+          .success(function (data) {
+            $scope.userWorkoutList = data;
+            console.log($scope.userWorkoutList);
+          });
+
+        $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
 
         $scope.trainingPlans = [{
           name: 'Three Week Strength',

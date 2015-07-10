@@ -1,8 +1,36 @@
-<h2>This is my planning page for training</h2>
-<ul>
-  <li ng-repeat="w in workoutList">
-    <p>{{ w.name }}</p>
-    <p>{{ w.description }}</p>
-    <p>{{ w.steps }}</p>
-  </li>
-</ul>
+<div class="plan-training-page">
+
+  <h2>This is my planning page for training</h2>
+
+  <div class="workout-library">
+    <ul class="workout-library-ul">
+      <p>Click + to add any workouts to your training plan</p>
+
+      <li ng-repeat="w in workoutList">
+        <p>{{ w.name }}</p>
+        <p>{{ w.description }}</p>
+        <p>{{ w.steps }}</p>
+        <div class="icon">
+          <img ng-src="{{ checkType(w.running, w.weightlifting) }}">
+        </div>
+      </li>
+    </ul>
+  </div><!-- end workout library div -->
+
+
+  <div class="create-plan">
+    <h4>training plan name here</h4>
+<!--     <p>{{ start date here }}</p>
+    <p>{{ end date here }}</p>
+
+
+    <ul>
+      <li ng-repeat="s in selectedWorkouts">
+        <p>{{ s.name }}</p>
+        <p>{{ s.description }}</p>
+        <p>{{ s.steps }}</p>
+      </li>
+    </ul> -->
+  </div><!-- end create plan div -->
+
+</div><!-- end plan training page -->
