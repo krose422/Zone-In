@@ -3,8 +3,10 @@
   'use strict';
 
   angular.module('UserModule')
-    .controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams',
-      function ($scope, UserService, $state, $stateParams) {
+    .controller('UserCtrl', ['$cookies', '$rootScope', '$scope', 'UserService', '$state', '$stateParams',
+      function ($cookies, $rootScope, $scope, UserService, $state, $stateParams) {
+
+        console.log($rootScope.myApp);
 
         $scope.eventSources = [{
 
@@ -21,7 +23,11 @@
         };
 
         $scope.loginUser = function (user) {
-          UserService.loginUser(user);
+          UserService.loginUser(user)
+            .then( function (data) {
+              // $scope.user = data.data;
+              // console.log($scope.user);
+            });
         };
 
         $scope.registerUser = function (user) {

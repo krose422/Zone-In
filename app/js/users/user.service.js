@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('UserModule')
-    .service('UserService', ['HEROKU', '$http', '$cookies', '$state',
-      function (HEROKU, $http, $cookies, $state) {
+    .service('UserService', ['$rootScope', 'HEROKU', '$http', '$cookies', '$state',
+      function ($rootScope, HEROKU, $http, $cookies, $state) {
 
         var endpoint = HEROKU.URL;
 
@@ -65,6 +65,9 @@
           return $http.post(endpoint + '/athletes/signin', user)
             .success( function (data) {
               _successLog(data);
+              $rootScope.myApp = {
+                user: data
+              }
             });
         };
 
