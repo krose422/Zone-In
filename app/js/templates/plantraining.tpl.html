@@ -8,7 +8,13 @@
       <p>sort by</p>
       <p ng-click="sort(workoutList, 'color')">Workout Type</p>
 
-      <li class="workout-card block" ng-repeat="w in workoutList">
+      <li class="workout-card block"
+      ng-repeat="w in workoutList"
+      data-drag="true"
+      data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
+      ng-model="list1"
+      jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">
+
         <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
           <h4>{{ w.name }}</h4>
         </div>
@@ -26,11 +32,23 @@
         </div>
       </li>
 
+      <div class="dropzone"
+      data-drop="true"
+      ng-model='workoutList'
+      data-jqyoui-options="{accept: '.workout-card'}"
+      jqyoui-droppable="{multiple:true}">
+      </div>
+
     </ul>
   </div><!-- end workout library div -->
 
 
-  <div class="create-plan">
+  <div class="create-plan"
+  data-drop="true"
+  ng-model='workoutList'
+  data-drop="true"
+  jqyoui-droppable="{multiple:true}">
+
     <h4>{{ trainingPlan.name }}</h4>
     <p>{{ trainingPlan.start_date }}</p>
     <p>{{ trainingPlan.end_date }}</p>

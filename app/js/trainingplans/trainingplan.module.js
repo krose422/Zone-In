@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('PlanModule', ['ui.router',  'ui.calendar']);
+  angular.module('PlanModule', ['ui.router',  'ui.calendar', 'ngDragDrop']);
     // .directive ('datepicker', function () {
     //   return {
     //     restrict: 'A',

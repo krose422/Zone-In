@@ -10,6 +10,7 @@
 
         var isLoggedIn;
 
+
         // On successful registration, set cookies, update headers, route to welcom
         var _successReg = function (data) {
           _putCookies(data);
