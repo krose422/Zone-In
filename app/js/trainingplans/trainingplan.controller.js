@@ -3,23 +3,45 @@
   'use strict';
 
   angular.module('PlanModule')
-    .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile',
-      function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile) {
+    .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter',
+      function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter) {
 
         var endpoint = HEROKU.URL;
+
+        $scope.sort = function(workoutList, predicate) {
+          // $(event.target).addClass('active');
+          // $(event.target).siblings().removeClass('active');
+          $scope.workoutList = _.sortBy(workoutList, predicate);
+        };
 
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
             console.log($scope.workoutList);
+
+            _.each($scope.workoutList, function (w) {
+              if (w.description === 'Endurance') {
+                w.color = '#2E313D';
+              } else if (w.description === 'Strength') {
+                w.color = '#176785';
+              } else if (w.description === 'Agility') {
+                w.color = '#499989';
+              } else if (w.description === 'Speed') {
+                w.color = '#BED194';
+              } else if (w.description === 'Flexibility') {
+                w.color = '#0F4559';
+              } else {
+                w.color = '#D0C8C5';
+              }
+            });
           });
 
-        $scope.checkType = function (running, weights) {
-            if (running === true) {
+        $scope.checkType = function (workout) {
+            if (workout.running === true) {
               return 'images/running_icon.png';
             }
-            if (weights === true) {
-              return 'images/weight.png'
+            if (workout.weightlifting === true) {
+              return 'images/weight.png';
             }
         };
 
@@ -30,12 +52,12 @@
 
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
 
-        $scope.trainingPlan = {
-          name: 'Three Week Strength',
-          start_date: 'July 9',
-          end_date: 'July 27',
-          image_url: 'http://www.placehold.it/300x300'
-        };
+        // $scope.trainingPlan = {
+        //   name: 'Three Week Strength',
+        //   start_date: 'July 9',
+        //   end_date: 'July 27',
+        //   image_url: 'http://www.placehold.it/300x300'
+        // };
 
         $scope.logoutUser = function () {
           UserService.logoutUser();
@@ -59,7 +81,8 @@
         $scope.addTrainingPlan = function (plan) {
           console.log(plan);
           PlanService.addTrainingPlan(plan);
-          $scope.closeThisDialog();
+          // $scope.trainingPlan = plan;
+          // $scope.closeThisDialog();
         };
 
         // var tpl = $compile('<input type="text" placeholder="Workout step" ng-focus="addInput()" ng-model="workout.steps">')($scope);
@@ -78,8 +101,6 @@
           $(event.target).toggleClass('hide');
         };
 
-
-
         // $scope.interests = [
         //   'Rugby',
         //   'Lacrosse',
@@ -96,6 +117,8 @@
         // $scope.uncheckAll = function() {
         //   $scope.user.interests = [];
         // };
+
+
 
       }
 

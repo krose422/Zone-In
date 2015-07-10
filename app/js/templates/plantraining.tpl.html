@@ -5,10 +5,12 @@
   <div class="workout-library">
     <ul class="workout-library-ul">
       <p>Click + to add any workouts to your training plan</p>
+      <p>sort by</p>
+      <p ng-click="sort(workoutList, 'color')">Workout Type</p>
 
       <li class="workout-card block" ng-repeat="w in workoutList">
-        <div class="workout-title">
-          <h4>Workout: {{ w.name }}</h4>
+        <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+          <h4>{{ w.name }}</h4>
         </div>
         <div class="workout-descrip">
           <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
@@ -20,7 +22,7 @@
 
         <p>Created by: {{ w.creator_id }}</p>
         <div class="icon">
-          <img ng-src="{{ checkType(w.running, w.weightlifting) }}">
+          <img ng-src="{{ checkType(w) }}">
         </div>
       </li>
 
@@ -30,17 +32,31 @@
 
   <div class="create-plan">
     <h4>{{ trainingPlan.name }}</h4>
-<!--     <p>{{ start date here }}</p>
-    <p>{{ end date here }}</p>
+    <p>{{ trainingPlan.start_date }}</p>
+    <p>{{ trainingPlan.end_date }}</p>
+
+    <form ng-submit="addTrainingPlan(plan)">
+      <label for="planName">Training Plan Name</label>
+      <input type="text" id="planName" placeholder="Training Plan Name" ng-model="plan.name">
+
+      <label for="startInput">Start Date</label>
+      <input type="date" id="startInput" name="input" ng-model="plan.start_date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+      <label for="endInput">End Date</label>
+      <input type="date" id="endInput" name="input" ng-model="plan.end_date" placeholder="yyyy-MM-dd" min="2015-01-01" required>
+
+<!--       <ul>
+        <li ng-repeat="s in selectedWorkouts">
+          <p>{{ s.name }}</p>
+          <p>{{ s.description }}</p>
+          <p>{{ s.steps }}</p>
+        </li>
+      </ul> -->
+
+      <button>Complete Training Plan</button>
+    </form>
 
 
-    <ul>
-      <li ng-repeat="s in selectedWorkouts">
-        <p>{{ s.name }}</p>
-        <p>{{ s.description }}</p>
-        <p>{{ s.steps }}</p>
-      </li>
-    </ul> -->
   </div><!-- end create plan div -->
 
 </div><!-- end plan training page -->

@@ -8,6 +8,22 @@
 
         var endpoint = HEROKU.URL;
 
+        // Training plan constructor
+        var TrainingPlan = function (options) {
+          this.name = options.name;
+          this.start_date = options.start_date;
+          this.end_date = options.end_date;
+        };
+
+        this.addTrainingPlan = function (plan) {
+          var trainingPlan = new TrainingPlan(plan);
+          // console.log(trainingPlan);
+          // $http.post(endpoint + '/trainingplans', plan, HEROKU.CONFIG)
+            // .success( function (data) {
+              $state.go('training.plan');
+            // });
+        };
+
         this.getWorkouts = function () {
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);
         };
@@ -21,13 +37,6 @@
             .success( function (data) {
               // $state.go('training.workouts');
             });
-        };
-
-        this.addTrainingPlan = function (plan) {
-          // $http.post(endpoint + '/trainingplans', plan, HEROKU.CONFIG)
-            // .success( function (data) {
-              $state.go('training.plan');
-            // });
         };
 
         this.clickToOpenAddW = function () {

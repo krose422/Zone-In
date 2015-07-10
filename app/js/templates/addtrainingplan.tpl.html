@@ -3,9 +3,15 @@
 <p>Fill out information below to add workout.</p>
 
   <form ng-submit="addTrainingPlan(plan)">
-    <input type="text" placeholder="Training Plan Name" ng-model="plan.name">
-    <input type="text" placeholder="Start Date" ng-model="plan.start_date">
-    <input type="text" placeholder="End Date" ng-model="plan.end_date">
+    <label for="planName">Training Plan Name</label>
+    <input type="text" id="planName" placeholder="Training Plan Name" ng-model="plan.name">
+
+    <label for="startInput">Start Date</label>
+    <input type="date" id="startInput" name="input" ng-model="plan.start_date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+    <label for="endInput">End Date</label>
+    <input type="date" id="endInput" name="input" ng-model="plan.end_date" placeholder="yyyy-MM-dd" min="2015-01-01" required>
+
     <button>Start Planning</button>
   </form>
 

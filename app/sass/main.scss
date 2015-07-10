@@ -870,6 +870,10 @@ ul {
 /* CREATE TRAINING PLAN PAGE
 --------------------- */
 
+.blue {
+  background-color: $blue;
+}
+
 .plan-training-page {
   overflow: hidden;
   // @include outer-container(100%);

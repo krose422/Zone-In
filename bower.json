@@ -27,7 +27,8 @@
     "angular-ui-calendar": "~1.0.0",
     "angular-cookies": "~1.4.2",
     "ngDialog": "~0.4.0",
-    "checklist-model": "~0.2.4"
+    "checklist-model": "~0.2.4",
+    "jquery.ui": "~1.11.4"
   },
   "devDependencies": {
     "mocha": "~2.2.5",

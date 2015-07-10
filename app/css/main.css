@@ -634,6 +634,9 @@ ul {
 
 /* CREATE TRAINING PLAN PAGE
 --------------------- */
+.blue {
+  background-color: #176785; }
+
 .plan-training-page {
   overflow: hidden; }
   .plan-training-page .workout-library {

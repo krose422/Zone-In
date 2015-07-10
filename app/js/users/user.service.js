@@ -9,7 +9,6 @@
         var endpoint = HEROKU.URL;
 
         var isLoggedIn;
-        console.log(HEROKU.CONFIG);
 
         // On successful registration, set cookies, update headers, route to welcom
         var _successReg = function (data) {
