@@ -1179,11 +1179,19 @@ ul {
         margin: 0 .2em .4em .2em;
 
         .workout {
-          overflow: hidden;
+          overflow: scroll;
           font-size: .5em;
           background-color: #fff;
           border: none;
           margin: 1em 0 .5em 1em;
+
+          p {
+            font-size: 1em;
+          }
+
+          .workout-image {
+            height: 9em;
+          }
         }
 
         .planning-thumbnail {
@@ -1219,6 +1227,21 @@ ul {
       overflow: hidden;
       clear: both;
       background-color: #fff;
+    }
+
+    .workout-interval {
+      form {
+        p {
+          display: block;
+          font-family: $fjalla;
+          text-align: center;
+        }
+
+        label {
+          font-family: $fjalla;
+          display: inline-block;
+        }
+      }
     }
 
     p {

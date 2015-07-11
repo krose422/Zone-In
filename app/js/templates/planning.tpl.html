@@ -26,14 +26,14 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
-        jqyoui-draggable="{index: {{$index}}, placeholder: true, animate: true}"
+        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: true, animate: true}"
         >
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
             <h4>{{ w.name }}</h4>
           </div>
           <div class="workout-descrip">
-            <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+            <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
           </div>
           <div class="workout-image">
             <img src="{{ w.image_url }}">
@@ -44,7 +44,16 @@
             <div class="icon">
               <img ng-src="{{ checkType(w) }}">
             </div>
+          <div class="workout-interval hide">
+            <form>
+              <p>{{ w.select }}</p>
+              <label ng-repeat="day in w.planDays">
+                {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+              </label>
+            </form>
           </div>
+          </div>
+
 
         </div>
       </div>
@@ -73,21 +82,30 @@
             jqyoui-draggable="{index: {{$index}}, animate:true}">
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
+                <h4>{{ w.name }}{{ w.id }}</h4>
               </div>
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <p>Created by: {{ w.creator_id }}</p>
+                <!-- <p>Created by: {{ w.creator_id }}</p> -->
                 <div class="icon">
                   <img ng-src="{{ checkType(w) }}">
                 </div>
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in w.planDays">
+                      {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                    </label>
+                </form>
               </div>
+              </div>
+
 
             </div>
           </div>
@@ -126,7 +144,19 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in w.planDays">
+                      {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
+
+
+
           </div>
         </div>
       </li>
@@ -161,6 +191,15 @@
                 <div class="icon">
                   <img ng-src="{{ checkType(w) }}">
                 </div>
+              </div>
+
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in w.planDays">
+                      {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                    </label>
+                </form>
               </div>
 
             </div>
@@ -200,12 +239,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list5"
@@ -237,12 +285,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list6"
@@ -274,12 +331,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list7"
@@ -311,12 +377,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list8"
@@ -348,12 +423,20 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list9"
@@ -385,12 +468,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list10"
@@ -422,12 +514,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list11"
@@ -459,12 +560,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list12"
@@ -496,12 +606,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list13"
@@ -533,12 +652,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list14"
@@ -570,12 +698,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list15"
@@ -607,12 +744,21 @@
                 </div>
               </div>
 
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </li>
 
-            <li class="planning-dropzone">
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
         ng-model="list15"
@@ -642,6 +788,15 @@
                 <div class="icon">
                   <img ng-src="{{ checkType(w) }}">
                 </div>
+              </div>
+
+              <div class="workout-interval">
+                <form>
+                  <p>Select days for this workout</p>
+                    <label ng-repeat="day in planDays">
+                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                    </label>
+                </form>
               </div>
 
             </div>

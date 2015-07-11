@@ -18,11 +18,11 @@
           'Running'
         ];
 
-        $scope.user = $cookies.getObject('currentUser');
-
         $scope.userInterests = {
           interests: []
         };
+
+        $scope.user = $cookies.getObject('currentUser');
 
         $scope.loginUser = function (user) {
           UserService.loginUser(user)

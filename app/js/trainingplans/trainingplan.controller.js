@@ -37,6 +37,9 @@
             console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
+              w.planDays = $scope.planDays;
+              w.select = 'Select Days for Workout';
+
               if (w.description === 'Endurance') {
                 w.color = '#2E313D';
               } else if (w.description === 'Strength') {
@@ -68,6 +71,15 @@
           });
 
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
+
+        $scope.planDays = ["M", "Tu", "W", "Th", "F", "Sa", "Su"];
+
+        $scope.days = {
+          days: []
+        };
+
+        $scope.dragStart = function (workout) {
+        };
 
         // $scope.trainingPlan = {
         //   name: 'Three Week Strength',

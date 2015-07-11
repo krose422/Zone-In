@@ -812,11 +812,15 @@ ul {
         .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
           margin-right: 0; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout {
-          overflow: hidden;
+          overflow: scroll;
           font-size: .5em;
           background-color: #fff;
           border: none;
           margin: 1em 0 0.5em 1em; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout p {
+            font-size: 1em; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-image {
+            height: 9em; }
         .planning-page .planning-content .planning-drops .planning-dropzone .planning-thumbnail {
           height: 10em; }
   .planning-page .workout {
@@ -836,6 +840,13 @@ ul {
       overflow: hidden;
       clear: both;
       background-color: #fff; }
+    .planning-page .workout .workout-interval form p {
+      display: block;
+      font-family: "Fjalla One", sans-serif;
+      text-align: center; }
+    .planning-page .workout .workout-interval form label {
+      font-family: "Fjalla One", sans-serif;
+      display: inline-block; }
     .planning-page .workout p {
       font-size: 1.3em;
       display: inline-block;
