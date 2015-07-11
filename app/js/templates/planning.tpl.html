@@ -66,15 +66,18 @@
     <ul class="planning-drops">
 
     <h5>Drag and drop workouts here.<h5>
+    <button ng-click="finishTrainingPlan()">Finish Training Plan</button>
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ w.id }}"
         data-drop="true"
         ng-model="list1"
         data-jqyoui-options="optionsList1"
         jqyoui-droppable="{multiple: false, onDrop:'dropFunc(w)'}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list1"
             ng-show="w.name"
             data-drag="true"
@@ -123,6 +126,7 @@
         jqyoui-droppable="{multiple: false}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list2"
             ng-show="w.name"
             data-drag="true"
@@ -171,6 +175,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list3"
             ng-show="w.name"
             data-drag="true"
@@ -216,6 +221,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list4"
             ng-show="w.name"
             data-drag="true"
@@ -240,8 +246,8 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                      <label ng-repeat="day in w.planDays">
+                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                       </label>
                   </form>
                 </div>
@@ -261,6 +267,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list5"
             ng-show="w.name"
             data-drag="true"
@@ -285,8 +292,8 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                      <label ng-repeat="day in w.planDays">
+                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                       </label>
                   </form>
                 </div>
@@ -306,6 +313,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list6"
             ng-show="w.name"
             data-drag="true"
@@ -330,7 +338,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -351,6 +359,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list7"
             ng-show="w.name"
             data-drag="true"
@@ -375,7 +384,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -396,6 +405,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list8"
             ng-show="w.name"
             data-drag="true"
@@ -420,7 +430,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -440,6 +450,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list9"
             ng-show="w.name"
             data-drag="true"
@@ -466,7 +477,7 @@
               <div class="workout-interval">
                 <form>
                   <p>{{ w.select }}</p>
-                    <label ng-repeat="day in planDays">
+                    <label ng-repeat="day in w.planDays">
                       {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                     </label>
                 </form>
@@ -485,6 +496,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list10"
             ng-show="w.name"
             data-drag="true"
@@ -509,7 +521,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -530,6 +542,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list11"
             ng-show="w.name"
             data-drag="true"
@@ -554,7 +567,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -575,6 +588,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list12"
             ng-show="w.name"
             data-drag="true"
@@ -599,7 +613,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -620,6 +634,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list13"
             ng-show="w.name"
             data-drag="true"
@@ -644,7 +659,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -665,6 +680,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list14"
             ng-show="w.name"
             data-drag="true"
@@ -689,7 +705,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -710,6 +726,7 @@
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
             ng-repeat="w in list15"
             ng-show="w.name"
             data-drag="true"
@@ -734,7 +751,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>
@@ -750,16 +767,17 @@
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
         data-drop="true"
-        ng-model="list15"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list15])'}"
+        ng-model="list16"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list16])'}"
         jqyoui-droppable="{multiple: true}">
           <div class="caption">
             <div class="workout workout-draggable"
-            ng-repeat="w in list15"
+            data-id="{{ w.id }}"
+            ng-repeat="w in list16"
             ng-show="w.name"
             data-drag="true"
             data-jqyoui-options="{revert: 'invalid'}"
-            ng-model="list15"
+            ng-model="list16"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
@@ -779,7 +797,7 @@
                 <div class="workout-interval">
                   <form>
                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in planDays">
+                      <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
                   </form>

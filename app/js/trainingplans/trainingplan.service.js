@@ -25,6 +25,14 @@
             })
         };
 
+        this.finishTrainingPlan = function (workouts) {
+          return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
+            .success( function (data) {
+              $cookies.remove('currentPlan');
+              console.log('successful training plan finish');
+            });
+        };
+
         this.getWorkouts = function () {
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);
         };

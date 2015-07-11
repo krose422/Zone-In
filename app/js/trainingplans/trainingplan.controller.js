@@ -23,6 +23,7 @@
         $scope.list13 = [];
         $scope.list14 = [];
         $scope.list15 = [];
+        $scope.list16 = [];
 
 
         var endpoint = HEROKU.URL;
@@ -36,6 +37,7 @@
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
+            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
               w.planDays = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
@@ -78,12 +80,14 @@
         };
 
         $scope.dragStart = function (event) {
-          console.log($(event.currentTarget).data('id'));
+          var workoutId = $(event.currentTarget).data('id');
+          $scope.planWorkouts.workoutIds.push(workoutId);
+          console.log($scope.planWorkouts.workoutIds);
           // $(event.currentTarget).find('h5').html('Added to Plan');
         };
 
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
-        console.log($scope.currentTrainingPlan.id);
+        // console.log($scope.currentTrainingPlan.id);
 
         $scope.planWorkouts = {
           workoutIds: []
@@ -95,15 +99,12 @@
         };
 
         $scope.finishTrainingPlan = function () {
-          var trainingPlanWorkouts = new TrainingPlanWorkouts(workouts);
+          // console.log($('.planning-dropzone').find('.planning-thumbnail').html());
+          var trainingPlanWorkouts = new TrainingPlanWorkouts([]);
           trainingPlanWorkouts.workout_id = $scope.planWorkouts.workoutIds;
-          console.log(trainingPlanWorkouts);
+          // console.log(trainingPlanWorkouts);
+          PlanService.finishTrainingPlan(trainingPlanWorkouts);
         };
-
-
-
-
-
 
         // DUMMY DATA
         // $scope.trainingPlan = [
