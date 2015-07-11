@@ -36,14 +36,14 @@
             });
           });
 
-        $scope.checkType = function (workout) {
-            if (workout.running === true) {
-              return 'images/running_icon.png';
-            }
-            if (workout.weightlifting === true) {
-              return 'images/weight.png';
-            }
-        };
+        // $scope.checkType = function (workout) {
+        //     if (workout.running === true) {
+        //       return 'images/running_icon.png';
+        //     }
+        //     if (workout.weightlifting === true) {
+        //       return 'images/weight.png';
+        //     }
+        // };
 
         PlanService.getUserWorkouts()
           .success(function (data) {
@@ -82,7 +82,7 @@
           console.log(plan);
           PlanService.addTrainingPlan(plan);
           // $scope.trainingPlan = plan;
-          // $scope.closeThisDialog();
+          $scope.closeThisDialog();
         };
 
         // var tpl = $compile('<input type="text" placeholder="Workout step" ng-focus="addInput()" ng-model="workout.steps">')($scope);

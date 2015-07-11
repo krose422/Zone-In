@@ -32,13 +32,6 @@
         </div>
       </li>
 
-      <div class="dropzone"
-      data-drop="true"
-      ng-model='workoutList'
-      data-jqyoui-options="{accept: '.workout-card'}"
-      jqyoui-droppable="{multiple:true}">
-      </div>
-
     </ul>
   </div><!-- end workout library div -->
 
@@ -46,8 +39,21 @@
   <div class="create-plan"
   data-drop="true"
   ng-model='workoutList'
-  data-drop="true"
   jqyoui-droppable="{multiple:true}">
+
+  <ul>
+    <li>
+      <li
+      ng-repeat="item in list4 track by $index"
+      ng-show="item.title"
+      data-drag="true"
+      data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
+      ng-model="list4"
+      jqyoui-draggable="{index: {{$index}},animate:true}">{{workout.name}}</li>
+
+      <li class="placeholder">Add your items here</li>
+    </li>
+  </ul>
 
     <h4>{{ trainingPlan.name }}</h4>
     <p>{{ trainingPlan.start_date }}</p>

@@ -17,11 +17,11 @@
 
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
-          // console.log(trainingPlan);
-          // $http.post(endpoint + '/trainingplans', plan, HEROKU.CONFIG)
-            // .success( function (data) {
+          console.log(trainingPlan);
+          $http.post(endpoint + '/plans', plan, HEROKU.CONFIG)
+            .success( function (data) {
               $state.go('training.plan');
-            // });
+            });
         };
 
         this.getWorkouts = function () {
