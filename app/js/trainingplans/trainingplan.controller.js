@@ -34,10 +34,10 @@
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            console.log($scope.workoutList);
+            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
-              w.planDays = $scope.planDays;
+              w.planDays = ["M", "Tu", "W", "Th", "F", "Sa", "Su"];;
               w.select = 'Select Days for Workout';
 
               if (w.description === 'Endurance') {
@@ -78,7 +78,11 @@
           days: []
         };
 
-        $scope.dragStart = function (workout) {
+        $scope.dropFunc = function (workout) {
+          console.log(workout);
+        };
+
+        $scope.dragStart = function (event) {
         };
 
         // $scope.trainingPlan = {

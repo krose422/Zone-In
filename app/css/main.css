@@ -812,11 +812,11 @@ ul {
         .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
           margin-right: 0; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout {
-          overflow: scroll;
+          overflow: hidden;
           font-size: .5em;
           background-color: #fff;
           border: none;
-          margin: 1em 0 0.5em 1em; }
+          margin: 0; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout p {
             font-size: 1em; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-image {

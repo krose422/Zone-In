@@ -1171,7 +1171,7 @@ ul {
       }
 
       .planning-dropzone {
-        // border: 1px solid #ccc;
+        // border: 1px solid #fff;
         overflow: hidden;
         display: inline-block;
         @include span-columns(3 of 9);
@@ -1179,11 +1179,12 @@ ul {
         margin: 0 .2em .4em .2em;
 
         .workout {
-          overflow: scroll;
+          overflow: hidden;
           font-size: .5em;
           background-color: #fff;
           border: none;
-          margin: 1em 0 .5em 1em;
+          // margin: 1em 0 .5em 1em;
+          margin: 0;
 
           p {
             font-size: 1em;
