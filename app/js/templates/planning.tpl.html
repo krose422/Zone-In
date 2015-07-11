@@ -28,6 +28,7 @@
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
         jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: 'keep', animate: false}"
+        ng-hide="!w.name"
         >
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">

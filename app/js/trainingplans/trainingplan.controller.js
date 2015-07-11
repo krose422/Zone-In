@@ -95,15 +95,14 @@
 
         var TrainingPlanWorkouts = function (options) {
           this.plan_id = $scope.currentTrainingPlan.id,
-          this.workout_id = options.workout_id
+          this.workout_array = $scope.planWorkouts.workoutIds
         };
 
         $scope.finishTrainingPlan = function () {
           // console.log($('.planning-dropzone').find('.planning-thumbnail').html());
-          var trainingPlanWorkouts = new TrainingPlanWorkouts([]);
-          trainingPlanWorkouts.workout_id = $scope.planWorkouts.workoutIds;
-          // console.log(trainingPlanWorkouts);
-          PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          var trainingPlanWorkouts = new TrainingPlanWorkouts();
+          console.log(trainingPlanWorkouts);
+          // PlanService.finishTrainingPlan(trainingPlanWorkouts);
         };
 
         // DUMMY DATA
