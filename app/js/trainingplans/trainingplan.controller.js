@@ -81,8 +81,8 @@
         $scope.addTrainingPlan = function (plan) {
           console.log(plan);
           PlanService.addTrainingPlan(plan);
-          // $scope.trainingPlan = plan;
-          // $scope.closeThisDialog();
+          $scope.trainingPlan = plan;
+          $scope.closeThisDialog();
         };
 
         // var tpl = $compile('<input type="text" placeholder="Workout step" ng-focus="addInput()" ng-model="workout.steps">')($scope);
