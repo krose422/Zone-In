@@ -927,12 +927,17 @@ ul {
       overflow: scroll;
       height: 100vh;
 
+      button {
+        width: 100%;
+        margin: 0;
+      }
+
       h5 {
         text-align: center;
       }
 
       .planning-dropzone {
-        // border: 1px solid #fff;
+        // border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
         @include span-columns(3.5 of 7);
@@ -967,7 +972,7 @@ ul {
 
           .workout-image {
             overflow: hidden;
-            height: 10em;
+            height: 9em;
             border-radius: 0;
           }
         }
@@ -980,13 +985,14 @@ ul {
   }
 
   .workout {
-    @include span-columns(6);
+    @include span-columns(5.5);
     @include omega(2n);
-    @include border($grey);
-    @include boxShadow();
+    // @include border($grey);
+    // @include boxShadow();
     overflow: hidden;
     cursor: pointer;
-    margin: 1em 0;
+    margin: 1em ;
+    background-color: #FAFAFA;
 
     .workout-descrip {
       // text-align: center;
@@ -1034,7 +1040,7 @@ ul {
 
       .workout-title {
         overflow: hidden;
-        background-color: $teal;
+        // background-color: $teal;
         border-radius: 0;
 
       h4 {
@@ -1043,18 +1049,19 @@ ul {
         padding: .5em;
         color: $background;
         text-align: center;
+        float: left;
       }
     }
 
     .icon {
       overflow: hidden;
-      height: 2em;
+      height: 3em;
       display: inline-block;
       float: right;
-      padding: 0 .5em;
+      padding: 1em;
 
       img {
-        height: 1em;
+        height: 2em;
       }
     }
   }

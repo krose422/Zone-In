@@ -59,14 +59,21 @@
             });
           });
 
-        $scope.checkType = function (workout) {
-            if (workout.running === true) {
-              return 'images/running_icon.png';
-            }
-            if (workout.weightlifting === true) {
-              return 'images/weight.png';
-            }
+        $scope.iconShow = function (sport) {
+          console.log(sport);
+          if (boolean !== true) {
+            return 'hide';
+          }
         };
+
+        // $scope.checkType = function (workout) {
+        //     if (workout.running === true) {
+        //       return 'images/running_icon_white.png';
+        //     }
+        //     if (workout.weightlifting === true) {
+        //       return 'images/weight_white.png';
+        //     }
+        // };
 
         PlanService.getUserWorkouts()
           .success(function (data) {
@@ -81,7 +88,11 @@
 
         $scope.dragStart = function (event) {
           var workoutId = $(event.currentTarget).data('id');
-          $scope.planWorkouts.workoutIds.push(workoutId);
+          var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
+          if (contain === false) {
+            $scope.planWorkouts.workoutIds.push(workoutId);
+          }
+
           console.log($scope.planWorkouts.workoutIds);
           // $(event.currentTarget).find('h5').html('Added to Plan');
         };
@@ -102,7 +113,7 @@
           // console.log($('.planning-dropzone').find('.planning-thumbnail').html());
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
           console.log(trainingPlanWorkouts);
-          // PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          PlanService.finishTrainingPlan(trainingPlanWorkouts);
         };
 
         // DUMMY DATA

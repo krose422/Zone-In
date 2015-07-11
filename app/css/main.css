@@ -697,6 +697,9 @@ ul {
       height: 100vh; }
       .planning-page .planning-content .planning-drops:last-child {
         margin-right: 0; }
+      .planning-page .planning-content .planning-drops button {
+        width: 100%;
+        margin: 0; }
       .planning-page .planning-content .planning-drops h5 {
         text-align: center; }
       .planning-page .planning-content .planning-drops .planning-dropzone {
@@ -733,7 +736,7 @@ ul {
           font-size: 1.2em; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout-image {
           overflow: hidden;
-          height: 10em;
+          height: 9em;
           border-radius: 0; }
       .planning-page .planning-content .planning-drops .planning-thumbnail {
         height: 10em; }
@@ -742,16 +745,11 @@ ul {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 48.82117%;
-  border: 1px solid #D0C8C5;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
-  -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
-  -o-box-shadow: 0px 0.5px 2px #D0C8C5;
-  box-shadow: 0px 0.5px 2px #D0C8C5;
+  width: 44.55627%;
   overflow: hidden;
   cursor: pointer;
-  margin: 1em 0; }
+  margin: 1em;
+  background-color: #FAFAFA; }
   .workout:last-child {
     margin-right: 0; }
   .workout:nth-child(2n) {
@@ -781,22 +779,22 @@ ul {
     padding: 0 0.5em; }
   .workout .workout-title {
     overflow: hidden;
-    background-color: #499989;
     border-radius: 0; }
     .workout .workout-title h4 {
       font-size: 1.6em;
       margin: 0;
       padding: .5em;
       color: #FAFAFA;
-      text-align: center; }
+      text-align: center;
+      float: left; }
   .workout .icon {
     overflow: hidden;
-    height: 2em;
+    height: 3em;
     display: inline-block;
     float: right;
-    padding: 0 0.5em; }
+    padding: 1em; }
     .workout .icon img {
-      height: 1em; }
+      height: 2em; }
 
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */

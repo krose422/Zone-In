@@ -27,12 +27,20 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
-        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: 'keep', animate: false}"
+        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: true, animate: false}"
         ng-hide="!w.name"
         >
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
             <h4>{{ w.name }}</h4>
+            <div class="icon">
+              <!-- <img ng-src="{{ checkType(w) }}"> -->
+              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(w.cycling) }}">
+              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(w.running) }}">
+              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(w.swimming) }}">
+              <img src="images/weight_white.png" class="sport-icon {{ showIcon(w.weightlifting) }}">
+              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(w.circuittraining) }}">
+            </div>
           </div>
           <div class="workout-descrip">
             <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
@@ -43,9 +51,6 @@
 
           <div class="workout-bottom">
             <p>Created by: {{ w.creator_id }}</p>
-            <div class="icon">
-              <img ng-src="{{ checkType(w) }}">
-            </div>
           <div class="workout-interval hide">
             <form>
               <p>{{ w.select }}</p>
@@ -66,8 +71,8 @@
 
     <ul class="planning-drops">
 
-    <h5>Drag and drop workouts here.<h5>
     <button ng-click="finishTrainingPlan()">Finish Training Plan</button>
+    <h5>Drag and drop workouts here.<h5>
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
