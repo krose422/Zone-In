@@ -3,25 +3,26 @@
   'use strict';
 
   angular.module('PlanModule')
-    .service('PlanService', ['$http', 'HEROKU', '$state', '$compile', 'ngDialog',
-      function ($http, HEROKU, $state, $compile, ngDialog) {
+    .service('PlanService', ['$http', 'HEROKU', '$state', '$compile', 'ngDialog', '$cookies',
+      function ($http, HEROKU, $state, $compile, ngDialog, $cookies) {
 
         var endpoint = HEROKU.URL;
 
         // Training plan constructor
         var TrainingPlan = function (options) {
-          this.name = options.name;
-          this.start_date = options.start_date;
-          this.end_date = options.end_date;
+          this.name = options.name,
+          this.description = options.description,
+          this.start_date = options.start_date,
+          this.end_date = options.end_date
         };
 
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
           console.log(trainingPlan);
-          $http.post(endpoint + '/plans', plan, HEROKU.CONFIG)
+          return $http.post(endpoint + '/plans', plan, HEROKU.CONFIG)
             .success( function (data) {
-              $state.go('training.plan');
-            });
+              $cookies.putObject('currentPlan', data);
+            })
         };
 
         this.getWorkouts = function () {
@@ -33,7 +34,7 @@
         };
 
         this.addWorkout = function (workout) {
-          $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
+          return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
             .success( function (data) {
               // $state.go('training.workouts');
             });

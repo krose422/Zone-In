@@ -17,7 +17,7 @@
                 <img src="https://scontent-atl1-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/1480657_10101896304592339_452960075_n.jpg?oh=9684a12a05fdae10c9b88bb2523518d3&oe=56201A8D">
               </div>
               <div class="user-name">
-                Kelley Rose
+                {{ user.first_name }} {{ user.last_name }}
               </div>
             </div>
             <!-- <li><a href="#">SETTINGS</a></li> -->
@@ -54,6 +54,7 @@
 
   <ul class="allplans-ul">
   <h4>Training In Progress</h4>
+
     <li class="allplans" ng-repeat="t in trainingPlan">
       <i class="fa fa-plus-square" ng-click="expand()"></i>
       <i class="fa fa-minus-square hide" ng-click="expand()"></i>
@@ -76,8 +77,8 @@
 
       <div class="bottom hide">
         <div class="left-info">
-          <div class="routeimage">
-            <img ng-src=" {{ t.image_url }} ">
+          <div class="workout-image">
+            <img ng-src=" {{ getImage() }} ">
           </div>
         </div>
 
@@ -87,17 +88,14 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
-
-
-
       </div>
-
     </li>
+
   </ul>
 
   <ul>
   <h4>Completed Training</h4>
-    <li class="allplans" ng-repeat="t in trainingPlans">
+    <li class="allplans" ng-repeat="t in trainingPlan">
       <i class="fa fa-plus-square" ng-click="expand()"></i>
       <i class="fa fa-minus-square hide" ng-click="expand()"></i>
 

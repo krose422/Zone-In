@@ -2,19 +2,19 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h4 class="training-plan-name">Training Plan Name</h4>
+      <h4 class="training-plan-name">{{ currentTrainingPlan.name }} {{ currentTrainingPlan.id }}</h4>
       <div class="dates">
-        <h5>Start Date to</h5>
-        <h5>End Date</h5>
+        <h5>{{ formatDate(currentTrainingPlan.start_date) }} to</h5>
+        <h5>{{ formatDate(currentTrainingPlan.end_date) }}</h5>
       </div>
-      <p>Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <p>{{ currentTrainingPlan.description }}</p>
     </div>
 
   <div class="workouts-inner">
-    <div class="workout-list-container">
-      <p>Click + to add any workouts to your training plan</p>
+      <h5>Drag workouts to add them to {{ currentTrainingPlan.name }}</h5>
       <p>sort by</p>
       <p ng-click="sort(workoutList, 'color')">Workout Type</p>
+    <div class="workout-list-container">
 
       <div class="workout workout-droppable"
       ng-repeat="w in workoutList"
@@ -22,11 +22,12 @@
       data-drop="true"
       data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=workoutList])'}"
       jqyoui-droppable="{index: {{$index}}}">
-        <div class="workout-draggable"
+        <div data-id="{{ w.id }}"
+        class="workout-draggable"
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
-        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: true, animate: false}"
+        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: 'keep', animate: false}"
         >
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
@@ -64,7 +65,7 @@
 
     <ul class="planning-drops">
 
-    <h5>Drag workouts and drop into your training plan canvas here.<h5>
+    <h5>Drag and drop workouts here.<h5>
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
@@ -82,10 +83,14 @@
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}{{ w.id }}</h4>
+                <h4>{{ w.name }}</h4>
               </div>
               <div class="workout-descrip">
-                <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>
+                <p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -93,12 +98,10 @@
 
               <div class="workout-bottom">
                 <!-- <p>Created by: {{ w.creator_id }}</p> -->
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
+
               <div class="workout-interval">
                 <form>
-                  <p>Select days for this workout</p>
+                  <p>{{ w.select }}</p>
                     <label ng-repeat="day in w.planDays">
                       {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                     </label>
@@ -132,18 +135,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                       </label>
@@ -180,18 +183,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                       </label>
@@ -225,25 +228,25 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
+                <div class="workout-interval">
+                  <form>
+                    <p>{{ w.select }}</p>
+                      <label ng-repeat="day in planDays">
+                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                      </label>
+                  </form>
                 </div>
               </div>
 
-              <div class="workout-interval">
-                <form>
-                  <p>Select days for this workout</p>
-                    <label ng-repeat="day in planDays">
-                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                    </label>
-                </form>
-              </div>
 
             </div>
           </div>
@@ -270,18 +273,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -315,18 +318,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -360,18 +363,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -405,18 +408,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -449,20 +452,20 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
 
               <div class="workout-interval">
                 <form>
-                  <p>Select days for this workout</p>
+                  <p>{{ w.select }}</p>
                     <label ng-repeat="day in planDays">
                       {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                     </label>
@@ -494,18 +497,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -539,18 +542,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -584,18 +587,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -629,18 +632,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -674,18 +677,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -719,18 +722,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -764,18 +767,18 @@
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <div class="icon">
+                  <img ng-src="{{ checkType(w) }}">
+                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
                 <div class="workout-interval">
                   <form>
-                    <p>Select days for this workout</p>
+                    <p>{{ w.select }}</p>
                       <label ng-repeat="day in planDays">
                         {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
                       </label>
@@ -794,11 +797,6 @@
     </ul>
   </div>
 
-
-
 </div>
-
-
-
 
 </div>

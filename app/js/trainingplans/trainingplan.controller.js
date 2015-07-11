@@ -3,8 +3,10 @@
   'use strict';
 
   angular.module('PlanModule')
-    .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter',
-      function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter) {
+    .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter', '$cookies',
+      function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter, $cookies) {
+
+        $scope.user = $cookies.getObject('currentUser');
 
         $scope.list1 = [];
         $scope.list2 = [];
@@ -34,10 +36,9 @@
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
-              w.planDays = ["M", "Tu", "W", "Th", "F", "Sa", "Su"];;
+              w.planDays = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
               w.select = 'Select Days for Workout';
 
               if (w.description === 'Endurance') {
@@ -56,14 +57,14 @@
             });
           });
 
-        // $scope.checkType = function (workout) {
-        //     if (workout.running === true) {
-        //       return 'images/running_icon.png';
-        //     }
-        //     if (workout.weightlifting === true) {
-        //       return 'images/weight.png';
-        //     }
-        // };
+        $scope.checkType = function (workout) {
+            if (workout.running === true) {
+              return 'images/running_icon.png';
+            }
+            if (workout.weightlifting === true) {
+              return 'images/weight.png';
+            }
+        };
 
         PlanService.getUserWorkouts()
           .success(function (data) {
@@ -72,25 +73,59 @@
 
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
 
-        $scope.planDays = ["M", "Tu", "W", "Th", "F", "Sa", "Su"];
-
-        $scope.days = {
-          days: []
-        };
-
         $scope.dropFunc = function (workout) {
           console.log(workout);
         };
 
         $scope.dragStart = function (event) {
+          console.log($(event.currentTarget).data('id'));
+          // $(event.currentTarget).find('h5').html('Added to Plan');
         };
 
-        // $scope.trainingPlan = {
+        $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
+        console.log($scope.currentTrainingPlan.id);
+
+        $scope.planWorkouts = {
+          workoutIds: []
+        };
+
+        var TrainingPlanWorkouts = function (options) {
+          this.plan_id = $scope.currentTrainingPlan.id,
+          this.workout_id = options.workout_id
+        };
+
+        $scope.finishTrainingPlan = function () {
+          var trainingPlanWorkouts = new TrainingPlanWorkouts(workouts);
+          trainingPlanWorkouts.workout_id = $scope.planWorkouts.workoutIds;
+          console.log(trainingPlanWorkouts);
+        };
+
+
+
+
+
+
+        // DUMMY DATA
+        // $scope.trainingPlan = [
+        // {
         //   name: 'Three Week Strength',
         //   start_date: 'July 9',
         //   end_date: 'July 27',
         //   image_url: 'http://www.placehold.it/300x300'
-        // };
+        // },
+        // {
+        //   name: '10k Training Plan',
+        //   start_date: 'July 11',
+        //   end_date: 'August 11',
+        //   image_url: 'http://www.placehold.it/300x300'
+        // }
+        // ];
+
+        $scope.formatDate = function (date) {
+          var momentDate = moment(date);
+          var formattedDate = momentDate.format('MMM DD, YYYY');
+          return formattedDate;
+        };
 
         $scope.logoutUser = function () {
           UserService.logoutUser();
@@ -113,16 +148,13 @@
 
         $scope.addTrainingPlan = function (plan) {
           console.log(plan);
-          PlanService.addTrainingPlan(plan);
+          PlanService.addTrainingPlan(plan)
           // $scope.trainingPlan = plan;
-          $scope.closeThisDialog();
+            .then( function (data) {
+              $state.go('training.plan');
+              $scope.closeThisDialog();
+            });
         };
-
-        // var tpl = $compile('<input type="text" placeholder="Workout step" ng-focus="addInput()" ng-model="workout.steps">')($scope);
-
-        // $scope.addInput = function () {
-        //   $('#addedInputs').append(tpl);
-        // };
 
         // Add prefix to input on focus
         $scope.addPrefix = function (prefix) {
@@ -133,16 +165,6 @@
           $(event.target).siblings().not('.top').toggleClass('hide');
           $(event.target).toggleClass('hide');
         };
-
-        // $scope.interests = [
-        //   'Rugby',
-        //   'Lacrosse',
-        //   'Running'
-        // ];
-
-        // $scope.user = {
-        //   interests: ['user']
-        // };
 
         // $scope.checkAll = function() {
         //   $scope.user.interests = angular.copy($scope.interests);

@@ -870,83 +870,194 @@ ul {
 /* CREATE TRAINING PLAN PAGE
 --------------------- */
 
-// .blue {
-//   background-color: $blue;
-// }
+.planning-page {
+  overflow: hidden;
+  @include outer-container(100%);
 
-// .plan-training-page {
-//   overflow: hidden;
-//   // @include outer-container(100%);
+  .planning-content {
+    overflow: hidden;
 
-//   .workout-library {
-//     @include span-columns(5);
-//     background-color: #fff;
-//     padding: 2em;
-//     @include boxShadow();
+    .planning-header {
+      overflow: hidden;
+      width: 70%;
+      margin: auto;
 
-//     .workout-library-ul {
-//       @include outer-container();
-//       overflow: hidden;
+      .training-plan-name {
+        display: inline-block;
+        float: left;
+      }
 
-//       .caption {
-//         @include span-columns(6);
-//         @include omega(2n);
-//         @include border($grey);
-//         @include boxShadow();
-//         overflow: hidden;
-//         // padding: .5em;
-//         // height: 10em;
+      .dates {
+        display: inline-block;
+        float: right;
 
-//         .workout-descrip {
-//           // padding: 0 .5em;
-//         }
+        h5 {
+          display: inline-block;
+        }
+      }
 
-//         p {
-//           font-size: .5em;
-//           display: inline-block;
-//           margin: 0;
-//           padding: 0 .5em;
-//         }
+      p {
+        clear: both;
+        font-size: 2em;
+      }
 
-//         .workout-title {
-//           overflow: hidden;
-//           background-color: $teal;
-//           border-radius: 0;
+    }
 
-//           h4 {
-//             font-size: .7em;
-//             margin: 0;
-//             padding: .5em;
-//             color: $background;
-//           }
-//         }
+    .workouts-inner {
+      @include span-columns(5);
+      background-color: #fff;
+      padding: 1em;
+      @include border($grey);
+      @include boxShadow();
 
-//         .icon {
-//           overflow: hidden;
-//           height: 2em;
-//           display: inline-block;
-//           float: right;
-//           padding: 0 .5em;
+      .workout-list-container {
+        overflow: scroll;
+      }
+    }
 
-//           img {
-//             height: 1em;
+    .planning-drops {
+      @include span-columns(7);
+      padding-top: 0;
+      float: right;
+      clear: none;
+      background-color: #fff;
+      @include border($grey);
+      @include boxShadow();
+      border-radius: 4px;
+      overflow: scroll;
+      height: 100vh;
 
-//           }
-//         }
-//       }
-//     }
+      h5 {
+        text-align: center;
+      }
 
-//   }
+      .planning-dropzone {
+        // border: 1px solid #fff;
+        overflow: hidden;
+        display: inline-block;
+        @include span-columns(3.5 of 7);
+        @include omega();
+        margin: 0 .2em .4em .2em;
 
-//   .create-plan {
-//     @include span-columns(7);
-//     background-color: #fff;
-//     padding: 2em;
-//     @include boxShadow();
-//   }
+        .workout {
+          @include fill-parent;
+          overflow: hidden;
+          font-size: .5em;
+          background-color: #fff;
+          margin: 0;
+          @include border($grey);
+          @include boxShadow();
 
+          .workout-descrip {
+            text-align: left;
 
-// }
+            .icon {
+              height: 2em;
+              padding: .2em;
+            }
+              img {
+                height: 100%;
+              }
+            }
+          }
+
+          p {
+            font-size: 1.2em;
+          }
+
+          .workout-image {
+            overflow: hidden;
+            height: 10em;
+            border-radius: 0;
+          }
+        }
+
+        .planning-thumbnail {
+          height: 10em;
+        }
+      }
+    }
+  }
+
+  .workout {
+    @include span-columns(6);
+    @include omega(2n);
+    @include border($grey);
+    @include boxShadow();
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1em 0;
+
+    .workout-descrip {
+      // text-align: center;
+    }
+
+    .workout-image {
+      width: 100%;
+      height: 12em;
+
+      // img {
+      //   height: 100%;
+      // }
+    }
+
+    .workout-bottom {
+      overflow: hidden;
+      clear: both;
+      background-color: #fff;
+    }
+
+    .workout-interval {
+      form {
+
+        p {
+          display: block;
+          font-family: $fjalla;
+          text-align: center;
+        }
+
+        label {
+          font-family: $fjalla;
+          font-size: 1em;
+          display: inline-block;
+          padding: .2em;
+        }
+      }
+    }
+
+    p {
+      font-size: 1.3em;
+      display: inline-block;
+      margin: 0;
+      padding: 0 .5em;
+      }
+
+      .workout-title {
+        overflow: hidden;
+        background-color: $teal;
+        border-radius: 0;
+
+      h4 {
+        font-size: 1.6em;
+        margin: 0;
+        padding: .5em;
+        color: $background;
+        text-align: center;
+      }
+    }
+
+    .icon {
+      overflow: hidden;
+      height: 2em;
+      display: inline-block;
+      float: right;
+      padding: 0 .5em;
+
+      img {
+        height: 1em;
+      }
+    }
+  }
 
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */
@@ -1110,172 +1221,5 @@ ul {
 /* TESTING
 ---------- */
 
-.planning-page {
-  overflow: hidden;
-  @include outer-container(100%);
 
-  .planning-content {
-    overflow: hidden;
 
-    .planning-header {
-      overflow: hidden;
-      width: 70%;
-      margin: auto;
-
-      .training-plan-name {
-        display: inline-block;
-        float: left;
-      }
-
-      .dates {
-        display: inline-block;
-        float: right;
-
-        h5 {
-          display: inline-block;
-        }
-      }
-
-      p {
-        clear: both;
-        font-size: 2em;
-      }
-
-    }
-
-    .workouts-inner {
-      @include span-columns(3);
-      background-color: #fff;
-      padding: 1em;
-      @include border($grey);
-      @include boxShadow();
-      // width: 35%;
-      // float: left;
-
-      .workout-list-container {
-        overflow: hidden;
-      }
-    }
-
-    .planning-drops {
-      @include span-columns(9);
-      padding-top: 0;
-      float: right;
-      clear: none;
-      background-color: $grey;
-      border-radius: 4px;
-
-      h5 {
-        text-align: center;
-
-      }
-
-      .planning-dropzone {
-        // border: 1px solid #fff;
-        overflow: hidden;
-        display: inline-block;
-        @include span-columns(3 of 9);
-        @include omega();
-        margin: 0 .2em .4em .2em;
-
-        .workout {
-          overflow: hidden;
-          font-size: .5em;
-          background-color: #fff;
-          border: none;
-          // margin: 1em 0 .5em 1em;
-          margin: 0;
-
-          p {
-            font-size: 1em;
-          }
-
-          .workout-image {
-            height: 9em;
-          }
-        }
-
-        .planning-thumbnail {
-          height: 10em;
-        }
-      }
-    }
-  }
-
-  .workout {
-    // @include span-columns(6);
-    // @include omega(2n);
-    @include border($grey);
-    @include boxShadow();
-    overflow: hidden;
-    cursor: pointer;
-    margin: 1em 0;
-
-    .workout-descrip {
-      // text-align: center;
-    }
-
-    .workout-image {
-      width: 100%;
-      height: 12em;
-
-      // img {
-      //   height: 100%;
-      // }
-    }
-
-    .workout-bottom {
-      overflow: hidden;
-      clear: both;
-      background-color: #fff;
-    }
-
-    .workout-interval {
-      form {
-        p {
-          display: block;
-          font-family: $fjalla;
-          text-align: center;
-        }
-
-        label {
-          font-family: $fjalla;
-          display: inline-block;
-        }
-      }
-    }
-
-    p {
-      font-size: 1.3em;
-      display: inline-block;
-      margin: 0;
-      padding: 0 .5em;
-      }
-
-      .workout-title {
-        overflow: hidden;
-        background-color: $teal;
-        border-radius: 0;
-
-      h4 {
-        font-size: 1.6em;
-        margin: 0;
-        padding: .5em;
-        color: $background;
-        text-align: center;
-      }
-    }
-
-    .icon {
-      overflow: hidden;
-      height: 2em;
-      display: inline-block;
-      float: right;
-      padding: 0 .5em;
-
-      img {
-        height: 1em;
-      }
-    }
-  }
-}
