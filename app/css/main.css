@@ -634,87 +634,6 @@ ul {
 
 /* CREATE TRAINING PLAN PAGE
 --------------------- */
-.blue {
-  background-color: #176785; }
-
-.plan-training-page {
-  overflow: hidden; }
-  .plan-training-page .workout-library {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 40.29137%;
-    background-color: #fff;
-    padding: 2em;
-    -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
-    -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
-    -o-box-shadow: 0px 0.5px 2px #D0C8C5;
-    box-shadow: 0px 0.5px 2px #D0C8C5; }
-    .plan-training-page .workout-library:last-child {
-      margin-right: 0; }
-    .plan-training-page .workout-library .workout-library-ul {
-      max-width: 68em;
-      margin-left: auto;
-      margin-right: auto;
-      overflow: hidden; }
-      .plan-training-page .workout-library .workout-library-ul::after {
-        clear: both;
-        content: "";
-        display: table; }
-      .plan-training-page .workout-library .workout-library-ul li.block, .plan-training-page .workout-library .workout-library-ul .caption {
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%;
-        border: 1px solid #D0C8C5;
-        border-radius: 4px;
-        -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
-        -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
-        -o-box-shadow: 0px 0.5px 2px #D0C8C5;
-        box-shadow: 0px 0.5px 2px #D0C8C5;
-        overflow: hidden; }
-        .plan-training-page .workout-library .workout-library-ul li.block:last-child, .plan-training-page .workout-library .workout-library-ul .caption:last-child {
-          margin-right: 0; }
-        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n), .plan-training-page .workout-library .workout-library-ul .caption:nth-child(2n) {
-          margin-right: 0; }
-        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n+1), .plan-training-page .workout-library .workout-library-ul .caption:nth-child(2n+1) {
-          clear: left; }
-        .plan-training-page .workout-library .workout-library-ul li.block p, .plan-training-page .workout-library .workout-library-ul .caption p {
-          font-size: .5em;
-          display: inline-block;
-          margin: 0;
-          padding: 0 0.5em; }
-        .plan-training-page .workout-library .workout-library-ul li.block .workout-title, .plan-training-page .workout-library .workout-library-ul .caption .workout-title {
-          overflow: hidden;
-          background-color: #499989;
-          border-radius: 0; }
-          .plan-training-page .workout-library .workout-library-ul li.block .workout-title h4, .plan-training-page .workout-library .workout-library-ul .caption .workout-title h4 {
-            font-size: .7em;
-            margin: 0;
-            padding: .5em;
-            color: #FAFAFA; }
-        .plan-training-page .workout-library .workout-library-ul li.block .icon, .plan-training-page .workout-library .workout-library-ul .caption .icon {
-          overflow: hidden;
-          height: 2em;
-          display: inline-block;
-          float: right;
-          padding: 0 0.5em; }
-          .plan-training-page .workout-library .workout-library-ul li.block .icon img, .plan-training-page .workout-library .workout-library-ul .caption .icon img {
-            height: 1em; }
-  .plan-training-page .create-plan {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 57.35098%;
-    background-color: #fff;
-    padding: 2em;
-    -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
-    -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
-    -o-box-shadow: 0px 0.5px 2px #D0C8C5;
-    box-shadow: 0px 0.5px 2px #D0C8C5; }
-    .plan-training-page .create-plan:last-child {
-      margin-right: 0; }
-
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */
 /* ----------------------- */
@@ -824,14 +743,119 @@ ul {
 
 /* TESTING
 ---------- */
-.planning-page .planning-content .planning-drops .planning-dropzone {
-  border: 1px solid #ccc;
+.planning-page {
   overflow: hidden;
-  display: inline-block; }
-  .planning-page .planning-content .planning-drops .planning-dropzone .planning-thumbnail {
-    width: 100px;
-    height: 200px; }
-
-.planning-page .workout-list-container {
-  overflow: hidden;
-  width: 100px; }
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+  .planning-page::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .planning-page .planning-content {
+    overflow: hidden; }
+    .planning-page .planning-content .planning-header {
+      overflow: hidden;
+      width: 70%;
+      margin: auto; }
+      .planning-page .planning-content .planning-header .training-plan-name {
+        display: inline-block;
+        float: left; }
+      .planning-page .planning-content .planning-header .dates {
+        display: inline-block;
+        float: right; }
+        .planning-page .planning-content .planning-header .dates h5 {
+          display: inline-block; }
+      .planning-page .planning-content .planning-header p {
+        clear: both;
+        font-size: 2em; }
+    .planning-page .planning-content .workouts-inner {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      background-color: #fff;
+      padding: 1em;
+      border: 1px solid #D0C8C5;
+      border-radius: 4px;
+      -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+      box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .planning-page .planning-content .workouts-inner:last-child {
+        margin-right: 0; }
+      .planning-page .planning-content .workouts-inner .workout-list-container {
+        overflow: hidden; }
+    .planning-page .planning-content .planning-drops {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%;
+      padding-top: 0;
+      float: right;
+      clear: none;
+      background-color: #D0C8C5;
+      border-radius: 4px; }
+      .planning-page .planning-content .planning-drops:last-child {
+        margin-right: 0; }
+      .planning-page .planning-content .planning-drops h5 {
+        text-align: center; }
+      .planning-page .planning-content .planning-drops .planning-dropzone {
+        overflow: hidden;
+        display: inline-block;
+        float: left;
+        display: block;
+        margin-right: 3.16844%;
+        width: 31.22104%;
+        margin-right: 0;
+        margin: 0 0.2em 0.4em 0.2em; }
+        .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
+          margin-right: 0; }
+        .planning-page .planning-content .planning-drops .planning-dropzone .workout {
+          overflow: hidden;
+          font-size: .5em;
+          background-color: #fff;
+          border: none;
+          margin: 1em 0 0.5em 1em; }
+        .planning-page .planning-content .planning-drops .planning-dropzone .planning-thumbnail {
+          height: 10em; }
+  .planning-page .workout {
+    border: 1px solid #D0C8C5;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+    -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+    box-shadow: 0px 0.5px 2px #D0C8C5;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1em 0; }
+    .planning-page .workout .workout-image {
+      width: 100%;
+      height: 12em; }
+    .planning-page .workout .workout-bottom {
+      overflow: hidden;
+      clear: both;
+      background-color: #fff; }
+    .planning-page .workout p {
+      font-size: 1.3em;
+      display: inline-block;
+      margin: 0;
+      padding: 0 0.5em; }
+    .planning-page .workout .workout-title {
+      overflow: hidden;
+      background-color: #499989;
+      border-radius: 0; }
+      .planning-page .workout .workout-title h4 {
+        font-size: 1.6em;
+        margin: 0;
+        padding: .5em;
+        color: #FAFAFA;
+        text-align: center; }
+    .planning-page .workout .icon {
+      overflow: hidden;
+      height: 2em;
+      display: inline-block;
+      float: right;
+      padding: 0 0.5em; }
+      .planning-page .workout .icon img {
+        height: 1em; }

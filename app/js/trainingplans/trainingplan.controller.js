@@ -10,6 +10,17 @@
         $scope.list2 = [];
         $scope.list3 = [];
         $scope.list4 = [];
+        $scope.list5 = [];
+        $scope.list6 = [];
+        $scope.list7 = [];
+        $scope.list8 = [];
+        $scope.list9 = [];
+        $scope.list10 = [];
+        $scope.list11 = [];
+        $scope.list12 = [];
+        $scope.list13 = [];
+        $scope.list14 = [];
+        $scope.list15 = [];
 
 
         var endpoint = HEROKU.URL;
