@@ -88,16 +88,18 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
-              </div>
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>
-                <p>{{ w.time }} minutes</p>
                 <div class="icon">
                   <img ng-src="{{ checkType(w) }}">
                 </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
+              </div>
+
+            <div class="right-workout">
+              <div class="workout-descrip">
+                <p>{{ w.description }}</p>
+                <p>{{ w.time }} minutes</p>
               </div>
 
               <div class="workout-bottom">
@@ -111,7 +113,9 @@
                     </label>
                 </form>
               </div>
+
               </div>
+            </div> <!-- end right-workout -->
 
 
             </div>

@@ -3,10 +3,10 @@
   'use strict';
 
   angular.module('PlanModule')
-    .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter', '$cookies',
-      function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter, $cookies) {
+    .controller('PlanCtrl', ['$rootScope', '$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter', '$cookies',
+      function ($rootScope, $scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter, $cookies) {
 
-        $scope.user = $cookies.getObject('currentUser');
+        $scope.user = $rootScope.currentUser;
 
         $scope.list1 = [];
         $scope.list2 = [];
@@ -95,14 +95,15 @@
 
         var TrainingPlanWorkouts = function (options) {
           this.plan_id = $scope.currentTrainingPlan.id,
-          this.workout_array = $scope.planWorkouts.workoutIds
+          // this.workout_array = $scope.planWorkouts.workoutIds
+          this.workout_array = 5
         };
 
         $scope.finishTrainingPlan = function () {
           // console.log($('.planning-dropzone').find('.planning-thumbnail').html());
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
           console.log(trainingPlanWorkouts);
-          // PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          PlanService.finishTrainingPlan(trainingPlanWorkouts);
         };
 
         // DUMMY DATA

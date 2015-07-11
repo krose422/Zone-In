@@ -700,18 +700,16 @@ ul {
       .planning-page .planning-content .planning-drops h5 {
         text-align: center; }
       .planning-page .planning-content .planning-drops .planning-dropzone {
+        border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
-        float: left;
-        display: block;
-        margin-right: 4.11092%;
-        width: 47.94454%;
-        margin-right: 0;
-        margin: 0 0.2em 0.4em 0.2em; }
-        .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
-          margin-right: 0; }
+        width: 100%;
+        margin: 0; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout {
           width: 100%;
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
           overflow: hidden;
           font-size: .5em;
           background-color: #fff;
@@ -722,9 +720,21 @@ ul {
           -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
           -o-box-shadow: 0px 0.5px 2px #D0C8C5;
           box-shadow: 0px 0.5px 2px #D0C8C5; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout::after {
+            clear: both;
+            content: "";
+            display: table; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout .right-workout {
+            float: left;
+            display: block;
+            margin-right: 2.35765%;
+            width: 74.41059%; }
+            .planning-page .planning-content .planning-drops .planning-dropzone .workout .right-workout:last-child {
+              margin-right: 0; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-descrip {
             text-align: left; }
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-descrip .icon {
+              color: #FAFAFA;
               height: 2em;
               padding: .2em; }
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-descrip img {
@@ -733,10 +743,19 @@ ul {
           font-size: 1.2em; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout-image {
           overflow: hidden;
-          height: 10em;
-          border-radius: 0; }
+          height: 7em;
+          border-radius: 0;
+          float: left;
+          float: left;
+          display: block;
+          margin-right: 2.35765%;
+          width: 23.23176%; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout-image:last-child {
+            margin-right: 0; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout-image img {
+            height: 100%; }
       .planning-page .planning-content .planning-drops .planning-thumbnail {
-        height: 10em; }
+        height: 4em; }
 
 .workout {
   float: left;

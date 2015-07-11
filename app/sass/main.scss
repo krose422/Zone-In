@@ -932,15 +932,16 @@ ul {
       }
 
       .planning-dropzone {
-        // border: 1px solid #fff;
+        border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
-        @include span-columns(3.5 of 7);
-        @include omega();
-        margin: 0 .2em .4em .2em;
+        @include fill-parent;
+        // @include omega();
+        margin: 0;
 
         .workout {
           @include fill-parent;
+          @include outer-container(100%);
           overflow: hidden;
           font-size: .5em;
           background-color: #fff;
@@ -948,10 +949,15 @@ ul {
           @include border($grey);
           @include boxShadow();
 
+          .right-workout {
+            @include span-columns(9);
+          }
+
           .workout-descrip {
             text-align: left;
 
             .icon {
+              color: $background;
               height: 2em;
               padding: .2em;
             }
@@ -967,13 +973,19 @@ ul {
 
           .workout-image {
             overflow: hidden;
-            height: 10em;
+            height: 7em;
             border-radius: 0;
+            float: left;
+            @include span-columns(3);
+
+            img {
+              height: 100%;
+            }
           }
         }
 
         .planning-thumbnail {
-          height: 10em;
+          height: 4em;
         }
       }
     }

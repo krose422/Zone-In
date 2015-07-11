@@ -11,6 +11,7 @@
         var isLoggedIn;
 
 
+
         // On successful registration, set cookies, update headers, route to welcom
         var _successReg = function (data) {
           _putCookies(data);
@@ -97,6 +98,10 @@
           } else {
             HEROKU.CONFIG.headers['access_token'] = accessToken;
           }
+        };
+
+        this.getCurrentUser = function () {
+          $rootScope.currentUser = $cookies.getObject('currentUser');
         };
 
       }

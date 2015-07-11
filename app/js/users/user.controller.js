@@ -6,7 +6,7 @@
     .controller('UserCtrl', ['$cookies', '$rootScope', '$scope', 'UserService', '$state', '$stateParams',
       function ($cookies, $rootScope, $scope, UserService, $state, $stateParams) {
 
-        $scope.user = $cookies.getObject('currentUser');
+        $scope.user = $rootScope.currentUser;
 
         $scope.eventSources = [{
 
