@@ -18,6 +18,8 @@
           'Running'
         ];
 
+        $scope.user = $cookies.getObject('currentUser');
+
         $scope.userInterests = {
           interests: []
         };
