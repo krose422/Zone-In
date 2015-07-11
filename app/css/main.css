@@ -661,7 +661,7 @@ ul {
         clear: both;
         content: "";
         display: table; }
-      .plan-training-page .workout-library .workout-library-ul li.block {
+      .plan-training-page .workout-library .workout-library-ul li.block, .plan-training-page .workout-library .workout-library-ul .caption {
         float: left;
         display: block;
         margin-right: 2.35765%;
@@ -673,33 +673,33 @@ ul {
         -o-box-shadow: 0px 0.5px 2px #D0C8C5;
         box-shadow: 0px 0.5px 2px #D0C8C5;
         overflow: hidden; }
-        .plan-training-page .workout-library .workout-library-ul li.block:last-child {
+        .plan-training-page .workout-library .workout-library-ul li.block:last-child, .plan-training-page .workout-library .workout-library-ul .caption:last-child {
           margin-right: 0; }
-        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n) {
+        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n), .plan-training-page .workout-library .workout-library-ul .caption:nth-child(2n) {
           margin-right: 0; }
-        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n+1) {
+        .plan-training-page .workout-library .workout-library-ul li.block:nth-child(2n+1), .plan-training-page .workout-library .workout-library-ul .caption:nth-child(2n+1) {
           clear: left; }
-        .plan-training-page .workout-library .workout-library-ul li.block p {
+        .plan-training-page .workout-library .workout-library-ul li.block p, .plan-training-page .workout-library .workout-library-ul .caption p {
           font-size: .5em;
           display: inline-block;
           margin: 0;
           padding: 0 0.5em; }
-        .plan-training-page .workout-library .workout-library-ul li.block .workout-title {
+        .plan-training-page .workout-library .workout-library-ul li.block .workout-title, .plan-training-page .workout-library .workout-library-ul .caption .workout-title {
           overflow: hidden;
           background-color: #499989;
           border-radius: 0; }
-          .plan-training-page .workout-library .workout-library-ul li.block .workout-title h4 {
+          .plan-training-page .workout-library .workout-library-ul li.block .workout-title h4, .plan-training-page .workout-library .workout-library-ul .caption .workout-title h4 {
             font-size: .7em;
             margin: 0;
             padding: .5em;
             color: #FAFAFA; }
-        .plan-training-page .workout-library .workout-library-ul li.block .icon {
+        .plan-training-page .workout-library .workout-library-ul li.block .icon, .plan-training-page .workout-library .workout-library-ul .caption .icon {
           overflow: hidden;
           height: 2em;
           display: inline-block;
           float: right;
           padding: 0 0.5em; }
-          .plan-training-page .workout-library .workout-library-ul li.block .icon img {
+          .plan-training-page .workout-library .workout-library-ul li.block .icon img, .plan-training-page .workout-library .workout-library-ul .caption .icon img {
             height: 1em; }
   .plan-training-page .create-plan {
     float: left;
@@ -821,3 +821,17 @@ ul {
     line-height: 1.2em;
     margin: 0;
     padding: 0.1em 0.5em; }
+
+/* TESTING
+---------- */
+.planning-page .planning-content .planning-drops .planning-dropzone {
+  border: 1px solid #ccc;
+  overflow: hidden;
+  display: inline-block; }
+  .planning-page .planning-content .planning-drops .planning-dropzone .planning-thumbnail {
+    width: 100px;
+    height: 200px; }
+
+.planning-page .workout-list-container {
+  overflow: hidden;
+  width: 100px; }

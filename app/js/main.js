@@ -69,7 +69,7 @@
 
           .state('training.plan', {
             url: '/plan',
-            templateUrl: 'js/templates/plantraining.tpl.html',
+            templateUrl: 'js/templates/planning.tpl.html',
             controller: 'PlanCtrl'
           })
 

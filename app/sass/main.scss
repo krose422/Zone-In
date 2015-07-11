@@ -888,7 +888,7 @@ ul {
       @include outer-container();
       overflow: hidden;
 
-      li.block {
+      li.block, .caption {
         @include span-columns(6);
         @include omega(2n);
         @include border($grey);
@@ -1104,4 +1104,48 @@ ul {
     margin: 0;
     padding: .1em .5em;
   }
+}
+
+
+
+/* TESTING
+---------- */
+
+.planning-page {
+  .planning-content {
+    .planning-drops {
+      .planning-dropzone {
+        border: 1px solid #ccc;
+        overflow: hidden;
+        display: inline-block;
+
+        .planning-thumbnail {
+          width: 100px;
+          height: 200px;
+        }
+      }
+    }
+  }
+
+  .workout-list-container {
+    overflow: hidden;
+    width: 100px;
+  }
+
+  // .workout-draggable {
+  //   width: 150px;
+  //   height: 30px;
+  //   padding: 4px;
+  //   background-color: blue;
+  //   color: white;
+  // }
+
+  // .workout-droppable {
+  //   width: 140px;
+  //   background-color: blue;
+  //   color: white;
+  //   margin: 10px;
+  // }
+
+
 }

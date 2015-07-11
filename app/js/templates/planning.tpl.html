@@ -1,0 +1,226 @@
+<div class="planning-page">
+  <div class="planning-content">
+    <ul class="planning-drops">
+
+      <li class="planning-dropzone">
+        <div class="planning-thumbnail"
+        data-drop="true"
+        ng-model="list1"
+        data-jqyoui-options="optionsList1"
+        jqyoui-droppable="{multiple: true}">
+          <div class="caption">
+            <div class="workout workout-draggable"
+            ng-repeat="w in list1"
+            ng-show="w.name"
+            data-drag="true"
+            data-jqyoui-options="{revert: 'invalid'}"
+            ng-model="list1"
+            jqyoui-draggable="{index: {{$index}}, animate:true}">
+
+              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                <h4>{{ w.name }}</h4>
+              </div>
+              <div class="workout-descrip">
+                <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+              </div>
+              <div class="workout-image">
+                <img src="{{ w.image_url }}">
+              </div>
+
+              <p>Created by: {{ w.creator_id }}</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="planning-dropzone">
+        <div class="planning-thumbnail"
+        data-drop="true"
+        ng-model="list2"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list2])'}"
+        jqyoui-droppable="{multiple: true}">
+          <div class="caption">
+            <div class="workout workout-draggable"
+            ng-repeat="w in list2"
+            ng-show="w.name"
+            data-drag="true"
+            data-jqyoui-options="{revert: 'invalid'}"
+            ng-model="list2"
+            jqyoui-draggable="{index: {{$index}}, animate:true}">
+
+              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                <h4>{{ w.name }}</h4>
+              </div>
+              <div class="workout-descrip">
+                <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+              </div>
+              <div class="workout-image">
+                <img src="{{ w.image_url }}">
+              </div>
+
+              <p>Created by: {{ w.creator_id }}</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="planning-dropzone">
+        <div class="planning-thumbnail"
+        data-drop="true"
+        ng-model="list3"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list3])'}"
+        jqyoui-droppable="{multiple: true}">
+          <div class="caption">
+            <div class="workout workout-draggable"
+            ng-repeat="w in list3"
+            ng-show="w.name"
+            data-drag="true"
+            data-jqyoui-options="{revert: 'invalid'}"
+            ng-model="list3"
+            jqyoui-draggable="{index: {{$index}}, animate:true}">
+
+              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                <h4>{{ w.name }}</h4>
+              </div>
+              <div class="workout-descrip">
+                <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+              </div>
+              <div class="workout-image">
+                <img src="{{ w.image_url }}">
+              </div>
+
+              <p>Created by: {{ w.creator_id }}</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="planning-dropzone">
+        <div class="planning-thumbnail"
+        data-drop="true"
+        ng-model="list4"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])'}"
+        jqyoui-droppable="{multiple: true}">
+          <div class="caption">
+            <div class="workout workout-draggable"
+            ng-repeat="w in list4"
+            ng-show="w.name"
+            data-drag="true"
+            data-jqyoui-options="{revert: 'invalid'}"
+            ng-model="list4"
+            jqyoui-draggable="{index: {{$index}}, animate:true}">
+
+              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                <h4>{{ w.name }}</h4>
+              </div>
+              <div class="workout-descrip">
+                <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+              </div>
+              <div class="workout-image">
+                <img src="{{ w.image_url }}">
+              </div>
+
+              <p>Created by: {{ w.creator_id }}</p>
+              <div class="icon">
+                <img ng-src="{{ checkType(w) }}">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="workouts-inner">
+    <div class="workout-list-container">
+      <div class="workout workout-droppable"
+      ng-repeat="w in workoutList"
+      ng-model="workoutList"
+      data-drop="true"
+      data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=workoutList])'}"
+      jqyoui-droppable="{index: {{$index}}}">
+        <div class="workout-draggable"
+        data-drag="true"
+        data-jqyoui-options="{revert: 'invalid'}"
+        ng-model="workoutList"
+        jqyoui-draggable="{index: {{$index}}, placeholder: true, animate: true}"
+        >
+
+          <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+            <h4>{{ w.name }}</h4>
+          </div>
+          <div class="workout-descrip">
+            <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+          </div>
+          <div class="workout-image">
+            <img src="{{ w.image_url }}">
+          </div>
+
+          <p>Created by: {{ w.creator_id }}</p>
+          <div class="icon">
+            <img ng-src="{{ checkType(w) }}">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+<!--   <div class="workout-library">
+    <ul class="workout-library-ul">
+      <p>Click + to add any workouts to your training plan</p>
+      <p>sort by</p>
+      <p ng-click="sort(workoutList, 'color')">Workout Type</p>
+
+      <li class="workout-card block"
+      ng-repeat="w in workoutList"
+      data-drag="true"
+      data-jqyoui-options="{revert: 'invalid', helper: 'clone'}"
+      ng-model="list1"
+      jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: 'keep'}">
+
+        <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+          <h4>{{ w.name }}</h4>
+        </div>
+        <div class="workout-descrip">
+          <p>Type: {{ w.description }}</p><p>Length: {{ w.time }} minutes</p>
+        </div>
+        <div class="workout-image">
+          <img src="{{ w.image_url }}">
+        </div>
+
+        <p>Created by: {{ w.creator_id }}</p>
+        <div class="icon">
+          <img ng-src="{{ checkType(w) }}">
+        </div>
+      </li>
+
+    </ul>
+  </div> --><!-- end workout library div -->
+
+
+
+</div>

@@ -6,6 +6,12 @@
     .controller('PlanCtrl', ['$scope', 'PlanService', 'UserService', '$state', 'ngDialog', '$http', 'HEROKU', '$compile', '$filter',
       function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter) {
 
+        $scope.list1 = [];
+        $scope.list2 = [];
+        $scope.list3 = [];
+        $scope.list4 = [];
+
+
         var endpoint = HEROKU.URL;
 
         $scope.sort = function(workoutList, predicate) {
