@@ -909,9 +909,11 @@ ul {
       padding: 1em;
       @include border($grey);
       @include boxShadow();
+      height: 100vh;
+      overflow: scroll;
 
       .workout-list-container {
-        overflow: scroll;
+        // overflow: scroll;
       }
     }
 
@@ -937,7 +939,7 @@ ul {
       }
 
       .planning-dropzone {
-        // border: 1px solid #ccc;
+        border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
         @include span-columns(3.5 of 7);
@@ -1037,17 +1039,30 @@ ul {
     .workout-interval {
       form {
 
+        input {
+          margin: 0;
+          // display: inline-block;
+          // width: 32%;
+          // text-align: center;
+          // font-size: .5em;
+          font-family: $tinos;
+        }
+
         p {
           display: block;
-          font-family: $fjalla;
+          font-family: $tinos;
           text-align: center;
         }
 
         label {
-          font-family: $fjalla;
+          font-family: $tinos;
           font-size: 1em;
-          display: inline-block;
           padding: .2em;
+        }
+
+        button {
+          font-size: 1em;
+          font-family: $fjalla;
         }
       }
     }

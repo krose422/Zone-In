@@ -34,14 +34,21 @@
           $scope.workoutList = _.sortBy(workoutList, predicate);
         };
 
+        PlanService.getPlans()
+          .success(function (data) {
+            console.log('plans', data);
+          });
+
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            // console.log($scope.workoutList);
+            console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
-              w.planDays = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
-              w.select = 'Select Days for Workout';
+              // console.log(w.steps);
+              // w.planDays = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
+              // w.select = 'Select Days for Workout';
+              w.workoutDate = '';
 
               if (w.description === 'Endurance') {
                 w.color = '#2E313D';
@@ -92,17 +99,25 @@
           if (contain === false) {
             $scope.planWorkouts.workoutIds.push(workoutId);
           }
-
-          console.log($scope.planWorkouts.workoutIds);
+          // console.log($scope.planWorkouts.workoutIds);
           // $(event.currentTarget).find('h5').html('Added to Plan');
+        };
+
+        $scope.addDate = function (workoutDate) {
+          $scope.planWorkouts.workoutDates.push(workoutDate.date);
+          $scope.planWorkouts.workoutDates.push(workoutDate.secondDate);
+          $scope.planWorkouts.workoutDates.push(workoutDate.thirdDate);
+          console.log($scope.planWorkouts.workoutDates);
         };
 
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
         // console.log($scope.currentTrainingPlan.id);
 
         $scope.planWorkouts = {
-          workoutIds: []
+          workoutIds: [],
+          workoutDates: []
         };
+
 
         var TrainingPlanWorkouts = function (options) {
           this.plan_id = $scope.currentTrainingPlan.id,
@@ -142,6 +157,10 @@
           console.log('delete function for ' + workoutId);
           var newArray = _.without($scope.planWorkouts.workoutIds, workoutId);
           $scope.planWorkouts.workoutIds = newArray;
+          // console.log(event.target);
+          // console.log($(event.target).parentsUntil('.planning-thumbnail'));
+          $(event.target).parentsUntil('li').remove();
+          console.log($scope.planWorkouts.workoutIds);
         };
 
         $scope.logoutUser = function () {
@@ -156,10 +175,21 @@
           PlanService.clickToOpenAddT();
         };
 
+        $scope.workoutSteps = [];
+
+        // Counter to keep track of additional step inputs
+        $scope.inputCounter = 1;
+
         // Send workout to database
-        $scope.addWorkout = function (workout) {
-          PlanService.addWorkout(workout);
-          $scope.closeThisDialog();
+        $scope.addWorkout = function (workout, steps) {
+          console.log(workout);
+          // $scope.workoutSteps.push(steps.first, steps.second, steps.third);
+          // workout.steps = $scope.workoutSteps;
+
+          PlanService.addWorkout(workout)
+            .then( function (data) {
+              $scope.closeThisDialog();
+            });
         };
 
         $scope.addTrainingPlan = function (plan) {

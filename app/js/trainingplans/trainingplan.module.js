@@ -2,24 +2,26 @@
 
   'use strict';
 
-  angular.module('PlanModule', ['ui.router',  'ui.calendar', 'ngDragDrop']);
-    // .directive ('datepicker', function () {
-    //   return {
-    //     restrict: 'A',
-    //     require : 'ngModel',
-    //     link : function (scope, element, attrs, ngModelCtrl) {
-    //         $(function(){
-    //             element.datepicker({
-    //                 dateFormat:'dd/mm/yy',
-    //                 onSelect:function (date) {
-    //                     scope.$apply(function () {
-    //                         ngModelCtrl.$setViewValue(date);
-    //                     });
-    //                 }
-    //             });
-    //         });
-    //     }
-    //   };
-    // });
+  angular.module('PlanModule', ['ui.router',  'ui.calendar', 'ngDragDrop'])
+    .directive('addInput', ['$compile',
+      function ($compile) {
+        return {
+          restrict: 'A',
+          link: function (scope, element, attrs) {
+            element.find('.addStep').bind('click', function () {
+              console.log('inside directive');
+              var input = angular.element('<div><input type="text" placeholder="Workout Step" ng-model="workout.steps[' + scope.inputCounter + ']"></div>');
+              console.log(scope.inputCounter);
+
+              var compile = $compile(input)(scope);
+
+              element.append(input);
+
+              scope.inputCounter++;
+            });
+          }
+        }
+      }
+    ]);
 
 }());

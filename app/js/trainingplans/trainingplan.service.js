@@ -26,15 +26,19 @@
         };
 
         this.finishTrainingPlan = function (workouts) {
-          return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
-            .success( function (data) {
-              $cookies.remove('currentPlan');
-              console.log('successful training plan finish');
-            });
+          // return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
+          //   .success( function (data) {
+          //     $cookies.remove('currentPlan');
+          //     $state.go('dashboard.calendar');
+          //   });
         };
 
         this.getWorkouts = function () {
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);
+        };
+
+        this.getPlans = function () {
+          return $http.get(endpoint + '/plans/creator', HEROKU.CONFIG);
         };
 
         this.getUserWorkouts = function () {
@@ -44,7 +48,7 @@
         this.addWorkout = function (workout) {
           return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
             .success( function (data) {
-              // $state.go('training.workouts');
+              $state.go('training.plan');
             });
         };
 
