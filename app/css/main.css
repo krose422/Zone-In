@@ -725,6 +725,16 @@ ul {
           -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
           -o-box-shadow: 0px 0.5px 2px #D0C8C5;
           box-shadow: 0px 0.5px 2px #D0C8C5; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout:hover .workout-title .fa {
+            color: rgba(250, 250, 250, 0.5); }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title .fa {
+            display: inline-block;
+            float: right;
+            color: rgba(250, 250, 250, 0);
+            font-size: 1.5em;
+            padding: .3em; }
+            .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title .fa:hover {
+              color: rgba(255, 83, 78, 0.7); }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-descrip {
             text-align: left; }
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-descrip .icon {

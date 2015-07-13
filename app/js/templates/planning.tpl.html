@@ -2,7 +2,7 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h4 class="training-plan-name">{{ currentTrainingPlan.name }} {{ currentTrainingPlan.id }}</h4>
+      <h4 class="training-plan-name">{{ currentTrainingPlan.name }}</h4>
       <div class="dates">
         <h5>{{ formatDate(currentTrainingPlan.start_date) }} to</h5>
         <h5>{{ formatDate(currentTrainingPlan.end_date) }}</h5>
@@ -27,7 +27,7 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
-        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: true, animate: false}"
+        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: 'keep', animate: false}"
         ng-hide="!w.name"
         >
 
@@ -68,6 +68,10 @@
     </div>
   </div>
 
+<!-- <<<<<<<<<<<<<<<<<<<<<<< ******************** >>>>>>>>>>>>>>>>>>>>>>> -->
+<!-- <<<<<<<<<<<<<<<<<<<<<<< START ALL DROP ZONES >>>>>>>>>>>>>>>>>>>>>>> -->
+<!-- <<<<<<<<<<<<<<<<<<<<<<< ******************** >>>>>>>>>>>>>>>>>>>>>>> -->
+
 
     <ul class="planning-drops">
 
@@ -93,6 +97,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>
@@ -118,7 +125,6 @@
               </div>
               </div>
 
-
             </div>
           </div>
         </div>
@@ -142,6 +148,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -191,6 +200,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -237,6 +249,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -283,6 +298,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -329,6 +347,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -375,6 +396,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -421,6 +445,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -466,6 +493,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -512,6 +542,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -558,6 +591,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -604,6 +640,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -650,6 +689,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -696,6 +738,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -742,6 +787,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -788,6 +836,9 @@
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
+                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                  <i class="fa fa-times-circle"></i>
+                </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>

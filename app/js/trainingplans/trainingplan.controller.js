@@ -138,6 +138,12 @@
           return formattedDate;
         };
 
+        $scope.deleteWorkout = function (workoutId) {
+          console.log('delete function for ' + workoutId);
+          var newArray = _.without($scope.planWorkouts.workoutIds, workoutId);
+          $scope.planWorkouts.workoutIds = newArray;
+        };
+
         $scope.logoutUser = function () {
           UserService.logoutUser();
         };
@@ -152,13 +158,11 @@
 
         // Send workout to database
         $scope.addWorkout = function (workout) {
-          console.log(workout);
           PlanService.addWorkout(workout);
           $scope.closeThisDialog();
         };
 
         $scope.addTrainingPlan = function (plan) {
-          console.log(plan);
           PlanService.addTrainingPlan(plan)
           // $scope.trainingPlan = plan;
             .then( function (data) {

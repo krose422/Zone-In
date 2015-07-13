@@ -953,6 +953,27 @@ ul {
           @include border($grey);
           @include boxShadow();
 
+          &:hover {
+            .workout-title .fa {
+              color: rgba(250, 250, 250, .5);
+            }
+          }
+
+          .workout-title {
+
+            .fa {
+              display: inline-block;
+              float: right;
+              color: rgba(250, 250, 250, 0);
+              font-size: 1.5em;
+              padding: .3em;
+
+              &:hover {
+                color: rgba(255, 83, 78, .7);
+              }
+            }
+          }
+
           .workout-descrip {
             text-align: left;
 
