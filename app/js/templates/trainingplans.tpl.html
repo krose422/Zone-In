@@ -55,7 +55,7 @@
   <ul class="allplans-ul">
   <h4>Training In Progress</h4>
 
-    <li class="allplans" ng-repeat="t in trainingPlan">
+    <li class="allplans" ng-repeat="t in trainingPlans">
       <i class="fa fa-plus-square" ng-click="expand()"></i>
       <i class="fa fa-minus-square hide" ng-click="expand()"></i>
 
@@ -73,21 +73,18 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- end top div -->
 
       <div class="bottom hide">
-        <div class="left-info">
-          <div class="workout-image">
-            <img ng-src=" {{ getImage() }} ">
+        <div class="top-info">
+          <div class="training-description">
+            <p>Description: {{ t.description }}</p>
           </div>
         </div>
 
-        <div class="right-info">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
+        <ol class="workout-steps">
+          <li ng-repeat="workout in t.workouts track by $index">{{ workout }}</li>
+        </ol>
       </div>
     </li>
 

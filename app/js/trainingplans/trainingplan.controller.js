@@ -34,15 +34,34 @@
           $scope.workoutList = _.sortBy(workoutList, predicate);
         };
 
-        PlanService.getPlans()
-          .success(function (data) {
-            console.log('plans', data);
+        var _getPlanWorkouts = function () {
+          PlanService.getPlans()
+            .success(function (data) {
+              $scope.trainingPlans = data.plans;
+              // console.log($scope.trainingPlans);
+
+
+              $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
+              plan.workoutData = [];
+                // console.log($scope.workoutList);
+                return _.filter(plan.workouts, function (workoutId) {
+                  // console.log(workoutId);
+                  $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
+                  console.log($scope.workoutInfo);
+                  plan.workoutData.push($scope.workoutInfo);
+                  return $scope.workoutInfo;
+                });
+              });
+              console.log($scope.trainingPlans);
           });
+        };
+
+
 
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            console.log($scope.workoutList);
+            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
               // console.log(w.steps);
@@ -64,8 +83,13 @@
                 w.color = '#D0C8C5';
               }
             });
+          })
+
+          .then(function (data) {
+            _getPlanWorkouts();
           });
 
+        // Check type of workout and apply correct icon
         $scope.iconShow = function (sport) {
           console.log(sport);
           if (boolean !== true) {
@@ -131,21 +155,6 @@
           PlanService.finishTrainingPlan(trainingPlanWorkouts);
         };
 
-        // DUMMY DATA
-        // $scope.trainingPlan = [
-        // {
-        //   name: 'Three Week Strength',
-        //   start_date: 'July 9',
-        //   end_date: 'July 27',
-        //   image_url: 'http://www.placehold.it/300x300'
-        // },
-        // {
-        //   name: '10k Training Plan',
-        //   start_date: 'July 11',
-        //   end_date: 'August 11',
-        //   image_url: 'http://www.placehold.it/300x300'
-        // }
-        // ];
 
         $scope.formatDate = function (date) {
           var momentDate = moment(date);

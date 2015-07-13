@@ -26,11 +26,11 @@
         };
 
         this.finishTrainingPlan = function (workouts) {
-          // return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
-          //   .success( function (data) {
-          //     $cookies.remove('currentPlan');
-          //     $state.go('dashboard.calendar');
-          //   });
+          return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
+            .success( function (data) {
+              $cookies.remove('currentPlan');
+              $state.go('dashboard.calendar');
+            });
         };
 
         this.getWorkouts = function () {

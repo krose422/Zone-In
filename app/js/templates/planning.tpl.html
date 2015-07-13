@@ -48,13 +48,14 @@
           <div class="workout-image">
             <img src="{{ w.image_url }}">
           </div>
-          <ul class="workout-steps-container">
-          <li>{{ w.steps }}</li>
+
+          <ul class="workout-steps-container hide">
+            <li>{{ w.steps }}</li>
             <!-- <li class="workout-steps" ng-repeat="s in w.steps track by $index">{{ s }}</li> -->
           </ul>
 
           <div class="workout-bottom">
-            <p>Created by: {{ w.creator_id }}</p>
+            <!-- <p>Created by: {{ w.creator_id }}</p> -->
           <div class="workout-interval hide">
             <form>
               <!-- <p>{{ w.select }}</p> -->
