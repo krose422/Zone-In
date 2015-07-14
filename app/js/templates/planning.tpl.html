@@ -36,12 +36,11 @@
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
             <h4>{{ w.name }}</h4>
             <div class="icon">
-              <!-- <img ng-src="{{ checkType(w) }}"> -->
-              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(w.cycling) }}">
-              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(w.running) }}">
-              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(w.swimming) }}">
-              <img src="images/weight_white.png" class="sport-icon {{ showIcon(w.weightlifting) }}">
-              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(w.circuittraining) }}">
+              <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
             </div>
           </div>
           <div class="workout-descrip">

@@ -62,7 +62,7 @@
       <div class="top">
         <h4 class="plan-name"> {{ t.name }} </h4>
         <div class="top-right">
-          <p class="dates">{{ t.start_date }} - {{ t.end_date }}</p>
+          <p class="dates">{{ formatDate(t.start_date[0]) }} - {{ formatDate(t.end_date[0]) }}</p>
         </div>
 
         <div class="top-bottom">
@@ -88,12 +88,11 @@
           <div class="workout-title" ng-style="{'background-color':'{{ workout.color }}'}">
             <h4>{{ workout.name }}</h4>
             <div class="icon">
-              <!-- <img ng-src="{{ checkType(w) }}"> -->
-              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(w.cycling) }}">
-              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(w.running) }}">
-              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(w.swimming) }}">
-              <img src="images/weight_white.png" class="sport-icon {{ showIcon(w.weightlifting) }}">
-              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(w.circuittraining) }}">
+              <img ng-src="{{ iconShowCycle(workout) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(workout) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(workout) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(workout) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(workout) }}" class="circuits sport-icon hide">
             </div>
           </div>
           <div class="workout-descrip">
@@ -103,10 +102,9 @@
             <img src="{{ workout.image_url }}">
           </div>
 
-          <ul class="workout-steps-container hide">
-            <li>{{ workout.steps }}</li>
-            <!-- <li class="workout-steps" ng-repeat="s in workout.steps track by $index">{{ s }}</li> -->
-          </ul>
+<!--           <ul class="workout-steps-container hide">
+            <li class="workout-steps" ng-repeat="s in workout.steps track by $index">{{ s }}</li>
+          </ul> -->
 
           </li>
         </ul>

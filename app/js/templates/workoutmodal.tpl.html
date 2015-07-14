@@ -3,14 +3,13 @@
   <div class="workout">
       <div class="workout-title" ng-style="{'background-color':'{{ ngDialogData.color }}'}">
           <h4>{{ ngDialogData.name }}</h4>
-          <div class="icon">
-              <!-- <img ng-src="{{ checkType(w) }}"> -->
-              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(ngDialogData.cycling) }}">
-              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(ngDialogData.running) }}">
-              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(ngDialogData.swimming) }}">
-              <img src="images/weight_white.png" class="sport-icon {{ showIcon(ngDialogData.weightlifting) }}">
-              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(ngDialogData.circuittraining) }}">
-          </div>
+            <div class="icon">
+              <img ng-src="{{ iconShowCycle(ngDialogData) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(ngDialogData) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(ngDialogData) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(ngDialogData) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(ngDialogData) }}" class="circuits sport-icon hide">
+            </div>
       </div>
       <div class="workout-descrip">
           <p>{{ ngDialogData.description }} |</p>

@@ -37,8 +37,8 @@
         var _getPlanWorkouts = function () {
           PlanService.getPlans()
             .success(function (data) {
-              $scope.trainingPlans = data.plans;
-              // console.log($scope.trainingPlans);
+              $scope.trainingPlans = data;
+              console.log($scope.trainingPlans);
 
 
               $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
@@ -47,7 +47,7 @@
                 return _.filter(plan.workouts, function (workoutId) {
                   // console.log(workoutId);
                   $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
-                  console.log($scope.workoutInfo);
+                  // console.log($scope.workoutInfo);
                   plan.workoutData.push($scope.workoutInfo);
                   return $scope.workoutInfo;
                 });
@@ -57,11 +57,10 @@
         };
 
 
-
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            // console.log($scope.workoutList);
+            console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
               // console.log(w.steps);
@@ -74,11 +73,11 @@
               } else if (w.description === 'Strength') {
                 w.color = '#176785';
               } else if (w.description === 'Agility') {
-                w.color = '#499989';
+                w.color = '#0F4559';
               } else if (w.description === 'Speed') {
                 w.color = '#BED194';
               } else if (w.description === 'Flexibility') {
-                w.color = '#0F4559';
+                w.color = '#499989';
               } else {
                 w.color = '#D0C8C5';
               }
@@ -90,21 +89,47 @@
           });
 
         // Check type of workout and apply correct icon
-        $scope.iconShow = function (sport) {
-          console.log(sport);
-          if (boolean !== true) {
-            return 'hide';
+        $scope.iconShowRunning = function (workout) {
+          if (workout.running === true) {
+            $('.running').removeClass('hide');
+            return 'images/running_icon_white.png';
           }
         };
 
-        // $scope.checkType = function (workout) {
-        //     if (workout.running === true) {
-        //       return 'images/running_icon_white.png';
-        //     }
-        //     if (workout.weightlifting === true) {
-        //       return 'images/weight_white.png';
-        //     }
-        // };
+        $scope.iconShowSwimming = function (workout) {
+          if (workout.swimming === true) {
+            $('.swimming').removeClass('hide');
+            return 'images/swimming_white.png';
+          };
+        };
+
+        $scope.iconShowCircuit = function (workout) {
+          if (workout.circuits === true) {
+            $('.circuits').removeClass('hide');
+            return 'images/circuit_white.png';
+          }
+        };
+
+        $scope.iconShowCycle = function (workout) {
+          if (workout.cycling === true) {
+            $('.cycling').removeClass('hide');
+            return 'images/cycling_white.jpg';
+          }
+        };
+
+        $scope.iconShowWeights = function (workout) {
+          if (workout.weightlifting === true) {
+            $('.weights').removeClass('hide');
+            return 'images/weight_white.png';
+          }
+        };
+
+        $scope.checkType = function (workoutType) {
+          console.log(workoutType);
+            if (workoutType === true) {
+              ('images/cycling_white.png');
+            }
+        };
 
         PlanService.getUserWorkouts()
           .success(function (data) {
