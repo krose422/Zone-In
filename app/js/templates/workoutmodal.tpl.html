@@ -1,0 +1,31 @@
+<div class="workout-modal">
+
+  <div class="workout">
+      <div class="workout-title" ng-style="{'background-color':'{{ ngDialogData.color }}'}">
+          <h4>{{ ngDialogData.name }}</h4>
+          <div class="icon">
+              <!-- <img ng-src="{{ checkType(w) }}"> -->
+              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(ngDialogData.cycling) }}">
+              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(ngDialogData.running) }}">
+              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(ngDialogData.swimming) }}">
+              <img src="images/weight_white.png" class="sport-icon {{ showIcon(ngDialogData.weightlifting) }}">
+              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(ngDialogData.circuittraining) }}">
+          </div>
+      </div>
+      <div class="workout-descrip">
+          <p>{{ ngDialogData.description }} |</p>
+          <p>{{ ngDialogData.time }} minutes</p>
+      </div>
+
+      <div class="workout-modal-content">
+        <div class="workout-image">
+            <img src="{{ ngDialogData.image_url }}">
+        </div>
+        <ol class="workout-steps-container custom-counter">
+            <!-- <li>{{ ngDialogData.steps }}</li> -->
+            <li class="workout-steps" ng-repeat="s in ngDialogData.steps track by $index">{{ s }}</li>
+        </ol>
+      </div>
+  </div>
+
+</div>

@@ -82,10 +82,37 @@
           </div>
         </div>
 
-        <ol class="workout-steps">
-          <li ng-repeat="workout in t.workouts track by $index">{{ workout }}</li>
-        </ol>
+        <ul class="workout-steps">
+          <li class="workout" ng-repeat="workout in t.workoutData track by $index" ng-click="openWorkoutModal(workout)">
+
+          <div class="workout-title" ng-style="{'background-color':'{{ workout.color }}'}">
+            <h4>{{ workout.name }}</h4>
+            <div class="icon">
+              <!-- <img ng-src="{{ checkType(w) }}"> -->
+              <img src="images/cycling_white.png" class="sport-icon {{ showIcon(w.cycling) }}">
+              <img src="images/running_icon_white.png" class="sport-icon {{ showIcon(w.running) }}">
+              <img src="images/swimming_white.png" class="sport-icon {{ showIcon(w.swimming) }}">
+              <img src="images/weight_white.png" class="sport-icon {{ showIcon(w.weightlifting) }}">
+              <img src="images/circuit_white.png" class="sport-icon {{ showIcon(w.circuittraining) }}">
+            </div>
+          </div>
+          <div class="workout-descrip">
+            <p>{{ workout.description }}</p><p>{{ workout.time }} minutes</p>
+          </div>
+          <div class="workout-image">
+            <img src="{{ workout.image_url }}">
+          </div>
+
+          <ul class="workout-steps-container hide">
+            <li>{{ workout.steps }}</li>
+            <!-- <li class="workout-steps" ng-repeat="s in workout.steps track by $index">{{ s }}</li> -->
+          </ul>
+
+          </li>
+        </ul>
+
       </div>
+
     </li>
 
   </ul>

@@ -29,7 +29,7 @@
           return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
             .success( function (data) {
               $cookies.remove('currentPlan');
-              $state.go('dashboard.calendar');
+              $state.go('training');
             });
         };
 
@@ -63,6 +63,14 @@
           ngDialog.open({
             template: 'js/templates/addtrainingplan.tpl.html',
             controller: 'PlanCtrl'
+          });
+        };
+
+        this.openWorkoutModal = function (workout) {
+          ngDialog.open({
+            template: 'js/templates/workoutmodal.tpl.html',
+            controller: 'PlanCtrl',
+            data: workout
           });
         };
 

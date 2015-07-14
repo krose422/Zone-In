@@ -184,6 +184,10 @@
           PlanService.clickToOpenAddT();
         };
 
+        $scope.openWorkoutModal = function (workout) {
+          PlanService.openWorkoutModal(workout);
+        };
+
         $scope.workoutSteps = [];
 
         // Counter to keep track of additional step inputs
@@ -191,7 +195,7 @@
 
         // Send workout to database
         $scope.addWorkout = function (workout, steps) {
-          console.log(workout);
+          // console.log(workout);
           // $scope.workoutSteps.push(steps.first, steps.second, steps.third);
           // workout.steps = $scope.workoutSteps;
 
@@ -207,6 +211,7 @@
             .then( function (data) {
               $state.go('training.plan');
               $scope.closeThisDialog();
+
             });
         };
 

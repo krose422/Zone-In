@@ -19,6 +19,7 @@ $darkgrey: #424242;
 $darkgreyrgb: rgba(66, 66, 66, .9);
 
 $tinos: 'Tinos', serif;
+$opensans: 'Open Sans', sans-serif;
 $fjalla: 'Fjalla One', sans-serif;
 $gentium: 'Gentium Book Basic', serif;
 
@@ -27,7 +28,7 @@ $gentium: 'Gentium Book Basic', serif;
 
 @mixin border ($color) {
   border: 1px solid $color;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 @mixin transition($time) {
@@ -85,6 +86,70 @@ $gentium: 'Gentium Book Basic', serif;
     padding-top: 12%;
     font-size: 4em;
   }
+}
+
+/* WORKOUT CARD MIXIN
+---------------- */
+
+@mixin workoutCard() {
+    // @include border($grey);
+    // @include boxShadow();
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1em;
+    background-color: #FAFAFA;
+
+    p {
+      font-size: 1.3em;
+      display: inline-block;
+      margin: 0;
+      padding: 0 .5em;
+    }
+
+    .workout-title {
+      overflow: hidden;
+      // background-color: $teal;
+      border-radius: 0;
+
+      h4 {
+        font-size: 1.6em;
+        margin: 0;
+        padding: .5em;
+        color: $background;
+        text-align: center;
+        float: left;
+      }
+    }
+
+    .workout-descrip {
+      // text-align: center;
+    }
+
+    .icon {
+      overflow: hidden;
+      height: 3em;
+      display: inline-block;
+      float: right;
+      padding: 1em;
+
+      img {
+        height: 2em;
+      }
+    }
+
+    .workout-image {
+      width: 100%;
+      max-height: 10em;
+      overflow: hidden;
+    }
+
+    .workout-steps-container {
+      padding: .5em;
+
+      li {
+        font-size: 1em;
+      }
+    }
 }
 
 /* GLOBAL STYLES
@@ -163,7 +228,7 @@ p {
 }
 
 div {
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -757,7 +822,7 @@ ul {
     clear: both;
     @include border(#EDEEEE);
     padding: 1em;
-    // margin: 1em;
+    margin: .5em 0;
     background-color: white;
 
     .check {
@@ -800,7 +865,7 @@ ul {
 
       .top-bottom {
         overflow: hidden;
-        @include fill-parent();
+        @include outer-container(100%);
         margin: .5em 0;
 
         .progress-bar-indication {
@@ -826,31 +891,101 @@ ul {
 
     .bottom {
       @include outer-container(100%);
-    }
 
-    .top-info {
-      overflow: hidden;
-      clear: both;
+      .top-info {
+        overflow: hidden;
+        clear: both;
 
-      .training-description {
+        .training-description {
 
-        p {
-          font-size: .5em;
+          p {
+            font-size: 1em;
+          }
+        }
+      }
+
+      .workout-steps {
+        overflow: hidden;
+        padding: 0;
+
+        .workout {
+          font-size: 62.5%;
+          @include span-columns(2);
+          @include workoutCard();
+          display: inline;
+          border-radius: 2px;
+          @include border($grey);
+          @include boxShadow();
         }
       }
     }
   }
+}
 
-    .right-info {
-      @include span-columns(9);
-      display: inline-block;
-      float: left;
-      overflow: hidden;
+/* WORKOUT MODAL
+---------------- */
+
+.workout-modal {
+  width: 95%;
+  margin: auto;
+  overflow: hidden;
+
+  .workout {
+    @include workoutCard();
+    background-color: #fff;
+    @include boxShadow();
+    @include border($grey);
+    cursor: auto;
+
+    .workout-descrip {
+      text-align: center;
+      font-family: $tinos;
+      font-size: 2em;
+      margin-bottom: 1em;
 
       p {
-        font-size: .6em;
+        padding: 0;
       }
     }
+
+    .workout-modal-content {
+      padding: 0 2em 2em;
+      overflow: hidden;
+    }
+
+    .workout-image {
+      width: 30%;
+      overflow: visible;
+      // margin: auto;
+      float: left;
+      display: inline-block;
+    }
+
+    .custom-counter {
+      width: 65%;
+      float: right;
+      margin: 0 1em 0 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-family: $tinos;
+        counter-increment: step-counter;
+        margin-bottom: 1em;
+      }
+
+      li::before {
+        content: counter(step-counter);
+        margin: 0 5px;
+        font-size: 80%;
+        background-color: $red;
+        color: white;
+        font-weight: bold;
+        padding: 3px 8px;
+        border-radius: 2px;
+      }
+    }
+
   }
 }
 
@@ -912,12 +1047,12 @@ ul {
       background-color: #fff;
       @include border($grey);
       @include boxShadow();
-      border-radius: 4px;
+      border-radius: 2px;
       overflow: scroll;
       height: 100vh;
 
       button {
-        width: 100%;
+        // width: 100%;
         margin: 0;
       }
 
@@ -934,6 +1069,7 @@ ul {
         margin: 0 .2em .4em .2em;
 
         .workout {
+          @include workoutCard();
           @include fill-parent;
           overflow: hidden;
           font-size: .5em;
@@ -943,6 +1079,7 @@ ul {
           @include boxShadow();
 
           &:hover {
+
             .workout-title .fa {
               color: rgba(250, 250, 250, .5);
             }
@@ -962,24 +1099,12 @@ ul {
               }
             }
           }
-
           .workout-descrip {
             text-align: left;
-
-            .icon {
-              height: 2em;
-              padding: .2em;
-            }
-              img {
-                height: 100%;
-              }
-            }
           }
-
           p {
             font-size: 1.2em;
           }
-
           .workout-image {
             overflow: hidden;
             height: 9em;
@@ -989,10 +1114,10 @@ ul {
             }
           }
         }
+      }
 
-        .planning-thumbnail {
-          height: 10em;
-        }
+      .planning-thumbnail {
+          height: 12em;
       }
     }
   }
@@ -1002,104 +1127,10 @@ ul {
     @include omega(2n);
     // @include border($grey);
     // @include boxShadow();
-    overflow: hidden;
-    cursor: pointer;
-    margin: 1em ;
-    background-color: #FAFAFA;
-
-    .workout-descrip {
-      // text-align: center;
-    }
-
-    .workout-image {
-      width: 100%;
-      max-height: 10em;
-      overflow: hidden;
-
-      // img {
-      //   height: 100%;
-      // }
-    }
-
-    .workout-steps-container {
-      padding: .5em;
-
-      li {
-        font-size: 1em;
-      }
-    }
-
-    .workout-bottom {
-      overflow: hidden;
-      clear: both;
-      background-color: #fff;
-    }
-
-    .workout-interval {
-      form {
-
-        input {
-          margin: 0;
-          // display: inline-block;
-          // width: 32%;
-          // text-align: center;
-          // font-size: .5em;
-          font-family: $tinos;
-        }
-
-        p {
-          display: block;
-          font-family: $tinos;
-          text-align: center;
-        }
-
-        label {
-          font-family: $tinos;
-          font-size: 1em;
-          padding: .2em;
-        }
-
-        button {
-          font-size: 1em;
-          font-family: $fjalla;
-        }
-      }
-    }
-
-    p {
-      font-size: 1.3em;
-      display: inline-block;
-      margin: 0;
-      padding: 0 .5em;
-      }
-
-      .workout-title {
-        overflow: hidden;
-        // background-color: $teal;
-        border-radius: 0;
-
-      h4 {
-        font-size: 1.6em;
-        margin: 0;
-        padding: .5em;
-        color: $background;
-        text-align: center;
-        float: left;
-      }
-    }
-
-    .icon {
-      overflow: hidden;
-      height: 3em;
-      display: inline-block;
-      float: right;
-      padding: 1em;
-
-      img {
-        height: 2em;
-      }
-    }
+    @include workoutCard();
   }
+}
+
 
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */
@@ -1225,7 +1256,7 @@ ul {
 
 .progress-bar-indication {
   $base-border-color: $green !default;
-  $base-border-radius: 4px !default;
+  $base-border-radius: 2px !default;
   $base-background-color: white !default;
   $base-line-height: 1.2em !default;
   $action-color: $green !default;
@@ -1258,10 +1289,6 @@ ul {
     padding: .1em .5em;
   }
 }
-
-
-/* TESTING
----------- */
 
 
 
