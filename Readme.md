@@ -1,6 +1,6 @@
-## Welcome to My Angular Project
+## Zone In
 
-> I am your Readme.md file, you should probably update me.
+Zone In is a web application for users to create individual workouts, then using those workouts, create week(s) long training plans. Users are able to share workouts and training plans with one another as well.
 
 
 ## Usage
