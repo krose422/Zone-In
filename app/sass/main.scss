@@ -116,8 +116,10 @@ $gentium: 'Gentium Book Basic', serif;
         margin: 0;
         padding: .5em;
         color: $background;
-        text-align: center;
+        // text-align: center;
+        text-align: left;
         float: left;
+        width: 60%;
       }
     }
 
@@ -142,6 +144,8 @@ $gentium: 'Gentium Book Basic', serif;
       max-height: 10em;
       overflow: hidden;
     }
+
+
 
     .workout-steps-container {
       padding: .5em;
@@ -997,6 +1001,10 @@ ul {
   overflow: hidden;
   @include outer-container(100%);
 
+  input {
+    margin: 0;
+  }
+
   .planning-content {
     overflow: hidden;
 
@@ -1094,6 +1102,9 @@ ul {
               color: rgba(250, 250, 250, 0);
               font-size: 1.5em;
               padding: .3em;
+              position: absolute;
+              z-index: 99;
+              right: 0;
 
               &:hover {
                 color: rgba(255, 83, 78, .7);
@@ -1112,6 +1123,27 @@ ul {
             border-radius: 0;
             img {
               width: 100%;
+            }
+          }
+
+          .workout-bottom {
+
+            form {
+              overflow: hidden;
+              padding: .5em;
+            }
+
+            label {
+              width: 25%;
+              display: inline;
+              float: left;
+              text-align: left;
+              // padding: .5em .2em;
+            }
+            input {
+              width: 70%;
+              display: inline;
+              float: right;
             }
           }
         }
@@ -1290,6 +1322,3 @@ ul {
     padding: .1em .5em;
   }
 }
-
-
-

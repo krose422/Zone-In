@@ -21,14 +21,14 @@
       <p ng-click="sort(workoutList, 'color')">Flexibility</p>
       <p ng-click="sort(workoutList, 'color')">Speed</p>
 
-      <p ng-click="sort(workoutList, 'color')">Creator</p>
-      <p ng-click="sort(workoutList, 'color')">Duration</p>
-      <p ng-click="sort(workoutList, 'color')">Workout Type</p>
-      <p ng-click="sort(workoutList, 'color')">Running</p>
-      <p ng-click="sort(workoutList, 'color')">Weight Lifting</p>
-      <p ng-click="sort(workoutList, 'color')">Swimming</p>
-      <p ng-click="sort(workoutList, 'color')">Cycling</p>
-      <p ng-click="sort(workoutList, 'color')">Circuit Training</p>
+      <p ng-click="sort(workoutList, 'workout_creator')">Creator</p>
+      <p ng-click="sort(workoutList, 'time')">Duration</p>
+      <!-- <p ng-click="sort(workoutList, 'color')">Workout Type</p> -->
+      <p ng-click="sortReverse(workoutList, 'running')">Running</p>
+      <p ng-click="sortReverse(workoutList, 'weightlifting')">Weight Lifting</p>
+      <p ng-click="sortReverse(workoutList, 'swimming')">Swimming</p>
+      <p ng-click="sortReverse(workoutList, 'cycling')">Cycling</p>
+      <p ng-click="sortReverse(workoutList, 'circuit_training')">Circuit Training</p>
 
 
     <div class="workout-list-container">
@@ -129,6 +129,13 @@
                   <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                     <i class="fa fa-times-circle"></i>
                   </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
                 </div>
                 <div class="workout-descrip">
                   <p>{{ w.description }}</p>
@@ -137,24 +144,22 @@
                     <img ng-src="{{ checkType(w) }}">
                   </div>
                 </div>
-<!--                 <div class="workout-image">
+                <div class="workout-image">
                   <img src="{{ w.image_url }}">
-                </div> -->
+                </div>
 
                 <div class="workout-bottom">
                   <p>Created by: {{ w.workout_creator }}</p>
                   <div class="workout-interval">
                     <form ng-submit="addDate(workout)">
                       <!-- <p>{{ w.select }}</p> -->
-  <!--                       <label ng-repeat="day in w.planDays">
+<!--                         <label ng-repeat="day in w.planDays">
                           {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                         </label> -->
 
-                        <label for="workoutDate">Choose Workout Date(s)</label>
+                        <label for="workoutDate">Workout Date:</label>
                         <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.secondDate" placeholder="yyyy-MM-dd" min="2015-01-01" />
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.thirdDate" placeholder="yyyy-MM-dd" min="2015-01-01" />
-                        <button>Confirm Date(s)</button>
+
 
                     </form>
                   </div>
@@ -187,6 +192,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -206,6 +218,10 @@
                       <label ng-repeat="day in w.planDays">
                         {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
                       </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
                   </form>
                 </div>
               </div>
@@ -240,6 +256,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -254,12 +277,18 @@
               <div class="workout-bottom">
                 <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+                        <button>add date</button>
+
+
+                    </form>
                 </div>
               </div>
 
@@ -290,6 +319,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -304,12 +340,17 @@
               <div class="workout-bottom">
                 <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -340,6 +381,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -354,12 +402,17 @@
               <div class="workout-bottom">
                 <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -390,6 +443,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -404,12 +464,17 @@
               <div class="workout-bottom">
                 <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -440,6 +505,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -454,12 +526,17 @@
               <div class="workout-bottom">
                 <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -490,6 +567,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -502,14 +586,19 @@
               </div>
 
               <div class="workout-bottom">
-
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -539,6 +628,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -551,15 +647,15 @@
               </div>
 
               <div class="workout-bottom">
-              </div>
-
-              <div class="workout-interval">
-                <form>
-<!--                   <p>{{ w.select }}</p>
-                    <label ng-repeat="day in w.planDays">
-                      {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                    </label> -->
-                </form>
+                <p>Created by: {{ w.workout_creator }}</p>
+                <div class="workout-interval">
+                  <form>
+<!--                     <p>{{ w.select }}</p>
+                      <label ng-repeat="day in w.planDays">
+                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
+                      </label> -->
+                  </form>
+                </div>
               </div>
 
             </div>
@@ -588,6 +684,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -600,13 +703,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
- <!--                    <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -637,6 +746,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -649,13 +765,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -686,6 +808,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -698,13 +827,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -735,6 +870,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -747,13 +889,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -784,28 +932,37 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
-
 
             </div>
           </div>
@@ -833,6 +990,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -845,13 +1009,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 
@@ -882,6 +1052,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -894,13 +1071,19 @@
               </div>
 
               <div class="workout-bottom">
+                <p>Created by: {{ w.workout_creator }}</p>
                 <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="planDays.days" checklist-value="day">
-                      </label> -->
-                  </form>
+                    <form ng-submit="addDate(workout)">
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+
+
+                    </form>
                 </div>
               </div>
 

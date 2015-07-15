@@ -34,11 +34,16 @@
           $scope.workoutList = _.sortBy(workoutList, predicate);
         };
 
+        $scope.sortReverse = function (workoutList, predicate) {
+          $scope.sortedArray = _.sortBy(workoutList, predicate);
+          $scope.workoutList = $scope.sortedArray.reverse();
+        };
+
         var _getPlanWorkouts = function () {
           PlanService.getPlans()
             .success(function (data) {
               $scope.trainingPlans = data;
-              console.log($scope.trainingPlans);
+              // console.log($scope.trainingPlans);
 
 
               $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
@@ -104,7 +109,7 @@
         };
 
         $scope.iconShowCircuit = function (workout) {
-          if (workout.circuits === true) {
+          if (workout.circuit_training === true) {
             $('.circuits').removeClass('hide');
             return 'images/circuit_white.png';
           }
@@ -124,13 +129,6 @@
           }
         };
 
-        $scope.checkType = function (workoutType) {
-          console.log(workoutType);
-            if (workoutType === true) {
-              ('images/cycling_white.png');
-            }
-        };
-
         PlanService.getUserWorkouts()
           .success(function (data) {
             $scope.userWorkoutList = data;
@@ -139,7 +137,7 @@
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
 
         $scope.dropFunc = function (workout) {
-          console.log(workout);
+          // console.log(workout);
         };
 
         $scope.dragStart = function (event) {
@@ -154,10 +152,9 @@
 
         $scope.addDate = function (workoutDate) {
           $scope.planWorkouts.workoutDates.push(workoutDate.date);
-          $scope.planWorkouts.workoutDates.push(workoutDate.secondDate);
-          $scope.planWorkouts.workoutDates.push(workoutDate.thirdDate);
           console.log($scope.planWorkouts.workoutDates);
         };
+
 
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
         // console.log($scope.currentTrainingPlan.id);
@@ -267,6 +264,28 @@
         //   $scope.user.interests = [];
         // };
 
+
+
+
+        // { plan_id: 9,
+
+        //   workouts: [{
+        //     workout_id: 2,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 5,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 7,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 9,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   }];
+        // }
 
 
       }

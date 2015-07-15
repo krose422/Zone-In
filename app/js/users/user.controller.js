@@ -22,7 +22,7 @@
           interests: []
         };
 
-        $scope.user = $cookies.getObject('currentUser');
+        // $scope.user = $cookies.getObject('currentUser');
 
         $scope.loginUser = function (user) {
           UserService.loginUser(user)
@@ -30,6 +30,10 @@
               // $scope.user = data.data;
               // console.log($scope.user);
             });
+        };
+
+        $scope.showUserMenu = function () {
+          $('.logout').removeClass('hide');
         };
 
         $scope.registerUser = function (user) {

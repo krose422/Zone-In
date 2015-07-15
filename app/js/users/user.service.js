@@ -58,6 +58,7 @@
           return $http.patch(endpoint + '/athletes/register', user, HEROKU.CONFIG)
             .success( function (data) {
               $state.go('dashboard');
+              $cookies.putObject('currentUser', data);
             });
         };
 
