@@ -109,6 +109,13 @@
           </li>
         </ul>
 
+        <form ng-submit="completeWorkout(t)">
+          <div class="check">
+            <p>Completed Training Plan? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion">
+          </div>
+          <button>Submit completion</button>
+        </form>
+
       </div>
 
     </li>

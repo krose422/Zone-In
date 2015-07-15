@@ -52,6 +52,21 @@
             });
         };
 
+        this.completeWorkout = function (workout) {
+          return $http.patch(endpoint + '/plans/completion', workout, HEROKU.CONFIG)
+            .success( function (data) {
+              console.log(data);
+            });
+        };
+
+        this.completePlan = function (plan) {
+          console.log('in service function');
+          return $http.patch(endpoint + '/plans/completion', plan, HEROKU.CONFIG)
+            .success (function (data) {
+              console.log(data);
+            });
+        };
+
         this.clickToOpenAddW = function () {
           ngDialog.open({
             template: 'js/templates/addworkout.tpl.html',

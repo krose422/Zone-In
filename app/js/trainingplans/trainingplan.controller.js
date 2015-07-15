@@ -193,8 +193,18 @@
           $scope.planWorkouts.workoutIds = newArray;
           // console.log(event.target);
           // console.log($(event.target).parentsUntil('.planning-thumbnail'));
-          $(event.target).parentsUntil('li').remove();
+          $(event.target).parentsUntil('li').parent().remove();
           console.log($scope.planWorkouts.workoutIds);
+        };
+
+        $scope.completeWorkout = function (workout) {
+          console.log(workout);
+          // PlanService.completeWorkout(workout);
+        };
+
+        $scope.completePlan = function (trainingPlan) {
+          console.log(trainingPlan);
+          PlanService.completePlan(trainingPlan);
         };
 
         $scope.logoutUser = function () {

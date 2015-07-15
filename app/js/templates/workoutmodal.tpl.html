@@ -24,6 +24,14 @@
             <!-- <li>{{ ngDialogData.steps }}</li> -->
             <li class="workout-steps" ng-repeat="s in ngDialogData.steps track by $index">{{ s }}</li>
         </ol>
+
+        <form ng-submit="completeWorkout(ngDialogData)">
+          <div class="check">
+            <p>Completed Workout? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="ngDialogData.completion">
+          </div>
+          <button>Submit completion</button>
+        </form>
+
       </div>
   </div>
 
