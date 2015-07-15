@@ -11,10 +11,26 @@
     </div>
 
   <div class="workouts-inner">
-      <h5>Drag workouts to add them to {{ currentTrainingPlan.name }}</h5>
+      <h5>Drag workouts to add them to {{ currentTrainingPlan.name }} training plan</h5>
       <h4 ng-click="clickToOpenAddW()"><i class="fa fa-plus-circle"></i>Add new workout</h4>
       <p>sort by</p>
+      <p ng-click="sort(workoutList, 'color')">Type</p>
+      <p ng-click="sort(workoutList, 'color')">Strength</p>
+      <p ng-click="sort(workoutList, 'color')">Endurance</p>
+      <p ng-click="sort(workoutList, 'color')">Agility</p>
+      <p ng-click="sort(workoutList, 'color')">Flexibility</p>
+      <p ng-click="sort(workoutList, 'color')">Speed</p>
+
+      <p ng-click="sort(workoutList, 'color')">Creator</p>
+      <p ng-click="sort(workoutList, 'color')">Duration</p>
       <p ng-click="sort(workoutList, 'color')">Workout Type</p>
+      <p ng-click="sort(workoutList, 'color')">Running</p>
+      <p ng-click="sort(workoutList, 'color')">Weight Lifting</p>
+      <p ng-click="sort(workoutList, 'color')">Swimming</p>
+      <p ng-click="sort(workoutList, 'color')">Cycling</p>
+      <p ng-click="sort(workoutList, 'color')">Circuit Training</p>
+
+
     <div class="workout-list-container">
 
       <div class="workout workout-droppable"
@@ -56,7 +72,7 @@
           </ul>
 
           <div class="workout-bottom">
-            <!-- <p>Created by: {{ w.creator_id }}</p> -->
+            <p>Created by: {{ w.workout_creator }}</p>
           <div class="workout-interval hide">
             <form>
               <!-- <p>{{ w.select }}</p> -->

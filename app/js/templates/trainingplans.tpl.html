@@ -101,6 +101,9 @@
           <div class="workout-image">
             <img src="{{ workout.image_url }}">
           </div>
+          <div class="workout-bottom">
+            <p>Created by: {{ w.workout_creator }}</p>
+          </div>
 
 <!--           <ul class="workout-steps-container hide">
             <li class="workout-steps" ng-repeat="s in workout.steps track by $index">{{ s }}</li>
@@ -109,7 +112,7 @@
           </li>
         </ul>
 
-        <form ng-submit="completeWorkout(t)">
+        <form ng-submit="completePlan(t)">
           <div class="check">
             <p>Completed Training Plan? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion">
           </div>

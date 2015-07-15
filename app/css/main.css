@@ -609,7 +609,8 @@ ul {
           font-size: 1em; }
       ul .allplans .bottom .workout-steps {
         overflow: hidden;
-        padding: 0; }
+        padding: 0;
+        margin: 0; }
         ul .allplans .bottom .workout-steps .workout {
           font-size: 62.5%;
           float: left;
