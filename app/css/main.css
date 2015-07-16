@@ -913,9 +913,17 @@ ul {
             float: left;
             text-align: left; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-bottom input {
-            width: 70%;
+            width: 60%;
             display: inline;
-            float: right; }
+            float: left; }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-bottom .fa {
+            display: inline;
+            float: right;
+            font-size: 2em;
+            color: #D0C8C5;
+            padding: .2em; }
+            .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-bottom .fa:hover {
+              color: #424242; }
       .planning-page .planning-content .planning-drops .planning-thumbnail {
         height: 12em; }
   .planning-page .workout {

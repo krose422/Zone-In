@@ -28,18 +28,14 @@
             })
         };
 
-        this.finishTrainingPlan = function (workouts) {
-          var trainingPlanWorkouts = new TrainingPlanWorkouts(workouts);
+        this.finishTrainingPlan = function (trainingPlanWorkouts) {
           console.log(trainingPlanWorkouts);
+          // return $http.post(endpoint + '/plans/workouts', trainingPlanWorkouts, HEROKU.CONFIG)
+          //   .success( function (data) {
+          //     $cookies.remove('currentPlan');
+          //     $state.go('training');
+          //   });
         };
-
-        // this.finishTrainingPlan = function (workouts) {
-        //   return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
-        //     .success( function (data) {
-        //       $cookies.remove('currentPlan');
-        //       $state.go('training');
-        //     });
-        // };
 
         this.getWorkouts = function () {
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);

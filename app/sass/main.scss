@@ -1141,9 +1141,20 @@ ul {
               // padding: .5em .2em;
             }
             input {
-              width: 70%;
+              width: 60%;
+              display: inline;
+              float: left;
+            }
+            .fa {
               display: inline;
               float: right;
+              font-size: 2em;
+              color: $grey;
+              padding: .2em;
+
+              &:hover {
+                color: $darkgrey;
+              }
             }
           }
         }
