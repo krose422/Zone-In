@@ -46,7 +46,7 @@
           .state('dashboard', {
             url: '/dash',
             templateUrl: 'js/templates/dashboard.tpl.html',
-            controller: 'UserCtrl'
+            controller: 'DashboardCtrl'
           })
 
           .state('dashboard.calendar', {

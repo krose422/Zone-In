@@ -55,7 +55,7 @@
                   return $scope.workoutInfo;
                 });
               });
-              // console.log($scope.trainingPlans);
+              console.log($scope.trainingPlans);
           });
         };
 
@@ -151,6 +151,11 @@
           // console.log(workout);
         };
 
+        var PlanWorkout = function (options) {
+          this.workout_id = options.workout_id,
+          this.workout_dates = options.workout_dates
+        };
+
         $scope.dragStart = function (event) {
           var workoutId = $(event.currentTarget).data('id');
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
@@ -166,11 +171,6 @@
           $scope.planWorkout.workout_dates.push(workoutDate.date);
         };
 
-        var PlanWorkout = function (options) {
-          this.workout_id = options.workout_id,
-          this.workout_dates = options.workout_dates
-        };
-
         var TrainingPlanWorkouts = function (options) {
           this.plan_id = $scope.currentTrainingPlan.id,
           this.workouts = $scope.workouts
@@ -178,7 +178,7 @@
 
         $scope.finishTrainingPlan = function () {
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
-          PlanService.fininshTrainingPlan(trainingPlanWorkouts);
+          PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 
         $scope.deleteWorkout = function (workoutId) {

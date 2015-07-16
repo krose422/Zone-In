@@ -16,9 +16,6 @@
           this.end_date = options.end_date
         };
 
-
-
-
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
           console.log(trainingPlan);
@@ -30,11 +27,11 @@
 
         this.finishTrainingPlan = function (trainingPlanWorkouts) {
           console.log(trainingPlanWorkouts);
-          // return $http.post(endpoint + '/plans/workouts', trainingPlanWorkouts, HEROKU.CONFIG)
-          //   .success( function (data) {
-          //     $cookies.remove('currentPlan');
-          //     $state.go('training');
-          //   });
+          return $http.post(endpoint + '/plans/workouts', trainingPlanWorkouts, HEROKU.CONFIG)
+            .success( function (data) {
+              $cookies.remove('currentPlan');
+              $state.go('training');
+            });
         };
 
         this.getWorkouts = function () {

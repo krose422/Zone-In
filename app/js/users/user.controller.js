@@ -8,9 +8,7 @@
 
         $scope.user = $cookies.getObject('currentUser');
 
-        $scope.eventSources = [{
-
-        }];
+        $scope.eventSources = [{}];
 
         $scope.interests = [
           'Rugby',
@@ -32,10 +30,6 @@
             });
         };
 
-        $scope.showUserMenu = function () {
-          $('.logout').removeClass('hide');
-        };
-
         $scope.registerUser = function (user) {
           UserService.registerUser(user);
         };
@@ -46,17 +40,23 @@
           UserService.updateUserReg(user);
         };
 
-        $scope.logoutUser = function () {
-          UserService.logoutUser();
-        };
+        // $scope.logoutUser = function () {
+        //   UserService.logoutUser();
+        // };
 
-        $scope.toggleHide = function () {
-          // $(element).toggleClass('hide');
-          // $(event.target).toggleClass('hide');
+        // $scope.toggleHide = function () {
+        //   // $(element).toggleClass('hide');
+        //   // $(event.target).toggleClass('hide');
 
-          $(event.target).siblings().not('h4').toggleClass('hide');
-          $(event.target).toggleClass('hide');
-        };
+        //   $(event.target).siblings().not('h4').toggleClass('hide');
+        //   $(event.target).toggleClass('hide');
+        // };
+
+        // $scope.toggleChart = function () {
+        //   $(event.target).siblings().not('h4').not('.progress-bars').toggleClass('hide');
+        //   $(event.target).toggleClass('hide');
+        //   $('.progress-bars').toggleClass('hide');
+        // };
 
 
         // $scope.checkAll = function() {
