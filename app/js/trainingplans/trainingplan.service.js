@@ -16,6 +16,9 @@
           this.end_date = options.end_date
         };
 
+
+
+
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
           console.log(trainingPlan);
@@ -26,12 +29,17 @@
         };
 
         this.finishTrainingPlan = function (workouts) {
-          return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
-            .success( function (data) {
-              $cookies.remove('currentPlan');
-              $state.go('training');
-            });
+          var trainingPlanWorkouts = new TrainingPlanWorkouts(workouts);
+          console.log(trainingPlanWorkouts);
         };
+
+        // this.finishTrainingPlan = function (workouts) {
+        //   return $http.post(endpoint + '/plans/workouts', workouts, HEROKU.CONFIG)
+        //     .success( function (data) {
+        //       $cookies.remove('currentPlan');
+        //       $state.go('training');
+        //     });
+        // };
 
         this.getWorkouts = function () {
           return $http.get(endpoint + '/workouts/', HEROKU.CONFIG);

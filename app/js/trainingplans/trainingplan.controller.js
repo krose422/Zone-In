@@ -140,21 +140,6 @@
           // console.log(workout);
         };
 
-        $scope.dragStart = function (event) {
-          var workoutId = $(event.currentTarget).data('id');
-          var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
-          if (contain === false) {
-            $scope.planWorkouts.workoutIds.push(workoutId);
-          }
-          // console.log($scope.planWorkouts.workoutIds);
-          // $(event.currentTarget).find('h5').html('Added to Plan');
-        };
-
-        $scope.addDate = function (workoutDate) {
-          $scope.planWorkouts.workoutDates.push(workoutDate.date);
-          console.log($scope.planWorkouts.workoutDates);
-        };
-
 
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
         // console.log($scope.currentTrainingPlan.id);
@@ -165,20 +150,60 @@
         };
 
 
+        // var TrainingPlanWorkouts = function (options) {
+        //   this.plan_id = $scope.currentTrainingPlan.id,
+        //   this.workout_array = $scope.planWorkouts.workoutIds
+        // };
+
+        // $scope.finishTrainingPlan = function () {
+        //   var trainingPlanWorkouts = new TrainingPlanWorkouts();
+        //   console.log(trainingPlanWorkouts);
+        //   PlanService.finishTrainingPlan(trainingPlanWorkouts);
+        // };
+
+        $scope.workouts = [];
+
+        $scope.dragStart = function (event) {
+          var workoutId = $(event.currentTarget).data('id');
+          $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
+          console.log($scope.planWorkout);
+          $scope.workouts.push($scope.planWorkout);
+          // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
+          // if (contain === false) {
+          //   $scope.planWorkouts.workoutIds.push(workoutId);
+          // }
+        };
+
+        $scope.addDate = function (workoutDate) {
+          console.log(workoutDate);
+          $scope.planWorkout.workout_dates.push(workoutDate.date);
+          console.log($scope.planWorkout);
+        };
+
+
+        var PlanWorkout = function (options) {
+          this.workout_id = options.workout_id,
+          this.workout_dates = options.workout_dates
+        };
+
         var TrainingPlanWorkouts = function (options) {
           this.plan_id = $scope.currentTrainingPlan.id,
-          this.workout_array = $scope.planWorkouts.workoutIds
+          this.workouts = $scope.workouts
         };
 
         $scope.finishTrainingPlan = function () {
-          // console.log($('.planning-dropzone').find('.planning-thumbnail').html());
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
           console.log(trainingPlanWorkouts);
-          PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          // console.log(planId, workouts);
+          // PlanService.fininshTrainingPlan();
+        }
+
+        $scope.deleteWorkout = function (workoutId) {
+          $scope.workouts = _.filter($scope.workouts, function (workout) {
+            return workout.workout_id !== workoutId;
+          });
+          $(event.target).parentsUntil('li').parent().remove();
         };
-
-
-
 
         // { plan_id: 9,
 
@@ -207,15 +232,6 @@
           return formattedDate;
         };
 
-        $scope.deleteWorkout = function (workoutId) {
-          console.log('delete function for ' + workoutId);
-          var newArray = _.without($scope.planWorkouts.workoutIds, workoutId);
-          $scope.planWorkouts.workoutIds = newArray;
-          // console.log(event.target);
-          // console.log($(event.target).parentsUntil('.planning-thumbnail'));
-          $(event.target).parentsUntil('li').parent().remove();
-          console.log($scope.planWorkouts.workoutIds);
-        };
 
         $scope.completeWorkout = function (workout) {
           console.log(workout);
