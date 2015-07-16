@@ -80,6 +80,15 @@
             $('.progress-bars').toggleClass('hide');
           };
 
+          $scope.active = function () {
+            var eventTarget = $(event.target);
+            var dashNavDiv = $('.dash-nav');
+            $(event.target).parentsUntil('a').addClass('active');
+
+            console.log($(event.target).parentsUntil('a').siblings());
+            $(event.target).parentsUntil('a').siblings().removeClass('active');
+          };
+
       }
 
     ]);

@@ -176,7 +176,7 @@ header {
     width: 100%; }
   .dashboard-page .dash-content {
     font-family: "Tinos", serif;
-    max-width: 96%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin: 0 auto; }
@@ -192,6 +192,71 @@ header {
     .dashboard-page .dash-content i {
       margin-right: .5em;
       font-size: 1.5em; }
+    .dashboard-page .dash-content .left-dash {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      height: 100vh;
+      overflow: hidden;
+      padding: 0;
+      background-color: #2e2e2e; }
+      .dashboard-page .dash-content .left-dash:last-child {
+        margin-right: 0; }
+      .dashboard-page .dash-content .left-dash a {
+        overflow: hidden; }
+      .dashboard-page .dash-content .left-dash div {
+        display: block; }
+      .dashboard-page .dash-content .left-dash .dash-nav {
+        padding: 3em;
+        overflow: hidden;
+        cursor: pointer;
+        margin: 0; }
+        .dashboard-page .dash-content .left-dash .dash-nav:hover {
+          background-color: #505050; }
+          .dashboard-page .dash-content .left-dash .dash-nav:hover h4 {
+            color: #FAFAFA; }
+          .dashboard-page .dash-content .left-dash .dash-nav:hover .fa {
+            color: #FAFAFA; }
+        .dashboard-page .dash-content .left-dash .dash-nav h4 {
+          text-align: center;
+          padding-top: 10%;
+          color: #D0C8C5; }
+        .dashboard-page .dash-content .left-dash .dash-nav .fa {
+          transition: 0.3s all ease;
+          cursor: pointer;
+          color: #D0C8C5;
+          font-size: 3em;
+          text-align: center;
+          display: block; }
+        .dashboard-page .dash-content .left-dash .dash-nav .fa-plus-circle:hover {
+          color: #BED194; }
+        .dashboard-page .dash-content .left-dash .dash-nav .fa-minus-circle:hover {
+          color: #FF534E; }
+      .dashboard-page .dash-content .left-dash .team-list ul {
+        text-align: left;
+        padding: 0;
+        margin: 0; }
+      .dashboard-page .dash-content .left-dash .team-list a {
+        color: #FAFAFA; }
+        .dashboard-page .dash-content .left-dash .team-list a li {
+          padding: 0;
+          font-size: 1.2em;
+          margin-bottom: .5em; }
+        .dashboard-page .dash-content .left-dash .team-list a img {
+          height: 3em;
+          border-radius: 50%; }
+    .dashboard-page .dash-content .active {
+      background-color: #505050;
+      color: #FAFAFA; }
+    .dashboard-page .dash-content .right-dash {
+      overflow: hidden;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 74.41059%; }
+      .dashboard-page .dash-content .right-dash:last-child {
+        margin-right: 0; }
     .dashboard-page .dash-content .top-dash-progress {
       padding: 2em;
       overflow: hidden;
@@ -203,6 +268,8 @@ header {
       box-shadow: 0px 0.5px 2px #D0C8C5; }
       .dashboard-page .dash-content .top-dash-progress .progress-bars {
         width: 100%; }
+      .dashboard-page .dash-content .top-dash-progress .circle-arc {
+        transition: stroke-dashoffset 0.1s linear; }
       .dashboard-page .dash-content .top-dash-progress .circle-progress {
         position: relative;
         margin-bottom: 4em; }
@@ -228,77 +295,6 @@ header {
       .dashboard-page .dash-content .top-dash-progress h4 {
         text-align: center;
         color: #424242; }
-    .dashboard-page .dash-content .left-dash {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 31.76157%;
-      overflow: hidden;
-      float: left;
-      padding: 0; }
-      .dashboard-page .dash-content .left-dash:last-child {
-        margin-right: 0; }
-      .dashboard-page .dash-content .left-dash div {
-        display: block; }
-      .dashboard-page .dash-content .left-dash .team-list {
-        padding: 2em;
-        background-color: #176785; }
-        .dashboard-page .dash-content .left-dash .team-list .fa {
-          transition: 0.3s all ease;
-          cursor: pointer;
-          color: #FAFAFA;
-          font-size: 3em; }
-        .dashboard-page .dash-content .left-dash .team-list .fa-plus-circle:hover {
-          color: #BED194; }
-        .dashboard-page .dash-content .left-dash .team-list .fa-minus-circle:hover {
-          color: #FF534E; }
-        .dashboard-page .dash-content .left-dash .team-list h4 {
-          display: inline-block; }
-        .dashboard-page .dash-content .left-dash .team-list ul {
-          text-align: left;
-          padding: 0;
-          margin: 0; }
-        .dashboard-page .dash-content .left-dash .team-list a {
-          color: #FAFAFA; }
-          .dashboard-page .dash-content .left-dash .team-list a li {
-            padding: 0;
-            font-size: 1.2em;
-            margin-bottom: .5em; }
-          .dashboard-page .dash-content .left-dash .team-list a img {
-            height: 3em;
-            border-radius: 50%; }
-      .dashboard-page .dash-content .left-dash .calendar {
-        overflow: hidden;
-        position: relative; }
-        .dashboard-page .dash-content .left-dash .calendar img {
-          width: 100%; }
-        .dashboard-page .dash-content .left-dash .calendar .overlay {
-          overflow: hidden;
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(66, 66, 66, 0.9);
-          transition: 0.3s all ease;
-          cursor: pointer; }
-          .dashboard-page .dash-content .left-dash .calendar .overlay:hover {
-            background-color: rgba(66, 66, 66, 0.7); }
-          .dashboard-page .dash-content .left-dash .calendar .overlay h4 {
-            text-align: center;
-            padding-top: 20%; }
-      .dashboard-page .dash-content .left-dash .training-plans {
-        padding: 2em;
-        background-color: #BED194; }
-      .dashboard-page .dash-content .left-dash .create-plan {
-        padding: 2em;
-        background-color: #2E313D; }
-      .dashboard-page .dash-content .left-dash .workouts {
-        padding: 2em;
-        background-color: #D0C8C5; }
-      .dashboard-page .dash-content .left-dash .create-workout {
-        padding: 2em;
-        background-color: #499989; }
     .dashboard-page .dash-content .upcoming {
       padding: 2em;
       float: left;

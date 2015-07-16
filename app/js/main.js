@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule', 'ngCookies', 'ngDialog', 'checklist-model'])
+  angular.module('ZoneInApp', ['ui.router', 'UserModule', 'TeamModule', 'PlanModule', 'ngCookies', 'ngDialog', 'checklist-model', 'angular-progress-arc'])
 
     .constant('HEROKU', {
       URL: 'https://thawing-mountain-6062.herokuapp.com',

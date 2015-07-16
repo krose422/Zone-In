@@ -158,6 +158,7 @@
 
         $scope.dragStart = function (event) {
           var workoutId = $(event.currentTarget).data('id');
+          console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           // console.log($scope.planWorkout);
           $scope.workouts.push($scope.planWorkout);
