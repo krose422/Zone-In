@@ -178,6 +178,29 @@
         };
 
 
+
+
+        // { plan_id: 9,
+
+        //   workouts: [{
+        //     workout_id: 2,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 5,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 7,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   },
+        //   {
+        //     workout_id: 9,
+        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
+        //   }];
+        // }
+
+
         $scope.formatDate = function (date) {
           var momentDate = moment(date);
           var formattedDate = momentDate.format('MMM DD, YYYY');
@@ -266,26 +289,6 @@
 
 
 
-
-        // { plan_id: 9,
-
-        //   workouts: [{
-        //     workout_id: 2,
-        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
-        //   },
-        //   {
-        //     workout_id: 5,
-        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
-        //   },
-        //   {
-        //     workout_id: 7,
-        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
-        //   },
-        //   {
-        //     workout_id: 9,
-        //     workout_dates: ["2015-07-15-0000T", "2015-07-15-0000T", "2015-07-15-0000T"]
-        //   }];
-        // }
 
 
       }
