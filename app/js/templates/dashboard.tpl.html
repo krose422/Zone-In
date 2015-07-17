@@ -36,10 +36,12 @@
 
   <div class="left-dash">
 
+      <a href="#/dash" ng-click="active()">
       <div class="dashboard-link dash-nav active" ng-click="active()">
         <i class="fa fa-list"></i>
         <h4>Dashboard</h4>
       </div>
+      </a>
 
 <!--       <div class="team-list dash-nav" ng-click="active()">
       <i class="fa fa-users"></i> -->
@@ -112,7 +114,7 @@
   <h4>Training Plan Progress</h4>
 
 
-  <div ng-repeat="t in trainingPlans" class="circle-progress hide">
+<!--   <div ng-repeat="t in trainingPlans" class="circle-progress hide">
 
       <progress-arc
     class="circle-arc"
@@ -126,7 +128,7 @@
       <p>{{ t.name }}</p>
     </div>
 
-  </div>
+  </div> -->
 
 
   <div ng-repeat="t in trainingPlans" class="circle-progress hide">

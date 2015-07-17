@@ -52,7 +52,7 @@
           .state('dashboard.calendar', {
             url: '/calendar',
             templateUrl: 'js/templates/calendar.tpl.html',
-            controller: 'UserCtrl'
+            controller: 'CalendarCtrl'
           })
 
           .state('training', {

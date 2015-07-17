@@ -6,6 +6,7 @@
 
 $background: #FAFAFA;
 $darkpurple: #2E313D;
+$lightblue: #25A8D9;
 $blue: #176785;
 $darkblue: #0F4559;
 $teal: #499989;
@@ -22,6 +23,7 @@ $tinos: 'Tinos', serif;
 $opensans: 'Open Sans', sans-serif;
 $fjalla: 'Fjalla One', sans-serif;
 $gentium: 'Gentium Book Basic', serif;
+$cantarell: 'Cantarell', sans-serif;
 
 /* MIXINS
 ---------- */
@@ -110,16 +112,29 @@ $gentium: 'Gentium Book Basic', serif;
       overflow: hidden;
       // background-color: $teal;
       border-radius: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        h4 {
+          white-space: normal;
+        }
+      }
 
       h4 {
         font-size: 1.6em;
-        margin: 0;
+        margin: 0 auto;
         padding: .5em;
         color: $background;
         // text-align: center;
-        text-align: left;
+        text-align: center;
         float: left;
-        width: 60%;
+        width: 99%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include transition(.3s);
+
       }
     }
 
@@ -130,9 +145,10 @@ $gentium: 'Gentium Book Basic', serif;
     .icon {
       overflow: hidden;
       height: 3em;
-      display: inline-block;
-      float: right;
-      padding: 1em;
+      display: block;
+      float: left;
+      padding: 0em 1em;
+      clear: both;
 
       img {
         height: 2em;
@@ -467,11 +483,6 @@ h1, h2, h3, h4, h5 {
         }
       }
 
-
-      .calendar {
-
-      }
-
     }
 
     .active {
@@ -599,6 +610,116 @@ h1, h2, h3, h4, h5 {
   color: #FEFFFF;
   background-color: #FF534E;
 }
+
+/* CALENDAR PAGE
+---------------- */
+
+.calendar {
+
+  .fc-content {
+    margin-bottom: 0 !important;
+    white-space: normal;
+    font-family: $tinos;
+    padding-left: .2em;
+    font-size: 1.2em;
+  }
+
+  .fc-state-default {
+    // background-image: url(../images/concrete_seamless.png);
+    // color: $blue;
+
+    &:hover {
+      background-image: none;
+    }
+  }
+
+  .fc-toolbar {
+    width: 100%;
+  }
+
+  .fc-left {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 0 !important;
+
+    button {
+      @include button($darkgrey);
+      height: 4em;
+      color: $grey;
+      border: none;
+
+      &:hover {
+        color: $background;
+      }
+    }
+
+    .fc-basicWeek-button {
+      display: none;
+    }
+
+    .fc-basicDay-button {
+      display: none;
+    }
+  }
+
+  .fc-right {
+    float: right;
+    margin-bottom: 0 !important;
+
+    button {
+      @include button($darkgrey);
+      border: none;
+      height: 4em;
+      color: $grey;
+    }
+  }
+
+  .fc-center {
+    display: inline-block;
+    width: 50%;
+    float: left;
+
+    h2 {
+      text-align: left;
+      font-size: 3.3em;
+      width: 100%;
+    }
+  }
+
+  .fc-toolbar {
+    margin-bottom: 0 !important;
+  }
+
+  .fc-day-grid-container {
+    margin-bottom: 0 !important;
+
+    .fc-day-grid {
+      margin-bottom: 0 !important;
+    }
+  }
+
+    .fc-day-grid {
+      margin-bottom: 0 !important;
+    }
+
+  table {
+    margin-bottom: 0 !important;
+
+    tr {
+      td {
+        border-color: #fff;
+      }
+    }
+  }
+
+  .fc-row {
+    margin-bottom: 0 !important;
+  }
+  .fc-bg {
+    margin-bottom: 0 !important;
+  }
+}
+
 
 /* TEAM PAGE
 ------------ */

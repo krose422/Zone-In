@@ -47,6 +47,10 @@
           return $http.get(endpoint + '/workouts/athlete', HEROKU.CONFIG);
         };
 
+        this.getWorkoutDates = function () {
+          return $http.get(endpoint + '/plans/adopted', HEROKU.CONFIG);
+        };
+
         this.addWorkout = function (workout) {
           return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
             .success( function (data) {

@@ -8,7 +8,12 @@
 
         $scope.user = $cookies.getObject('currentUser');
 
-        $scope.eventSources = [{}];
+        $scope.eventSources = [{
+          title: 'testing event',
+          allDay: true,
+          start: "2015-07-20T04:00:00.000Z",
+          end: "2015-07-26T04:00:00.000Z"
+        }];
 
         $scope.interests = [
           'Rugby',

@@ -339,6 +339,91 @@ header {
   color: #FEFFFF;
   background-color: #FF534E; }
 
+/* CALENDAR PAGE
+---------------- */
+.calendar .fc-content {
+  margin-bottom: 0 !important;
+  white-space: normal;
+  font-family: "Tinos", serif;
+  padding-left: .2em;
+  font-size: 1.2em; }
+
+.calendar .fc-state-default:hover {
+  background-image: none; }
+
+.calendar .fc-toolbar {
+  width: 100%; }
+
+.calendar .fc-left {
+  float: right;
+  margin-left: 1em;
+  margin-bottom: 0 !important; }
+  .calendar .fc-left button {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    color: #FAFAFA;
+    border: 1px solid #424242;
+    border-radius: 2px;
+    background-color: #424242;
+    transition: 0.3s all ease;
+    height: 4em;
+    color: #D0C8C5;
+    border: none; }
+    .calendar .fc-left button:hover {
+      color: #FAFAFA; }
+  .calendar .fc-left .fc-basicWeek-button {
+    display: none; }
+  .calendar .fc-left .fc-basicDay-button {
+    display: none; }
+
+.calendar .fc-right {
+  float: right;
+  margin-bottom: 0 !important; }
+  .calendar .fc-right button {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    color: #FAFAFA;
+    border: 1px solid #424242;
+    border-radius: 2px;
+    background-color: #424242;
+    transition: 0.3s all ease;
+    border: none;
+    height: 4em;
+    color: #D0C8C5; }
+
+.calendar .fc-center {
+  display: inline-block;
+  width: 50%;
+  float: left; }
+  .calendar .fc-center h2 {
+    text-align: left;
+    font-size: 3.3em;
+    width: 100%; }
+
+.calendar .fc-toolbar {
+  margin-bottom: 0 !important; }
+
+.calendar .fc-day-grid-container {
+  margin-bottom: 0 !important; }
+  .calendar .fc-day-grid-container .fc-day-grid {
+    margin-bottom: 0 !important; }
+
+.calendar .fc-day-grid {
+  margin-bottom: 0 !important; }
+
+.calendar table {
+  margin-bottom: 0 !important; }
+  .calendar table tr td {
+    border-color: #fff; }
+
+.calendar .fc-row {
+  margin-bottom: 0 !important; }
+
+.calendar .fc-bg {
+  margin-bottom: 0 !important; }
+
 /* TEAM PAGE
 ------------ */
 .team-page {
@@ -646,21 +731,30 @@ ul {
             padding: 0 0.5em; }
           ul .allplans .bottom .workout-steps .workout .workout-title {
             overflow: hidden;
-            border-radius: 0; }
+            border-radius: 0;
+            overflow: hidden;
+            text-overflow: ellipsis; }
+            ul .allplans .bottom .workout-steps .workout .workout-title:hover h4 {
+              white-space: normal; }
             ul .allplans .bottom .workout-steps .workout .workout-title h4 {
               font-size: 1.6em;
-              margin: 0;
+              margin: 0 auto;
               padding: .5em;
               color: #FAFAFA;
-              text-align: left;
+              text-align: center;
               float: left;
-              width: 60%; }
+              width: 99%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              transition: 0.3s all ease; }
           ul .allplans .bottom .workout-steps .workout .icon {
             overflow: hidden;
             height: 3em;
-            display: inline-block;
-            float: right;
-            padding: 1em; }
+            display: block;
+            float: left;
+            padding: 0em 1em;
+            clear: both; }
             ul .allplans .bottom .workout-steps .workout .icon img {
               height: 2em; }
           ul .allplans .bottom .workout-steps .workout .workout-image {
@@ -698,21 +792,30 @@ ul {
       padding: 0 0.5em; }
     .workout-modal .workout .workout-title {
       overflow: hidden;
-      border-radius: 0; }
+      border-radius: 0;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .workout-modal .workout .workout-title:hover h4 {
+        white-space: normal; }
       .workout-modal .workout .workout-title h4 {
         font-size: 1.6em;
-        margin: 0;
+        margin: 0 auto;
         padding: .5em;
         color: #FAFAFA;
-        text-align: left;
+        text-align: center;
         float: left;
-        width: 60%; }
+        width: 99%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: 0.3s all ease; }
     .workout-modal .workout .icon {
       overflow: hidden;
       height: 3em;
-      display: inline-block;
-      float: right;
-      padding: 1em; }
+      display: block;
+      float: left;
+      padding: 0em 1em;
+      clear: both; }
       .workout-modal .workout .icon img {
         height: 2em; }
     .workout-modal .workout .workout-image {
@@ -864,21 +967,30 @@ ul {
             padding: 0 0.5em; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title {
             overflow: hidden;
-            border-radius: 0; }
+            border-radius: 0;
+            overflow: hidden;
+            text-overflow: ellipsis; }
+            .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title:hover h4 {
+              white-space: normal; }
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title h4 {
               font-size: 1.6em;
-              margin: 0;
+              margin: 0 auto;
               padding: .5em;
               color: #FAFAFA;
-              text-align: left;
+              text-align: center;
               float: left;
-              width: 60%; }
+              width: 99%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              transition: 0.3s all ease; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .icon {
             overflow: hidden;
             height: 3em;
-            display: inline-block;
-            float: right;
-            padding: 1em; }
+            display: block;
+            float: left;
+            padding: 0em 1em;
+            clear: both; }
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .icon img {
               height: 2em; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-image {
@@ -956,21 +1068,30 @@ ul {
       padding: 0 0.5em; }
     .planning-page .workout .workout-title {
       overflow: hidden;
-      border-radius: 0; }
+      border-radius: 0;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .planning-page .workout .workout-title:hover h4 {
+        white-space: normal; }
       .planning-page .workout .workout-title h4 {
         font-size: 1.6em;
-        margin: 0;
+        margin: 0 auto;
         padding: .5em;
         color: #FAFAFA;
-        text-align: left;
+        text-align: center;
         float: left;
-        width: 60%; }
+        width: 99%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: 0.3s all ease; }
     .planning-page .workout .icon {
       overflow: hidden;
       height: 3em;
-      display: inline-block;
-      float: right;
-      padding: 1em; }
+      display: block;
+      float: left;
+      padding: 0em 1em;
+      clear: both; }
       .planning-page .workout .icon img {
         height: 2em; }
     .planning-page .workout .workout-image {
