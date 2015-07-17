@@ -9,20 +9,23 @@
         </div></a>
         <div class="rightheader">
           <nav>
-            <div class="nav-item">
-              <i class="fa fa-bell"></i>
+            <div class="nav-item alert-btn">
+              <i class="fa fa-bell alert" ng-click="removeAlert()"></i>
             </div>
-            <div class="nav-item">
-              <div class="user-avatar">
-                <img src="https://scontent-atl1-1.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/1480657_10101896304592339_452960075_n.jpg?oh=9684a12a05fdae10c9b88bb2523518d3&oe=56201A8D">
-              </div>
+            <div class="alert-dropdown hide">
+              <div class="triangle"></div>
+              <ul class="alert-list">
+              <p>July 17 Workouts</p>
+                <!-- <li>Your workout(s) Today</li> -->
+                <li>Run 3 Miles | 30 mins</li>
+              </ul>
+            </div>
 
-              <div class="user-name">
-                {{ user.first_name }} {{ user.last_name }}
+            <div class="nav-item">
+              <div class="user-name logout" ng-click="logoutUser()">
+                <i class="fa fa-sign-out"></i>Logout {{user.username}}
               </div>
             </div>
-            <!-- <li><a href="#">SETTINGS</a></li> -->
-            <li><a ng-click="logoutUser()">LOGOUT</a></li>
           </nav>
 
         </div>

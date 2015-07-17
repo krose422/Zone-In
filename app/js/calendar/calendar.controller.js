@@ -6,36 +6,6 @@
     .controller('CalendarCtrl', ['$scope', '$rootScope', 'UserService', '$location', 'PlanService', '$cookies',
       function ($scope, $rootScope, UserService, $location, PlanService, $cookies) {
 
-        $scope.eventSources = [[
-        {
-          title: 'Testing Event Lorem Ipsum',
-          allDay: true,
-          start: "2015-07-20T04:00:00.000Z",
-          end: "2015-07-20T04:00:00.000Z",
-          color: '#499989',
-          className: 'testEvent'
-        },
-        {
-          title: 'Testing Again',
-          start: "2015-07-22T08:00:00.000Z",
-          end: "2015-07-22T08:00:00.000Z",
-          color: '#BED194'
-        },
-        {
-          title: 'Another Test',
-          start: "2015-07-23T08:00:00.000Z",
-          end: "2015-07-23T08:00:00.000Z",
-          color: '#0F4559'
-        }
-        ]];
-
-        // $scope.events = [
-        // {
-        //   title: 'testing event',
-        //   allDay: true,
-        //   start: "2015-07-20T04:00:00.000Z",
-        //   end: "2015-07-26T04:00:00.000Z"
-        // }];
 
 
         $scope.uiConfig = {
@@ -55,26 +25,7 @@
 
         $scope.user = $cookies.getObject('currentUser');
 
-        var _getPlanWorkouts = function () {
-          PlanService.getPlans()
-            .success(function (data) {
-              $scope.trainingPlans = data;
-              // console.log($scope.trainingPlans);
 
-              $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
-              plan.workoutData = [];
-                // console.log($scope.workoutList);
-                return _.filter(plan.workouts, function (workoutId) {
-                  // console.log(workoutId);
-                  $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
-                  // console.log($scope.workoutInfo);
-                  plan.workoutData.push($scope.workoutInfo);
-                  return $scope.workoutInfo;
-                });
-              });
-              // console.log($scope.trainingPlans);
-          });
-        };
 
 
         PlanService.getWorkouts()
@@ -103,13 +54,82 @@
 
           .then(function (data) {
             _getPlanWorkouts();
+            _getWorkoutDates();
           });
 
+        var _getPlanWorkouts = function () {
+          PlanService.getPlans()
+            .success(function (data) {
+              $scope.trainingPlans = data;
+              // console.log($scope.trainingPlans);
 
-        PlanService.getWorkoutDates()
-          .success(function (data) {
-            console.log(data);
+              $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
+              plan.workoutData = [];
+                // console.log($scope.workoutList);
+                return _.filter(plan.workouts, function (workoutId) {
+                  // console.log(workoutId);
+                  $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
+                  // console.log($scope.workoutInfo);
+                  plan.workoutData.push($scope.workoutInfo);
+                  return $scope.workoutInfo;
+                });
+              });
+              // console.log($scope.trainingPlans);
           });
+        };
+
+          var _getWorkoutDates = function () {
+            PlanService.getWorkoutDates()
+              .success(function (data) {
+                $scope.workoutDates = data;
+                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+
+                var WorkoutEvent = function (options) {
+                  this.title = workout.workoutInfo.name,
+                  this.start = workout.do_date,
+                  this.end = workout.do_date,
+                  this.color = workout.workoutInfo.color
+                };
+
+                var workoutEvent = new WorkoutEvent();
+                $scope.events.push(workoutEvent);
+
+                });
+                console.log($scope.workoutDates);
+
+
+
+
+              });
+          };
+
+
+        $scope.events = [
+        // {
+        //   title: 'Testing Event Lorem Ipsum',
+        //   allDay: true,
+        //   start: "2015-07-20T04:00:00.000Z",
+        //   end: "2015-07-20T04:00:00.000Z",
+        //   color: '#499989',
+        //   className: 'testEvent'
+        // },
+        // {
+        //   title: 'Testing Again',
+        //   start: "2015-07-22T08:00:00.000Z",
+        //   end: "2015-07-22T08:00:00.000Z",
+        //   color: '#BED194'
+        // },
+        // {
+        //   title: 'Another Test',
+        //   start: "2015-07-23T08:00:00.000Z",
+        //   end: "2015-07-23T08:00:00.000Z",
+        //   color: '#0F4559'
+        // }
+        ];
+
+        $scope.eventSources = [$scope.events];
+
 
           $scope.showUserMenu = function () {
             $('.logout').removeClass('hide');

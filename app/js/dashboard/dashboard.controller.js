@@ -88,8 +88,9 @@
           // };
 
           $scope.removeAlert = function () {
-            $(event.target).removeClass('alert');
-            $('.alert-dropdown').toggleClass('hide');
+            UserService.removeAlert();
+            // $(event.target).removeClass('alert');
+            // $('.alert-dropdown').toggleClass('hide');
           };
 
       }

@@ -160,7 +160,6 @@
           var workoutId = $(event.currentTarget).data('id');
           console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
-          // console.log($scope.planWorkout);
           $scope.workouts.push($scope.planWorkout);
           // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
           // if (contain === false) {
@@ -255,6 +254,10 @@
         $scope.expand = function () {
           $(event.target).siblings().not('.top').toggleClass('hide');
           $(event.target).toggleClass('hide');
+        };
+
+        $scope.removeAlert = function () {
+          UserService.removeAlert();
         };
 
         // $scope.checkAll = function() {

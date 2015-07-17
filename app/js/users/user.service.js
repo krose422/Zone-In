@@ -100,6 +100,11 @@
           }
         };
 
+        this.removeAlert = function () {
+          $(event.target).removeClass('alert');
+          $('.alert-dropdown').toggleClass('hide');
+        };
+
       }
 
     ]);
