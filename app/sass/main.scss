@@ -314,7 +314,7 @@ h1, h2, h3, h4, h5 {
 
         .nav-item {
           overflow: hidden;
-          @include button(rgba(18, 81, 105, .8));
+          @include button($grey);
           border: none;
           display: inline-block;
           padding: 0;
@@ -323,13 +323,25 @@ h1, h2, h3, h4, h5 {
           height: 3.5em;
 
           &:hover {
-            background-color: rgba(18, 81, 105, 1);
+            background-color: $darkgrey;
           }
 
           i {
             font-size: 1.6em;
             padding: .5em;
+            // background-color: $grey;
+            // position: relative;
           }
+
+          .alert-btn {
+            position: relative;
+          }
+
+          .alert {
+            @include button($red);
+            border: none;
+          }
+
 
           .user-avatar {
             float: left;
@@ -344,11 +356,63 @@ h1, h2, h3, h4, h5 {
           }
 
           .user-name {
+          }
+
+          .logout {
             display: inline-block;
             float: right;
             padding: .5em 1.5em;
             font-size: 1.4em;
             font-family: $fjalla;
+            // background-color: $grey;
+
+            .fa {
+              padding: 0 .2em 0 0;
+              font-size: 1.5em;
+            }
+          }
+        }
+
+        .alert-dropdown {
+          position: absolute;
+          z-index: 9999;
+          top: 6em;
+          right: 1em;
+          background-color: $darkgrey;
+          padding: 1em;
+          @include boxShadow();
+
+          .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent $darkgrey transparent;
+            top: -13px;
+            right: 8px;
+          }
+
+          .alert-list {
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+            p {
+              font-size: 1.3em;
+              color: $background;
+              padding: 0;
+              margin: 0;
+              border-bottom: 1px solid $grey;
+            }
+
+            li {
+              color: $background;
+              font-family: $tinos;
+              font-size: 1em;
+              padding: 0;
+              display: block;
+            }
           }
         }
       }
@@ -615,6 +679,7 @@ h1, h2, h3, h4, h5 {
 ---------------- */
 
 .calendar {
+  // background-color: #ccc;
 
   .fc-content {
     margin-bottom: 0 !important;

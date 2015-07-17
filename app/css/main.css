@@ -125,9 +125,9 @@ header {
         text-align: center;
         padding: 10px;
         color: #FAFAFA;
-        border: 1px solid rgba(18, 81, 105, 0.8);
+        border: 1px solid #D0C8C5;
         border-radius: 2px;
-        background-color: rgba(18, 81, 105, 0.8);
+        background-color: #D0C8C5;
         transition: 0.3s all ease;
         border: none;
         display: inline-block;
@@ -136,10 +136,22 @@ header {
         float: right;
         height: 3.5em; }
         header .innerheader .rightheader .nav-item:hover {
-          background-color: #125169; }
+          background-color: #424242; }
         header .innerheader .rightheader .nav-item i {
           font-size: 1.6em;
           padding: .5em; }
+        header .innerheader .rightheader .nav-item .alert-btn {
+          position: relative; }
+        header .innerheader .rightheader .nav-item .alert {
+          cursor: pointer;
+          text-align: center;
+          padding: 10px;
+          color: #FAFAFA;
+          border: 1px solid #FF534E;
+          border-radius: 2px;
+          background-color: #FF534E;
+          transition: 0.3s all ease;
+          border: none; }
         header .innerheader .rightheader .nav-item .user-avatar {
           float: left;
           height: 100%;
@@ -148,12 +160,51 @@ header {
           border-radius: 0; }
           header .innerheader .rightheader .nav-item .user-avatar img {
             height: 100%; }
-        header .innerheader .rightheader .nav-item .user-name {
+        header .innerheader .rightheader .nav-item .logout {
           display: inline-block;
           float: right;
           padding: 0.5em 1.5em;
           font-size: 1.4em;
           font-family: "Fjalla One", sans-serif; }
+          header .innerheader .rightheader .nav-item .logout .fa {
+            padding: 0 0.2em 0 0;
+            font-size: 1.5em; }
+      header .innerheader .rightheader .alert-dropdown {
+        position: absolute;
+        z-index: 9999;
+        top: 6em;
+        right: 1em;
+        background-color: #424242;
+        padding: 1em;
+        -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+        -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+        -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+        box-shadow: 0px 0.5px 2px #D0C8C5; }
+        header .innerheader .rightheader .alert-dropdown .triangle {
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 15px 15px 15px;
+          border-color: transparent transparent #424242 transparent;
+          top: -13px;
+          right: 8px; }
+        header .innerheader .rightheader .alert-dropdown .alert-list {
+          padding: 0;
+          margin: 0;
+          position: relative; }
+          header .innerheader .rightheader .alert-dropdown .alert-list p {
+            font-size: 1.3em;
+            color: #FAFAFA;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #D0C8C5; }
+          header .innerheader .rightheader .alert-dropdown .alert-list li {
+            color: #FAFAFA;
+            font-family: "Tinos", serif;
+            font-size: 1em;
+            padding: 0;
+            display: block; }
 
 /* HOMEPAGE VIEW
 ---------------- */
