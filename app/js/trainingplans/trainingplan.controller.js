@@ -265,6 +265,19 @@
         // };
 
 
+        // [{"plan_id":25,"workout_id":8,"workout_interval":null,"id":41},
+        // {"plan_id":25,"workout_id":12,"workout_interval":null,"id":42},
+        // {"plan_id":25,"workout_id":15,"workout_interval":null,"id":43},
+        // {"athlete_id":2,"workout_id":8,"id":43,"workout_completion":false,"do_date":"2015-07-15T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":8,"id":44,"workout_completion":false,"do_date":"2015-07-30T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":12,"id":45,"workout_completion":false,"do_date":"2015-07-20T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":12,"id":46,"workout_completion":false,"do_date":"2015-07-22T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":12,"id":47,"workout_completion":false,"do_date":"2015-07-30T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":15,"id":48,"workout_completion":false,"do_date":"2015-08-11T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":15,"id":49,"workout_completion":false,"do_date":"2015-08-20T04:00:00.000Z"},
+        // {"athlete_id":2,"workout_id":15,"id":50,"workout_completion":false,"do_date":"2015-08-25T04:00:00.000Z"}]
+
+
       }
 
     ]);

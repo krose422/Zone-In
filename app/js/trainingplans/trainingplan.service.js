@@ -31,7 +31,7 @@
             .success( function (data) {
               $cookies.remove('currentPlan');
               $state.go('training');
-              $state.reload();
+              // $state.reload();
             });
         };
 
