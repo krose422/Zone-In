@@ -10,11 +10,11 @@
 
 angular.module('ui.calendar', [])
   .constant('uiCalendarConfig', {calendars: {}})
-  .controller('uiCalendarCtrl', ['$scope', 
-                                 '$timeout', 
+  .controller('uiCalendarCtrl', ['$scope',
+                                 '$timeout',
                                  '$locale', function(
-                                  $scope, 
-                                  $timeout, 
+                                  $scope,
+                                  $timeout,
                                   $locale){
 
       var sources = $scope.eventSources,
@@ -262,7 +262,7 @@ angular.module('ui.calendar', [])
           calendar.fullCalendar(options);
           if(attrs.calendar) {
             uiCalendarConfig.calendars[attrs.calendar] = calendar;
-          }          
+          }
         };
 
         eventSourcesWatcher.onAdded = function(source) {
@@ -284,6 +284,10 @@ angular.module('ui.calendar', [])
           calendar.fullCalendar('renderEvent', event, (event.stick ? true : false));
         };
 
+        // eventsWatcher.onAdded = function(event) {
+        //   scope.calendar.fullCalendar('renderEvent', event,true);
+        // };
+
         eventsWatcher.onRemoved = function(event) {
           calendar.fullCalendar('removeEvents', event._id);
         };
@@ -293,6 +297,8 @@ angular.module('ui.calendar', [])
           event._end = jQuery.fullCalendar.moment(event.end);
           calendar.fullCalendar('updateEvent', event);
         };
+
+
 
         eventSourcesWatcher.subscribe(scope);
         eventsWatcher.subscribe(scope, function() {

@@ -679,7 +679,17 @@ h1, h2, h3, h4, h5 {
 ---------------- */
 
 .calendar {
-  // background-color: #ccc;
+
+  .fc-event-container {
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  .fc-time {
+    display: none;
+  }
 
   .fc-content {
     margin-bottom: 0 !important;
@@ -716,14 +726,6 @@ h1, h2, h3, h4, h5 {
       &:hover {
         color: $background;
       }
-    }
-
-    .fc-basicWeek-button {
-      display: none;
-    }
-
-    .fc-basicDay-button {
-      display: none;
     }
   }
 

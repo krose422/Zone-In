@@ -11,14 +11,14 @@
 
           <nav>
             <div class="nav-item alert-btn">
-              <i class="fa fa-bell alert" ng-click="removeAlert()"></i>
+              <i class="fa fa-bell" ng-class="::getAlertColor(workoutAlerts)" ng-click="removeAlert(workoutAlerts)"></i>
             </div>
             <div class="alert-dropdown hide">
               <div class="triangle"></div>
               <ul class="alert-list">
-              <p>July 17 Workouts</p>
+              <p>Workouts for {{ today }}</p>
                 <!-- <li>Your workout(s) Today</li> -->
-                <li>Run 3 Miles | 30 mins</li>
+                <li ng-repeat="a in workoutAlerts">{{ a.workoutInfo.name }} | {{ a.workoutInfo.time }} mins</li>
               </ul>
             </div>
 

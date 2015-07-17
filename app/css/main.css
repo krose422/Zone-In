@@ -392,6 +392,12 @@ header {
 
 /* CALENDAR PAGE
 ---------------- */
+.calendar .fc-event-container:hover {
+  opacity: .8; }
+
+.calendar .fc-time {
+  display: none; }
+
 .calendar .fc-content {
   margin-bottom: 0 !important;
   white-space: normal;
@@ -423,10 +429,6 @@ header {
     border: none; }
     .calendar .fc-left button:hover {
       color: #FAFAFA; }
-  .calendar .fc-left .fc-basicWeek-button {
-    display: none; }
-  .calendar .fc-left .fc-basicDay-button {
-    display: none; }
 
 .calendar .fc-right {
   float: right;

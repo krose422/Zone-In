@@ -6,25 +6,23 @@
     .controller('CalendarCtrl', ['$scope', '$rootScope', 'UserService', '$location', 'PlanService', '$cookies',
       function ($scope, $rootScope, UserService, $location, PlanService, $cookies) {
 
-
-
-        $scope.uiConfig = {
-          calendar:{
-          height: 800,
-          editable: true,
-          header:{
-          left: 'month basicWeek basicDay agendaWeek agendaDay',
-          center: 'title',
-          right: 'today prev,next'
-        },
-          dayClick: $scope.alertEventOnClick,
-          eventDrop: $scope.alertOnDrop,
-          eventResize: $scope.alertOnResize
-        }
-      };
-
-        $scope.user = $cookies.getObject('currentUser');
-
+        $scope.user         = $cookies.getObject('currentUser');
+        $scope.events       = [];
+        $scope.eventSources = [$scope.events];
+        $scope.uiConfig     = {
+                                calendar:{
+                                height: 800,
+                                editable: true,
+                                header:{
+                                left: 'month agendaWeek agendaDay',
+                                center: 'title',
+                                right: 'today prev,next'
+                                },
+                                dayClick: $scope.alertEventOnClick,
+                                eventDrop: $scope.alertOnDrop,
+                                eventResize: $scope.alertOnResize
+                                }
+                              };
 
 
 
@@ -57,26 +55,20 @@
             _getWorkoutDates();
           });
 
-        var _getPlanWorkouts = function () {
-          PlanService.getPlans()
-            .success(function (data) {
-              $scope.trainingPlans = data;
-              // console.log($scope.trainingPlans);
-
-              $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
-              plan.workoutData = [];
-                // console.log($scope.workoutList);
-                return _.filter(plan.workouts, function (workoutId) {
-                  // console.log(workoutId);
-                  $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
-                  // console.log($scope.workoutInfo);
-                  plan.workoutData.push($scope.workoutInfo);
-                  return $scope.workoutInfo;
+          var _getPlanWorkouts = function () {
+            PlanService.getPlans()
+              .success(function (data) {
+                $scope.trainingPlans = data;
+                $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
+                plan.workoutData = [];
+                  return _.filter(plan.workouts, function (workoutId) {
+                    $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
+                    plan.workoutData.push($scope.workoutInfo);
+                    return $scope.workoutInfo;
+                  });
                 });
               });
-              // console.log($scope.trainingPlans);
-          });
-        };
+          };
 
           var _getWorkoutDates = function () {
             PlanService.getWorkoutDates()
@@ -85,82 +77,32 @@
                 $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
-                var WorkoutEvent = function (options) {
-                  this.title = workout.workoutInfo.name,
-                  this.start = workout.do_date,
-                  this.end = workout.do_date,
-                  this.color = workout.workoutInfo.color
-                };
-
-                var workoutEvent = new WorkoutEvent();
+                var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
                 $scope.events.push(workoutEvent);
 
                 });
-                console.log($scope.workoutDates);
-
-
-
-
               });
           };
 
-
-        $scope.events = [
-        // {
-        //   title: 'Testing Event Lorem Ipsum',
-        //   allDay: true,
-        //   start: "2015-07-20T04:00:00.000Z",
-        //   end: "2015-07-20T04:00:00.000Z",
-        //   color: '#499989',
-        //   className: 'testEvent'
-        // },
-        // {
-        //   title: 'Testing Again',
-        //   start: "2015-07-22T08:00:00.000Z",
-        //   end: "2015-07-22T08:00:00.000Z",
-        //   color: '#BED194'
-        // },
-        // {
-        //   title: 'Another Test',
-        //   start: "2015-07-23T08:00:00.000Z",
-        //   end: "2015-07-23T08:00:00.000Z",
-        //   color: '#0F4559'
-        // }
-        ];
-
-        $scope.eventSources = [$scope.events];
-
-
-          $scope.showUserMenu = function () {
-            $('.logout').removeClass('hide');
-          };
+          // var WorkoutEvent = function (name, start_date, end_date, color) {
+          //   this.title = name,
+          //   this.start = start_date,
+          //   this.end = end_date,
+          //   this.color = color
+          // };
 
           $scope.logoutUser = function () {
             UserService.logoutUser();
           };
 
-          $scope.toggleHide = function () {
-            // $(element).toggleClass('hide');
-            // $(event.target).toggleClass('hide');
+          // $scope.active = function () {
+          //   var eventTarget = $(event.target);
+          //   var dashNavDiv = $('.dash-nav');
+          //   $(event.target).parentsUntil('a').addClass('active');
 
-            $(event.target).siblings().not('h4').toggleClass('hide');
-            $(event.target).toggleClass('hide');
-          };
-
-          $scope.toggleChart = function () {
-            $(event.target).siblings().not('h4').not('.progress-bars').toggleClass('hide');
-            $(event.target).toggleClass('hide');
-            $('.progress-bars').toggleClass('hide');
-          };
-
-          $scope.active = function () {
-            var eventTarget = $(event.target);
-            var dashNavDiv = $('.dash-nav');
-            $(event.target).parentsUntil('a').addClass('active');
-
-            console.log($(event.target).parentsUntil('a').siblings());
-            $(event.target).parentsUntil('a').siblings().removeClass('active');
-          };
+          //   console.log($(event.target).parentsUntil('a').siblings());
+          //   $(event.target).parentsUntil('a').siblings().removeClass('active');
+          // };
 
       }
 

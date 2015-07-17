@@ -16,6 +16,20 @@
           this.end_date = options.end_date
         };
 
+        this.formatDate = function (date) {
+          var momentDate = moment(date);
+          var formattedDate = momentDate.format('MMM DD, YYYY');
+          return formattedDate;
+        };
+
+          this.WorkoutEvent = function (name, start_date, end_date, color) {
+            this.title = name,
+            this.start = start_date,
+            this.end = end_date,
+            this.color = color,
+            this.stick = true
+          };
+
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
           console.log(trainingPlan);
@@ -30,7 +44,7 @@
           return $http.post(endpoint + '/plans/workouts', trainingPlanWorkouts, HEROKU.CONFIG)
             .success( function (data) {
               $cookies.remove('currentPlan');
-              $state.go('training');
+              $state.go('dashboard.calendar');
               // $state.reload();
             });
         };
