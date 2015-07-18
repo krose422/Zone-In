@@ -28,7 +28,6 @@
         var endpoint = HEROKU.URL;
 
 
-
         $scope.sortReverse = function (workoutList, predicate) {
           $scope.sortedArray = _.sortBy(workoutList, predicate);
           $scope.workoutList = $scope.sortedArray.reverse();
@@ -129,6 +128,20 @@
           workoutIds: [],
           workoutDates: []
         };
+
+        $scope.getPlanDates = function () {
+          var start_date = moment($scope.currentTrainingPlan.start_date).toDate();
+          var end_date = moment($scope.currentTrainingPlan.end_date).toDate();
+          $scope.planDates = PlanService.getDates(start_date, end_date);
+
+          $scope.getPlanDates = _.each($scope.planDates, function (date) {
+            var formDate = moment(date).format('dddd, MMMM Do YYYY');
+          });
+          console.log($scope.planDates);
+
+        };
+
+        $scope.getPlanDates();
 
         // var TrainingPlanWorkouts = function (options) {
         //   this.plan_id = $scope.currentTrainingPlan.id,

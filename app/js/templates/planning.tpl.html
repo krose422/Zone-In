@@ -122,6 +122,74 @@
     <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button>
 
 
+      <li class="planning-dropzone" ng-repeat="d in getPlanDates">
+        <div class="planning-thumbnail"
+
+        data-drop="true"
+        ng-model="list1"
+        data-jqyoui-options="optionsList1"
+        jqyoui-droppable="{multiple: false, onDrop:'dropFunc(w)'}">
+
+        <!-- <p>{{d}}</p> -->
+          <div class="caption">
+            <div class="workout workout-draggable"
+            data-id="{{ w.id }}"
+            ng-repeat="w in list1"
+            ng-show="w.name"
+            data-drag="true"
+            data-jqyoui-options="{revert: 'invalid'}"
+            ng-model="list1"
+            jqyoui-draggable="{index: {{$index}}, animate:false}">
+
+              <!-- <div class="single-workout-dragged"> -->
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
+                  <div class="icon">
+                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
+                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
+                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
+                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
+                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
+                  </div>
+                </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} minutes</p>
+                  <div class="icon">
+                    <img ng-src="{{ checkType(w) }}">
+                  </div>
+                </div>
+                <div class="workout-image">
+                  <img src="{{ w.image_url }}">
+                </div>
+
+                <div class="workout-bottom">
+                  <p>Created by: {{ w.workout_creator }}</p>
+                  <div class="workout-interval">
+                    <form>
+                      <!-- <p>{{ w.select }}</p> -->
+<!--                         <label ng-repeat="day in w.planDays">
+                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
+                        </label> -->
+
+                        <label for="workoutDate">Workout Date:</label>
+                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
+                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
+
+                    </form>
+                  </div>
+                </div><!-- end workout-bottom -->
+              <!-- </div> --><!-- end single-workout-dragged -->
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
 
