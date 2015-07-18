@@ -156,7 +156,12 @@
           this.workout_dates = options.workout_dates
         };
 
+        // angular.element(document).ready(function () {
+        //   $state.reload();
+        // })
+
         $scope.dragStart = function (event) {
+          console.log(event.currentTarget);
           var workoutId = $(event.currentTarget).data('id');
           console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});

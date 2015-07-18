@@ -134,7 +134,7 @@
   </div> -->
 
 
-  <div ng-repeat="t in incompleteTrainingPlans" class="circle-progress hide">
+  <div ng-repeat="t in trainingPlans" class="circle-progress hide">
 
     <div class="radial-progress" data-progress="{{ t.id }}">
       <div class="circle">
@@ -161,7 +161,7 @@
 
     <div class="progress-bars">
 
-      <div class="progress-bar-indication" ng-repeat="t in incompleteTrainingPlans">
+      <div class="progress-bar-indication" ng-repeat="t in trainingPlans">
         <span class="meter" style="width: {{ t.id }}">
           <p>{{ t.id }}% <span>{{ t.name }}</span></p>
         </span>

@@ -136,6 +136,11 @@
                   });
                 });
                 console.log($scope.trainingPlans);
+
+                // $scope.incompleteTrainingPlans = _.filter($scope.trainingPlans, function (t) {
+                //   return t.completion === false;
+                // });
+                // console.log($scope.incompleteTrainingPlans)
             });
           };
 
