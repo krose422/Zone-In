@@ -12,15 +12,15 @@
         $scope.uiConfig     = {
                                 calendar:{
                                 height: 800,
-                                editable: true,
+                                // editable: true,
                                 header:{
                                 left: 'month agendaWeek agendaDay',
                                 center: 'title',
                                 right: 'today prev,next'
                                 },
-                                dayClick: $scope.alertEventOnClick,
-                                eventDrop: $scope.alertOnDrop,
-                                eventResize: $scope.alertOnResize
+                                // dayClick: $scope.alertEventOnClick,
+                                // eventDrop: $scope.alertOnDrop,
+                                // eventResize: $scope.alertOnResize
                                 }
                               };
 
@@ -81,6 +81,8 @@
                 $scope.events.push(workoutEvent);
 
                 });
+
+                console.log($scope.events);
               });
           };
 

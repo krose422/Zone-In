@@ -7,6 +7,7 @@
       function ($scope, PlanService, UserService, $state, ngDialog, $http, HEROKU, $compile, $filter, $cookies) {
 
         $scope.user = $cookies.getObject('currentUser');
+        $scope.currentTrainingPlan = {};
 
         $scope.list1 = [];
         $scope.list2 = [];
@@ -26,6 +27,12 @@
         $scope.list16 = [];
 
         var endpoint = HEROKU.URL;
+
+
+        // ng class to check if there is a date in p, if not... hide div
+        $scope.getPlayDay = function () {
+
+        };
 
 
         $scope.sortReverse = function (workoutList, predicate) {
@@ -141,7 +148,9 @@
 
         };
 
-        $scope.getPlanDates();
+        if ($scope.currentTrainingPlan !== undefined) {
+          $scope.getPlanDates();
+        }
 
         // var TrainingPlanWorkouts = function (options) {
         //   this.plan_id = $scope.currentTrainingPlan.id,
@@ -161,9 +170,6 @@
           this.workout_dates = options.workout_dates
         };
 
-        $scope.dropFunc = function (workout) {
-          // console.log(workout);
-        };
 
         $scope.showSortMenu = function() {
           $('.sort-dropdown').toggleClass('hide');
@@ -178,8 +184,13 @@
           // $('#active.sort').html('<p>sorted</p>');
         };
 
+        $scope.dropFunc = function (workout) {
+          var workoutDate = $(workout.target).data('id');
+          $scope.planWorkout.workout_dates.push(workoutDate);
+          console.log($scope.planWorkout.workout_dates);
+        };
+
         $scope.dragStart = function (event) {
-          console.log(event.currentTarget);
           var workoutId = $(event.currentTarget).data('id');
           console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
@@ -201,6 +212,7 @@
 
         $scope.finishTrainingPlan = function () {
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
+          console.log(trainingPlanWorkouts);
           PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 

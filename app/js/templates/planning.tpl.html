@@ -54,19 +54,19 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid'}"
         ng-model="workoutList"
-        jqyoui-draggable="{onStart: 'dragStart(w)',index: {{$index}}, placeholder: 'keep', animate: false}"
+        jqyoui-draggable="{onStart: 'dragStart(w)', onDrop: 'dropFunc(w)', index: {{$index}}, placeholder: 'keep', animate: false}"
         ng-hide="!w.name"
         >
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
             <h4>{{ w.name }}</h4>
-            <div class="icon">
+<!--             <div class="icon">
               <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
               <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
               <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
               <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
               <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-            </div>
+            </div> -->
           </div>
           <div class="workout-descrip">
             <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
@@ -115,22 +115,25 @@
 <!-- <<<<<<<<<<<<<<<<<<<<<<< START ALL DROP ZONES >>>>>>>>>>>>>>>>>>>>>>> -->
 <!-- <<<<<<<<<<<<<<<<<<<<<<< ******************** >>>>>>>>>>>>>>>>>>>>>>> -->
 
-<div class="planning-drops-wrapper">
+<!-- <div class="planning-drops-wrapper"> -->
     <ul class="planning-drops">
 
     <h5>Drag and drop workouts here.<h5>
     <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button>
 
+<!-- ng-repeat="d in getPlanDates" -->
 
-      <li class="planning-dropzone" ng-repeat="d in getPlanDates">
+
+      <li class="planning-dropzone">
         <div class="planning-thumbnail"
-
+        data-id="{{ getPlanDates[0] }}"
         data-drop="true"
         ng-model="list1"
         data-jqyoui-options="optionsList1"
-        jqyoui-droppable="{multiple: false, onDrop:'dropFunc(w)'}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
-        <!-- <p>{{d}}</p> -->
+        <p class="dropzone-date">{{ getPlanDates[0] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -141,126 +144,34 @@
             ng-model="list1"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <!-- <div class="single-workout-dragged"> -->
                 <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                   <h4>{{ w.name }}</h4>
                   <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                     <i class="fa fa-times-circle"></i>
                   </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
                 </div>
+
                 <div class="workout-descrip">
                   <p>{{ w.description }}</p>
                   <p>{{ w.time }} minutes</p>
-                  <div class="icon">
-                    <img ng-src="{{ checkType(w) }}">
-                  </div>
-                </div>
-                <div class="workout-image">
-                  <img src="{{ w.image_url }}">
                 </div>
 
-                <div class="workout-bottom">
-                  <p>Created by: {{ w.workout_creator }}</p>
-                  <div class="workout-interval">
-                    <form>
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-                    </form>
-                  </div>
-                </div><!-- end workout-bottom -->
-              <!-- </div> --><!-- end single-workout-dragged -->
-
-            </div>
-          </div>
-        </div>
-      </li>
-
-
-      <li class="planning-dropzone">
-        <div class="planning-thumbnail"
-
-        data-drop="true"
-        ng-model="list1"
-        data-jqyoui-options="optionsList1"
-        jqyoui-droppable="{multiple: false, onDrop:'dropFunc(w)'}">
-          <div class="caption">
-            <div class="workout workout-draggable"
-            data-id="{{ w.id }}"
-            ng-repeat="w in list1"
-            ng-show="w.name"
-            data-drag="true"
-            data-jqyoui-options="{revert: 'invalid'}"
-            ng-model="list1"
-            jqyoui-draggable="{index: {{$index}}, animate:false}">
-
-              <!-- <div class="single-workout-dragged"> -->
-                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                  <h4>{{ w.name }}</h4>
-                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                    <i class="fa fa-times-circle"></i>
-                  </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
-                </div>
-                <div class="workout-descrip">
-                  <p>{{ w.description }}</p>
-                  <p>{{ w.time }} minutes</p>
-                  <div class="icon">
-                    <img ng-src="{{ checkType(w) }}">
-                  </div>
-                </div>
-                <div class="workout-image">
-                  <img src="{{ w.image_url }}">
-                </div>
-
-                <div class="workout-bottom">
-                  <p>Created by: {{ w.workout_creator }}</p>
-                  <div class="workout-interval">
-                    <form>
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-                    </form>
-                  </div>
-                </div><!-- end workout-bottom -->
-              <!-- </div> --><!-- end single-workout-dragged -->
-
-            </div>
-          </div>
-        </div>
+            </div> <!-- end workout-draggable -->
+          </div><!-- end caption -->
+        </div><!-- end planning thumbnail -->
       </li>
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[1] }}"
+
         data-drop="true"
         ng-model="list2"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list2])'}"
-        jqyoui-droppable="{multiple: false}">
+        jqyoui-droppable="{multiple: false, onDrop:'dropFunc(w)'}">
+
+        <p class="dropzone-date">{{ getPlanDates[1] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -276,47 +187,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-              <div class="icon">
-                <img ng-src="{{ checkType(w) }}">
               </div>
-              </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                  <form>
-<!--                     <p>{{ w.select }}</p>
-                      <label ng-repeat="day in w.planDays">
-                        {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                      </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-                  </form>
-                </div>
-              </div>
-
 
             </div>
-
-
 
           </div>
         </div>
@@ -327,7 +204,9 @@
         data-drop="true"
         ng-model="list3"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list3])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[2] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -343,43 +222,11 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-              <div class="icon">
-                <img ng-src="{{ checkType(w) }}">
               </div>
-              </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                    <form ng-submit="addDate(workout)">
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-                    </form>
-                </div>
-              </div>
-
 
             </div>
           </div>
@@ -388,10 +235,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[2] }}"
+
         data-drop="true"
         ng-model="list4"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[3] }}</p>
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -407,44 +257,11 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-              <div class="icon">
-                <img ng-src="{{ checkType(w) }}">
               </div>
-              </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                    <form ng-submit="addDate(workout)">
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-
-                    </form>
-                </div>
-              </div>
-
 
             </div>
           </div>
@@ -453,10 +270,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[3] }}"
+
         data-drop="true"
         ng-model="list5"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list5])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[4] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -472,44 +293,11 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-              <div class="icon">
-                <img ng-src="{{ checkType(w) }}">
               </div>
-              </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                    <form ng-submit="addDate(workout)">
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-
-                    </form>
-                </div>
-              </div>
-
 
             </div>
           </div>
@@ -518,10 +306,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[4] }}"
+
         data-drop="true"
         ng-model="list6"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list6])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[5] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -537,44 +329,11 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                    <form ng-submit="addDate(workout)">
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-
-                    </form>
-                </div>
-              </div>
-
 
             </div>
           </div>
@@ -583,10 +342,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[5] }}"
+
         data-drop="true"
         ng-model="list7"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list7])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[6] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -602,44 +365,11 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
-                    <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-                    <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-                    <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-                    <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-                    <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
               </div>
+
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
-              <div class="workout-image">
-                <img src="{{ w.image_url }}">
-              </div>
-
-              <div class="workout-bottom">
-                <p>Created by: {{ w.workout_creator }}</p>
-                <div class="workout-interval">
-                    <form ng-submit="addDate(workout)">
-                      <!-- <p>{{ w.select }}</p> -->
-<!--                         <label ng-repeat="day in w.planDays">
-                          {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-                        </label> -->
-
-                        <label for="workoutDate">Workout Date:</label>
-                        <input type="date" id="workoutDate" name="input" ng-model="workout.date" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-                        <i class="fa fa-plus" ng-click="addDate(workout)"></i>
-
-
-
-
-                    </form>
-                </div>
-              </div>
-
 
             </div>
           </div>
@@ -648,10 +378,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[6] }}"
+
         data-drop="true"
         ng-model="list8"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list8])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[7] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -667,19 +401,17 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
+
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -712,10 +444,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ getPlanDates[8] }}"
         data-drop="true"
         ng-model="list9"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list9])'}"
-        jqyoui-droppable="{multiple: true}">
+        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
+        <p class="dropzone-date">{{ getPlanDates[8] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -731,19 +466,17 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
+
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -778,6 +511,8 @@
         ng-model="list10"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list10])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[9] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -793,19 +528,17 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
+
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -842,6 +575,8 @@
         ng-model="list11"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list11])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[10] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -857,19 +592,16 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -906,6 +638,8 @@
         ng-model="list12"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list12])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[11] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -921,19 +655,16 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -970,6 +701,8 @@
         ng-model="list13"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list13])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[12] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -985,19 +718,16 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -1034,6 +764,8 @@
         ng-model="list14"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list14])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[13] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -1049,13 +781,13 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
@@ -1094,6 +826,8 @@
         ng-model="list15"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list15])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[14] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -1158,6 +892,8 @@
         ng-model="list16"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list16])'}"
         jqyoui-droppable="{multiple: true}">
+        <p class="dropzone-date">{{ getPlanDates[15] }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -1173,19 +909,16 @@
                 <div class="delete-workout" ng-click="deleteWorkout(w.id)">
                   <i class="fa fa-times-circle"></i>
                 </div>
-                  <div class="icon">
+<!--                   <div class="icon">
                     <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
                     <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
                     <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
                     <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
                     <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-                  </div>
+                  </div> -->
               </div>
               <div class="workout-descrip">
                 <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
-                <div class="icon">
-                  <img ng-src="{{ checkType(w) }}">
-                </div>
               </div>
               <div class="workout-image">
                 <img src="{{ w.image_url }}">
@@ -1217,7 +950,8 @@
       </li>
 
     </ul>
-    </div><!-- end planning drops wrapper -->
+    <!-- </div> -->
+    <!-- end planning drops wrapper -->
 
   </div>
 
