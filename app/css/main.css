@@ -355,6 +355,13 @@ header {
       background-color: #FF534E; }
       .dashboard-page .dash-content .upcoming:last-child {
         margin-right: 0; }
+      .dashboard-page .dash-content .upcoming .workout-list-dash {
+        padding-top: 0; }
+        .dashboard-page .dash-content .upcoming .workout-list-dash li .workout-date {
+          border-bottom: 1px solid #424242; }
+        .dashboard-page .dash-content .upcoming .workout-list-dash li p {
+          display: inline-block;
+          font-size: 1em; }
       .dashboard-page .dash-content .upcoming h4 {
         display: inline-block;
         float: left; }

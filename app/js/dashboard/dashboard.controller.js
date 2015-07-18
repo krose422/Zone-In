@@ -93,13 +93,21 @@
               .success(function (data) {
                 $scope.workoutDates = data;
                 $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.do_date = PlanService.formatDate(workout.do_date);
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
                 // var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
                 // $scope.events.push(workoutEvent);
-                });
 
-                console.log($scope.workoutDates);
+                });
+                $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
+                $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === false;
+                });
+                console.log($scope.incompleteWorkoutDates);
+                $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === true;
+                });
 
               });
           };

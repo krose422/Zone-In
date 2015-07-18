@@ -284,10 +284,6 @@ angular.module('ui.calendar', [])
           calendar.fullCalendar('renderEvent', event, (event.stick ? true : false));
         };
 
-        // eventsWatcher.onAdded = function(event) {
-        //   scope.calendar.fullCalendar('renderEvent', event,true);
-        // };
-
         eventsWatcher.onRemoved = function(event) {
           calendar.fullCalendar('removeEvents', event._id);
         };

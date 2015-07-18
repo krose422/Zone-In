@@ -626,6 +626,21 @@ h1, h2, h3, h4, h5 {
         @include span-columns(8);
         background-color: $red;
 
+        .workout-list-dash {
+          padding-top: 0;
+
+          li {
+            .workout-date {
+              border-bottom: 1px solid $darkgrey;
+            }
+
+            p {
+              display: inline-block;
+              font-size: 1em;
+            }
+          }
+        }
+
         h4 {
           display: inline-block;
           float: left;
