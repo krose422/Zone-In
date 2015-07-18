@@ -43,6 +43,8 @@
               $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
               plan.workoutData = [];
                 // console.log($scope.workoutList);
+
+
                 return _.filter(plan.workouts, function (workoutId) {
                   // console.log(workoutId);
                   $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
@@ -54,6 +56,33 @@
               console.log($scope.trainingPlans);
           });
         };
+
+          var _getWorkoutDates = function () {
+            PlanService.getWorkoutDates()
+              .success(function (data) {
+                $scope.workoutDates = data;
+                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.do_date = PlanService.formatDate(workout.do_date);
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+
+                // var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
+                // $scope.events.push(workoutEvent);
+
+                });
+                $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
+                $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === false;
+                });
+                console.log($scope.incompleteWorkoutDates);
+
+                // _getWeekWorkouts();
+
+                $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === true;
+                });
+
+              });
+          };
 
 
         PlanService.getWorkouts()
@@ -82,6 +111,7 @@
 
           .then(function (data) {
             _getPlanWorkouts();
+            _getWorkoutDates();
           });
 
         // Check type of workout and apply correct icon
@@ -207,7 +237,7 @@
 
         $scope.completeWorkout = function (workout) {
           console.log(workout);
-          // PlanService.completeWorkout(workout);
+          PlanService.completeWorkout(workout);
         };
 
         $scope.completePlan = function (trainingPlan) {
