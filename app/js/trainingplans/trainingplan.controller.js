@@ -186,6 +186,8 @@
 
         $scope.dropFunc = function (workout) {
           var workoutDate = $(workout.target).data('id');
+          workoutDate = moment(workoutDate).toDate();
+          console.log(workoutDate);
           $scope.planWorkout.workout_dates.push(workoutDate);
           console.log($scope.planWorkout.workout_dates);
         };

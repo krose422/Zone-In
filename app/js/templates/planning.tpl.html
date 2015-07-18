@@ -126,13 +126,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[0] }}"
+        data-id="{{ formatDate(getPlanDates[0]) }}"
         data-drop="true"
         ng-model="list1"
         data-jqyoui-options="optionsList1"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
-        <p class="dropzone-date">{{ getPlanDates[0] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[0]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
