@@ -1362,7 +1362,7 @@ ul {
     }
 
     .workouts-inner {
-      @include span-columns(3);
+      @include span-columns(3.5);
       background-color: #fff;
       padding: 1em;
       @include border($grey);
@@ -1393,7 +1393,7 @@ ul {
 
     .planning-drops-wrapper {
       overflow: hidden;
-      @include span-columns(9);
+      @include span-columns(8.5);
     }
 
     .planning-drops {
@@ -1441,10 +1441,9 @@ ul {
         border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
-        @include span-columns(3 of 9);
+        @include span-columns(2.8 of 8.5);
         @include omega();
         // @include pad();
-
         // margin: 0 .2em .4em .2em;
 
         .workout {
@@ -1531,7 +1530,7 @@ ul {
       }
 
       .planning-thumbnail {
-          height: 12em;
+          height: 13em;
       }
     }
   }
