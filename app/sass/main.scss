@@ -1016,7 +1016,7 @@ h1, h2, h3, h4, h5 {
 ---------------------- */
 
 .train-content {
-  width: 90%;
+  width: 100%;
   margin: auto;
   @include outer-container(100%);
 
@@ -1253,6 +1253,81 @@ ul {
   overflow: hidden;
   @include outer-container(100%);
 
+  .sort-menu {
+    // overflow: hidden;
+    position: relative;
+
+    .hide {
+      height: 0;
+    }
+
+    .sort-button {
+      cursor: pointer;
+      @include button($darkgrey);
+      color: $background;
+      text-align: left;
+      font-family: $fjalla;
+
+      .fa {
+        @include transition(.3s);
+      }
+
+      &:hover {
+        .fa-chevron-right {
+          transform: rotate(90deg);
+        }
+      }
+
+    }
+
+    .sort-dropdown {
+      width: 100%;
+      background-color: rgba(66, 66, 66, .8);
+      overflow: hidden;
+      position: absolute;
+      z-index: 999;
+      left: 0px;
+      top: 42px;
+      @include transition(.3s);
+
+      // .sort-triangle {
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   width: 0;
+      //   height: 0;
+      //   border-style: solid;
+      //   border-width: 15px 20px 15px 0;
+      //   border-color: transparent #009999 transparent transparent;
+      // }
+
+      .sort-option {
+        color: $background;
+        padding: .5em 1em;
+        margin: 0;
+        font-family: $fjalla;
+
+        &:hover {
+          background-color: rgba(208, 200, 197, 1);
+          cursor: pointer;
+          color: $darkgrey;
+        }
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        padding-left: 1.5em;
+
+        li {
+          font-size: .8em;
+        }
+      }
+    }
+
+  }
+
+
   input {
     margin: 0;
   }
@@ -1287,7 +1362,7 @@ ul {
     }
 
     .workouts-inner {
-      @include span-columns(5);
+      @include span-columns(3);
       background-color: #fff;
       padding: 1em;
       @include border($grey);
@@ -1295,13 +1370,34 @@ ul {
       height: 100vh;
       overflow: scroll;
 
+      .addWorkoutBtn {
+        @include button($background);
+        @include border($grey);
+        color: $darkgrey;
+
+        .fa {
+          padding: 0 .5em;
+        }
+
+        &:hover {
+          background-color: $darkgrey;
+          color: $background;
+        }
+
+      }
+
       .workout-list-container {
         // overflow: scroll;
       }
     }
 
+    .planning-drops-wrapper {
+      overflow: hidden;
+      @include span-columns(9);
+    }
+
     .planning-drops {
-      @include span-columns(7);
+      @include fill-parent();
       padding-top: 0;
       float: right;
       clear: none;
@@ -1312,22 +1408,44 @@ ul {
       overflow: scroll;
       height: 100vh;
 
-      button {
-        // width: 100%;
-        margin: 0;
+      .finish-plan-btn {
+        margin: .5em auto;
+        width: 100%;
+        @include button($background);
+        @include border($grey);
+        color: $darkgrey;
+        font-family: $fjalla;
+
+        .fa {
+          padding: 0 .5em;
+        }
+
+        &:hover {
+          background-color: $darkgrey;
+          color: $background;
+        }
       }
+
+      // button {
+      //   // width: 100%;
+      //   margin: 0;
+      // }
 
       h5 {
         text-align: center;
+        padding: .2em 0 0 0;
+        margin: 0;
       }
 
       .planning-dropzone {
         border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
-        @include span-columns(3.5 of 7);
+        @include span-columns(3 of 9);
         @include omega();
-        margin: 0 .2em .4em .2em;
+        // @include pad();
+
+        // margin: 0 .2em .4em .2em;
 
         .workout {
           @include workoutCard();

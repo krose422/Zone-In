@@ -27,11 +27,7 @@
 
         var endpoint = HEROKU.URL;
 
-        $scope.sort = function(workoutList, predicate) {
-          // $(event.target).addClass('active');
-          // $(event.target).siblings().removeClass('active');
-          $scope.workoutList = _.sortBy(workoutList, predicate);
-        };
+
 
         $scope.sortReverse = function (workoutList, predicate) {
           $scope.sortedArray = _.sortBy(workoutList, predicate);
@@ -147,13 +143,26 @@
 
         $scope.workouts = [];
 
+        var PlanWorkout = function (options) {
+          this.workout_id = options.workout_id,
+          this.workout_dates = options.workout_dates
+        };
+
         $scope.dropFunc = function (workout) {
           // console.log(workout);
         };
 
-        var PlanWorkout = function (options) {
-          this.workout_id = options.workout_id,
-          this.workout_dates = options.workout_dates
+        $scope.showSortMenu = function() {
+          $('.sort-dropdown').toggleClass('hide');
+          $('.fa-chevron-down').toggleClass('hide');
+          $('.fa-chevron-right').toggleClass('hide');
+        };
+
+        $scope.sort = function(workoutList, predicate) {
+          // $(event.target).addClass('active');
+          // $(event.target).siblings().removeClass('active');
+          $scope.workoutList = _.sortBy(workoutList, predicate);
+          // $('#active.sort').html('<p>sorted</p>');
         };
 
         $scope.dragStart = function (event) {

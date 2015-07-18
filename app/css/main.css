@@ -638,7 +638,7 @@ header {
 /* TRAINING PLANS PAGE
 ---------------------- */
 .train-content {
-  width: 90%;
+  width: 100%;
   margin: auto;
   max-width: 100%;
   margin-left: auto;
@@ -952,6 +952,51 @@ ul {
     clear: both;
     content: "";
     display: table; }
+  .planning-page .sort-menu {
+    position: relative; }
+    .planning-page .sort-menu .hide {
+      height: 0; }
+    .planning-page .sort-menu .sort-button {
+      cursor: pointer;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      color: #FAFAFA;
+      border: 1px solid #424242;
+      border-radius: 2px;
+      background-color: #424242;
+      transition: 0.3s all ease;
+      color: #FAFAFA;
+      text-align: left;
+      font-family: "Fjalla One", sans-serif; }
+      .planning-page .sort-menu .sort-button .fa {
+        transition: 0.3s all ease; }
+      .planning-page .sort-menu .sort-button:hover .fa-chevron-right {
+        transform: rotate(90deg); }
+    .planning-page .sort-menu .sort-dropdown {
+      width: 100%;
+      background-color: rgba(66, 66, 66, 0.8);
+      overflow: hidden;
+      position: absolute;
+      z-index: 999;
+      left: 0px;
+      top: 42px;
+      transition: 0.3s all ease; }
+      .planning-page .sort-menu .sort-dropdown .sort-option {
+        color: #FAFAFA;
+        padding: 0.5em 1em;
+        margin: 0;
+        font-family: "Fjalla One", sans-serif; }
+        .planning-page .sort-menu .sort-dropdown .sort-option:hover {
+          background-color: #d0c8c5;
+          cursor: pointer;
+          color: #424242; }
+      .planning-page .sort-menu .sort-dropdown ul {
+        padding: 0;
+        margin: 0;
+        padding-left: 1.5em; }
+        .planning-page .sort-menu .sort-dropdown ul li {
+          font-size: .8em; }
   .planning-page input {
     margin: 0; }
   .planning-page .planning-content {
@@ -975,7 +1020,7 @@ ul {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 40.29137%;
+      width: 23.23176%;
       background-color: #fff;
       padding: 1em;
       border: 1px solid #D0C8C5;
@@ -988,11 +1033,33 @@ ul {
       overflow: scroll; }
       .planning-page .planning-content .workouts-inner:last-child {
         margin-right: 0; }
-    .planning-page .planning-content .planning-drops {
+      .planning-page .planning-content .workouts-inner .addWorkoutBtn {
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid #FAFAFA;
+        border-radius: 2px;
+        background-color: #FAFAFA;
+        transition: 0.3s all ease;
+        border: 1px solid #D0C8C5;
+        border-radius: 2px;
+        color: #424242; }
+        .planning-page .planning-content .workouts-inner .addWorkoutBtn .fa {
+          padding: 0 0.5em; }
+        .planning-page .planning-content .workouts-inner .addWorkoutBtn:hover {
+          background-color: #424242;
+          color: #FAFAFA; }
+    .planning-page .planning-content .planning-drops-wrapper {
+      overflow: hidden;
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 57.35098%;
+      width: 74.41059%; }
+      .planning-page .planning-content .planning-drops-wrapper:last-child {
+        margin-right: 0; }
+    .planning-page .planning-content .planning-drops {
+      width: 100%;
       padding-top: 0;
       float: right;
       clear: none;
@@ -1006,22 +1073,39 @@ ul {
       border-radius: 2px;
       overflow: scroll;
       height: 100vh; }
-      .planning-page .planning-content .planning-drops:last-child {
-        margin-right: 0; }
-      .planning-page .planning-content .planning-drops button {
-        margin: 0; }
+      .planning-page .planning-content .planning-drops .finish-plan-btn {
+        margin: .5em auto;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid #FAFAFA;
+        border-radius: 2px;
+        background-color: #FAFAFA;
+        transition: 0.3s all ease;
+        border: 1px solid #D0C8C5;
+        border-radius: 2px;
+        color: #424242;
+        font-family: "Fjalla One", sans-serif; }
+        .planning-page .planning-content .planning-drops .finish-plan-btn .fa {
+          padding: 0 0.5em; }
+        .planning-page .planning-content .planning-drops .finish-plan-btn:hover {
+          background-color: #424242;
+          color: #FAFAFA; }
       .planning-page .planning-content .planning-drops h5 {
-        text-align: center; }
+        text-align: center;
+        padding: .2em 0 0 0;
+        margin: 0; }
       .planning-page .planning-content .planning-drops .planning-dropzone {
         border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
         float: left;
         display: block;
-        margin-right: 4.11092%;
-        width: 47.94454%;
-        margin-right: 0;
-        margin: 0 0.2em 0.4em 0.2em; }
+        margin-right: 3.16844%;
+        width: 31.22104%;
+        margin-right: 0; }
         .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
           margin-right: 0; }
         .planning-page .planning-content .planning-drops .planning-dropzone .workout {
