@@ -134,8 +134,7 @@
   </div> -->
 
 
-  <div ng-repeat="t in trainingPlans" class="circle-progress hide">
-
+  <div ng-repeat="t in incompleteTrainingPlans" class="circle-progress hide">
 
     <div class="radial-progress" data-progress="{{ t.id }}">
       <div class="circle">
@@ -159,41 +158,54 @@
     </div>
   </div>
 
+
     <div class="progress-bars">
 
-      <div class="progress-bar-indication">
-        <span class="meter" style="width: 60%">
-          <p>60%</p>
+      <div class="progress-bar-indication" ng-repeat="t in incompleteTrainingPlans">
+        <span class="meter" style="width: {{ t.id }}">
+          <p>{{ t.id }}% <span>{{ t.name }}</span></p>
         </span>
       </div>
 
-      <div class="progress-bar-indication">
+<!--       <div class="progress-bar-indication">
         <span class="meter" style="width: 45%">
-          <p>45%</p>
+          <p>45% <span>Testing Name</span></p>
         </span>
       </div>
 
       <div class="progress-bar-indication">
         <span class="meter" style="width: 92%">
-          <p>92%</p>
+          <p>92% <span>Testing Name</span></p>
         </span>
-      </div>
+      </div> -->
     </div> <!-- end progress bars div -->
+
   </div>
 
 
-
     <div class="upcoming">
-      <h4>What I Have Going On</h4>
-        <a href="#/calendar"><p><i class="fa fa-calendar"></i>Calendar View</p></a>
+      <h4>{{ user.username }}'s Upcoming Workouts</h4>
+        <a class="calendar-view-btn" ng-click="openDashCalendar()"><i class="fa fa-calendar"></i></a>
+        <a class="list-view-btn list-view hide" ng-click="openDashList()"><i class="fa fa-list-alt"></i></i></a>
+
         <hr />
-        <ul class="workout-list-dash">
-          <li ng-repeat="i in incompleteWorkoutDates">
-            <p class="workout-date">{{ i.do_date }}</p>
-            <p>{{ i.workoutInfo.name }}</p>
-            <p>({{ i.workoutInfo.time }} minutes)</p>
-          </li>
-        </ul>
+        <div class="dash-calendar">
+          <ul class="workout-list-dash">
+            <li ng-repeat="d in dailyWorkouts">
+              <p class="workout-date">{{ checkDay(d.day) }}</p>
+              <ul>
+                <!-- <li ng-repeat="w in d.workouts">{{ checkWorkout(w) }}</li> -->
+                <li ng-repeat="w in d.workouts">{{ w.workoutInfo.name }} ({{ w.workoutInfo.time }} minutes)</li>
+              </ul>
+              <hr />
+
+            </li>
+          </ul>
+
+          <div ui-calendar="uiConfig.calendar" ng-model="eventSources" class="hide span8 calendar dash-calendar"></div>
+
+
+        </div><!-- end dash-calendar -->
 
     </div> <!-- end upcoming div -->
   </div><!-- end right dash div -->

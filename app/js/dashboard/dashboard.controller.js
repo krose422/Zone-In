@@ -6,13 +6,26 @@
     .controller('DashboardCtrl', ['$scope', 'UserService', '$location', 'PlanService', '$cookies',
       function ($scope, UserService, $location, PlanService, $cookies) {
 
-        $scope.user = $cookies.getObject('currentUser');
-        $scope.workoutAlerts = [];
+        $scope.user           = $cookies.getObject('currentUser');
+        $scope.workoutAlerts  = [];
+        $scope.dailyWorkouts  = [];
+        $scope.events         = [];
+        $scope.eventSources   = [$scope.events];
+        $scope.uiConfig       = {
+                                calendar:{
+                                  height: 800,
+                                  editable: true,
+                                  header:{
+                                  left: 'month',
+                                  center: 'title',
+                                  right: 'today prev,next'
+                                  },
+                                }
+                              };
 
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
               w.workoutDate = '';
@@ -67,6 +80,43 @@
           //   $(event.target).parentsUntil('a').siblings().removeClass('active');
           // };
 
+          $scope.getAlertColor = function (workoutAlerts) {
+            if (workoutAlerts !== []) {
+              return 'alert';
+            }
+          };
+
+          $scope.checkDay = function (day) {
+            var today = PlanService.formatDate(new Date());
+            if (day === today) {
+              return 'Today';
+            } else {
+              return day;
+            }
+          };
+
+          $scope.openDashCalendar = function () {
+            $('.dash-calendar').removeClass('hide');
+            $('.workout-list-dash').addClass('hide');
+            $('.list-view').removeClass('hide');
+            $('.calendar-view-btn').addClass('hide');
+          };
+
+          $scope.openDashList = function () {
+            $('.dash-calendar').addClass('hide');
+            $('.workout-list-dash').removeClass('hide');
+            $('.list-view').addClass('hide');
+            $('.calendar-view-btn').removeClass('hide');
+          };
+
+          // $scope.checkWorkout = function (w) {
+          //   if (w) {
+          //     return w.workoutInfo.name;
+          //   } else {
+          //     return "off day";
+          //   }
+          // };
+
           var _getPlanWorkouts = function () {
             PlanService.getPlans()
               .success(function (data) {
@@ -74,6 +124,7 @@
                 // console.log($scope.trainingPlans);
 
                 $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
+                // plan.planStyle = {width: plan.id + '%'};
                 plan.workoutData = [];
                   // console.log($scope.workoutList);
                   return _.filter(plan.workouts, function (workoutId) {
@@ -96,8 +147,8 @@
                   workout.do_date = PlanService.formatDate(workout.do_date);
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
-                // var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
-                // $scope.events.push(workoutEvent);
+                var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
+                $scope.events.push(workoutEvent);
 
                 });
                 $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
@@ -105,6 +156,9 @@
                   return workout.workout_completion === false;
                 });
                 console.log($scope.incompleteWorkoutDates);
+
+                _getWeekWorkouts();
+
                 $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === true;
                 });
@@ -121,12 +175,19 @@
             console.log($scope.workoutAlerts);
           };
 
-          $scope.getAlertColor = function (workoutAlerts) {
-            if (workoutAlerts !== []) {
-              return 'alert';
-            }
-          };
+          var _getWeekWorkouts = function () {
+            $scope.dateArray = PlanService.getDates(new Date(), (new Date()).addDays(7));
 
+            _.each($scope.dateArray, function (date) {
+              var workouts = [];
+              var fDate = PlanService.formatDate(date);
+              workouts = _.filter($scope.incompleteWorkoutDates, function (w) {
+                return w.do_date === fDate;
+              });
+              var dailyWorkout = new PlanService.DailyWorkout(fDate, workouts);
+              $scope.dailyWorkouts.push(dailyWorkout);
+            });
+          };
 
       }
 

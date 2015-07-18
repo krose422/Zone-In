@@ -593,6 +593,10 @@ h1, h2, h3, h4, h5 {
       p {
         font-size: 1.8em;
         padding: .5em;
+
+        span {
+          float: right;
+        }
       }
 
       .fa {
@@ -619,23 +623,44 @@ h1, h2, h3, h4, h5 {
       }
     }
 
-
-
       .upcoming {
         padding: 2em;
-        @include span-columns(8);
+        @include span-columns(7);
         background-color: $red;
+        overflow: scroll;
+
+        .dash-calendar {
+          overflow: hidden;
+          // @include transition(.3s);
+
+          .hide {
+            height: 0;
+          }
+        }
+
+        .calendar {
+          @include transition(.3s);
+          overflow: hidden;
+        }
+
+        .workout-list-dash {
+          @include transition(.3s);
+        }
 
         .workout-list-dash {
           padding-top: 0;
 
-          li {
-            .workout-date {
-              border-bottom: 1px solid $darkgrey;
-            }
+          ul {
+            padding: 0;
+          }
 
-            p {
+          li {
+            font-size: 1em;
+
+            .workout-date {
+              margin: 0;
               display: inline-block;
+              font-family: $fjalla;
               font-size: 1em;
             }
           }
@@ -649,11 +674,13 @@ h1, h2, h3, h4, h5 {
         a {
           color: $background;
 
-          p {
+          i {
             @include border($background);
             padding: .5em;
             display: inline-block;
             float: right;
+            font-size: 2em;
+            margin-bottom: .5em;
 
             &:hover {
               background-color: $background;
@@ -1096,6 +1123,11 @@ ul {
           p {
             font-size: .8em;
             padding: .5em;
+
+            span {
+              float: right;
+            }
+
           }
         }
       }

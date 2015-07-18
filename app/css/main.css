@@ -333,6 +333,8 @@ header {
       .dashboard-page .dash-content .top-dash-progress p {
         font-size: 1.8em;
         padding: .5em; }
+        .dashboard-page .dash-content .top-dash-progress p span {
+          float: right; }
       .dashboard-page .dash-content .top-dash-progress .fa {
         display: inline-block;
         float: left;
@@ -351,29 +353,45 @@ header {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 65.88078%;
-      background-color: #FF534E; }
+      width: 57.35098%;
+      background-color: #FF534E;
+      overflow: scroll; }
       .dashboard-page .dash-content .upcoming:last-child {
         margin-right: 0; }
+      .dashboard-page .dash-content .upcoming .dash-calendar {
+        overflow: hidden; }
+        .dashboard-page .dash-content .upcoming .dash-calendar .hide {
+          height: 0; }
+      .dashboard-page .dash-content .upcoming .calendar {
+        transition: 0.3s all ease;
+        overflow: hidden; }
+      .dashboard-page .dash-content .upcoming .workout-list-dash {
+        transition: 0.3s all ease; }
       .dashboard-page .dash-content .upcoming .workout-list-dash {
         padding-top: 0; }
-        .dashboard-page .dash-content .upcoming .workout-list-dash li .workout-date {
-          border-bottom: 1px solid #424242; }
-        .dashboard-page .dash-content .upcoming .workout-list-dash li p {
-          display: inline-block;
+        .dashboard-page .dash-content .upcoming .workout-list-dash ul {
+          padding: 0; }
+        .dashboard-page .dash-content .upcoming .workout-list-dash li {
           font-size: 1em; }
+          .dashboard-page .dash-content .upcoming .workout-list-dash li .workout-date {
+            margin: 0;
+            display: inline-block;
+            font-family: "Fjalla One", sans-serif;
+            font-size: 1em; }
       .dashboard-page .dash-content .upcoming h4 {
         display: inline-block;
         float: left; }
       .dashboard-page .dash-content .upcoming a {
         color: #FAFAFA; }
-        .dashboard-page .dash-content .upcoming a p {
+        .dashboard-page .dash-content .upcoming a i {
           border: 1px solid #FAFAFA;
           border-radius: 2px;
           padding: .5em;
           display: inline-block;
-          float: right; }
-          .dashboard-page .dash-content .upcoming a p:hover {
+          float: right;
+          font-size: 2em;
+          margin-bottom: .5em; }
+          .dashboard-page .dash-content .upcoming a i:hover {
             background-color: #FAFAFA;
             color: #FF534E; }
       .dashboard-page .dash-content .upcoming h5 {
@@ -739,6 +757,8 @@ ul {
       ul .allplans .top .top-bottom .progress-bar-indication p {
         font-size: .8em;
         padding: .5em; }
+        ul .allplans .top .top-bottom .progress-bar-indication p span {
+          float: right; }
     ul .allplans .top .top-right {
       overflow: hidden; }
       ul .allplans .top .top-right .dates {

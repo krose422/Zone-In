@@ -30,6 +30,11 @@
             this.stick = true
           };
 
+          this.DailyWorkout = function (day, workouts) {
+            this.day = day;
+            this.workouts = workouts;
+          };
+
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
           console.log(trainingPlan);
@@ -109,7 +114,21 @@
           });
         };
 
+        Date.prototype.addDays = function (days) {
+          var d = new Date(this.valueOf())
+          d.setDate(d.getDate() + days);
+          return d;
+        };
 
+        this.getDates = function (startDate, stopDate) {
+          var dateArray = [];
+          var currentDate = startDate;
+          while (currentDate <= stopDate) {
+            dateArray.push(currentDate);
+            currentDate = currentDate.addDays(1);
+          }
+          return dateArray;
+        };
 
       }
 
