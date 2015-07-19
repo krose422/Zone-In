@@ -119,11 +119,11 @@
             });
           };
 
+          // Declare and populate completed and incompleted plans arrays
           var _completionPlans = function () {
             $scope.completedPlans = _.filter($scope.trainingPlans, function (plan) {
               return plan.completion === true;
             });
-            // $scope.completedPlans = _.sortBy($scope.completedPlans, 'completedCount');
             $scope.incompletePlans = _.filter($scope.trainingPlans, function (plan) {
               return plan.completion === false;
             });

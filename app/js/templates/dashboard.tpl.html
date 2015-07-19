@@ -5,7 +5,6 @@
       <div class="innerheader">
         <a href="#/dash"><div class="logo">
           <img src="images/zone-in.png">
-          <!-- <h2>zone in</h2> -->
         </div></a>
         <div class="rightheader">
 
@@ -16,8 +15,7 @@
             <div class="alert-dropdown hide">
               <div class="triangle"></div>
               <ul class="alert-list">
-              <p>Workouts for {{ today }}</p>
-                <!-- <li>Your workout(s) Today</li> -->
+                <p>Workouts for {{ today }}</p>
                 <li ng-repeat="a in workoutAlerts">{{ a.workoutInfo.name }} | {{ a.workoutInfo.time }} mins</li>
               </ul>
             </div>
@@ -46,36 +44,6 @@
       </div>
       </a>
 
-<!--       <div class="team-list dash-nav" ng-click="active()">
-      <i class="fa fa-users"></i> -->
-      <!-- <i class="fa fa-minus-circle hide" ng-click="toggleHide()"></i> -->
-      <!-- <i class="fa fa-plus-circle" ng-click="toggleHide()"></i> -->
-<!--         <h4>My Teams</h4>
-        <ul class="team-list-ul hide">
-          <a href="#/teamtemplate">
-          <li>
-          <img src="http://www.placehold.it/60x60">
-            Team 1
-          </li>
-          </a>
-
-          <a href="#/teamtemplate">
-          <li>
-          <img src="http://www.placehold.it/60x60">
-            Team 2
-          </li>
-          </a>
-
-          <a href="#/teamtemplate">
-          <li>
-          <img src="http://www.placehold.it/60x60">
-            Team 3
-          </li>
-          </a>
-
-         </ul>
-      </div> -->
-
       <a href="#/dash/calendar" ng-click="active()" class="calendar-a">
       <div class="calendar dash-nav">
         <i class="fa fa-calendar"></i>
@@ -90,20 +58,13 @@
       </div>
       </a>
 
-  <!--       <div class="create-plan">
-          <h4><i class="fa fa-plus-circle"></i>Create New Plan</h4>
-        </div> -->
-
       <a href="#/training/workouts" ng-click="active()">
       <div class="workouts dash-nav">
         <i class="fa fa-bicycle"></i>
         <h4>My Workouts</h4>
       </div>
       </a>
-  <!--
-        <div class="create-workout">
-          <h4><i class="fa fa-plus-circle"></i>Create New Workout</h4>
-        </div> -->
+
     </div> <!-- end left dash div -->
 
 
@@ -112,27 +73,7 @@
   <i class="fa fa-pie-chart" ng-click="toggleChart()"></i>
   <i class="fa fa-bars hide" ng-click="toggleChart()"></i>
 
-<!--     <i class="fa fa-minus-square" ng-click="toggleHide()"></i>
-    <i class="fa fa-plus-square hide" ng-click="toggleHide()"></i> -->
   <h4>Incomplete Training Plan Progress</h4>
-
-
-<!--   <div ng-repeat="t in trainingPlans" class="circle-progress hide">
-
-      <progress-arc
-    class="circle-arc"
-    size="200"
-    stroke="#187062"
-    stroke-width="25"
-    complete="0.8"
-    counter-clockwise="true"
-    ></progress-arc>
-    <div class="circle-progress-title">
-      <p>{{ t.name }}</p>
-    </div>
-
-  </div> -->
-
 
   <div ng-repeat="t in incompletePlans" class="circle-progress hide">
 
@@ -167,17 +108,6 @@
         </span>
       </div>
 
-<!--       <div class="progress-bar-indication">
-        <span class="meter" style="width: 45%">
-          <p>45% <span>Testing Name</span></p>
-        </span>
-      </div>
-
-      <div class="progress-bar-indication">
-        <span class="meter" style="width: 92%">
-          <p>92% <span>Testing Name</span></p>
-        </span>
-      </div> -->
     </div> <!-- end progress bars div -->
 
   </div>
@@ -189,12 +119,12 @@
         <a class="list-view-btn list-view hide" ng-click="openDashList()"><i class="fa fa-list-alt"></i></i></a>
 
         <hr />
+
         <div class="dash-calendar">
           <ul class="workout-list-dash">
             <li ng-repeat="d in dailyWorkouts">
               <p class="workout-date">{{ checkDay(d.day) }}</p>
               <ul>
-                <!-- <li ng-repeat="w in d.workouts">{{ checkWorkout(w) }}</li> -->
                 <li ng-repeat="w in d.workouts">{{ w.workoutInfo.name }} ({{ w.workoutInfo.time }} minutes)</li>
               </ul>
               <hr />
@@ -211,7 +141,7 @@
 
 
     <div class="bar-chart">
-      <div class="axis-title"><p>Track Minutes per Mile</p></div>
+      <div class="axis-title"><p>Track Pace</p></div>
 
       <ul class="chart">
         <li ng-repeat="r in runningStats">
