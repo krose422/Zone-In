@@ -168,6 +168,22 @@
           });
         };
 
+        this.setWorkoutColor = function (workout) {
+          if (workout.description === 'Endurance') {
+            return workout.color = '#2E313D';
+          } else if (workout.description === 'Strength') {
+            return workout.color = '#176785';
+          } else if (workout.description === 'Agility') {
+            return workout.color = '#0F4559';
+          } else if (workout.description === 'Speed') {
+            return workout.color = '#BED194';
+          } else if (workout.description === 'Flexibility') {
+            return workout.color = '#499989';
+          } else {
+            return workout.color = '#D0C8C5';
+          }
+        };
+
       }
 
     ]);

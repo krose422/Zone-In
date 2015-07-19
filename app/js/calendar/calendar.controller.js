@@ -12,19 +12,17 @@
         $scope.uiConfig     = {
                                 calendar:{
                                 height: 800,
-                                editable: true,
+                                // editable: true,
                                 header:{
                                 left: 'month agendaWeek agendaDay',
                                 center: 'title',
                                 right: 'today prev,next'
                                 },
-                                dayClick: $scope.alertEventOnClick,
-                                eventDrop: $scope.alertOnDrop,
-                                eventResize: $scope.alertOnResize
+                                // dayClick: $scope.alertEventOnClick,
+                                // eventDrop: $scope.alertOnDrop,
+                                // eventResize: $scope.alertOnResize
                                 }
                               };
-
-
 
         PlanService.getWorkouts()
           .success(function (data) {
@@ -32,26 +30,11 @@
             // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
-              w.workoutDate = '';
-
-              if (w.description === 'Endurance') {
-                w.color = '#2E313D';
-              } else if (w.description === 'Strength') {
-                w.color = '#176785';
-              } else if (w.description === 'Agility') {
-                w.color = '#0F4559';
-              } else if (w.description === 'Speed') {
-                w.color = '#BED194';
-              } else if (w.description === 'Flexibility') {
-                w.color = '#499989';
-              } else {
-                w.color = '#D0C8C5';
-              }
+              PlanService.setWorkoutColor(w);
             });
           })
 
           .then(function (data) {
-            _getPlanWorkouts();
             _getWorkoutDates();
           });
 
@@ -70,10 +53,15 @@
               });
           };
 
+          // Get user's adopted workouts
           var _getWorkoutDates = function () {
             PlanService.getWorkoutDates()
               .success(function (data) {
                 $scope.workoutDates = data;
+                // Connect workout information to user's adopted workouts
+                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+                });
 
                 $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === false;
@@ -82,36 +70,22 @@
                   return workout.workout_completion === true;
                 });
 
-                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
-                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
-                });
-
                 $scope.completedWorkoutDates = _.each($scope.completedWorkoutDates, function (workout) {
-                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
-
+                  // Add complete workouts to events array
                   var completedWorkoutEvent = new PlanService.WorkoutEvent('COMPLETE: ' + workout.workoutInfo.name, workout.do_date, workout.do_date, '#ccc');
                   $scope.events.push(completedWorkoutEvent);
-
                 });
 
                 $scope.incompleteWorkoutDates = _.each($scope.incompleteWorkoutDates, function (workout) {
-                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
-
+                  // Add incomplete workouts to events array
                   var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
                   $scope.events.push(incompleteWorkoutEvent);
                 });
-
                 // console.log($scope.events);
-
+                // Get training plans after workout information is available
+                _getPlanWorkouts();
               });
           };
-
-          // var WorkoutEvent = function (name, start_date, end_date, color) {
-          //   this.title = name,
-          //   this.start = start_date,
-          //   this.end = end_date,
-          //   this.color = color
-          // };
 
           $scope.logoutUser = function () {
             UserService.logoutUser();
