@@ -397,6 +397,62 @@ header {
       .dashboard-page .dash-content .upcoming h5 {
         color: #424242;
         font-family: "Tinos", serif; }
+    .dashboard-page .dash-content .bar-chart {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 40.29137%;
+      background-color: #fff;
+      -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+      box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .dashboard-page .dash-content .bar-chart:last-child {
+        margin-right: 0; }
+      .dashboard-page .dash-content .bar-chart .axis-title {
+        width: 100%;
+        padding-top: 1em; }
+        .dashboard-page .dash-content .bar-chart .axis-title p {
+          color: #424242;
+          width: 100%;
+          text-align: center;
+          font-family: "Fjalla One", sans-serif;
+          font-size: 3em; }
+      .dashboard-page .dash-content .bar-chart .chart {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 200px;
+        max-width: 700px;
+        margin: 0 auto;
+        background-color: #fff;
+        background-size: 100% 50px; }
+        .dashboard-page .dash-content .bar-chart .chart li {
+          position: relative;
+          display: table-cell;
+          vertical-align: bottom;
+          height: 200px; }
+          .dashboard-page .dash-content .bar-chart .chart li .pace-label {
+            font-size: .8em;
+            text-align: center; }
+        .dashboard-page .dash-content .bar-chart .chart span {
+          margin: 0 1em;
+          display: block;
+          background: rgba(190, 209, 148, 0.75);
+          animation: draw 1s ease-in-out;
+          text-align: center;
+          font-family: "Fjalla One", sans-serif;
+          color: #FAFAFA; }
+          .dashboard-page .dash-content .bar-chart .chart span:before {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            padding: 5px 1em 0;
+            display: block;
+            text-align: center;
+            content: attr(title);
+            word-wrap: break-word; }
 
 .ngdialog.ngdialog-theme-default .ngdialog-content {
   border-radius: 0px;

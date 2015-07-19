@@ -173,13 +173,18 @@
           };
 
           var _getRunningStats = function () {
-            console.log($scope.completedWorkoutDates);
-            _.each($scope.completedWorkoutDates, function (workout) {
-              // console.log(workout);
-              if (workout.run_distance !== null) {
-                console.log(workout.run_distance)
-              }
+            $scope.runningStats = [];
+
+            $scope.runningStats = _.filter($scope.completedWorkoutDates, function (workout) {
+              return workout.run_distance !== null && workout.run_distance > 0;
             });
+
+            _.each($scope.runningStats, function (workout) {
+              workout.pace = (workout.run_time / workout.run_distance).toFixed(2);
+            });
+
+            console.log($scope.runningStats);
+
           };
 
           var _getAlerts = function () {
@@ -219,8 +224,6 @@
             $scope.incompletePlans = (_.sortBy($scope.incompletePlans, 'completedCount')).reverse();
           };
 
-
-
           $scope.getCompletedPercent = function (plan) {
             var percentage = (plan.completedCount / plan.workoutData.length) * 100;
             return Math.round(percentage);
@@ -233,6 +236,22 @@
             } else {
               return plan.name;
             }
+          };
+
+          $scope.getPace = function (pace) {
+            var pacePercent = pace / 15 * 100;
+            return pacePercent;
+          };
+
+          $scope.getVisualPace = function (pace) {
+            var secs = ((pace % 1) * 60).toFixed(0);
+            var mins = Number(pace).toFixed(0);
+
+            return mins + ':' + secs;
+          };
+
+          $scope.formatDateSmall = function (date) {
+            return PlanService.formatDateSmall(date);
           };
 
       }

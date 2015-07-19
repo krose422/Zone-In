@@ -22,18 +22,24 @@
           return formattedDate;
         };
 
-          this.WorkoutEvent = function (name, start_date, end_date, color) {
-            this.title = name,
-            this.start = start_date,
-            this.end = end_date,
-            this.color = color,
-            this.stick = true
-          };
+        this.formatDateSmall = function (date) {
+          var momentDate = moment(date);
+          var formattedDate = momentDate.format('MM/DD');
+          return formattedDate;
+        };
 
-          this.DailyWorkout = function (day, workouts) {
-            this.day = day;
-            this.workouts = workouts;
-          };
+        this.WorkoutEvent = function (name, start_date, end_date, color) {
+          this.title = name,
+          this.start = start_date,
+          this.end = end_date,
+          this.color = color,
+          this.stick = true
+        };
+
+        this.DailyWorkout = function (day, workouts) {
+          this.day = day;
+          this.workouts = workouts;
+        };
 
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);

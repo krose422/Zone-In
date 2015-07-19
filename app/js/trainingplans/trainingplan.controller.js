@@ -230,9 +230,11 @@
         };
 
         $scope.formatDate = function (date) {
-          var momentDate = moment(date);
-          var formattedDate = momentDate.format('ddd, MMM DD');
-          return formattedDate;
+          return PlanService.formatDate(date);
+
+          // var momentDate = moment(date);
+          // var formattedDate = momentDate.format('ddd, MMM DD');
+          // return formattedDate;
         };
 
         $scope.completeWorkout = function (workout) {

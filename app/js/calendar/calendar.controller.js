@@ -74,6 +74,7 @@
             PlanService.getWorkoutDates()
               .success(function (data) {
                 $scope.workoutDates = data;
+
                 $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === false;
                 });
@@ -81,17 +82,27 @@
                   return workout.workout_completion === true;
                 });
 
-                $scope.workoutDates = _.each($scope.incompleteWorkoutDates, function (workout) {
+                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+                });
+
+                $scope.completedWorkoutDates = _.each($scope.completedWorkoutDates, function (workout) {
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
-
-                var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
-                $scope.events.push(incompleteWorkoutEvent);
-
-                var completeWorkoutEvent = new PlanService.WorkoutEvent('COMPLETE: ' + workout.workoutInfo.name, workout.do_date, workout.do_date, '#ccc');
-                $scope.events.push(completeWorkoutEvent);
+                  var completedWorkoutEvent = new PlanService.WorkoutEvent('COMPLETE: ' + workout.workoutInfo.name, workout.do_date, workout.do_date, '#ccc');
+                  $scope.events.push(completedWorkoutEvent);
 
                 });
+
+                $scope.incompleteWorkoutDates = _.each($scope.incompleteWorkoutDates, function (workout) {
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+
+                  var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
+                  $scope.events.push(incompleteWorkoutEvent);
+                });
+
+                // console.log($scope.events);
+
               });
           };
 

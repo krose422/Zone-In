@@ -30,7 +30,7 @@
 }
 .radial-progress .circle .mask .fill {
   clip: rect(0px, 110px, 220px, 0px);
-  background-color: #bed194;
+  background-color: #176785;
 }
 .radial-progress .inset {
   width: 160px;
@@ -63,7 +63,7 @@
   font-weight: 800;
   font-size: 32px;
   font-family: Helvetica, Arial, sans-serif;
-  color: #bed194;
+  color: #176785;
 }
 .radial-progress[data-progress="0"] .circle .mask.full,
 .radial-progress[data-progress="0"] .circle .fill {

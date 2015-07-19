@@ -208,6 +208,22 @@
         </div><!-- end dash-calendar -->
 
     </div> <!-- end upcoming div -->
+
+
+    <div class="bar-chart">
+      <div class="axis-title"><p>Track Minutes per Mile</p></div>
+
+      <ul class="chart">
+        <li ng-repeat="r in runningStats">
+          <span style="height: {{ getPace(r.pace) }}%" title="ActionScript">{{ getVisualPace(r.pace) }}</span>
+          <p class="pace-label">{{ formatDateSmall(r.do_date) }}</p>
+        </li>
+      </ul>
+
+
+    </div>
+
+
   </div><!-- end right dash div -->
 
   </div> <!-- end dash-content -->
