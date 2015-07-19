@@ -785,6 +785,7 @@ ul {
         padding: 0;
         margin: 0; }
         ul .allplans .bottom .workout-steps .workout {
+          position: relative;
           font-size: 62.5%;
           float: left;
           display: block;
@@ -845,6 +846,23 @@ ul {
             padding: .5em; }
             ul .allplans .bottom .workout-steps .workout .workout-steps-container li {
               font-size: 1em; }
+          ul .allplans .bottom .workout-steps .workout .hide {
+            display: none; }
+          ul .allplans .bottom .workout-steps .workout .completedStyle {
+            overflow: hidden;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(66, 66, 66, 0.8);
+            top: 0;
+            left: 0; }
+            ul .allplans .bottom .workout-steps .workout .completedStyle .completed-text {
+              display: block;
+              font-family: "Fjalla One", sans-serif;
+              color: #FAFAFA;
+              text-align: center;
+              font-size: 3em;
+              padding: 2.5em 0.3em; }
 
 /* WORKOUT MODAL
 ---------------- */
@@ -1350,7 +1368,7 @@ ul {
 /* PRORGRESS BAR STYLE
 ---------------------- */
 .progress-bar-indication {
-  background-color: #f2f2f2;
+  background-color: #c5bbb7;
   border-radius: 2px;
   margin: 0 auto;
   width: 100%; }

@@ -1166,6 +1166,7 @@ ul {
         margin: 0;
 
         .workout {
+          position: relative;
           font-size: 62.5%;
           @include span-columns(2);
           @include workoutCard();
@@ -1173,11 +1174,37 @@ ul {
           border-radius: 2px;
           @include border($grey);
           @include boxShadow();
+
+          .hide {
+            display: none;
+          }
+
+          .completedStyle {
+            overflow: hidden;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(66, 66, 66, .8);
+            top: 0;
+            left: 0;
+
+            .completed-text {
+              display: block;
+              font-family: $fjalla;
+              color: $background;
+              text-align: center;
+              font-size: 3em;
+              padding: 2.5em .3em;
+            }
+          }
         }
       }
+
+
     }
   }
 }
+
 
 /* WORKOUT MODAL
 ---------------- */
@@ -1670,7 +1697,7 @@ ul {
 .progress-bar-indication {
   $base-border-color: $green !default;
   $base-border-radius: 2px !default;
-  $base-background-color: white !default;
+  $base-background-color: $grey !default;
   $base-line-height: 1.2em !default;
   $action-color: $green !default;
   $progress-background: darken($base-background-color, 5);

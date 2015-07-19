@@ -38,22 +38,20 @@
           PlanService.getPlans()
             .success(function (data) {
               $scope.trainingPlans = data;
-              // console.log($scope.trainingPlans);
 
               $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
               plan.workoutData = [];
-                // console.log($scope.workoutList);
 
-
-                return _.filter(plan.workouts, function (workoutId) {
-                  // console.log(workoutId);
-                  $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
-                  // console.log($scope.workoutInfo);
-                  plan.workoutData.push($scope.workoutInfo);
-                  return $scope.workoutInfo;
+                plan.workoutData = _.filter($scope.workoutDates, function (workout) {
+                  return workout.plan_id === plan.id;
                 });
+
               });
+
               console.log($scope.trainingPlans);
+              PlanService.countCompleted($scope.trainingPlans);
+              PlanService.getPlanCompletion($scope.trainingPlans);
+              _completionPlans();
           });
         };
 
@@ -62,7 +60,7 @@
               .success(function (data) {
                 $scope.workoutDates = data;
                 $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
-                  workout.do_date = PlanService.formatDate(workout.do_date);
+                  // workout.do_date = PlanService.formatDate(workout.do_date);
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
                 // var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
@@ -73,13 +71,15 @@
                 $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === false;
                 });
-                console.log($scope.incompleteWorkoutDates);
+                // console.log($scope.incompleteWorkoutDates);
 
                 // _getWeekWorkouts();
 
                 $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === true;
                 });
+
+                // console.log($scope.completedWorkoutDates.length);
 
               });
           };
@@ -237,7 +237,9 @@
 
         $scope.completeWorkout = function (workout) {
           console.log(workout);
-          PlanService.completeWorkout(workout);
+          console.log(workout.id);
+          console.log(workout.completion);
+          PlanService.completeWorkout(workout.id, workout.completion);
         };
 
         $scope.completePlan = function (trainingPlan) {
@@ -268,10 +270,6 @@
 
         // Send workout to database
         $scope.addWorkout = function (workout, steps) {
-          // console.log(workout);
-          // $scope.workoutSteps.push(steps.first, steps.second, steps.third);
-          // workout.steps = $scope.workoutSteps;
-
           PlanService.addWorkout(workout)
             .then( function (data) {
               $scope.closeThisDialog();
@@ -299,6 +297,28 @@
         $scope.removeAlert = function () {
           UserService.removeAlert();
         };
+
+        $scope.checkCompletion = function (completion) {
+          if (completion === true) {
+            return 'completedStyle';
+          }
+        };
+
+        var _completionPlans = function () {
+          $scope.completedPlans = _.filter($scope.trainingPlans, function (plan) {
+            return plan.completion === true;
+          });
+
+          $scope.incompletePlans = _.filter($scope.trainingPlans, function (plan) {
+            return plan.completion === false;
+          });
+        };
+
+        $scope.getCompletedPercent = function (plan) {
+          var percentage = (plan.completedCount / plan.workoutData.length) * 100;
+          return percentage.toFixed(2);
+        };
+
 
         // $scope.checkAll = function() {
         //   $scope.user.interests = angular.copy($scope.interests);

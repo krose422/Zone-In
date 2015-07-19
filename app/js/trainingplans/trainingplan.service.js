@@ -77,8 +77,8 @@
             });
         };
 
-        this.completeWorkout = function (workout) {
-          return $http.patch(endpoint + '/plans/completion', workout, HEROKU.CONFIG)
+        this.completeWorkout = function (id, completion) {
+          return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion}, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);
             });
@@ -129,6 +129,31 @@
           }
           return dateArray;
         };
+
+        this.countCompleted = function (trainingPlans) {
+          return _.each(trainingPlans, function (plan) {
+            plan.completedCount = 0;
+            plan.incompleteCount = 0;
+            _.each(plan.workoutData, function (workout) {
+              if (workout.workout_completion === true) {
+                plan.completedCount ++;
+              } else if (workout.workout_completion === false) {
+                plan.incompleteCount ++;
+              }
+            });
+          });
+        };
+
+        this.getPlanCompletion = function (trainingPlans) {
+          return _.each(trainingPlans, function (plan) {
+            if (plan.completedCount === plan.workoutData.length) {
+              plan.completion = true;
+            } else {
+              plan.completion = false;
+            }
+          });
+        };
+
 
       }
 

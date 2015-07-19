@@ -121,26 +121,20 @@
             PlanService.getPlans()
               .success(function (data) {
                 $scope.trainingPlans = data;
-                // console.log($scope.trainingPlans);
 
-                $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
-                // plan.planStyle = {width: plan.id + '%'};
-                plan.workoutData = [];
-                  // console.log($scope.workoutList);
-                  return _.filter(plan.workouts, function (workoutId) {
-                    // console.log(workoutId);
-                    $scope.workoutInfo = _.findWhere($scope.workoutList, { id: workoutId });
-                    // console.log($scope.workoutInfo);
-                    plan.workoutData.push($scope.workoutInfo);
-                    return $scope.workoutInfo;
-                  });
+              $scope.trainingPlans = _.each($scope.trainingPlans, function (plan) {
+              plan.workoutData = [];
+
+                plan.workoutData = _.filter($scope.workoutDates, function (workout) {
+                  return workout.plan_id === plan.id;
                 });
-                console.log($scope.trainingPlans);
 
-                // $scope.incompleteTrainingPlans = _.filter($scope.trainingPlans, function (t) {
-                //   return t.completion === false;
-                // });
-                // console.log($scope.incompleteTrainingPlans)
+              });
+
+                console.log($scope.trainingPlans);
+                PlanService.countCompleted($scope.trainingPlans);
+                PlanService.getPlanCompletion($scope.trainingPlans);
+                _completionPlans();
             });
           };
 
@@ -192,6 +186,21 @@
               var dailyWorkout = new PlanService.DailyWorkout(fDate, workouts);
               $scope.dailyWorkouts.push(dailyWorkout);
             });
+          };
+
+          var _completionPlans = function () {
+            $scope.completedPlans = _.filter($scope.trainingPlans, function (plan) {
+              return plan.completion === true;
+            });
+
+            $scope.incompletePlans = _.filter($scope.trainingPlans, function (plan) {
+              return plan.completion === false;
+            });
+          };
+
+          $scope.getCompletedPercent = function (plan) {
+            var percentage = (plan.completedCount / plan.workoutData.length) * 100;
+            return percentage.toFixed(0);
           };
 
       }

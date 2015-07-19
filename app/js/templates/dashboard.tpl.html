@@ -114,7 +114,7 @@
 
 <!--     <i class="fa fa-minus-square" ng-click="toggleHide()"></i>
     <i class="fa fa-plus-square hide" ng-click="toggleHide()"></i> -->
-  <h4>Training Plan Progress</h4>
+  <h4>Incomplete Training Plan Progress</h4>
 
 
 <!--   <div ng-repeat="t in trainingPlans" class="circle-progress hide">
@@ -134,9 +134,9 @@
   </div> -->
 
 
-  <div ng-repeat="t in trainingPlans" class="circle-progress hide">
+  <div ng-repeat="t in incompletePlans" class="circle-progress hide">
 
-    <div class="radial-progress" data-progress="{{ t.id }}">
+    <div class="radial-progress" data-progress="{{ getCompletedPercent(t) }}">
       <div class="circle">
         <div class="mask full">
           <div class="fill"></div>
@@ -161,9 +161,9 @@
 
     <div class="progress-bars">
 
-      <div class="progress-bar-indication" ng-repeat="t in trainingPlans">
-        <span class="meter" style="width: {{ t.id }}">
-          <p>{{ t.id }}% <span>{{ t.name }}</span></p>
+      <div class="progress-bar-indication" ng-repeat="t in incompletePlans">
+        <span class="meter" style="width: {{ getCompletedPercent(t) }}%">
+          <p>{{ getCompletedPercent(t) }}% <span>{{ t.name }}</span></p>
         </span>
       </div>
 
