@@ -64,7 +64,7 @@
       <i class="fa fa-minus-square hide" ng-click="expand()"></i>
 
       <div class="top">
-        <h4 class="plan-name"> {{ t.name }} </h4>
+        <h4 class="plan-name"> {{ t.name }}</h4>
         <div class="top-right">
           <p class="dates">{{ formatDate(t.start_date[0]) }} - {{ formatDate(t.end_date[0]) }}</p>
         </div>
@@ -87,9 +87,17 @@
         </div>
 
         <ul class="workout-steps">
-          <li class="workout" ng-repeat="workout in t.workoutData track by $index" ng-click="openWorkoutModal(workout)">
+          <li class="workout" ng-repeat="workout in t.workoutData track by $index" ng-click="openPlanWorkoutModal(workout)">
 
-          <div class="overlay" ng-class="checkCompletion(workout.workout_completion)"><p class="hide completed-text">Completed</p></div>
+          <div class="overlay completed-overlay" ng-class="checkCompletion(workout.workout_completion)">
+            <p class="hide completed-text">
+              <i class="fa fa-check-square-o"></i>
+            </p>
+            <!-- <p class="hide completed-text">{{ checkTypeRunning(workout) }}</p> -->
+            <!-- <p class="hide completed-text">{{ checkTypeWeights(workout) }}</p> -->
+
+
+          </div>
 
           <div class="workout-title" ng-style="{'background-color':'{{ workout.workoutInfo.color }}'}">
             <h4>{{ workout.workoutInfo.name }}</h4>
@@ -104,7 +112,8 @@
           <div class="workout-descrip">
             <p>{{ workout.workoutInfo.description }}</p><p>{{ workout.workoutInfo.time }} minutes</p>
           </div>
-          <div class="workout-image">
+          <div class="workout-image" ng-class="checkCompletionImg(workout.workout_completion)">
+            <div class="overlay"><p>{{ formatDate(workout.do_date) }}</p></div>
             <img src="{{ workout.workoutInfo.image_url }}">
           </div>
           <div class="workout-bottom">
@@ -118,12 +127,12 @@
           </li>
         </ul>
 
-        <form ng-submit="completePlan(t)">
+<!--         <form ng-submit="completePlan(t)">
           <div class="check">
             <p>Completed Training Plan? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion">
           </div>
           <button>Submit completion</button>
-        </form>
+        </form> -->
 
       </div>
 
@@ -161,9 +170,17 @@
         </div>
 
         <ul class="workout-steps">
-          <li class="workout" ng-repeat="workout in t.workoutData track by $index" ng-click="openWorkoutModal(workout)">
+          <li class="workout" ng-repeat="workout in t.workoutData track by $index" ng-click="openPlanWorkoutModal(workout)">
 
-          <div class="overlay" ng-class="checkCompletion(workout.workout_completion)"><p class="hide completed-text">Completed</p></div>
+          <div class="overlay completed-overlay" ng-class="checkCompletion(workout.workout_completion)">
+            <p class="hide completed-text">
+              <i class="fa fa-check-square-o"></i>
+            </p>
+            <!-- <p class="hide completed-text">{{ checkTypeRunning(workout) }}</p> -->
+            <!-- <p class="hide completed-text">{{ checkTypeWeights(workout) }}</p> -->
+
+
+          </div>
 
           <div class="workout-title" ng-style="{'background-color':'{{ workout.workoutInfo.color }}'}">
             <h4>{{ workout.workoutInfo.name }}</h4>
@@ -178,7 +195,8 @@
           <div class="workout-descrip">
             <p>{{ workout.workoutInfo.description }}</p><p>{{ workout.workoutInfo.time }} minutes</p>
           </div>
-          <div class="workout-image">
+          <div class="workout-image" ng-class="checkCompletionImg(workout.workout_completion)">
+            <div class="overlay"><p>{{ formatDate(workout.do_date) }}</p></div>
             <img src="{{ workout.workoutInfo.image_url }}">
           </div>
           <div class="workout-bottom">
@@ -191,13 +209,6 @@
 
           </li>
         </ul>
-
-        <form ng-submit="completePlan(t)">
-          <div class="check">
-            <p>Completed Training Plan? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion">
-          </div>
-          <button>Submit completion</button>
-        </form>
 
       </div>
 

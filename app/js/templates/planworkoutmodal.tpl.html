@@ -1,0 +1,45 @@
+<div class="workout-modal plan-workout-modal">
+
+  <div class="workout">
+      <div class="workout-title" ng-style="{'background-color':'{{ ngDialogData.workoutInfo.color }}'}">
+          <h4>{{ ngDialogData.workoutInfo.name }}</h4>
+            <div class="icon">
+              <img ng-src="{{ iconShowCycle(ngDialogData.workoutInfo) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(ngDialogData.workoutInfo) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(ngDialogData.workoutInfo) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(ngDialogData.workoutInfo) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(ngDialogData.workoutInfo) }}" class="circuits sport-icon hide">
+            </div>
+      </div>
+      <div class="workout-descrip">
+          <p>{{ ngDialogData.workoutInfo.description }} |</p>
+          <p>{{ ngDialogData.workoutInfo.time }} minutes</p>
+      </div>
+
+      <div class="workout-modal-content">
+        <div class="workout-image">
+            <img src="{{ ngDialogData.workoutInfo.image_url }}">
+        </div>
+        <ol class="workout-steps-container custom-counter">
+            <!-- <li>{{ ngDialogData.steps }}</li> -->
+            <li class="workout-steps" ng-repeat="s in ngDialogData.workoutInfo.steps track by $index">{{ s }}</li>
+        </ol>
+
+        <form ng-submit="completeWorkout(ngDialogData)">
+          <div class="check">
+            <p>Completed Workout? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="ngDialogData.completion">
+          </div>
+
+          <input type="text" placeholder="Miles Run" ng-model="ngDialogData.run_distance">
+          <input type="text" placeholder="Total Time in Minutes" ng-model="ngDialogData.run_time">
+          <input type="text" placeholder="Average Weight in lbs" ng-model="ngDialogData.lift_weight">
+          <input type="text" placeholder="Average Reps per Set" ng-model="ngDialogData.lift_reps">
+
+
+          <button>Submit completion</button>
+        </form>
+
+      </div>
+  </div>
+
+</div>

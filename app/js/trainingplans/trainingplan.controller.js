@@ -231,7 +231,7 @@
 
         $scope.formatDate = function (date) {
           var momentDate = moment(date);
-          var formattedDate = momentDate.format('MMM DD, YYYY');
+          var formattedDate = momentDate.format('ddd, MMM DD');
           return formattedDate;
         };
 
@@ -239,7 +239,13 @@
           console.log(workout);
           console.log(workout.id);
           console.log(workout.completion);
-          PlanService.completeWorkout(workout.id, workout.completion);
+          PlanService.completeWorkout(workout.id, workout.completion, workout.run_distance, workout.run_time)
+            .then( function (data) {
+              $scope.closeThisDialog();
+              $state.reload();
+            });
+          // console.log(event.target);
+          // $('.completed-overlay').addClass('completed-style');
         };
 
         $scope.completePlan = function (trainingPlan) {
@@ -261,6 +267,10 @@
 
         $scope.openWorkoutModal = function (workout) {
           PlanService.openWorkoutModal(workout);
+        };
+
+        $scope.openPlanWorkoutModal = function (workout) {
+          PlanService.openPlanWorkoutModal(workout);
         };
 
         $scope.workoutSteps = [];
@@ -300,7 +310,29 @@
 
         $scope.checkCompletion = function (completion) {
           if (completion === true) {
-            return 'completedStyle';
+            return 'completed-style';
+          }
+        };
+
+        $scope.checkCompletionImg = function (completion) {
+          if (completion === true) {
+            return 'completed-image';
+          }
+        };
+
+        $scope.checkTypeRunning = function (workout) {
+          // console.log(workout.workoutInfo.running);
+          if (workout.workoutInfo.running === null) {
+            return '';
+          }
+          if (workout.workoutInfo.running === true) {
+            return 'Distance: ' + workout.run_distance + ' | ' + 'Time: ' + workout.run_time;
+          }
+        };
+
+        $scope.checkTypeWeights = function (workout) {
+          if (workout.workoutInfo.weightlifting === true) {
+            return 'Weight: ' + workout.lift_weight + 'Reps: ' + workout.lift_reps;
           }
         };
 
@@ -316,7 +348,7 @@
 
         $scope.getCompletedPercent = function (plan) {
           var percentage = (plan.completedCount / plan.workoutData.length) * 100;
-          return percentage.toFixed(2);
+          return Math.round(percentage);
         };
 
 

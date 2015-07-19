@@ -1,36 +1,36 @@
 <div class="workout-modal">
 
   <div class="workout">
-      <div class="workout-title" ng-style="{'background-color':'{{ ngDialogData.workoutInfo.color }}'}">
-          <h4>{{ ngDialogData.workoutInfo.name }}</h4>
+      <div class="workout-title" ng-style="{'background-color':'{{ ngDialogData.color }}'}">
+          <h4>{{ ngDialogData.name }}</h4>
             <div class="icon">
-              <img ng-src="{{ iconShowCycle(ngDialogData.workoutInfo) }}" class="cycling sport-icon hide">
-              <img ng-src="{{ iconShowRunning(ngDialogData.workoutInfo) }}" class="running sport-icon hide">
-              <img ng-src="{{ iconShowSwimming(ngDialogData.workoutInfo) }}" class="swimming sport-icon hide">
-              <img ng-src="{{ iconShowWeights(ngDialogData.workoutInfo) }}" class="weights sport-icon hide">
-              <img ng-src="{{ iconShowCircuit(ngDialogData.workoutInfo) }}" class="circuits sport-icon hide">
+              <img ng-src="{{ iconShowCycle(ngDialogData) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(ngDialogData) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(ngDialogData) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(ngDialogData) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(ngDialogData) }}" class="circuits sport-icon hide">
             </div>
       </div>
       <div class="workout-descrip">
-          <p>{{ ngDialogData.workoutInfo.description }} |</p>
-          <p>{{ ngDialogData.workoutInfo.time }} minutes</p>
+          <p>{{ ngDialogData.description }} |</p>
+          <p>{{ ngDialogData.time }} minutes</p>
       </div>
 
       <div class="workout-modal-content">
         <div class="workout-image">
-            <img src="{{ ngDialogData.workoutInfo.image_url }}">
+            <img src="{{ ngDialogData.image_url }}">
         </div>
         <ol class="workout-steps-container custom-counter">
             <!-- <li>{{ ngDialogData.steps }}</li> -->
-            <li class="workout-steps" ng-repeat="s in ngDialogData.workoutInfo.steps track by $index">{{ s }}</li>
+            <li class="workout-steps" ng-repeat="s in ngDialogData.steps track by $index">{{ s }}</li>
         </ol>
 
-        <form ng-submit="completeWorkout(ngDialogData)">
+<!--         <form ng-submit="completeWorkout(ngDialogData)">
           <div class="check">
             <p>Completed Workout? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="ngDialogData.completion">
           </div>
           <button>Submit completion</button>
-        </form>
+        </form> -->
 
       </div>
   </div>

@@ -74,11 +74,22 @@
             PlanService.getWorkoutDates()
               .success(function (data) {
                 $scope.workoutDates = data;
-                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === false;
+                });
+                $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
+                  return workout.workout_completion === true;
+                });
+
+                $scope.workoutDates = _.each($scope.incompleteWorkoutDates, function (workout) {
                   workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
 
-                var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
-                $scope.events.push(workoutEvent);
+
+                var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
+                $scope.events.push(incompleteWorkoutEvent);
+
+                var completeWorkoutEvent = new PlanService.WorkoutEvent('COMPLETE: ' + workout.workoutInfo.name, workout.do_date, workout.do_date, '#ccc');
+                $scope.events.push(completeWorkoutEvent);
 
                 });
               });

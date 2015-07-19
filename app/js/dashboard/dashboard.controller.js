@@ -131,7 +131,7 @@
 
               });
 
-                console.log($scope.trainingPlans);
+                // console.log($scope.trainingPlans);
                 PlanService.countCompleted($scope.trainingPlans);
                 PlanService.getPlanCompletion($scope.trainingPlans);
                 _completionPlans();
@@ -142,27 +142,44 @@
             PlanService.getWorkoutDates()
               .success(function (data) {
                 $scope.workoutDates = data;
-                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
-                  workout.do_date = PlanService.formatDate(workout.do_date);
-                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
-
-                var workoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
-                $scope.events.push(workoutEvent);
-
-                });
-                $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
                 $scope.incompleteWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === false;
                 });
-                console.log($scope.incompleteWorkoutDates);
-
-                _getWeekWorkouts();
-
                 $scope.completedWorkoutDates = _.filter($scope.workoutDates, function (workout) {
                   return workout.workout_completion === true;
                 });
 
+
+                $scope.workoutDates = _.each($scope.workoutDates, function (workout) {
+                  workout.do_date = PlanService.formatDate(workout.do_date);
+                  workout.workoutInfo = _.findWhere($scope.workoutList, {id: workout.workout_id});
+                });
+
+                $scope.incompleteWorkoutDates = _.each($scope.incompleteWorkoutDates, function (workout) {
+                  workout.do_date = PlanService.formatDate(workout.do_date);
+                  workout.workoutInfo = _.findWhere($scope.workoutList, { id: workout.workout_id });
+
+                  var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
+                  $scope.events.push(incompleteWorkoutEvent);
+
+                });
+
+                $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
+                _getWeekWorkouts();
+
+                _getRunningStats();
+
               });
+          };
+
+          var _getRunningStats = function () {
+            console.log($scope.completedWorkoutDates);
+            _.each($scope.completedWorkoutDates, function (workout) {
+              // console.log(workout);
+              if (workout.run_distance !== null) {
+                console.log(workout.run_distance)
+              }
+            });
           };
 
           var _getAlerts = function () {
@@ -193,14 +210,29 @@
               return plan.completion === true;
             });
 
+            // $scope.completedPlans = _.sortBy($scope.completedPlans, 'completedCount');
+
             $scope.incompletePlans = _.filter($scope.trainingPlans, function (plan) {
               return plan.completion === false;
             });
+
+            $scope.incompletePlans = (_.sortBy($scope.incompletePlans, 'completedCount')).reverse();
           };
+
+
 
           $scope.getCompletedPercent = function (plan) {
             var percentage = (plan.completedCount / plan.workoutData.length) * 100;
-            return percentage.toFixed(0);
+            return Math.round(percentage);
+          };
+
+          $scope.checkPercent = function (plan) {
+            var percentage = (plan.completedCount / plan.workoutData.length) * 100;
+            if (percentage === 0) {
+              return '';
+            } else {
+              return plan.name;
+            }
           };
 
       }

@@ -77,8 +77,8 @@
             });
         };
 
-        this.completeWorkout = function (id, completion) {
-          return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion}, HEROKU.CONFIG)
+        this.completeWorkout = function (id, completion, runDistance, runTime) {
+          return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion, run_distance: runDistance, run_time: runTime}, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);
             });
@@ -109,6 +109,14 @@
         this.openWorkoutModal = function (workout) {
           ngDialog.open({
             template: 'js/templates/workoutmodal.tpl.html',
+            controller: 'PlanCtrl',
+            data: workout
+          });
+        };
+
+        this.openPlanWorkoutModal = function (workout) {
+          ngDialog.open({
+            template: 'js/templates/planworkoutmodal.tpl.html',
             controller: 'PlanCtrl',
             data: workout
           });
@@ -153,7 +161,6 @@
             }
           });
         };
-
 
       }
 

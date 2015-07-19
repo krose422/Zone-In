@@ -1155,7 +1155,7 @@ ul {
         .training-description {
 
           p {
-            font-size: 1em;
+            font-size: .8em;
           }
         }
       }
@@ -1175,11 +1175,46 @@ ul {
           @include border($grey);
           @include boxShadow();
 
+
+          .workout-image {
+            position: relative;
+
+            .overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(250, 250, 250, .8);
+
+              p {
+                width: 100%;
+                font-size: 2.5em;
+                font-family: $fjalla;
+                text-align: center;
+                padding: 1em 0;
+                color: $darkgrey;
+              }
+            }
+
+            // .hide {
+            //   display: none;
+            // }
+          }
+
+          .completed-image {
+            position: static;
+
+            .overlay {
+              display: none;
+            }
+          }
+
           .hide {
             display: none;
           }
 
-          .completedStyle {
+          .completed-style {
             overflow: hidden;
             position: absolute;
             height: 100%;
@@ -1189,12 +1224,22 @@ ul {
             left: 0;
 
             .completed-text {
+              width: 100%;
               display: block;
               font-family: $fjalla;
               color: $background;
-              text-align: center;
-              font-size: 3em;
-              padding: 2.5em .3em;
+
+              p {
+
+              }
+
+              .fa {
+                color: $background;
+                text-align: center;
+                font-size: 6em;
+                // padding: 1em;
+
+              }
             }
           }
         }
@@ -1270,6 +1315,16 @@ ul {
       }
     }
 
+  }
+}
+
+/* PLAN WORKOUT MODAL SPECIFIC
+------------------------------ */
+
+.plan-workout-modal {
+  form {
+    clear: both;
+    padding-top: 2em;
   }
 }
 
@@ -1697,10 +1752,10 @@ ul {
 .progress-bar-indication {
   $base-border-color: $green !default;
   $base-border-radius: 2px !default;
-  $base-background-color: $grey !default;
+  $base-background-color: white !default;
   $base-line-height: 1.2em !default;
   $action-color: $green !default;
-  $progress-background: darken($base-background-color, 5);
+  $progress-background: darken($base-background-color, 10);
   $progress-animation-duration: 0.7s;
 
   background-color: $progress-background;
