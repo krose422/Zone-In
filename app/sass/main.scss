@@ -730,19 +730,20 @@ h1, h2, h3, h4, h5 {
           height:200px;
 
           .pace-label {
-            font-size: .8em;
+            font-size: .4em;
             text-align: center;
           }
         }
 
           span{
-            margin:0 1em;
+            margin: .2em;;
             display: block;
             background: rgba($green, .75);
             animation: draw 1s ease-in-out;
             text-align: center;
             font-family: $fjalla;
             color: $background;
+            font-size: .5em;
 
             &:before{
               position:absolute;

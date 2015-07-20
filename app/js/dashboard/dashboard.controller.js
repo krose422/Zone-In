@@ -35,7 +35,7 @@
           .then(function (data) {
             _getWorkoutDates();
             // _getPlanWorkouts();
-            _getAlerts($scope.workoutDates);
+            // _getAlerts($scope.workoutDates);
           });
 
           var _getWorkoutDates = function () {
@@ -66,6 +66,8 @@
                 _getPlanWorkouts();
                 _getWeekWorkouts();
                 _getRunningStats();
+                _getAlerts($scope.workoutDates);
+
               });
           };
 
@@ -103,6 +105,11 @@
               $scope.today = PlanService.formatDate(new Date());
               return _alertDate === $scope.today;
             });
+
+            console.log($scope.workoutAlerts);
+            if ($scope.workoutAlerts.length > 0) {
+              $cookies.put('alert', true);
+            }
           };
 
           var _getWeekWorkouts = function () {
@@ -159,7 +166,9 @@
           // };
 
           $scope.getAlertColor = function (workoutAlerts) {
-            if (workoutAlerts !== []) {
+            var alert = $cookies.get('alert');
+            console.log(alert);
+            if (alert) {
               return 'alert';
             }
           };

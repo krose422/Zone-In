@@ -433,16 +433,17 @@ header {
           vertical-align: bottom;
           height: 200px; }
           .dashboard-page .dash-content .bar-chart .chart li .pace-label {
-            font-size: .8em;
+            font-size: .4em;
             text-align: center; }
         .dashboard-page .dash-content .bar-chart .chart span {
-          margin: 0 1em;
+          margin: .2em;
           display: block;
           background: rgba(190, 209, 148, 0.75);
           animation: draw 1s ease-in-out;
           text-align: center;
           font-family: "Fjalla One", sans-serif;
-          color: #FAFAFA; }
+          color: #FAFAFA;
+          font-size: .5em; }
           .dashboard-page .dash-content .bar-chart .chart span:before {
             position: absolute;
             left: 0;
