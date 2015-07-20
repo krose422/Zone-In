@@ -240,13 +240,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[2] }}"
+        data-id="{{ formatDate(getPlanDates[3]) }}"
 
         data-drop="true"
         ng-model="list4"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[3] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[3]) }}</p>
+
           <div class="caption">
             <div class="workout workout-draggable"
             data-id="{{ w.id }}"
@@ -275,13 +276,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[3] }}"
+        data-id="{{ formatDate(getPlanDates[4]) }}"
 
         data-drop="true"
         ng-model="list5"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list5])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[4] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[4]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -311,13 +313,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[4] }}"
+        data-id="{{ formatDate(getPlanDates[5]) }}"
 
         data-drop="true"
         ng-model="list6"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list6])'}"
-        jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[5] }}</p>
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list6])'}">
+        <p class="dropzone-date">{{ formatDate(getPlanDates[5]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -347,13 +349,15 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[5] }}"
+        data-id="{{ formatDate(getPlanDates[6]) }}"
+
 
         data-drop="true"
         ng-model="list7"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list7])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[6] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[6]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -383,13 +387,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[6] }}"
+        data-id="{{ formatDate(getPlanDates[7]) }}"
 
         data-drop="true"
         ng-model="list8"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list8])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[7] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[7]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -449,12 +454,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
-        data-id="{{ getPlanDates[8] }}"
+        data-id="{{ formatDate(getPlanDates[8]) }}"
+
         data-drop="true"
         ng-model="list9"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list9])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
-        <p class="dropzone-date">{{ getPlanDates[8] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[8]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -512,11 +519,14 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[9]) }}"
+
         data-drop="true"
         ng-model="list10"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list10])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[9] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[9]) }}</p>
+
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -576,11 +586,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[10]) }}"
+
         data-drop="true"
         ng-model="list11"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list11])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[10] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[10]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -639,11 +651,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[11]) }}"
+
         data-drop="true"
         ng-model="list12"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list12])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[11] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[11]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -702,11 +716,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[12]) }}"
+
         data-drop="true"
         ng-model="list13"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list13])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[12] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[12]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -765,11 +781,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[13]) }}"
+
         data-drop="true"
         ng-model="list14"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list14])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[13] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[13]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -827,11 +845,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[14]) }}"
+
         data-drop="true"
         ng-model="list15"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list15])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[14] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[14]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -893,11 +913,13 @@
 
       <li class="planning-dropzone">
         <div class="planning-thumbnail"
+        data-id="{{ formatDate(getPlanDates[15]) }}"
+
         data-drop="true"
         ng-model="list16"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list16])'}"
         jqyoui-droppable="{multiple: true}">
-        <p class="dropzone-date">{{ getPlanDates[15] }}</p>
+        <p class="dropzone-date">{{ formatDate(getPlanDates[15]) }}</p>
 
           <div class="caption">
             <div class="workout workout-draggable"

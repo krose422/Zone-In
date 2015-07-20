@@ -137,6 +137,8 @@
         };
 
         $scope.getPlanDates = function () {
+
+
           var start_date = moment($scope.currentTrainingPlan.start_date).toDate();
           var end_date = moment($scope.currentTrainingPlan.end_date).toDate();
           $scope.planDates = PlanService.getDates(start_date, end_date);
@@ -226,9 +228,12 @@
         };
 
         $scope.formatDate = function (date) {
-          var momentDate = moment(date);
-          var formattedDate = momentDate.format('MMM DD, YYYY');
-          return formattedDate;
+          if (date !== undefined) {
+            var momentDate = moment(date);
+            var formattedDate = momentDate.format('MMM DD, YYYY');
+            return formattedDate;
+          }
+
         };
 
         $scope.completeWorkout = function (workout) {
