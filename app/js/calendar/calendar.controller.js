@@ -12,22 +12,17 @@
         $scope.uiConfig     = {
                                 calendar:{
                                 height: 800,
-                                // editable: true,
                                 header:{
                                 left: 'month agendaWeek agendaDay',
                                 center: 'title',
                                 right: 'today prev,next'
                                 },
-                                // dayClick: $scope.alertEventOnClick,
-                                // eventDrop: $scope.alertOnDrop,
-                                // eventResize: $scope.alertOnResize
                                 }
                               };
 
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
-            // console.log($scope.workoutList);
 
             _.each($scope.workoutList, function (w) {
               PlanService.setWorkoutColor(w);
@@ -84,22 +79,12 @@
                 // console.log($scope.events);
                 // Get training plans after workout information is available
                 _getPlanWorkouts();
-                console.log($scope.events);
               });
           };
 
           $scope.logoutUser = function () {
             UserService.logoutUser();
           };
-
-          // $scope.active = function () {
-          //   var eventTarget = $(event.target);
-          //   var dashNavDiv = $('.dash-nav');
-          //   $(event.target).parentsUntil('a').addClass('active');
-
-          //   console.log($(event.target).parentsUntil('a').siblings());
-          //   $(event.target).parentsUntil('a').siblings().removeClass('active');
-          // };
 
       }
 

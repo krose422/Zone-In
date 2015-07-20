@@ -14,7 +14,6 @@
         $scope.uiConfig       = {
                                 calendar:{
                                   height: 800,
-                                  editable: true,
                                   header:{
                                   left: 'month',
                                   center: 'title',
@@ -61,6 +60,7 @@
                   var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
                   $scope.events.push(incompleteWorkoutEvent);
                 });
+                console.log($scope.events);
 
                 $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
                 _getPlanWorkouts();
@@ -97,17 +97,15 @@
             _.each($scope.runningStats, function (workout) {
               workout.pace = (workout.run_time / workout.run_distance).toFixed(2);
             });
-            console.log($scope.runningStats);
           };
 
           var _getAlerts = function (workoutDatesArray) {
             $scope.workoutAlerts = _.filter($scope.workoutDates, function (workout) {
-              var _alertDate = PlanService.formatDate(workout.do_date);
-              $scope.today = PlanService.formatDate(new Date());
+              var _alertDate = PlanService.formatDateLarge(workout.do_date);
+              $scope.today = PlanService.formatDateLarge(new Date());
               return _alertDate === $scope.today;
             });
 
-            console.log($scope.workoutAlerts);
             if ($scope.workoutAlerts.length > 0) {
               $cookies.put('alert', true);
             }
@@ -220,7 +218,6 @@
           $scope.getVisualPace = function (pace) {
             var secs = ((pace % 1) * 60).toFixed(0);
             var mins = Number(pace).toFixed(0);
-
             return mins + ':' + secs;
           };
 
@@ -231,6 +228,10 @@
 
           $scope.formatDateSmall = function (date) {
             return PlanService.formatDateSmall(date);
+          };
+
+          $scope.formatDateLarge = function (date) {
+            return PlanService.formatDateLarge(date);
           };
 
           $scope.showDistanceChart = function () {
