@@ -238,8 +238,10 @@
 
         $scope.dragStart = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
+          console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
+          console.log($scope.workouts);
         };
 
         $scope.addDate = function (workoutDate) {
@@ -271,11 +273,19 @@
           }
         };
 
+        $scope.formatDateLarge = function (date) {
+          if (date !== undefined) {
+            return PlanService.formatDateLarge(date);
+          }
+
+        };
+
         $scope.completeWorkout = function (workout) {
           // console.log(workout);
           // console.log(workout.id);
           // console.log(workout.completion);
-          PlanService.completeWorkout(workout.id, workout.completion, workout.run_distance, workout.run_time)
+          var today = new Date();
+          PlanService.completeWorkout(workout.id, workout.completion, workout.run_distance, workout.run_time, today)
             .then( function (data) {
               $scope.closeThisDialog();
               $state.reload();

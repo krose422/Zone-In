@@ -28,6 +28,12 @@
           return formattedDate;
         };
 
+        this.formatDateLarge = function (date) {
+          var momentDate = moment(date);
+          var formattedDate = momentDate.format('MMM DD, YYYY');
+          return formattedDate;
+        };
+
         this.WorkoutEvent = function (name, start_date, end_date, color) {
           this.title = name,
           this.start = start_date,
@@ -81,8 +87,8 @@
           return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG);
         };
 
-        this.completeWorkout = function (id, completion, runDistance, runTime) {
-          return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion, run_distance: runDistance, run_time: runTime}, HEROKU.CONFIG)
+        this.completeWorkout = function (id, completion, runDistance, runTime, date) {
+          return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion, run_distance: runDistance, run_time: runTime, completion_date: date}, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);
             });
