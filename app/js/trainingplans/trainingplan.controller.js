@@ -104,14 +104,18 @@
         };
 
         // Get a user's created workouts
-        PlanService.getUserWorkouts()
-          .success(function (data) {
-            $scope.userWorkoutList = data;
-          });
+        // PlanService.getUserWorkouts()
+        //   .success(function (data) {
+
+        //     $scope.userWorkoutList = data;
+        //   });
 
         // Get full workout list for library and for setting with user's training plan data
         PlanService.getWorkouts()
           .success(function (data) {
+
+            console.clear();
+            console.log(data);
             $scope.workoutList = data;
             // Go through workout list and set color value
             _.each($scope.workoutList, function (w) {
@@ -186,8 +190,9 @@
           // console.log(workout);
         };
 
-        $scope.dragStart = function (event) {
-          var workoutId = $(event.currentTarget).data('id');
+        $scope.dragStart = function (event, x) {
+          var workoutId = x.helper[0].dataset.id;
+          // var workoutId = $(event.currentTarget).data('id');
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
           // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
@@ -219,9 +224,9 @@
         };
 
         $scope.completeWorkout = function (workout) {
-          console.log(workout);
-          console.log(workout.id);
-          console.log(workout.completion);
+          // console.log(workout);
+          // console.log(workout.id);
+          // console.log(workout.completion);
           PlanService.completeWorkout(workout.id, workout.completion, workout.run_distance, workout.run_time)
             .then( function (data) {
               $scope.closeThisDialog();

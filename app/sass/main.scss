@@ -1084,9 +1084,16 @@ h1, h2, h3, h4, h5 {
   margin: auto;
   @include outer-container(100%);
 
+  .add-buttons {
+    overflow: hidden;
+    @include span-columns(10);
+    @include shift(1);
+    text-align: center;
+  }
+
   .addWorkBtn {
     position: relative;
-    @include span-columns(6);
+    @include span-columns(5 of 10);
 
     img {
       height: 20em;
@@ -1099,8 +1106,7 @@ h1, h2, h3, h4, h5 {
 
   .addTrainingBtn {
     position: relative;
-    @include span-columns(6);
-    @include omega();
+    @include span-columns(5 of 10);
 
     img {
       height: 20em;
@@ -1126,10 +1132,18 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+.allplans-ul {
+  margin: .5em 4em;
+}
+
 ul {
   clear: both;
   padding-top: 2em;
   overflow: hidden;
+
+  h4 {
+    text-align: center;
+  }
 
   .allplans {
     @include fill-parent;
@@ -1137,7 +1151,7 @@ ul {
     clear: both;
     @include border(#EDEEEE);
     padding: 1em;
-    margin: .5em 0;
+    margin: .5em auto;
     background-color: white;
 
     .check {

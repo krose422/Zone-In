@@ -91,7 +91,7 @@
         };
 
         this.completePlan = function (plan) {
-          console.log('in service function');
+          // console.log('in service function');
           return $http.patch(endpoint + '/plans/completion', plan, HEROKU.CONFIG)
             .success (function (data) {
               console.log(data);

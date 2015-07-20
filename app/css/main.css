@@ -703,12 +703,22 @@ header {
     clear: both;
     content: "";
     display: table; }
+  .train-content .add-buttons {
+    overflow: hidden;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 82.94039%;
+    margin-left: 8.5298%;
+    text-align: center; }
+    .train-content .add-buttons:last-child {
+      margin-right: 0; }
   .train-content .addWorkBtn {
     position: relative;
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
+    margin-right: 2.84259%;
+    width: 48.57871%; }
     .train-content .addWorkBtn:last-child {
       margin-right: 0; }
     .train-content .addWorkBtn img {
@@ -733,9 +743,8 @@ header {
     position: relative;
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    margin-right: 0; }
+    margin-right: 2.84259%;
+    width: 48.57871%; }
     .train-content .addTrainingBtn:last-child {
       margin-right: 0; }
     .train-content .addTrainingBtn img {
@@ -763,10 +772,15 @@ header {
       .train-content .create-new-button h4 i {
         margin-right: .5em; }
 
+.allplans-ul {
+  margin: 0.5em 4em; }
+
 ul {
   clear: both;
   padding-top: 2em;
   overflow: hidden; }
+  ul h4 {
+    text-align: center; }
   ul .allplans {
     width: 100%;
     overflow: hidden;
@@ -774,7 +788,7 @@ ul {
     border: 1px solid #EDEEEE;
     border-radius: 2px;
     padding: 1em;
-    margin: .5em 0;
+    margin: .5em auto;
     background-color: white; }
     ul .allplans .check {
       display: inline-block; }
