@@ -115,9 +115,6 @@
         // Get full workout list for library and for setting with user's training plan data
         PlanService.getWorkouts()
           .success(function (data) {
-
-            console.clear();
-            console.log(data);
             $scope.workoutList = data;
             // Go through workout list and set color value
             _.each($scope.workoutList, function (w) {
@@ -224,23 +221,26 @@
           // console.log(workout);
         };
 
+        $scope.getDropzoneClass = function (date) {
+          if (date === undefined) {
+            // console.log('no date');
+            return 'hide-drop';
+          }
+        };
 
         $scope.dropFunc = function (workout) {
           var workoutDate = $(workout.target).data('id');
-          workoutDate = moment(workoutDate).toDate();
-          console.log(workoutDate);
-          $scope.planWorkout.workout_dates.push(workoutDate);
-          console.log($scope.planWorkout.workout_dates);
+          if (workoutDate !== '') {
+            workoutDate = moment(workoutDate).toDate();
+            $scope.planWorkout.workout_dates.push(workoutDate);
+          }
+          // console.log($scope.planWorkout.workout_dates);
         };
 
         $scope.dragStart = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
-          // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
-          // if (contain === false) {
-          //   $scope.planWorkouts.workoutIds.push(workoutId);
-          // }
         };
 
         $scope.addDate = function (workoutDate) {
@@ -248,8 +248,12 @@
         };
 
         $scope.finishTrainingPlan = function () {
+          _.each($scope.workouts, function (workout) {
+            if (workout.workout_dates.length === 0) {
+              $scope.workouts = _.without($scope.workouts, workout);
+            }
+          });
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
-          console.log(trainingPlanWorkouts);
           PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 
@@ -306,7 +310,7 @@
         // Send workout to database
         $scope.addWorkout = function (workout, steps) {
           PlanService.addWorkout(workout)
-            .then( function (data) {
+            .success( function (data) {
               $scope.closeThisDialog();
             });
         };

@@ -10,7 +10,7 @@
           link: function (scope, element, attrs) {
             element.find('.addStep').bind('click', function () {
               console.log('inside directive');
-              var input = angular.element('<div><input type="text" placeholder="Workout Step" ng-model="workout.steps[' + scope.inputCounter + ']"></div>');
+              var input = angular.element('<div><input type="text" placeholder="Workout Step" ng-model="workout.steps[' + scope.inputCounter + ']" class="full-input"></div>');
               console.log(scope.inputCounter);
 
               var compile = $compile(input)(scope);

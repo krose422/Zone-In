@@ -18,7 +18,7 @@
 
         this.formatDate = function (date) {
           var momentDate = moment(date);
-          var formattedDate = momentDate.format('MMM DD, YYYY');
+          var formattedDate = momentDate.format('ddd, MMM DD');
           return formattedDate;
         };
 
@@ -33,7 +33,8 @@
           this.start = start_date,
           this.end = end_date,
           this.color = color,
-          this.stick = true
+          this.stick = true,
+          this.allDay = true
         };
 
         this.DailyWorkout = function (day, workouts) {
@@ -77,10 +78,7 @@
         };
 
         this.addWorkout = function (workout) {
-          return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG)
-            .success( function (data) {
-              $state.go('training.plan');
-            });
+          return $http.post(endpoint + '/workouts', workout, HEROKU.CONFIG);
         };
 
         this.completeWorkout = function (id, completion, runDistance, runTime) {

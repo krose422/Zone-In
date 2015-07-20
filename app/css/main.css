@@ -409,15 +409,33 @@ header {
       box-shadow: 0px 0.5px 2px #D0C8C5; }
       .dashboard-page .dash-content .bar-chart:last-child {
         margin-right: 0; }
+      .dashboard-page .dash-content .bar-chart .distance-chart .axis-title {
+        padding-top: 0; }
+      .dashboard-page .dash-content .bar-chart .distance-chart .fa {
+        padding-top: 0; }
+      .dashboard-page .dash-content .bar-chart .pace-chart {
+        overflow: hidden;
+        margin: 0; }
+        .dashboard-page .dash-content .bar-chart .pace-chart .axis-title {
+          padding-top: 2em; }
+        .dashboard-page .dash-content .bar-chart .pace-chart .fa {
+          padding-top: .5em; }
+      .dashboard-page .dash-content .bar-chart .fa {
+        color: #D0C8C5;
+        font-size: 3em;
+        display: inline-block;
+        float: left;
+        padding: .5em; }
+        .dashboard-page .dash-content .bar-chart .fa:hover {
+          color: #424242; }
       .dashboard-page .dash-content .bar-chart .axis-title {
-        width: 100%;
+        overflow: hidden;
         padding-top: 1em; }
         .dashboard-page .dash-content .bar-chart .axis-title p {
           color: #424242;
-          width: 100%;
           text-align: center;
           font-family: "Fjalla One", sans-serif;
-          font-size: 3em; }
+          font-size: 2em; }
       .dashboard-page .dash-content .bar-chart .chart {
         display: table;
         table-layout: fixed;
@@ -442,7 +460,7 @@ header {
           animation: draw 1s ease-in-out;
           text-align: center;
           font-family: "Fjalla One", sans-serif;
-          color: #FAFAFA;
+          color: #424242;
           font-size: .5em; }
           .dashboard-page .dash-content .bar-chart .chart span:before {
             position: absolute;
@@ -454,6 +472,10 @@ header {
             text-align: center;
             content: attr(title);
             word-wrap: break-word; }
+      .dashboard-page .dash-content .bar-chart .hide {
+        height: 0; }
+      .dashboard-page .dash-content .bar-chart .distance-chart {
+        overflow: hidden; }
 
 .ngdialog.ngdialog-theme-default .ngdialog-content {
   border-radius: 0px;
@@ -673,24 +695,140 @@ header {
     color: #FAFAFA;
     padding: 0; }
 
-/* ADD WORKOUT FORM
--------------------- */
+/* ADD WORKOUT FORM MODAL
+------------------------- */
 .addworkout-form {
   overflow: hidden;
   padding: 1em;
   margin: auto; }
-  .addworkout-form .addStep {
+  .addworkout-form .workout-inputs .full-input {
+    width: 100%; }
+  .addworkout-form .workout-inputs input {
+    width: 93%;
+    float: left; }
+  .addworkout-form .workout-inputs i {
+    float: right;
     color: #D0C8C5;
-    font-size: 1.5em;
+    font-size: 3.5em;
     cursor: pointer; }
-    .addworkout-form .addStep:hover {
+    .addworkout-form .workout-inputs i:hover {
       color: #424242; }
-      .addworkout-form .addStep:hover i {
-        color: #424242; }
-    .addworkout-form .addStep i {
-      font-size: 1em;
-      color: #D0C8C5;
-      margin-right: .5em; }
+
+/* WORKOUTS PAGE
+---------------- */
+.workout-page {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+  .workout-page::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .workout-page .workout-steps {
+    overflow: hidden;
+    padding: 0;
+    margin: 0; }
+    .workout-page .workout-steps .workout {
+      position: relative;
+      font-size: 62.5%;
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 14.70196%;
+      overflow: hidden;
+      cursor: pointer;
+      margin: 1em;
+      background-color: #FAFAFA;
+      display: inline;
+      border-radius: 2px;
+      border: 1px solid #D0C8C5;
+      border-radius: 2px;
+      -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+      box-shadow: 0px 0.5px 2px #D0C8C5; }
+      .workout-page .workout-steps .workout:last-child {
+        margin-right: 0; }
+      .workout-page .workout-steps .workout p {
+        font-size: 1.3em;
+        display: inline-block;
+        margin: 0;
+        padding: 0 0.5em; }
+      .workout-page .workout-steps .workout .workout-title {
+        overflow: hidden;
+        border-radius: 0;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        .workout-page .workout-steps .workout .workout-title:hover h4 {
+          white-space: normal; }
+        .workout-page .workout-steps .workout .workout-title h4 {
+          font-size: 1.6em;
+          margin: 0 auto;
+          padding: .5em;
+          color: #FAFAFA;
+          text-align: center;
+          float: left;
+          width: 99%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: 0.3s all ease; }
+      .workout-page .workout-steps .workout .icon {
+        overflow: hidden;
+        height: 3em;
+        display: block;
+        float: left;
+        padding: 0em 1em;
+        clear: both; }
+        .workout-page .workout-steps .workout .icon img {
+          height: 2em; }
+      .workout-page .workout-steps .workout .workout-image {
+        width: 100%;
+        max-height: 10em;
+        overflow: hidden; }
+      .workout-page .workout-steps .workout .workout-steps-container {
+        padding: .5em; }
+        .workout-page .workout-steps .workout .workout-steps-container li {
+          font-size: 1em; }
+      .workout-page .workout-steps .workout .workout-image {
+        position: relative; }
+        .workout-page .workout-steps .workout .workout-image .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(250, 250, 250, 0.8); }
+          .workout-page .workout-steps .workout .workout-image .overlay p {
+            width: 100%;
+            font-size: 2.5em;
+            font-family: "Fjalla One", sans-serif;
+            text-align: center;
+            padding: 1em 0;
+            color: #424242; }
+      .workout-page .workout-steps .workout .completed-image {
+        position: static; }
+        .workout-page .workout-steps .workout .completed-image .overlay {
+          display: none; }
+      .workout-page .workout-steps .workout .hide {
+        display: none; }
+      .workout-page .workout-steps .workout .completed-style {
+        overflow: hidden;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(66, 66, 66, 0.8);
+        top: 0;
+        left: 0; }
+        .workout-page .workout-steps .workout .completed-style .completed-text {
+          width: 100%;
+          display: block;
+          font-family: "Fjalla One", sans-serif;
+          color: #FAFAFA; }
+          .workout-page .workout-steps .workout .completed-style .completed-text .fa {
+            color: #FAFAFA;
+            text-align: center;
+            font-size: 6em; }
 
 /* TRAINING PLANS PAGE
 ---------------------- */
@@ -846,11 +984,6 @@ ul {
         clear: both;
         content: "";
         display: table; }
-      ul .allplans .bottom .top-info {
-        overflow: hidden;
-        clear: both; }
-        ul .allplans .bottom .top-info .training-description p {
-          font-size: .8em; }
       ul .allplans .bottom .workout-steps {
         overflow: hidden;
         padding: 0;
@@ -956,6 +1089,11 @@ ul {
                 color: #FAFAFA;
                 text-align: center;
                 font-size: 6em; }
+      ul .allplans .bottom .top-info {
+        overflow: hidden;
+        clear: both; }
+        ul .allplans .bottom .top-info .training-description p {
+          font-size: .8em; }
 
 /* WORKOUT MODAL
 ---------------- */
@@ -1218,6 +1356,8 @@ ul {
         text-align: center;
         padding: .2em 0 0 0;
         margin: 0; }
+      .planning-page .planning-content .planning-drops .hide-drop {
+        visibility: hidden; }
       .planning-page .planning-content .planning-drops .planning-dropzone {
         border: 1px solid #ccc;
         overflow: hidden;

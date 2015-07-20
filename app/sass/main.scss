@@ -90,6 +90,93 @@ $cantarell: 'Cantarell', sans-serif;
   }
 }
 
+@mixin workoutSteps() {
+  .workout-steps {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+
+        .workout {
+          position: relative;
+          font-size: 62.5%;
+          @include span-columns(2);
+          @include workoutCard();
+          display: inline;
+          border-radius: 2px;
+          @include border($grey);
+          @include boxShadow();
+
+
+          .workout-image {
+            position: relative;
+
+            .overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(250, 250, 250, .8);
+
+              p {
+                width: 100%;
+                font-size: 2.5em;
+                font-family: $fjalla;
+                text-align: center;
+                padding: 1em 0;
+                color: $darkgrey;
+              }
+            }
+
+            // .hide {
+            //   display: none;
+            // }
+          }
+
+          .completed-image {
+            position: static;
+
+            .overlay {
+              display: none;
+            }
+          }
+
+          .hide {
+            display: none;
+          }
+
+          .completed-style {
+            overflow: hidden;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(66, 66, 66, .8);
+            top: 0;
+            left: 0;
+
+            .completed-text {
+              width: 100%;
+              display: block;
+              font-family: $fjalla;
+              color: $background;
+
+              p {
+
+              }
+
+              .fa {
+                color: $background;
+                text-align: center;
+                font-size: 6em;
+                // padding: 1em;
+
+              }
+            }
+          }
+        }
+      }
+}
+
 /* WORKOUT CARD MIXIN
 ---------------- */
 
@@ -700,16 +787,54 @@ h1, h2, h3, h4, h5 {
         background-color: #fff;
         @include boxShadow();
 
+        .distance-chart {
+          .axis-title {
+            padding-top: 0;
+          }
+          .fa {
+            padding-top: 0;
+          }
+        }
+
+        .pace-chart {
+          overflow: hidden;
+          margin: 0;
+
+          .axis-title {
+            padding-top: 2em;
+          }
+
+          .fa {
+            padding-top: .5em;
+          }
+        }
+
+        .fa {
+          color: $grey;
+          font-size: 3em;
+          display: inline-block;
+          float: left;
+          padding: .5em;
+
+          &:hover {
+            color: $darkgrey;
+          }
+        }
+
         .axis-title {
-          width: 100%;
+          overflow: hidden;
+          // display: inline-block;
+          // float: right;
+          // width: 100%;
           padding-top: 1em;
 
           p {
+            // display: inline-block;
             color: $darkgrey;
-            width: 100%;
+            // width: 100%;
             text-align: center;
             font-family: $fjalla;
-            font-size: 3em;
+            font-size: 2em;
           }
         }
 
@@ -742,7 +867,7 @@ h1, h2, h3, h4, h5 {
             animation: draw 1s ease-in-out;
             text-align: center;
             font-family: $fjalla;
-            color: $background;
+            color: $darkgrey;
             font-size: .5em;
 
             &:before{
@@ -756,6 +881,15 @@ h1, h2, h3, h4, h5 {
             }
           }
         }
+
+        .hide {
+          height: 0;
+        }
+
+        .distance-chart {
+          overflow: hidden;
+        }
+
       }
 
 
@@ -1041,8 +1175,8 @@ h1, h2, h3, h4, h5 {
 }
 
 
-/* ADD WORKOUT FORM
--------------------- */
+/* ADD WORKOUT FORM MODAL
+------------------------- */
 
 .addworkout-form {
   overflow: hidden;
@@ -1056,23 +1190,39 @@ h1, h2, h3, h4, h5 {
     }
   }
 
-  .addStep {
-    color: $grey;
-    font-size: 1.5em;
-    cursor: pointer;
+  .workout-inputs {
+    .full-input {
+      width: 100%;
+    }
 
-    &:hover {
-      color: $darkgrey;
-      i {
-        color: $darkgrey
-      }
+    input {
+      width: 93%;
+      float: left;
+
     }
 
     i {
-      font-size: 1em;
+      float: right;
       color: $grey;
-      margin-right: .5em;
+      font-size: 3.5em;
+      cursor: pointer;
+
+      &:hover {
+        color: $darkgrey;
+      }
     }
+  }
+}
+
+/* WORKOUTS PAGE
+---------------- */
+
+.workout-page {
+  @include outer-container(90%);
+  @include workoutSteps();
+
+  .all-user-workouts {
+
   }
 }
 
@@ -1226,6 +1376,7 @@ ul {
 
     .bottom {
       @include outer-container(100%);
+      @include workoutSteps();
 
       .top-info {
         overflow: hidden;
@@ -1238,93 +1389,6 @@ ul {
           }
         }
       }
-
-      .workout-steps {
-        overflow: hidden;
-        padding: 0;
-        margin: 0;
-
-        .workout {
-          position: relative;
-          font-size: 62.5%;
-          @include span-columns(2);
-          @include workoutCard();
-          display: inline;
-          border-radius: 2px;
-          @include border($grey);
-          @include boxShadow();
-
-
-          .workout-image {
-            position: relative;
-
-            .overlay {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background-color: rgba(250, 250, 250, .8);
-
-              p {
-                width: 100%;
-                font-size: 2.5em;
-                font-family: $fjalla;
-                text-align: center;
-                padding: 1em 0;
-                color: $darkgrey;
-              }
-            }
-
-            // .hide {
-            //   display: none;
-            // }
-          }
-
-          .completed-image {
-            position: static;
-
-            .overlay {
-              display: none;
-            }
-          }
-
-          .hide {
-            display: none;
-          }
-
-          .completed-style {
-            overflow: hidden;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(66, 66, 66, .8);
-            top: 0;
-            left: 0;
-
-            .completed-text {
-              width: 100%;
-              display: block;
-              font-family: $fjalla;
-              color: $background;
-
-              p {
-
-              }
-
-              .fa {
-                color: $background;
-                text-align: center;
-                font-size: 6em;
-                // padding: 1em;
-
-              }
-            }
-          }
-        }
-      }
-
-
     }
   }
 }
@@ -1598,6 +1662,10 @@ ul {
         text-align: center;
         padding: .2em 0 0 0;
         margin: 0;
+      }
+
+      .hide-drop {
+        visibility: hidden;
       }
 
       .planning-dropzone {

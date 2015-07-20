@@ -126,7 +126,7 @@
 <!-- ng-repeat="d in getPlanDates" -->
 
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[0]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[0]) }}"
         data-drop="true"
@@ -163,7 +163,7 @@
         </div><!-- end planning thumbnail -->
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[1]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[1]) }}"
 
@@ -202,7 +202,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[2]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[2]) }}"
 
@@ -238,7 +238,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[3]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[3]) }}"
 
@@ -274,7 +274,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[4]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[4]) }}"
 
@@ -311,7 +311,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[5]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[5]) }}"
 
@@ -349,7 +349,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[6]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[6]) }}"
 
@@ -386,7 +386,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[7]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[7]) }}"
 
@@ -452,7 +452,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[8]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[8]) }}"
 
@@ -516,7 +516,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[9]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[9]) }}"
 
@@ -582,7 +582,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[10]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[10]) }}"
 
@@ -647,7 +647,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[11]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[11]) }}"
 
@@ -712,7 +712,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[12]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[12]) }}"
 
@@ -777,7 +777,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[13]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[13]) }}"
 
@@ -841,7 +841,7 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[14]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[14]) }}"
 
@@ -909,10 +909,9 @@
         </div>
       </li>
 
-      <li class="planning-dropzone">
+      <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[15]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDate(getPlanDates[15]) }}"
-
         data-drop="true"
         ng-model="list16"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list16])'}"

@@ -97,6 +97,7 @@
             _.each($scope.runningStats, function (workout) {
               workout.pace = (workout.run_time / workout.run_distance).toFixed(2);
             });
+            console.log($scope.runningStats);
           };
 
           var _getAlerts = function (workoutDatesArray) {
@@ -223,11 +224,24 @@
             return mins + ':' + secs;
           };
 
+          $scope.getDistance = function (distance) {
+            var distancePercent = (distance / 26.2 * 100);
+            return distancePercent;
+          };
+
           $scope.formatDateSmall = function (date) {
             return PlanService.formatDateSmall(date);
           };
 
+          $scope.showDistanceChart = function () {
+            $('.distance-chart').removeClass('hide');
+            $(event.target).parent().addClass('hide');
+          };
 
+          $scope.showPaceChart = function () {
+            $('.pace-chart').removeClass('hide');
+            $(event.target).parent().addClass('hide');
+          };
 
       }
     ]);

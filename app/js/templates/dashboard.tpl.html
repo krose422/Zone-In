@@ -141,18 +141,30 @@
 
 
     <div class="bar-chart">
-      <div class="axis-title"><p>Track Pace</p></div>
 
-      <ul class="chart">
-        <li ng-repeat="r in runningStats">
-          <span style="height: {{ getPace(r.pace) }}%" title="ActionScript">{{ getVisualPace(r.pace) }}</span>
-          <p class="pace-label">{{ formatDateSmall(r.do_date) }}</p>
-        </li>
-      </ul>
+      <div class="pace-chart">
+        <i class="fa fa-compass" ng-click="showDistanceChart()"></i>
+        <div class="axis-title"><p>Pace Tracking in mins/mile</p></div>
+        <ul class="chart">
+          <li ng-repeat="r in runningStats">
+            <span style="height: {{ getPace(r.pace) }}%" title="ActionScript">{{ getVisualPace(r.pace) }}</span>
+            <p class="pace-label">{{ formatDateSmall(r.do_date) }}</p>
+          </li>
+        </ul>
+      </div>
 
+      <div class="distance-chart hide">
+        <i class="fa fa-clock-o" ng-click="showPaceChart()"></i>
+        <div class="axis-title"><p>Distance Tracking in miles</p></div>
+        <ul class="chart">
+          <li ng-repeat="r in runningStats">
+            <span style="height: {{ getDistance(r.run_distance) }}%" title="ActionScript">{{ r.run_distance }}</span>
+            <p class="pace-label">{{ formatDateSmall(r.do_date) }}</p>
+          </li>
+        </ul>
+      </div>
 
     </div>
-
 
   </div><!-- end right dash div -->
 
