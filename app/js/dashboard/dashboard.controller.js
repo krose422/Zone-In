@@ -168,7 +168,7 @@
 
           $scope.getAlertColor = function (workoutAlerts) {
             var alert = $cookies.get('alert');
-            console.log(alert);
+            // console.log(alert);
             if (alert) {
               return 'alert';
             }

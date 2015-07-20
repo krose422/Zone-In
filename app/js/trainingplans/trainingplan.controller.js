@@ -172,8 +172,7 @@
         };
 
         $scope.getPlanDates = function () {
-
-
+          console.log($scope.currentTrainingPlan);
           var start_date = moment($scope.currentTrainingPlan.start_date).toDate();
           var end_date = moment($scope.currentTrainingPlan.end_date).toDate();
           $scope.planDates = PlanService.getDates(start_date, end_date);
@@ -254,6 +253,7 @@
             }
           });
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
+          console.log(trainingPlanWorkouts);
           PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 

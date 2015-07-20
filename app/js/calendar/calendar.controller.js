@@ -85,7 +85,6 @@
                 // Get training plans after workout information is available
                 _getPlanWorkouts();
                 console.log($scope.events);
-                // console.log($scope.events);
               });
           };
 
