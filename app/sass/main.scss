@@ -1522,7 +1522,8 @@ ul {
     }
 
     .workouts-inner {
-      @include span-columns(3.5);
+
+      @include span-columns(4);
       background-color: #fff;
       padding: 1em;
       @include border($grey);
@@ -1551,13 +1552,14 @@ ul {
       }
     }
 
-    .planning-drops-wrapper {
-      overflow: hidden;
-      @include span-columns(8.5);
-    }
+
+    // .planning-drops-wrapper {
+    //   overflow: hidden;
+    // }
 
     .planning-drops {
-      @include fill-parent();
+      @include span-columns(8);
+      @include outer-container(100%);
       padding-top: 0;
       float: right;
       clear: none;
@@ -1598,10 +1600,10 @@ ul {
       }
 
       .planning-dropzone {
-        // border: 1px solid #ccc;
+        border: 1px solid #ccc;
         overflow: hidden;
         display: inline-block;
-        @include span-columns(2.8 of 8.5);
+        @include span-columns(1.8);
         @include omega();
         // @include pad();
         // margin: 0 .2em .4em .2em;
@@ -1625,6 +1627,10 @@ ul {
 
           .workout-title {
 
+            h4 {
+              font-size: 1em;
+            }
+
             .fa {
               display: inline-block;
               float: right;
@@ -1644,7 +1650,7 @@ ul {
             text-align: left;
           }
           p {
-            font-size: 1.2em;
+            font-size: .8em;
           }
           .workout-image {
             overflow: hidden;
@@ -1690,7 +1696,13 @@ ul {
       }
 
       .planning-thumbnail {
-          height: 13em;
+          height: 6em;
+
+          .dropzone-date {
+            font-size: .5em;
+            border-bottom: 1px solid #ccc;
+            margin: 0;
+          }
       }
     }
   }

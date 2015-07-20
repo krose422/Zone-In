@@ -37,6 +37,7 @@
           workoutDates: []
         };
 
+
         // Constructors
         var PlanWorkout = function (options) {
           this.workout_id = options.workout_id,
@@ -53,6 +54,7 @@
           $scope.completedPlans = _.filter($scope.trainingPlans, function (plan) {
             return plan.completion === true;
           });
+
 
           $scope.incompletePlans = _.filter($scope.trainingPlans, function (plan) {
             return plan.completion === false;
@@ -172,6 +174,37 @@
           $scope.workoutList = _.sortBy(workoutList, predicate);
         };
 
+        $scope.getPlanDates = function () {
+
+
+          var start_date = moment($scope.currentTrainingPlan.start_date).toDate();
+          var end_date = moment($scope.currentTrainingPlan.end_date).toDate();
+          $scope.planDates = PlanService.getDates(start_date, end_date);
+
+          $scope.getPlanDates = _.each($scope.planDates, function (date) {
+            var formDate = moment(date).format('dddd, MMMM Do YYYY');
+          });
+          console.log($scope.planDates);
+
+        };
+
+        if ($scope.currentTrainingPlan !== undefined) {
+          $scope.getPlanDates();
+        }
+
+        // var TrainingPlanWorkouts = function (options) {
+        //   this.plan_id = $scope.currentTrainingPlan.id,
+        //   this.workout_array = $scope.planWorkouts.workoutIds
+        // };
+
+        // $scope.finishTrainingPlan = function () {
+        //   var trainingPlanWorkouts = new TrainingPlanWorkouts();
+        //   console.log(trainingPlanWorkouts);
+        //   PlanService.finishTrainingPlan(trainingPlanWorkouts);
+        // };
+
+        $scope.workouts = [];
+
         $scope.sortRequest = function (description) {
           PlanService.sortRequest(description);
         };
@@ -179,6 +212,7 @@
         $scope.sortCategory = function () {
           PlanService.sortCategory();
         };
+
 
         // Sort workouts in library and reverse array
         $scope.sortReverse = function (workoutList, predicate) {
@@ -190,9 +224,17 @@
           // console.log(workout);
         };
 
+
+        $scope.dropFunc = function (workout) {
+          var workoutDate = $(workout.target).data('id');
+          workoutDate = moment(workoutDate).toDate();
+          console.log(workoutDate);
+          $scope.planWorkout.workout_dates.push(workoutDate);
+          console.log($scope.planWorkout.workout_dates);
+        };
+
         $scope.dragStart = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
-          // var workoutId = $(event.currentTarget).data('id');
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
           // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
@@ -220,7 +262,9 @@
         };
 
         $scope.formatDate = function (date) {
-          return PlanService.formatDate(date);
+          if (date !== undefined) {
+            return PlanService.formatDate(date);
+          }
         };
 
         $scope.completeWorkout = function (workout) {
