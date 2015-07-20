@@ -168,6 +168,10 @@
           $scope.workoutList = _.sortBy(workoutList, predicate);
         };
 
+        $scope.sortRequest = function (description) {
+          PlanService.sortRequest(description);
+        };
+
         // Sort workouts in library and reverse array
         $scope.sortReverse = function (workoutList, predicate) {
           $scope.sortedArray = _.sortBy(workoutList, predicate);

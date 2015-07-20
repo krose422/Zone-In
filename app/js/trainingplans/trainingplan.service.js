@@ -184,6 +184,13 @@
           }
         };
 
+        this.sortRequest = function (description) {
+          $http.post(endpoint + '/workouts/description', {description: description}, HEROKU.CONFIG)
+            .success( function (data) {
+              console.log(data);
+            });
+        }
+
       }
 
     ]);
