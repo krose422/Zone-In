@@ -11,29 +11,13 @@
         // Counter to keep track of additional workout step inputs
         $scope.inputCounter   = 1;
         $scope.workouts       = [];
-        $scope.list1          = [];
-        $scope.list2          = [];
-        $scope.list3          = [];
-        $scope.list4          = [];
-        $scope.list5          = [];
-        $scope.list6          = [];
-        $scope.list7          = [];
-        $scope.list8          = [];
-        $scope.list9          = [];
-        $scope.list10         = [];
-        $scope.list11         = [];
-        $scope.list12         = [];
-        $scope.list13         = [];
-        $scope.list14         = [];
-        $scope.list15         = [];
-        $scope.list16         = [];
+
         // Options for length selection on workout creation
         $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
         // Get current training plan from cookies
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
         //
         $scope.planWorkouts = {
-          // workoutIds: [],
           workoutDates: []
         };
 
@@ -388,6 +372,41 @@
         // $scope.uncheckAll = function() {
         //   $scope.user.interests = [];
         // };
+
+
+        $scope.list1          = [];
+        $scope.list2          = [];
+        $scope.list3          = [];
+        $scope.list4          = [];
+        $scope.list5          = [];
+        $scope.list6          = [];
+        $scope.list7          = [];
+        $scope.list8          = [];
+        $scope.list9          = [];
+        $scope.list10         = [];
+        $scope.list11         = [];
+        $scope.list12         = [];
+        $scope.list13         = [];
+        $scope.list14         = [];
+        $scope.list15         = [];
+        $scope.list16         = [];
+        $scope.list17         = [];
+        $scope.list18         = [];
+        $scope.list19         = [];
+        $scope.list20         = [];
+        $scope.list21         = [];
+        $scope.list22         = [];
+        $scope.list23         = [];
+        $scope.list24         = [];
+        $scope.list25         = [];
+        $scope.list26         = [];
+        $scope.list27         = [];
+        $scope.list28         = [];
+        $scope.list29         = [];
+        $scope.list30         = [];
+        $scope.list31         = [];
+
+
 
       }
 
