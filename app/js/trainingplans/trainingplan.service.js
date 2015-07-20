@@ -189,7 +189,15 @@
             .success( function (data) {
               console.log(data);
             });
-        }
+        };
+
+        this.sortCategory = function () {
+          $http.post(endpoint + '/workouts/category', {circuit_training: true}, HEROKU.CONFIG)
+            .success( function (data) {
+              console.log(data);
+            });
+        };
+
 
       }
 
