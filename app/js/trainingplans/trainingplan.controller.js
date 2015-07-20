@@ -192,9 +192,8 @@
           console.log($scope.planWorkout.workout_dates);
         };
 
-        $scope.dragStart = function (event) {
-          var workoutId = $(event.currentTarget).data('id');
-          console.log(workoutId);
+        $scope.dragStart = function (event, x) {
+          var workoutId = x.helper[0].dataset.id;
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
           // var contain = _.contains($scope.planWorkouts.workoutIds, workoutId);
