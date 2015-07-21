@@ -396,9 +396,16 @@ h1, h2, h3, h4, h5 {
             font-family: $fjalla;
             padding: 1em;
 
-
             a {
               color: $darkgrey;
+            }
+
+            &:hover {
+              background-color: $blue;
+
+              a {
+                color: $background;
+              }
             }
           }
         }
@@ -516,9 +523,214 @@ h1, h2, h3, h4, h5 {
 
 .homepage-wrapper {
   overflow: hidden;
+  background-color: #fff;
 
-  .homepage-content {
-    margin: 1em auto;
+  header {
+    margin: 0;
+  }
+
+  .home-head {
+    background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    .scroll-arrow {
+      color: $background;
+      position: absolute;
+      text-align: center;
+      font-size: 10em;
+      top: 80%;
+      left: 45%;
+      opacity: .7;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .who-we-are {
+    width: 70%;
+    margin: auto;
+    background-color: #fff;
+    padding: 3em;
+    text-align: center;
+    color: $darkgrey;
+
+    h4 {
+      color: $darkgrey;
+      font-size: 4em;
+    }
+
+    p {
+      color: $darkgrey;
+      font-size: 4em;
+    }
+  }
+
+  .how-it-works {
+
+    .hiw-title {
+      overflow: hidden;
+      background: url(../../images/fitness_ball.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      // position: relative;
+      width: 100%;
+      height: 30em;
+
+      h5 {
+        font-size: 6em;
+        color: $darkgrey;
+        text-align: center;
+        padding: 2em;
+      }
+    }
+
+    .hiw-box {
+      width: 50%;
+      overflow: hidden;
+      float: left;
+    }
+
+    .box-image {
+
+    }
+
+    .box-steps {
+      padding: 6em;
+      text-align: center;
+      font-family: $fjalla;
+
+      .inner-box-steps {
+        width: 70%;
+        margin: auto;
+      }
+
+      h5 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 2em;
+        font-family: $tinos;
+      }
+    }
+  }
+
+  .footer {
+      border-top: 1px solid #ccc;
+
+    .inner-footer {
+      border-top: 1px solid #ccc;
+      overflow: hidden;
+      width: 70%;
+      margin: auto;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .footer-logo {
+      overflow: hidden;
+      // float: left;
+      height: 5em;
+
+      img {
+        height: 100%;
+      }
+
+    }
+  }
+
+}
+
+
+/* LOGIN, REGISTER AND WELCOME VIEW
+----------------------------------- */
+
+.login-page {
+  background-color: $darkgrey;
+  height: 100vh;
+}
+
+.login-form, .register-form {
+  padding: 15em;
+  overflow: hidden;
+  width: 70%;
+  margin: auto;
+
+    form {
+
+      input {
+        color: $darkgrey;
+        font-size: 2em;
+      }
+
+      button {
+        font-size: 2em;
+        width: 100%;
+        margin: 0;
+        font-family: $fjalla;
+
+        &:hover {
+          background-color: $lightblue;
+        }
+      }
+    }
+
+
+  .login-header, .register-header {
+    text-align: center;
+    font-family: $fjalla;
+    margin-bottom: 2em;
+
+    span {
+      font-size: 2em;
+      color: darken($grey, 30);
+      padding: 0 2em .2em 2em;
+
+    }
+
+    p {
+      font-size: 3em;
+      color: $background;
+      display: inline-block;
+      margin: 0;
+    }
+
+    .register-btn, .login-btn {
+      @include button($blue);
+      // font-size: 2em;
+      padding: .2;
+
+      &:hover {
+        background-color: $lightblue;
+      }
+    }
+  }
+}
+
+.welcome-form {
+  padding: 5em 10em 10em;
+
+  .name-input {
+    width: 49%;
+    display: inline-block;
+    float: right;
+
+    &:first-of-type {
+      float: left;
+    }
   }
 }
 
@@ -1669,7 +1881,6 @@ ul {
     }
 
     .workouts-inner {
-
       @include span-columns(4);
       background-color: #fff;
       padding: 1em;
@@ -1713,7 +1924,7 @@ ul {
       @include border($grey);
       @include boxShadow();
       border-radius: 2px;
-      // overflow: scroll;
+      overflow: scroll;
       height: 100vh;
 
       .planning-drops-header {

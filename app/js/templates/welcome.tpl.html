@@ -1,40 +1,38 @@
+<div class="login-page">
+
   <header class="home-header">
     <div class="outerheader">
       <div class="innerheader">
         <a href="#/"><div class="logo">
           <img src="images/zone-in.png">
-          <!-- <h2>zone in</h2> -->
         </div></a>
-        <!-- <div class="rightheader"> -->
-          <!-- <nav> -->
-            <!-- <li><a href="#/">Home</a></li> -->
-            <!-- <li><a href="#">What it Is</a></li> -->
-            <!-- <li><a href="#/register">Sign Up</a></li> -->
-            <!-- <li><a href="#/login">Sign In</a></li> -->
-          <!-- </nav> -->
-        <!-- </div> -->
       </div>
     </div>
-    <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-<h3>Welcome new user! Fill out more info below.</h3>
-<form ng-submit="updateUserReg(regUser)">
-  <input type="text" ng-model="regUser.first_name" placeholder="First Name">
-  <input type="text" ng-model="regUser.last_name" placeholder="Last Name">
-  <input type="text" ng-model="regUser.phone_number" placeholder="Phone Number">
-  <input type="text" ng-model="regUser.home_address" placeholder="Street Address">
-  <input type="text" ng-model="regUser.city"placeholder="City">
-  <input type="text" ng-model="regUser.state"placeholder="State">
-  <input type="text" ng-model="regUser.zip" placeholder="Zip Code">
+  <div class="register-form welcome-form">
+    <div class="register-header">
+      <p>Welcome {{ user.username }}! Fill out a bit more info below.</p>
+    </div>
+    <form ng-submit="updateUserReg(regUser)">
+      <input class="name-input" type="text" ng-model="regUser.first_name" placeholder="First Name">
+      <input class="name-input" type="text" ng-model="regUser.last_name" placeholder="Last Name">
+      <input type="text" ng-model="regUser.phone_number" placeholder="Phone Number">
+      <input type="text" ng-model="regUser.home_address" placeholder="Street Address">
+      <input type="text" ng-model="regUser.city"placeholder="City">
+      <input type="text" ng-model="regUser.state"placeholder="State">
+      <input type="text" ng-model="regUser.zip" placeholder="Zip Code">
 
-<!--   <p>Activities you are interested in</p>
-  <label ng-repeat="i in interests">
-    <input type="checkbox" checklist-model="userInterests.interests" checklist-value="i"> {{ i }}
-  </label> -->
+    <!--   <p>Activities you are interested in</p>
+      <label ng-repeat="i in interests">
+        <input type="checkbox" checklist-model="userInterests.interests" checklist-value="i"> {{ i }}
+      </label> -->
 
-  <input class="imageupload" type="file" ng-model="image_url" name="imagefilename" accept="image/x-png, image/gif, image/jpeg">
-  <input class="imageupload" type="submit" value="Upload">
+      <!-- <input class="imageupload" type="file" ng-model="image_url" name="imagefilename" accept="image/x-png, image/gif, image/jpeg"> -->
+      <!-- <input class="imageupload" type="submit" value="Upload"> -->
 
-  <button>Finish Sign Up</button>
-</form>
+      <button>Finish Sign Up</button>
+    </form>
+  </div>
+
+</div>

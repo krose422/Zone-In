@@ -20,10 +20,17 @@
     <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-  <form ng-submit="loginUser(logUser)">
-    <input type="text" placeholder="Email address" ng-model="logUser.email">
-    <input type="password" placeholder="Password" ng-model="logUser.password">
-    <button>Login</button>
-  </form>
+  <div class="login-form">
+  <div class="login-header">
+    <p>LOGIN HERE</p>
+    <span>&mdash; OR &mdash;</span>
+    <a href="#/register"><p class="register-btn">register</p></a>
+  </div>
+    <form ng-submit="loginUser(logUser)">
+      <input type="text" placeholder="Email address" ng-model="logUser.email">
+      <input type="password" placeholder="Password" ng-model="logUser.password">
+      <button>Login</button>
+    </form>
+  </div>
 
 </div>

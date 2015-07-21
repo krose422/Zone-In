@@ -1,3 +1,4 @@
+<div class="login-page register-page-wrapper">
 
   <header class="home-header">
     <div class="outerheader">
@@ -19,13 +20,22 @@
     <!-- <div class="scroll-arrow"><i class="fa fa-angle-double-down" ng-click="scrollTo('.container')"></i></div> -->
   </header>
 
-<div class="register-page" ui-view>
+  <div class="register-page" ui-view>
 
-  <form ng-submit="registerUser(regUser)">
-    <input type="email" ng-model="regUser.email" placeholder="Email Address">
-    <input type="text" ng-model="regUser.username" placeholder="Username">
-    <input type="password" ng-model="regUser.password" placeholder="Password">
-    <button>Register</button>
-  </form>
+    <div class="register-form">
+      <div class="register-header">
+        <p>REGISTER HERE</p>
+        <span>&mdash; OR &mdash;</span>
+        <a href="#/login"><p class="login-btn">login</p></a>
+      </div>
+      <form ng-submit="registerUser(regUser)">
+        <input type="email" ng-model="regUser.email" placeholder="Email Address">
+        <input type="text" ng-model="regUser.username" placeholder="Username">
+        <input type="password" ng-model="regUser.password" placeholder="Password">
+        <button>Register</button>
+      </form>
+    </div>
+
+  </div>
 
 </div>

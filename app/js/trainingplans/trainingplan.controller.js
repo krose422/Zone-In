@@ -234,7 +234,7 @@
           });
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
           console.log(trainingPlanWorkouts);
-          // PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 
         $scope.deleteWorkout = function (workoutId) {

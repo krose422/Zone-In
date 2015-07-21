@@ -119,6 +119,10 @@ header {
           padding: 1em; }
           header .innerheader .rightheader nav li a {
             color: #424242; }
+          header .innerheader .rightheader nav li:hover {
+            background-color: #176785; }
+            header .innerheader .rightheader nav li:hover a {
+              color: #FAFAFA; }
       header .innerheader .rightheader .nav-item {
         overflow: hidden;
         cursor: pointer;
@@ -209,9 +213,145 @@ header {
 /* HOMEPAGE VIEW
 ---------------- */
 .homepage-wrapper {
-  overflow: hidden; }
-  .homepage-wrapper .homepage-content {
-    margin: 1em auto; }
+  overflow: hidden;
+  background-color: #fff; }
+  .homepage-wrapper header {
+    margin: 0; }
+  .homepage-wrapper .home-head {
+    background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh; }
+    .homepage-wrapper .home-head .scroll-arrow {
+      color: #FAFAFA;
+      position: absolute;
+      text-align: center;
+      font-size: 10em;
+      top: 80%;
+      left: 45%;
+      opacity: .7;
+      cursor: pointer; }
+      .homepage-wrapper .home-head .scroll-arrow:hover {
+        opacity: 1; }
+  .homepage-wrapper .who-we-are {
+    width: 70%;
+    margin: auto;
+    background-color: #fff;
+    padding: 3em;
+    text-align: center;
+    color: #424242; }
+    .homepage-wrapper .who-we-are h4 {
+      color: #424242;
+      font-size: 4em; }
+    .homepage-wrapper .who-we-are p {
+      color: #424242;
+      font-size: 4em; }
+  .homepage-wrapper .how-it-works .hiw-title {
+    overflow: hidden;
+    background: url(../../images/fitness_ball.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 30em; }
+    .homepage-wrapper .how-it-works .hiw-title h5 {
+      font-size: 6em;
+      color: #424242;
+      text-align: center;
+      padding: 2em; }
+  .homepage-wrapper .how-it-works .hiw-box {
+    width: 50%;
+    overflow: hidden;
+    float: left; }
+  .homepage-wrapper .how-it-works .box-steps {
+    padding: 6em;
+    text-align: center;
+    font-family: "Fjalla One", sans-serif; }
+    .homepage-wrapper .how-it-works .box-steps .inner-box-steps {
+      width: 70%;
+      margin: auto; }
+    .homepage-wrapper .how-it-works .box-steps h5 {
+      font-size: 2em; }
+    .homepage-wrapper .how-it-works .box-steps p {
+      font-size: 2em;
+      font-family: "Tinos", serif; }
+  .homepage-wrapper .footer {
+    border-top: 1px solid #ccc; }
+    .homepage-wrapper .footer .inner-footer {
+      border-top: 1px solid #ccc;
+      overflow: hidden;
+      width: 70%;
+      margin: auto;
+      padding: 1em;
+      text-align: center; }
+    .homepage-wrapper .footer .footer-logo {
+      overflow: hidden;
+      height: 5em; }
+      .homepage-wrapper .footer .footer-logo img {
+        height: 100%; }
+
+/* LOGIN, REGISTER AND WELCOME VIEW
+----------------------------------- */
+.login-page {
+  background-color: #424242;
+  height: 100vh; }
+
+.login-form, .register-form {
+  padding: 15em;
+  overflow: hidden;
+  width: 70%;
+  margin: auto; }
+  .login-form form input, .register-form form input {
+    color: #424242;
+    font-size: 2em; }
+  .login-form form button, .register-form form button {
+    font-size: 2em;
+    width: 100%;
+    margin: 0;
+    font-family: "Fjalla One", sans-serif; }
+    .login-form form button:hover, .register-form form button:hover {
+      background-color: #25A8D9; }
+  .login-form .login-header, .login-form .register-header, .register-form .login-header, .register-form .register-header {
+    text-align: center;
+    font-family: "Fjalla One", sans-serif;
+    margin-bottom: 2em; }
+    .login-form .login-header span, .login-form .register-header span, .register-form .login-header span, .register-form .register-header span {
+      font-size: 2em;
+      color: #8b7871;
+      padding: 0 2em 0.2em 2em; }
+    .login-form .login-header p, .login-form .register-header p, .register-form .login-header p, .register-form .register-header p {
+      font-size: 3em;
+      color: #FAFAFA;
+      display: inline-block;
+      margin: 0; }
+    .login-form .login-header .register-btn, .login-form .login-header .login-btn, .login-form .register-header .register-btn, .login-form .register-header .login-btn, .register-form .login-header .register-btn, .register-form .login-header .login-btn, .register-form .register-header .register-btn, .register-form .register-header .login-btn {
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      color: #FAFAFA;
+      border: 1px solid #176785;
+      border-radius: 2px;
+      background-color: #176785;
+      transition: 0.3s all ease;
+      padding: .2; }
+      .login-form .login-header .register-btn:hover, .login-form .login-header .login-btn:hover, .login-form .register-header .register-btn:hover, .login-form .register-header .login-btn:hover, .register-form .login-header .register-btn:hover, .register-form .login-header .login-btn:hover, .register-form .register-header .register-btn:hover, .register-form .register-header .login-btn:hover {
+        background-color: #25A8D9; }
+
+.welcome-form {
+  padding: 5em 10em 10em; }
+  .welcome-form .name-input {
+    width: 49%;
+    display: inline-block;
+    float: right; }
+    .welcome-form .name-input:first-of-type {
+      float: left; }
 
 /* DASHBOARD VIEW
 ----------------- */
@@ -1399,6 +1539,7 @@ ul {
       -o-box-shadow: 0px 0.5px 2px #D0C8C5;
       box-shadow: 0px 0.5px 2px #D0C8C5;
       border-radius: 2px;
+      overflow: scroll;
       height: 100vh; }
       .planning-page .planning-content .planning-drops:last-child {
         margin-right: 0; }
