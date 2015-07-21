@@ -3,8 +3,8 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h5>Drag and drop workouts into your training plan to create your plan</h5>
-      <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan!</button>
+      <h5>Step 1: Drag and drop workouts from the library into dates to create your plan</h5>
+      <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Step 2: Finish Training Plan!</button>
     </div>
 
   <div class="workouts-inner">
@@ -16,7 +16,7 @@
 
         <div class="sort-dropdown hide">
           <div class="sort-triangle"></div>
-          <p class="sort-option" ng-click="showAll()">Show All</p>
+          <!-- <p class="sort-option" ng-click="showAll()">Show All</p> -->
           <p class="sort-option" ng-click="sort(workoutList, 'color')">Type</p>
           <ul>
             <li class="sort-option" ng-click="sortRequest('Strength')">Strength</li>
@@ -30,7 +30,7 @@
           <p class="sort-option" ng-click="sort(workoutList, 'time')">Duration</p>
           <!-- <p ng-click="sort(workoutList, 'color')">Workout Type</p> -->
           <!-- <p class="sort-option" ng-click="sortReverse(workoutList, 'running')">Running</p> -->
-          <p class="sort-option" ng-click="sortCategory()">Running</p>
+          <p class="sort-option" ng-click="sortReverse(workoutList, 'running')">Running</p>
 
           <p class="sort-option" ng-click="sortReverse(workoutList, 'weightlifting')">Weight Lifting</p>
           <p class="sort-option" ng-click="sortReverse(workoutList, 'swimming')">Swimming</p>
@@ -51,7 +51,7 @@
         <div data-id="{{ w.id }}"
         class="workout-draggable"
         data-drag="true"
-        data-jqyoui-options="{revert: 'invalid'}"
+        data-jqyoui-options="{revert: 'invalid', snapMode: 'inner', helper: 'clone'}"
         ng-model="workoutList"
         jqyoui-draggable="{onStart: 'dragStart(w)', onDrop: 'dropFunc(w)', index: {{$index}}, placeholder: 'keep', animate: false}"
         ng-hide="!w.name"
@@ -105,7 +105,7 @@
         data-id="{{ formatDateLarge(getPlanDates[0]) }}"
         data-drop="true"
         ng-model="list1"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list1])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list1])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
         <p class="dropzone-date">{{ formatDate(getPlanDates[0]) }}</p>
@@ -120,6 +120,8 @@
             ng-model="list1"
             jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
 
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
                 <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                   <h4>{{ w.name }}</h4>
                   <div class="delete-workout" ng-click="deleteWorkout(w.id)">
@@ -131,6 +133,7 @@
                   <p>{{ w.description }}</p>
                   <p>{{ w.time }} mins</p>
                 </div>
+              </div><!-- end planning-workout-content div -->
 
             </div> <!-- end workout-draggable -->
           </div><!-- end caption -->
@@ -142,7 +145,7 @@
         data-id="{{ formatDateLarge(getPlanDates[1]) }}"
         data-drop="true"
         ng-model="list2"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list2])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list2])', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
         <p class="dropzone-date">{{ formatDate(getPlanDates[1]) }}</p>
@@ -157,19 +160,22 @@
             ng-model="list2"
             jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
-
           </div>
         </div>
       </li>
@@ -179,7 +185,7 @@
         data-id="{{ formatDateLarge(getPlanDates[2]) }}"
         data-drop="true"
         ng-model="list3"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list3])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list3])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
 
@@ -195,16 +201,20 @@
             ng-model="list3"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -216,7 +226,7 @@
         data-id="{{ formatDateLarge(getPlanDates[3]) }}"
         data-drop="true"
         ng-model="list4"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
         <p class="dropzone-date">{{ formatDate(getPlanDates[3]) }}</p>
@@ -231,16 +241,20 @@
             ng-model="list4"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -253,7 +267,7 @@
 
         data-drop="true"
         ng-model="list5"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list5])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list5])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
 
@@ -270,16 +284,20 @@
             ng-model="list5"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -292,7 +310,7 @@
 
         data-drop="true"
         ng-model="list6"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list6])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list6])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
 
@@ -309,16 +327,20 @@
             ng-model="list6"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -328,11 +350,9 @@
       <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[6]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[6]) }}"
-
-
         data-drop="true"
         ng-model="list7"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list7])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list7])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
 
@@ -348,16 +368,20 @@
             ng-model="list7"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -367,10 +391,9 @@
       <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[7]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[7]) }}"
-
         data-drop="true"
         ng-model="list8"
-        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list8])'}"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list8])', tolerance: 'pointer', hoverClass: 'hovering'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
 
@@ -386,16 +409,20 @@
             ng-model="list8"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -422,16 +449,20 @@
             ng-model="list9"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -459,16 +490,20 @@
             ng-model="list10"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
 
             </div>
@@ -497,17 +532,20 @@
             ng-model="list11"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
-
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -535,17 +573,20 @@
             ng-model="list12"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
-
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -573,17 +614,20 @@
             ng-model="list13"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
-
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -611,16 +655,20 @@
             ng-model="list14"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -648,16 +696,20 @@
             ng-model="list15"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -684,16 +736,20 @@
             ng-model="list16"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -720,16 +776,20 @@
             ng-model="list17"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -756,16 +816,20 @@
             ng-model="list18"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -792,16 +856,20 @@
             ng-model="list19"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -828,16 +896,20 @@
             ng-model="list20"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -864,16 +936,20 @@
             ng-model="list21"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -900,16 +976,20 @@
             ng-model="list22"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -936,16 +1016,20 @@
             ng-model="list23"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -972,16 +1056,20 @@
             ng-model="list24"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1008,16 +1096,20 @@
             ng-model="list25"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1044,16 +1136,20 @@
             ng-model="list26"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1080,16 +1176,20 @@
             ng-model="list27"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1116,16 +1216,20 @@
             ng-model="list28"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1152,16 +1256,20 @@
             ng-model="list29"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1188,16 +1296,20 @@
             ng-model="list30"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>
@@ -1224,16 +1336,20 @@
             ng-model="list31"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
 
-              <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
-                <h4>{{ w.name }}</h4>
-                <div class="delete-workout" ng-click="deleteWorkout(w.id)">
-                  <i class="fa fa-times-circle"></i>
+              <div class="planning-workout-content">
+                <div class="deleted-overlay hide"><i class="fa fa-times"></i></div>
+                <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
+                  <h4>{{ w.name }}</h4>
+                  <div class="delete-workout" ng-click="deleteWorkout(w.id)">
+                    <i class="fa fa-times-circle"></i>
+                  </div>
                 </div>
-              </div>
 
-              <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
-              </div>
+                <div class="workout-descrip">
+                  <p>{{ w.description }}</p>
+                  <p>{{ w.time }} mins</p>
+                </div>
+              </div><!-- end planning-workout-content div -->
 
             </div>
           </div>

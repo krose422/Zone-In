@@ -205,6 +205,7 @@
 
         $scope.dragStart = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
+          $(x.helper).addClass('ui-draggable-helper');
           // console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
@@ -215,23 +216,6 @@
           console.log(w);
           console.log(x);
         };
-
-        $scope.getUniqueId = function () {
-          var text = "";
-          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-          for( var i=0; i < 5; i++ )
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-          return text;
-
-          // var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-          // var uniqueId = randLetter + Date.now();
-          // console.log(uniqueId);
-          // return uniqueId;
-        };
-
-
 
         $scope.addDate = function (workoutDate) {
           $scope.planWorkout.workout_dates.push(workoutDate.date);
@@ -245,20 +229,23 @@
           });
           var trainingPlanWorkouts = new TrainingPlanWorkouts();
           console.log(trainingPlanWorkouts);
-          PlanService.finishTrainingPlan(trainingPlanWorkouts);
+          // PlanService.finishTrainingPlan(trainingPlanWorkouts);
         }
 
         $scope.deleteWorkout = function (workoutId) {
 
-          // _.each($scope.workouts, function (workout) {
-          //   console.log(workoutId);
-          //   if (workout.workout_id === workoutId.toString()) {
-          //     $scope.workouts = _.without($scope.workouts, workout);
-          //   }
-          // });
+          var eventDiv = $(event.target).parentsUntil('.planning-thumbnail').parent();
+          var dateId = eventDiv[0].dataset.id;
 
-          console.log($scope.workouts);
-          // $(event.target).parentsUntil('li').parent().remove();
+          var workoutToDelete = _.find($scope.workouts, function (workout) {
+            var workoutDate = PlanService.formatDateLarge(workout.workout_dates[0]);
+            return dateId === workoutDate;
+          });
+          // console.log(workoutToDelete);
+          $scope.workouts = _.without($scope.workouts, workoutToDelete);
+
+          $(event.target).parentsUntil('.workout-title').parent().siblings().removeClass('hide');
+          // console.log($scope.workouts);
         };
 
         $scope.formatDate = function (date) {

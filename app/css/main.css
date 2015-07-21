@@ -1307,7 +1307,18 @@ ul {
       width: 70%;
       margin: auto; }
       .planning-page .planning-content .planning-header h5 {
-        font-size: 3em;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        background-color: #fff;
+        transition: 0.3s all ease;
+        border: 1px solid #D0C8C5;
+        border-radius: 2px;
+        cursor: auto;
+        font-size: 2em;
         text-align: center;
         color: #424242; }
       .planning-page .planning-content .planning-header .finish-plan-btn {
@@ -1316,22 +1327,21 @@ ul {
         text-align: center;
         padding: 10px;
         color: #FAFAFA;
-        border: 1px solid #176785;
+        border: 1px solid #fff;
         border-radius: 2px;
-        background-color: #176785;
+        background-color: #fff;
         transition: 0.3s all ease;
-        border: 1px solid #176785;
+        border: 1px solid #D0C8C5;
         border-radius: 2px;
-        color: #FAFAFA;
+        color: #424242;
         font-family: "Fjalla One", sans-serif;
         width: 100%;
-        font-size: 2em;
-        padding: .8em; }
+        font-size: 2em; }
         .planning-page .planning-content .planning-header .finish-plan-btn .fa {
           padding: 0 0.5em; }
         .planning-page .planning-content .planning-header .finish-plan-btn:hover {
-          background-color: #BED194;
-          border: 1px solid #BED194;
+          background-color: #424242;
+          border: 1px solid #424242;
           color: #FAFAFA; }
       .planning-page .planning-content .planning-header p {
         clear: both;
@@ -1375,11 +1385,7 @@ ul {
       display: block;
       margin-right: 2.35765%;
       width: 65.88078%;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
       padding-top: 0;
-      float: right;
       clear: none;
       background-color: #fff;
       border: 1px solid #D0C8C5;
@@ -1389,14 +1395,9 @@ ul {
       -o-box-shadow: 0px 0.5px 2px #D0C8C5;
       box-shadow: 0px 0.5px 2px #D0C8C5;
       border-radius: 2px;
-      overflow: scroll;
       height: 100vh; }
       .planning-page .planning-content .planning-drops:last-child {
         margin-right: 0; }
-      .planning-page .planning-content .planning-drops::after {
-        clear: both;
-        content: "";
-        display: table; }
       .planning-page .planning-content .planning-drops .planning-drops-header {
         overflow: hidden;
         display: block;
@@ -1428,9 +1429,8 @@ ul {
         display: inline-block;
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 13.84898%;
-        margin-right: 0;
+        margin-right: 3.57866%;
+        width: 11.95814%;
         margin: 0 0 0.5em 0.5em; }
         .planning-page .planning-content .planning-drops .planning-dropzone:last-child {
           margin-right: 0; }
@@ -1445,7 +1445,8 @@ ul {
           background-color: #fff;
           margin: 0;
           border-bottom: 1px solid #D0C8C5;
-          margin-top: .2em; }
+          margin-top: .2em;
+          position: relative; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout p {
             font-size: 1.3em;
             display: inline-block;
@@ -1489,6 +1490,18 @@ ul {
               font-size: 1em; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout:hover .workout-title .fa {
             color: rgba(250, 250, 250, 0.5); }
+          .planning-page .planning-content .planning-drops .planning-dropzone .workout .deleted-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(66, 66, 66, 0.8); }
+            .planning-page .planning-content .planning-drops .planning-dropzone .workout .deleted-overlay i {
+              color: #FAFAFA;
+              font-size: 4em;
+              width: 100%;
+              text-align: center; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title h4 {
             font-size: 1em; }
           .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-title .fa {
@@ -1533,7 +1546,7 @@ ul {
             .planning-page .planning-content .planning-drops .planning-dropzone .workout .workout-bottom .fa:hover {
               color: #424242; }
       .planning-page .planning-content .planning-drops .planning-thumbnail {
-        height: 6em; }
+        height: 7em; }
         .planning-page .planning-content .planning-drops .planning-thumbnail .dropzone-date {
           font-size: .5em;
           font-family: "Fjalla One", sans-serif;
@@ -1597,6 +1610,57 @@ ul {
       padding: .5em; }
       .planning-page .workout .workout-steps-container li {
         font-size: 1em; }
+
+.hovering {
+  background-color: rgba(208, 200, 197, 0.3); }
+
+.ui-draggable-helper {
+  overflow: hidden;
+  cursor: pointer;
+  margin: 1em;
+  background-color: #FAFAFA;
+  width: 12em; }
+  .ui-draggable-helper p {
+    font-size: 1.3em;
+    display: inline-block;
+    margin: 0;
+    padding: 0 0.5em; }
+  .ui-draggable-helper .workout-title {
+    overflow: hidden;
+    border-radius: 0;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .ui-draggable-helper .workout-title:hover h4 {
+      white-space: normal; }
+    .ui-draggable-helper .workout-title h4 {
+      font-size: 1.6em;
+      margin: 0 auto;
+      padding: .5em;
+      color: #FAFAFA;
+      text-align: center;
+      float: left;
+      width: 99%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: 0.3s all ease; }
+  .ui-draggable-helper .icon {
+    overflow: hidden;
+    height: 3em;
+    display: block;
+    float: left;
+    padding: 0em 1em;
+    clear: both; }
+    .ui-draggable-helper .icon img {
+      height: 2em; }
+  .ui-draggable-helper .workout-image {
+    width: 100%;
+    max-height: 10em;
+    overflow: hidden; }
+  .ui-draggable-helper .workout-steps-container {
+    padding: .5em; }
+    .ui-draggable-helper .workout-steps-container li {
+      font-size: 1em; }
 
 /* ----------------------- */
 /* BOURBON REFILLS STYLING */
