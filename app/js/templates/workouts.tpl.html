@@ -1,5 +1,5 @@
 <div class="workout-page">
-  <h2>All {{ user.username }}'s Adopted Workouts</h2>
+  <h2>{{ user.username }}'s Adopted Workouts</h2>
 
 <!--   <div class="add-buttons">
     <div class="create-new-button addTrainingBtn" ng-click="clickToOpenAddT()">
@@ -17,6 +17,7 @@
       <div class="overlay completed-overlay" ng-class="checkCompletion(workout.workout_completion)">
         <p class="hide completed-text">
           <i class="fa fa-check-square-o"></i>
+          <span>Completed on: {{ formatDate(workout.completion_date) }}</span>
         </p>
       </div>
 

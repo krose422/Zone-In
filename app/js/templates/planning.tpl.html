@@ -3,23 +3,20 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h4 class="training-plan-name">{{ currentTrainingPlan.name }}</h4>
-      <div class="dates">
-        <h5>{{ formatDate(currentTrainingPlan.start_date) }} to</h5>
-        <h5>{{ formatDate(currentTrainingPlan.end_date) }}</h5>
-      </div>
-      <!-- <p>{{ currentTrainingPlan.description }}</p> -->
+      <h5>Drag and drop workouts into your training plan to create your plan</h5>
+      <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan!</button>
     </div>
 
   <div class="workouts-inner">
-      <h5>Drag workouts to add them to {{ currentTrainingPlan.name }} training plan</h5>
-      <h4 class="addWorkoutBtn" ng-click="clickToOpenAddW()"><i class="fa fa-plus-circle"></i>Add new workout</h4>
+      <h4>Workout Library</h4>
+      <!-- <h4 class="addWorkoutBtn" ng-click="clickToOpenAddW()"><i class="fa fa-plus-circle"></i>Add new workout</h4> -->
 
       <div class="sort-menu">
-        <p class="sort-button" ng-click="showSortMenu()">Sort By <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down hide"></i></p><div id="active-sort"></div>
+        <p class="sort-button" ng-click="showSortMenu()">Filter By <i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down hide"></i></p><div id="active-sort"></div>
 
         <div class="sort-dropdown hide">
           <div class="sort-triangle"></div>
+          <p class="sort-option" ng-click="showAll()">Show All</p>
           <p class="sort-option" ng-click="sort(workoutList, 'color')">Type</p>
           <ul>
             <li class="sort-option" ng-click="sortRequest('Strength')">Strength</li>
@@ -92,8 +89,16 @@
 <!-- <div class="planning-drops-wrapper"> -->
     <ul class="planning-drops">
 
-    <h5>Drag and drop workouts here.<h5>
-    <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button>
+      <div class="planning-drops-header">
+        <h4 class="training-plan-name">{{ currentTrainingPlan.name }}</h4>
+
+        <div class="dates">
+          <h5>{{ formatDate(currentTrainingPlan.start_date) }} to</h5>
+          <h5>{{ formatDate(currentTrainingPlan.end_date) }}</h5>
+        </div>
+      </div>
+
+<!--     <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button> -->
 
       <li class="planning-dropzone" >
         <div class="planning-thumbnail"

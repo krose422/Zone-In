@@ -159,17 +159,20 @@ $cantarell: 'Cantarell', sans-serif;
               display: block;
               font-family: $fjalla;
               color: $background;
+              margin-top: .2em;
 
-              p {
-
+              span {
+                display: block;
+                float: left;
+                margin-top: 0em;
               }
 
               .fa {
                 color: $background;
                 text-align: center;
                 font-size: 6em;
-                // padding: 1em;
-
+                float: left;
+                margin-right: .1em;
               }
             }
           }
@@ -257,6 +260,7 @@ $cantarell: 'Cantarell', sans-serif;
         font-size: 1em;
       }
     }
+
 }
 
 /* GLOBAL STYLES
@@ -1243,6 +1247,11 @@ h1, h2, h3, h4, h5 {
   @include outer-container(90%);
   @include workoutSteps();
 
+  h2 {
+    text-align: center;
+    color: $darkgrey;
+  }
+
   .all-user-workouts {
 
   }
@@ -1595,7 +1604,6 @@ ul {
 
   }
 
-
   input {
     margin: 0;
   }
@@ -1608,17 +1616,36 @@ ul {
       width: 70%;
       margin: auto;
 
-      .training-plan-name {
-        display: inline-block;
-        float: left;
+      h5 {
+        // display: inline-block;
+        // float: left;
+        // width: 60%;
+        font-size: 3em;
+        text-align: center;
+        color: $darkgrey;
       }
 
-      .dates {
-        display: inline-block;
-        float: right;
+      .finish-plan-btn {
+        margin: .5em auto;
+        @include button($blue);
+        @include border($blue);
+        color: $background;
+        font-family: $fjalla;
+        width: 100%;
+        font-size: 2em;
+        padding: .8em;
+        // float: right;
+        // display: inline-block;
+        // float: right;
 
-        h5 {
-          display: inline-block;
+        .fa {
+          padding: 0 .5em;
+        }
+
+        &:hover {
+          background-color: $green;
+          border: 1px solid $green;
+          color: $background;
         }
       }
 
@@ -1678,23 +1705,46 @@ ul {
       overflow: scroll;
       height: 100vh;
 
-      .finish-plan-btn {
-        margin: .5em auto;
-        width: 100%;
-        @include button($background);
-        @include border($grey);
-        color: $darkgrey;
-        font-family: $fjalla;
-
-        .fa {
-          padding: 0 .5em;
-        }
-
-        &:hover {
-          background-color: $darkgrey;
-          color: $background;
-        }
+      .planning-drops-header {
+        overflow: hidden;
+        display: block;
+        margin: 1em;
       }
+
+      .training-plan-name {
+        display: inline-block;
+        float: left;
+        color: $red;
+      }
+
+      .dates {
+        display: inline-block;
+        float: right;
+
+        h5 {
+          display: inline-block;
+          color: $red;
+        }
+
+      }
+
+      // .finish-plan-btn {
+      //   margin: .5em auto;
+      //   width: 100%;
+      //   @include button($background);
+      //   @include border($grey);
+      //   color: $darkgrey;
+      //   font-family: $fjalla;
+
+      //   .fa {
+      //     padding: 0 .5em;
+      //   }
+
+      //   &:hover {
+      //     background-color: $darkgrey;
+      //     color: $background;
+      //   }
+      // }
 
       // button {
       //   // width: 100%;
@@ -1709,6 +1759,10 @@ ul {
 
       .hide-drop {
         visibility: hidden;
+      }
+
+      .planning-dropzone:first-of-type {
+        clear: both;
       }
 
       .planning-dropzone {
@@ -1816,6 +1870,8 @@ ul {
 
           .dropzone-date {
             font-size: .5em;
+            font-family: $fjalla;
+            text-align: center;
             // border-bottom: 1px solid #ccc;
             margin: 0;
             background-color: $darkgrey;
