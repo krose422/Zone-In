@@ -193,9 +193,12 @@
           }
         };
 
-        $scope.dropFunc = function (workout) {
+        $scope.dropFunc = function (workout, x) {
           // console.log(workout);
+          // console.log(x);
+
           var workoutDate = $(workout.target).data('id');
+
           if (workoutDate !== '') {
             workoutDate = moment(workoutDate).toDate();
             $scope.planWorkout.workout_dates.push(workoutDate);
@@ -212,9 +215,11 @@
           // console.log($scope.workouts);
         };
 
-        $scope.dragStartChange = function (w, x) {
-          console.log(w);
-          console.log(x);
+        $scope.dragStartChange = function (event, x) {
+          var workoutId = x.helper[0].dataset.id;
+          // console.log(workoutId);
+          // console.log(event);
+          // console.log(x);
         };
 
         $scope.addDate = function (workoutDate) {
@@ -233,19 +238,23 @@
         }
 
         $scope.deleteWorkout = function (workoutId) {
-
           var eventDiv = $(event.target).parentsUntil('.planning-thumbnail').parent();
           var dateId = eventDiv[0].dataset.id;
 
-          var workoutToDelete = _.find($scope.workouts, function (workout) {
-            var workoutDate = PlanService.formatDateLarge(workout.workout_dates[0]);
-            return dateId === workoutDate;
-          });
-          // console.log(workoutToDelete);
+          var workoutToDelete = _.chain($scope.workouts)
+            .where({workout_id: (workoutId.toString())})
+            .find(function (workout) {
+              console.log(workout);
+              var workoutDate = PlanService.formatDateLarge(workout.workout_dates[0]);
+              return dateId === workoutDate;
+            })
+            .value();
+            console.log(workoutToDelete);
+
           $scope.workouts = _.without($scope.workouts, workoutToDelete);
 
           $(event.target).parentsUntil('.workout-title').parent().siblings().removeClass('hide');
-          // console.log($scope.workouts);
+          console.log($scope.workouts);
         };
 
         $scope.formatDate = function (date) {
@@ -258,7 +267,6 @@
           if (date !== undefined) {
             return PlanService.formatDateLarge(date);
           }
-
         };
 
         $scope.completeWorkout = function (workout) {

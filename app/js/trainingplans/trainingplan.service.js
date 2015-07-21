@@ -62,7 +62,6 @@
             .success( function (data) {
               $cookies.remove('currentPlan');
               $state.go('dashboard.calendar');
-              // $state.reload();
             });
         };
 

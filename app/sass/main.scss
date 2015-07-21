@@ -1629,6 +1629,11 @@ ul {
         font-size: 2em;
         text-align: center;
         color: $darkgrey;
+
+        .fa {
+          padding: 0 .5em;
+          font-size: 1.5em;
+        }
       }
 
       .finish-plan-btn {
@@ -1646,6 +1651,7 @@ ul {
 
         .fa {
           padding: 0 .5em;
+          font-size: 1.5em;
         }
 
         &:hover {
@@ -1891,12 +1897,14 @@ ul {
 }
 
 .hovering {
+  @include transition(.2s);
   background-color: rgba($green, .3);
 }
 
 .ui-draggable-helper {
   @include workoutCard();
   width: 12em;
+  opacity: .7;
 }
 
 

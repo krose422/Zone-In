@@ -3,7 +3,7 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h5>Step 1: Drag and drop workouts from the library into dates to create your plan</h5>
+      <h5><i class="fa fa-arrow-circle-o-right"></i>Step 1: Drag and drop workouts from the library into dates to create your plan</h5>
       <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Step 2: Finish Training Plan!</button>
     </div>
 
@@ -53,7 +53,7 @@
         data-drag="true"
         data-jqyoui-options="{revert: 'invalid', snapMode: 'inner', helper: 'clone'}"
         ng-model="workoutList"
-        jqyoui-draggable="{onStart: 'dragStart(w)', onDrop: 'dropFunc(w)', index: {{$index}}, placeholder: 'keep', animate: false}"
+        jqyoui-draggable="{onStart: 'dragStart(w)', onDrop: 'dropFunc(w)', index: {{$index}}, placeholder: 'keep', animate: false, opacity: 0.35}"
         ng-hide="!w.name"
         >
 
@@ -98,7 +98,6 @@
         </div>
       </div>
 
-<!--     <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button> -->
 
       <li class="planning-dropzone" >
         <div class="planning-thumbnail"

@@ -1321,6 +1321,9 @@ ul {
         font-size: 2em;
         text-align: center;
         color: #424242; }
+        .planning-page .planning-content .planning-header h5 .fa {
+          padding: 0 0.5em;
+          font-size: 1.5em; }
       .planning-page .planning-content .planning-header .finish-plan-btn {
         margin: .5em auto;
         cursor: pointer;
@@ -1338,7 +1341,8 @@ ul {
         width: 100%;
         font-size: 2em; }
         .planning-page .planning-content .planning-header .finish-plan-btn .fa {
-          padding: 0 0.5em; }
+          padding: 0 0.5em;
+          font-size: 1.5em; }
         .planning-page .planning-content .planning-header .finish-plan-btn:hover {
           background-color: #424242;
           border: 1px solid #424242;
@@ -1612,6 +1616,7 @@ ul {
         font-size: 1em; }
 
 .hovering {
+  transition: 0.2s all ease;
   background-color: rgba(190, 209, 148, 0.3); }
 
 .ui-draggable-helper {
@@ -1619,7 +1624,8 @@ ul {
   cursor: pointer;
   margin: 1em;
   background-color: #FAFAFA;
-  width: 12em; }
+  width: 12em;
+  opacity: .7; }
   .ui-draggable-helper p {
     font-size: 1.3em;
     display: inline-block;
