@@ -648,6 +648,10 @@ h1, h2, h3, h4, h5 {
     .right-dash {
       overflow: hidden;
       @include span-columns(9);
+
+      h3 {
+        color: $darkgrey;
+      }
     }
 
     .top-dash-progress {

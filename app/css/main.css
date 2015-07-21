@@ -308,6 +308,8 @@ header {
       width: 74.41059%; }
       .dashboard-page .dash-content .right-dash:last-child {
         margin-right: 0; }
+      .dashboard-page .dash-content .right-dash h3 {
+        color: #424242; }
     .dashboard-page .dash-content .top-dash-progress {
       padding: 2em;
       overflow: hidden;

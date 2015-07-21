@@ -35,6 +35,7 @@
 
   <div class="dash-content">
 
+
   <div class="left-dash">
 
       <a href="#/dash" ng-click="active()">
@@ -69,6 +70,8 @@
 
 
   <div class="right-dash" ui-view>
+  <h3>{{ user.first_name }} {{ user.last_name }}'s Dashboard</h3>
+
   <div class="top-dash-progress progress-circle">
   <i class="fa fa-pie-chart" ng-click="toggleChart()"></i>
   <i class="fa fa-bars hide" ng-click="toggleChart()"></i>
