@@ -655,6 +655,28 @@ h1, h2, h3, h4, h5 {
 
       .progress-bars {
         width: 100%;
+
+        .progress-bar-indication {
+          position: relative;
+        }
+
+        .progress-bar-name {
+          position: absolute;
+          top: 0;
+          right: 0;
+          text-align: center;
+          color: $blue;
+          background-color: #fff;
+        }
+
+        // .meter {
+        //   span {
+        //     font-size: 2em;
+        //     font-family: $fjalla;
+        //     color: $background;
+        //     float: right;
+        //   }
+        // }
       }
 
       .circle-arc {
@@ -1389,6 +1411,27 @@ ul {
           }
         }
       }
+
+      form {
+        text-align: right;
+
+        label {
+          input {
+            margin-left: .3em;
+          }
+        }
+
+        button {
+          @include button($grey);
+          margin: 1em;
+          font-size: .6em;
+
+          &:hover {
+            background-color: $darkgrey;
+            border: 1px solid $darkgrey;
+          }
+        }
+      }
     }
   }
 }
@@ -1669,11 +1712,13 @@ ul {
       }
 
       .planning-dropzone {
-        border: 1px solid #ccc;
+        // border: 1px solid $grey;
+        @include boxShadow();
         overflow: hidden;
         display: inline-block;
-        @include span-columns(1.8);
+        @include span-columns(1.9);
         @include omega();
+        margin: 0 0 .5em .5em;
         // @include pad();
         // margin: 0 .2em .4em .2em;
 
@@ -1684,8 +1729,10 @@ ul {
           font-size: .5em;
           background-color: #fff;
           margin: 0;
-          @include border($grey);
-          @include boxShadow();
+          border-bottom: 1px solid $grey;
+          margin-top: .2em;
+          // @include border($grey);
+          // @include boxShadow();
 
           &:hover {
 
@@ -1769,8 +1816,10 @@ ul {
 
           .dropzone-date {
             font-size: .5em;
-            border-bottom: 1px solid #ccc;
+            // border-bottom: 1px solid #ccc;
             margin: 0;
+            background-color: $darkgrey;
+            color: $background;
           }
       }
     }

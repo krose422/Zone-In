@@ -100,6 +100,7 @@
           };
 
           var _getAlerts = function (workoutDatesArray) {
+
             $scope.workoutAlerts = _.filter($scope.workoutDates, function (workout) {
               var _alertDate = PlanService.formatDateLarge(workout.do_date);
               $scope.today = PlanService.formatDateLarge(new Date());

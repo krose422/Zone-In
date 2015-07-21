@@ -103,8 +103,9 @@
     <div class="progress-bars">
 
       <div class="progress-bar-indication" ng-repeat="t in incompletePlans">
+      <p class="progress-bar-name">{{ t.name }}</p>
         <span class="meter" style="width: {{ getCompletedPercent(t) }}%">
-          <p>{{ getCompletedPercent(t) }}% <span>{{ checkPercent(t) }}</span></p>
+          <p>{{ getCompletedPercent(t) }}% </p>
         </span>
       </div>
 

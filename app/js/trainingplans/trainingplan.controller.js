@@ -156,7 +156,6 @@
         };
 
         $scope.getPlanDates = function () {
-          console.log($scope.currentTrainingPlan);
           var start_date = moment($scope.currentTrainingPlan.start_date).toDate();
           var end_date = moment($scope.currentTrainingPlan.end_date).toDate();
           $scope.planDates = PlanService.getDates(start_date, end_date);
@@ -164,24 +163,12 @@
           $scope.getPlanDates = _.each($scope.planDates, function (date) {
             var formDate = moment(date).format('dddd, MMMM Do YYYY');
           });
-          console.log($scope.planDates);
 
         };
 
         if ($scope.currentTrainingPlan !== undefined) {
           $scope.getPlanDates();
         }
-
-        // var TrainingPlanWorkouts = function (options) {
-        //   this.plan_id = $scope.currentTrainingPlan.id,
-        //   this.workout_array = $scope.planWorkouts.workoutIds
-        // };
-
-        // $scope.finishTrainingPlan = function () {
-        //   var trainingPlanWorkouts = new TrainingPlanWorkouts();
-        //   console.log(trainingPlanWorkouts);
-        //   PlanService.finishTrainingPlan(trainingPlanWorkouts);
-        // };
 
         $scope.workouts = [];
 
@@ -193,15 +180,10 @@
           PlanService.sortCategory();
         };
 
-
         // Sort workouts in library and reverse array
         $scope.sortReverse = function (workoutList, predicate) {
           $scope.sortedArray = _.sortBy(workoutList, predicate);
           $scope.workoutList = $scope.sortedArray.reverse();
-        };
-
-        $scope.dropFunc = function (workout) {
-          // console.log(workout);
         };
 
         $scope.getDropzoneClass = function (date) {
@@ -212,6 +194,7 @@
         };
 
         $scope.dropFunc = function (workout) {
+          // console.log(workout);
           var workoutDate = $(workout.target).data('id');
           if (workoutDate !== '') {
             workoutDate = moment(workoutDate).toDate();
@@ -222,11 +205,33 @@
 
         $scope.dragStart = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
-          console.log(workoutId);
+          // console.log(workoutId);
           $scope.planWorkout = new PlanWorkout({workout_id: workoutId, workout_dates: []});
           $scope.workouts.push($scope.planWorkout);
-          console.log($scope.workouts);
+          // console.log($scope.workouts);
         };
+
+        $scope.dragStartChange = function (w, x) {
+          console.log(w);
+          console.log(x);
+        };
+
+        $scope.getUniqueId = function () {
+          var text = "";
+          var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+          for( var i=0; i < 5; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+          return text;
+
+          // var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+          // var uniqueId = randLetter + Date.now();
+          // console.log(uniqueId);
+          // return uniqueId;
+        };
+
+
 
         $scope.addDate = function (workoutDate) {
           $scope.planWorkout.workout_dates.push(workoutDate.date);
@@ -244,11 +249,16 @@
         }
 
         $scope.deleteWorkout = function (workoutId) {
-          $scope.workouts = _.filter($scope.workouts, function (workout) {
-            return workout.workout_id !== workoutId;
-          });
+
+          // _.each($scope.workouts, function (workout) {
+          //   console.log(workoutId);
+          //   if (workout.workout_id === workoutId.toString()) {
+          //     $scope.workouts = _.without($scope.workouts, workout);
+          //   }
+          // });
+
           console.log($scope.workouts);
-          $(event.target).parentsUntil('li').parent().remove();
+          // $(event.target).parentsUntil('li').parent().remove();
         };
 
         $scope.formatDate = function (date) {
@@ -265,9 +275,6 @@
         };
 
         $scope.completeWorkout = function (workout) {
-          // console.log(workout);
-          // console.log(workout.id);
-          // console.log(workout.completion);
           var today = new Date();
           PlanService.completeWorkout(workout.id, workout.completion, workout.run_distance, workout.run_time, today)
             .then( function (data) {
@@ -298,6 +305,7 @@
         };
 
         $scope.openPlanWorkoutModal = function (workout) {
+          console.log(workout);
           PlanService.openPlanWorkoutModal(workout);
         };
 

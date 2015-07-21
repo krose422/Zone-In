@@ -18,7 +18,7 @@
 
         this.formatDate = function (date) {
           var momentDate = moment(date);
-          var formattedDate = momentDate.format('ddd, MMM DD');
+          var formattedDate = momentDate.format('ddd | MMM DD, YY');
           return formattedDate;
         };
 
@@ -50,7 +50,6 @@
 
         this.addTrainingPlan = function (plan) {
           var trainingPlan = new TrainingPlan(plan);
-          console.log(trainingPlan);
           return $http.post(endpoint + '/plans', plan, HEROKU.CONFIG)
             .success( function (data) {
               $cookies.putObject('currentPlan', data);
@@ -88,6 +87,7 @@
         };
 
         this.completeWorkout = function (id, completion, runDistance, runTime, date) {
+          console.log(date);
           return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion, run_distance: runDistance, run_time: runTime, completion_date: date}, HEROKU.CONFIG)
             .success( function (data) {
               console.log(data);

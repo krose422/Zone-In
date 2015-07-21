@@ -62,50 +62,22 @@
 
           <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
             <h4>{{ w.name }}</h4>
-<!--             <div class="icon">
-              <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-              <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-              <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-              <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-              <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-            </div> -->
           </div>
           <div class="workout-descrip">
-            <p>{{ w.description }}</p><p>{{ w.time }} minutes</p>
+            <p>{{ w.description }}</p><p>{{ w.time }} mins</p>
           </div>
-<!--             <div class="icon">
-              <img ng-src="{{ iconShowCycle(w) }}" class="cycling sport-icon hide">
-              <img ng-src="{{ iconShowRunning(w) }}" class="running sport-icon hide">
-              <img ng-src="{{ iconShowSwimming(w) }}" class="swimming sport-icon hide">
-              <img ng-src="{{ iconShowWeights(w) }}" class="weights sport-icon hide">
-              <img ng-src="{{ iconShowCircuit(w) }}" class="circuits sport-icon hide">
-            </div> -->
+
           <div class="workout-image">
             <img src="{{ w.image_url }}">
           </div>
 
           <ul class="workout-steps-container hide">
-            <!-- <li>{{ w.steps }}</li> -->
             <li class="workout-steps" ng-repeat="s in w.steps track by $index">{{ s }}</li>
           </ul>
 
           <div class="workout-bottom">
             <p>Created by: {{ w.workout_creator }}</p>
-          <div class="workout-interval hide">
-            <form>
-              <!-- <p>{{ w.select }}</p> -->
-<!--               <label ng-repeat="day in w.planDays">
-                {{ day }} <input type="checkbox" checklist-model="w.planDays.days" checklist-value="day">
-              </label> -->
-
-              <label for="workoutDate">Workout date</label>
-              <input type="date" id="workoutDate" name="input" ng-model="w.workoutDate" placeholder="yyyy-MM-dd" min="2015-01-01" required />
-              <button>Confirm Date</button>
-
-            </form>
           </div>
-          </div>
-
 
         </div>
       </div>
@@ -123,28 +95,25 @@
     <h5>Drag and drop workouts here.<h5>
     <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Finish Training Plan</button>
 
-<!-- ng-repeat="d in getPlanDates" -->
-
-
       <li class="planning-dropzone" >
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[0]) }}"
         data-drop="true"
         ng-model="list1"
-        data-jqyoui-options="optionsList1"
+        data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list1])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
         <p class="dropzone-date">{{ formatDate(getPlanDates[0]) }}</p>
 
           <div class="caption">
-            <div class="workout workout-draggable"
+            <div class="workout workout-draggable dropzone-dragged"
             data-id="{{ w.id }}"
             ng-repeat="w in list1"
             ng-show="w.name"
             data-drag="true"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list1"
-            jqyoui-draggable="{index: {{$index}}, animate:false}">
+            jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
 
                 <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                   <h4>{{ w.name }}</h4>
@@ -155,7 +124,7 @@
 
                 <div class="workout-descrip">
                   <p>{{ w.description }}</p>
-                  <p>{{ w.time }} minutes</p>
+                  <p>{{ w.time }} mins</p>
                 </div>
 
             </div> <!-- end workout-draggable -->
@@ -166,15 +135,12 @@
       <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[1]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[1]) }}"
-
         data-drop="true"
         ng-model="list2"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list2])'}"
         jqyoui-droppable="{multiple: true, onDrop:'dropFunc(w)'}">
 
-
         <p class="dropzone-date">{{ formatDate(getPlanDates[1]) }}</p>
-
 
           <div class="caption">
             <div class="workout workout-draggable"
@@ -184,7 +150,7 @@
             data-drag="true"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list2"
-            jqyoui-draggable="{index: {{$index}}, animate:false}">
+            jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
 
               <div class="workout-title" ng-style="{'background-color':'{{ w.color }}'}">
                 <h4>{{ w.name }}</h4>
@@ -194,7 +160,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -206,7 +172,6 @@
       <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[2]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[2]) }}"
-
         data-drop="true"
         ng-model="list3"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list3])'}"
@@ -233,7 +198,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -244,7 +209,6 @@
       <li class="planning-dropzone" ng-class="getDropzoneClass(formatDate(getPlanDates[3]))">
         <div class="planning-thumbnail"
         data-id="{{ formatDateLarge(getPlanDates[3]) }}"
-
         data-drop="true"
         ng-model="list4"
         data-jqyoui-options="{accept: '.workout-draggable:not([ng-model=list4])'}"
@@ -270,7 +234,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -309,7 +273,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -348,7 +312,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -387,7 +351,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -425,7 +389,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -461,7 +425,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -498,7 +462,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
 
@@ -536,7 +500,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
 
@@ -574,7 +538,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
 
@@ -612,7 +576,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
 
@@ -650,7 +614,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -687,7 +651,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -723,7 +687,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -759,7 +723,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -795,7 +759,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -831,7 +795,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -867,7 +831,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -903,7 +867,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -939,7 +903,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -975,7 +939,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1011,7 +975,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1047,7 +1011,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1083,7 +1047,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1119,7 +1083,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1155,7 +1119,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1191,7 +1155,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1227,7 +1191,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>
@@ -1263,7 +1227,7 @@
               </div>
 
               <div class="workout-descrip">
-                <p>{{ w.description }}</p>|<p>{{ w.time }} minutes</p>
+                <p>{{ w.description }}</p>|<p>{{ w.time }} mins</p>
               </div>
 
             </div>

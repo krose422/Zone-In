@@ -95,11 +95,8 @@
 
           <div class="overlay completed-overlay" ng-class="checkCompletion(workout.workout_completion)">
             <p class="hide completed-text">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o"></i>Completed on: {{ formatDate(workout.completion_date) }}
             </p>
-            <!-- <p class="hide completed-text">{{ checkTypeRunning(workout) }}</p> -->
-            <!-- <p class="hide completed-text">{{ checkTypeWeights(workout) }}</p> -->
-
 
           </div>
 
@@ -124,19 +121,15 @@
             <p>Created by: {{ workout.workoutInfo.workout_creator }}</p>
           </div>
 
-<!--           <ul class="workout-steps-container hide">
-            <li class="workout-steps" ng-repeat="s in workout.steps track by $index">{{ s }}</li>
-          </ul> -->
-
           </li>
         </ul>
 
-<!--         <form ng-submit="completePlan(t)">
+        <form ng-submit="completePlan(t)">
           <div class="check">
-            <p>Completed Training Plan? </p><input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion">
+            <label>Complete plan with open workouts? <input class="completed-box" type="checkbox" [ng-true-value="true"] [ng-false-value="false"] id="" placeholder="Completed" ng-model="t.completion"></label>
           </div>
-          <button>Submit completion</button>
-        </form> -->
+          <button>Complete</button>
+        </form>
 
       </div>
 
