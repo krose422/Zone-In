@@ -540,6 +540,22 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     height: 100vh;
 
+    .title-back {
+      background-color: rgba($darkgrey, .5);
+    }
+
+    h1 {
+      color: $background;
+      font-size: 10em;
+      text-align: center;
+      margin-top: 20%;
+    }
+
+    h2 {
+      text-align: center;
+      color: $background;
+    }
+
     .scroll-arrow {
       color: $background;
       position: absolute;
@@ -1828,24 +1844,47 @@ ul {
 
     .planning-header {
       overflow: hidden;
-      width: 70%;
+      width: 90%;
       margin: auto;
+      margin-bottom: 2em;
+
+      h6 {
+        font-family: $fjalla;
+        font-size: 2.5em;
+        margin: 0;
+      }
+
+      .step-one {
+        overflow: hidden;
+        display: inline-block;
+        float: left;
+        width: 49%;
+      }
 
       h5 {
         @include button(#fff);
         @include border($grey);
         cursor: auto;
-        // display: inline-block;
-        // float: left;
-        // width: 60%;
         font-size: 2em;
         text-align: center;
         color: $darkgrey;
+        height: 4em;
+        margin: 0;
+        padding: .5em;
+        width: 100%;
 
         .fa {
-          padding: 0 .5em;
+          padding: 0 .5em 0 0;
           font-size: 1.5em;
         }
+
+      }
+
+      .step-two {
+        overflow: hidden;
+        display: inline-block;
+        float: right;
+        width: 49%;
       }
 
       .finish-plan-btn {
@@ -1854,12 +1893,10 @@ ul {
         @include border($grey);
         color: $darkgrey;
         font-family: $fjalla;
-        width: 100%;
         font-size: 2em;
-        // padding: .8em;
-        // float: right;
-        // display: inline-block;
-        // float: right;
+        height: 4em;
+        margin: 0;
+        width: 100%;
 
         .fa {
           padding: 0 .5em;
@@ -1967,7 +2004,7 @@ ul {
       .planning-dropzone {
         // border: 1px solid $grey;
         @include boxShadow();
-        overflow: hidden;
+        overflow: scroll;
         display: inline-block;
         @include span-columns(1.2 of 8);
         // @include omega();
@@ -2083,7 +2120,8 @@ ul {
       }
 
       .planning-thumbnail {
-          height: 7em;
+        height: 7em;
+        overflow: scroll;
 
           .dropzone-date {
             font-size: .5em;

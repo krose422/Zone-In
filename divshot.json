@@ -1,0 +1,6 @@
+{
+  "name": "zone-in-app",
+  "root": "app",
+  "clean_urls": true,
+  "error_page": "error.html"
+}

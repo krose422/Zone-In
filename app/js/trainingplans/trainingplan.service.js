@@ -89,11 +89,11 @@
           console.log(date);
           return $http.patch(endpoint + '/plans/workout_completion', {athlete_workout_id: id, completion: completion, run_distance: runDistance, run_time: runTime, completion_date: date}, HEROKU.CONFIG)
             .success( function (data) {
-              console.log(data);
             });
         };
 
         this.completePlan = function (plan) {
+          console.log(plan.completion);
           // console.log('in service function');
           return $http.patch(endpoint + '/plans/completion', plan, HEROKU.CONFIG)
             .success (function (data) {

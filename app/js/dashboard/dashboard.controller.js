@@ -60,7 +60,6 @@
                   var incompleteWorkoutEvent = new PlanService.WorkoutEvent(workout.workoutInfo.name, workout.do_date, workout.do_date, workout.workoutInfo.color);
                   $scope.events.push(incompleteWorkoutEvent);
                 });
-                console.log($scope.events);
 
                 $scope.workoutDates = _.sortBy($scope.workoutDates, 'do_date');
                 _getPlanWorkouts();
