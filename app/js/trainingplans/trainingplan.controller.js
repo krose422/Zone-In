@@ -217,7 +217,8 @@
 
         $scope.dragStartChange = function (event, x) {
           var workoutId = x.helper[0].dataset.id;
-          // console.log(workoutId);
+          console.log(workoutId);
+          console.log($scope.workouts);
           // console.log(event);
           // console.log(x);
         };
@@ -279,7 +280,6 @@
         };
 
         $scope.completePlan = function (trainingPlan) {
-          console.log(trainingPlan);
           PlanService.completePlan(trainingPlan);
         };
 
@@ -300,7 +300,6 @@
         };
 
         $scope.openPlanWorkoutModal = function (workout) {
-          console.log(workout);
           PlanService.openPlanWorkoutModal(workout);
         };
 

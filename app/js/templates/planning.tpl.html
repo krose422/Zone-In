@@ -3,8 +3,15 @@
   <div class="planning-content">
 
     <div class="planning-header">
-      <h5><i class="fa fa-arrow-circle-o-right"></i>Step 1: Drag and drop workouts from the library into dates to create your plan</h5>
-      <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Step 2: Finish Training Plan!</button>
+      <div class="step-one">
+        <h6>Step 1</h6>
+        <h5><i class="fa fa-arrow-circle-o-right"></i>Drag and drop workouts from the library to fill in your training plan dates.</h5>
+      </div>
+
+      <div class="step-two">
+        <h6>Step 2</h6>
+        <button class="finish-plan-btn" ng-click="finishTrainingPlan()"><i class="fa fa-check-square"></i>Click here to finish training plan!</button>
+      </div>
     </div>
 
   <div class="workouts-inner">
@@ -114,7 +121,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list1"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list1"
             jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
@@ -154,7 +161,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list2"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list2"
             jqyoui-draggable="{onStart: 'dragStartChange(w)', index: {{$index}}, animate:false}">
@@ -195,7 +202,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list3"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list3"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -235,7 +242,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list4"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list4"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -278,7 +285,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list5"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list5"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -321,7 +328,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list6"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list6"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -362,7 +369,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list7"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list7"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -402,7 +409,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list8"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list8"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -442,7 +449,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list9"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list9"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -483,7 +490,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list10"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list10"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -525,7 +532,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list11"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list11"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -566,7 +573,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list12"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list12"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -607,7 +614,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list13"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list13"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -648,7 +655,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list14"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list14"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -689,7 +696,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list15"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list15"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -729,7 +736,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list16"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list16"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -769,7 +776,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list17"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list17"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -809,7 +816,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list18"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list18"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -849,7 +856,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list19"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list19"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -889,7 +896,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list20"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list20"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -929,7 +936,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list21"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list21"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -969,7 +976,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list22"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list22"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1009,7 +1016,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list23"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list23"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1049,7 +1056,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list24"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list24"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1089,7 +1096,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list25"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list25"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1129,7 +1136,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list26"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list26"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1169,7 +1176,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list27"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list27"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1209,7 +1216,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list28"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list28"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1249,7 +1256,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list29"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list29"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1289,7 +1296,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list30"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list30"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
@@ -1329,7 +1336,7 @@
             data-id="{{ w.id }}"
             ng-repeat="w in list31"
             ng-show="w.name"
-            data-drag="true"
+            data-drag="false"
             data-jqyoui-options="{revert: 'invalid'}"
             ng-model="list31"
             jqyoui-draggable="{index: {{$index}}, animate:false}">
