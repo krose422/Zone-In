@@ -67,6 +67,12 @@
             controller: 'PlanCtrl'
           })
 
+          .state('training.allplans', {
+            url: '/trainingplans',
+            templateUrl: 'js/templates/allplans.tpl.html',
+            controller: 'PlanCtrl'
+          })
+
           .state('training.plan', {
               url: '/plan',
               templateUrl: 'js/templates/planning.tpl.html',

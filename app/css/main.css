@@ -11,7 +11,7 @@ html {
 /* MIXINS
 ---------- */
 /* WORKOUT CARD MIXIN
----------------- */
+--------------------- */
 /* GLOBAL STYLES
 ---------------- */
 * {
@@ -1001,6 +1001,8 @@ header {
     text-align: center;
     color: #424242; }
 
+/* ALL PLANS PAGE
+----------------- */
 /* TRAINING PLANS PAGE
 ---------------------- */
 .train-content {

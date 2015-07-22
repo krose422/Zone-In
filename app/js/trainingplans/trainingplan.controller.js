@@ -21,7 +21,6 @@
           workoutDates: []
         };
 
-
         // Constructors
         var PlanWorkout = function (options) {
           this.workout_id = options.workout_id,
@@ -89,13 +88,6 @@
             });
         };
 
-        // Get a user's created workouts
-        // PlanService.getUserWorkouts()
-        //   .success(function (data) {
-
-        //     $scope.userWorkoutList = data;
-        //   });
-
         // Get full workout list for library and for setting with user's training plan data
         PlanService.getWorkouts()
           .success(function (data) {
@@ -106,10 +98,31 @@
               PlanService.setWorkoutColor(w);
             });
           })
-
           .then(function (data) {
             _getWorkoutDates();
+            _getAllPlans();
           });
+
+        // Get all plans created by all users
+        var _getAllPlans = function () {
+          PlanService.getAllPlans()
+            .success(function (data) {
+              // $scope.allPlans = data;
+              $scope.allPlans = _.each(data, function (plan) {
+                plan.workoutInfo = [];
+                _.each(plan.workouts, function (workoutId) {
+                  // console.log(workoutId);
+                  _.each($scope.workoutList, function (workout) {
+                    if (workoutId === workout.id) {
+                      plan.workoutInfo.push(workout);
+                      // console.log('matched');
+                    }
+                  });
+                });
+              });
+              console.log($scope.allPlans);
+            });
+        };
 
         // Check type of workout and apply correct icon
         $scope.iconShowRunning = function (workout) {

@@ -73,6 +73,10 @@
           return $http.get(endpoint + '/plans/creator', HEROKU.CONFIG);
         };
 
+        this.getAllPlans = function () {
+          return $http.get(endpoint + '/plans', HEROKU.CONFIG);
+        };
+
         this.getUserWorkouts = function () {
           return $http.get(endpoint + '/workouts/athlete', HEROKU.CONFIG);
         };

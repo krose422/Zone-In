@@ -1,0 +1,65 @@
+<div class="workout-page all-plans-page">
+  <h2>Select a Training Plan Below to Add to Your Plans</h2>
+
+  <ul class="allplans-ul">
+  <h4>Training In Progress</h4>
+
+    <li class="allplans" ng-repeat="t in allPlans">
+      <i class="fa fa-plus-square" ng-click="expand()"></i>
+      <i class="fa fa-minus-square hide" ng-click="expand()"></i>
+
+      <div class="top">
+        <h4 class="plan-name"> {{ t.name }}</h4>
+        <div class="top-right">
+          <p class="dates">{{ formatDate(t.start_date[0]) }} - {{ formatDate(t.end_date[0]) }}</p>
+        </div>
+
+        <div class="top-bottom">
+          <button>Add to My Training Plans</button>
+        </div>
+
+      </div><!-- end top div -->
+
+      <div class="bottom hide">
+        <div class="top-info">
+          <div class="training-description">
+            <p>Description: {{ t.description }}</p>
+          </div>
+        </div>
+
+        <ul class="workout-steps">
+          <li class="workout" ng-repeat="workout in t.workoutInfo track by $index" ng-click="openWorkoutModal(workout)">
+
+          <div class="workout-title" ng-style="{'background-color':'{{ workout.color }}'}">
+            <h4>{{ workout.name }}</h4>
+            <div class="icon">
+              <img ng-src="{{ iconShowCycle(workout) }}" class="cycling sport-icon hide">
+              <img ng-src="{{ iconShowRunning(workout) }}" class="running sport-icon hide">
+              <img ng-src="{{ iconShowSwimming(workout) }}" class="swimming sport-icon hide">
+              <img ng-src="{{ iconShowWeights(workout) }}" class="weights sport-icon hide">
+              <img ng-src="{{ iconShowCircuit(workout) }}" class="circuits sport-icon hide">
+            </div>
+          </div>
+
+          <div class="workout-descrip">
+            <p>{{ workout.description }}</p><p>{{ workout.time }} minutes</p>
+          </div>
+
+          <div class="workout-image">
+            <img src="{{ workout.image_url }}">
+          </div>
+
+          <div class="workout-bottom">
+            <p>Created by: {{ workout.workout_creator }}</p>
+          </div>
+
+          </li>
+        </ul>
+
+      </div>
+
+    </li>
+
+  </ul>
+
+</div>
