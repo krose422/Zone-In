@@ -106,7 +106,6 @@ $cantarell: 'Cantarell', sans-serif;
           @include border($grey);
           @include boxShadow();
 
-
           .workout-image {
             position: relative;
 
@@ -1751,7 +1750,7 @@ ul {
 .plan-workout-modal {
   form {
     clear: both;
-    padding-top: 2em;
+    padding-top: 5em;
   }
 }
 
