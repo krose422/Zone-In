@@ -978,6 +978,7 @@ h1, h2, h3, h4, h5 {
         @include span-columns(7);
         background-color: $red;
         overflow: scroll;
+        height: 57vh;
 
         .dash-calendar {
           overflow: hidden;
@@ -1875,7 +1876,7 @@ ul {
         color: $darkgrey;
         height: 4em;
         margin: 0;
-        padding: .5em;
+        padding: 1em .5em;
         width: 100%;
 
         .fa {
@@ -2004,6 +2005,11 @@ ul {
 
       .planning-dropzone:first-of-type {
         clear: both;
+      }
+
+      .dropzone-wrapper {
+        overflow: hidden;
+        margin-left: 2.5em;
       }
 
       .planning-dropzone {

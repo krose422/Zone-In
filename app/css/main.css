@@ -518,7 +518,8 @@ header {
       margin-right: 2.35765%;
       width: 57.35098%;
       background-color: #FF534E;
-      overflow: scroll; }
+      overflow: scroll;
+      height: 57vh; }
       .dashboard-page .dash-content .upcoming:last-child {
         margin-right: 0; }
       .dashboard-page .dash-content .upcoming .dash-calendar {
@@ -1485,7 +1486,7 @@ ul {
         color: #424242;
         height: 4em;
         margin: 0;
-        padding: .5em;
+        padding: 1em 0.5em;
         width: 100%; }
         .planning-page .planning-content .planning-header h5 .fa {
           padding: 0 0.5em 0 0;
@@ -1598,6 +1599,9 @@ ul {
         visibility: hidden; }
       .planning-page .planning-content .planning-drops .planning-dropzone:first-of-type {
         clear: both; }
+      .planning-page .planning-content .planning-drops .dropzone-wrapper {
+        overflow: hidden;
+        margin-left: 2.5em; }
       .planning-page .planning-content .planning-drops .planning-dropzone {
         -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
         -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
