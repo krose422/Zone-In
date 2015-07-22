@@ -541,6 +541,12 @@ h1, h2, h3, h4, h5 {
 
     .title-back {
       background-color: rgba($darkgrey, .5);
+
+      h1 {
+        span {
+          color: darken($background, 20);
+        }
+      }
     }
 
     h1 {

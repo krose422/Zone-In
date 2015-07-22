@@ -229,6 +229,8 @@ header {
     height: 100vh; }
     .homepage-wrapper .home-head .title-back {
       background-color: rgba(66, 66, 66, 0.5); }
+      .homepage-wrapper .home-head .title-back h1 span {
+        color: #c7c7c7; }
     .homepage-wrapper .home-head h1 {
       color: #FAFAFA;
       font-size: 10em;
