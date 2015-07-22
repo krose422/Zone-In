@@ -1766,7 +1766,7 @@ ul {
 
 .planning-page {
   overflow: hidden;
-  @include outer-container(100%);
+  @include outer-container(98%);
 
   .sort-menu {
     // overflow: hidden;
@@ -1961,7 +1961,6 @@ ul {
     .planning-drops {
       @include span-columns(8);
       padding-top: 0;
-      // float: right;
       clear: none;
       background-color: #fff;
       @include border($grey);
