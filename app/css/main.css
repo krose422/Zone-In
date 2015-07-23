@@ -519,7 +519,7 @@ header {
       width: 57.35098%;
       background-color: #FF534E;
       overflow: scroll;
-      height: 57vh; }
+      height: 49vh; }
       .dashboard-page .dash-content .upcoming:last-child {
         margin-right: 0; }
       .dashboard-page .dash-content .upcoming .dash-calendar {
@@ -1393,7 +1393,7 @@ ul {
 ------------------------------ */
 .plan-workout-modal form {
   clear: both;
-  padding-top: 5em; }
+  padding-top: 6em; }
 
 /* CREATE TRAINING PLAN PAGE
 --------------------- */

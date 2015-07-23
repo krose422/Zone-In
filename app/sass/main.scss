@@ -973,12 +973,16 @@ h1, h2, h3, h4, h5 {
       }
     }
 
+    // .bottom-dash {
+    //   height: 50vh;
+    // }
+
       .upcoming {
         padding: 2em;
         @include span-columns(7);
         background-color: $red;
         overflow: scroll;
-        height: 57vh;
+        height: 49vh;
 
         .dash-calendar {
           overflow: hidden;
@@ -1757,7 +1761,7 @@ ul {
 .plan-workout-modal {
   form {
     clear: both;
-    padding-top: 5em;
+    padding-top: 6em;
   }
 }
 
