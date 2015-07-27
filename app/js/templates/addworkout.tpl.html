@@ -51,15 +51,9 @@
       <option ng-repeat="mins in trainingLength" value="{{ mins }}">{{ mins }}</option>
     </select>
 
-<!--     <input class="stepInput" type="text" placeholder="Workout Step" ng-model="steps.first">
-    <input class="stepInput" type="text" placeholder="Workout Step" ng-model="steps.second">
-    <input class="stepInput" type="text" placeholder="Workout Step" ng-model="steps.third"> -->
-
-    <!-- <div class="addedInputs" id="addedInputs"></div> -->
     <div class="workout-inputs" add-input>
       <input class="stepInput" type="text" placeholder="Workout Step" ng-model="workout.steps[0]">
       <i class="fa fa-plus addStep" add-input></i>
-    <!-- need to add + to show more inputs for more legs here -->
     </div>
 
     <input type="text" placeholder="Image URL (optional)" ng-focus="addPrefix('http://')" ng-model="workout.image_url" onfocus="this.value = this.value;">

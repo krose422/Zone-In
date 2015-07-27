@@ -16,9 +16,9 @@
     <span>&mdash; OR &mdash;</span>
     <a href="#/register"><p class="register-btn">register</p></a>
   </div>
-    <form ng-submit="loginUser(logUser)">
-      <input class="user-email" type="text" placeholder="Email address" ng-model="logUser.email">
-      <input class="user-password" type="password" placeholder="Password" ng-model="logUser.password">
+    <form ng-submit="loginUser(demoUser)">
+      <input class="user-email" type="text" placeholder="Email address" ng-model="demoUser.email" ng-focus="addValue('demo@demo.com')" autofocus/>
+      <input class="user-password" type="password" placeholder="Password" ng-model="demoUser.password" ng-focus="addValue('demopassword')"/>
       <button>Login</button>
     </form>
   </div>

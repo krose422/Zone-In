@@ -25,13 +25,9 @@
           interests: []
         };
 
-        // $scope.user = $cookies.getObject('currentUser');
-
         $scope.loginUser = function (user) {
           UserService.loginUser(user)
             .then( function (data) {
-              // $scope.user = data.data;
-              // console.log($scope.user);
             });
         };
 
@@ -40,41 +36,17 @@
         };
 
         $scope.updateUserReg = function (user) {
-          // user.interests = $scope.userInterests.interests;
-          // console.log(user);
           UserService.updateUserReg(user);
         };
 
-        // $scope.logoutUser = function () {
-        //   UserService.logoutUser();
-        // };
+        // Add value to input on focus
+        $scope.addValue = function (prefix) {
+          $(event.target).val(prefix);
+        };
 
-        // $scope.toggleHide = function () {
-        //   // $(element).toggleClass('hide');
-        //   // $(event.target).toggleClass('hide');
-
-        //   $(event.target).siblings().not('h4').toggleClass('hide');
-        //   $(event.target).toggleClass('hide');
+        // $scope.demoLogin = function () {
+        //   $state.go('home.login');
         // };
-
-        // $scope.toggleChart = function () {
-        //   $(event.target).siblings().not('h4').not('.progress-bars').toggleClass('hide');
-        //   $(event.target).toggleClass('hide');
-        //   $('.progress-bars').toggleClass('hide');
-        // };
-
-
-        // $scope.checkAll = function() {
-        //   $scope.user.interests = angular.copy($scope.interests);
-        // };
-        // $scope.uncheckAll = function() {
-        //   $scope.user.interests = [];
-        // };
-        // $scope.checkFirst = function() {
-        //   $scope.user.interests.splice(0, $scope.user.interests.length);
-        //   $scope.user.interests.push('guest');
-        // };
-
       }
 
     ]);
