@@ -13,7 +13,7 @@
         $scope.workouts       = [];
 
         // Options for length selection on workout creation
-        $scope.trainingLength = [30, 45, 60, 75, 90, 105, 120, 150, 180];
+        $scope.trainingLength = [15, 30, 45, 60, 75, 90, 105, 120, 150, 180];
         // Get current training plan from cookies
         $scope.currentTrainingPlan = $cookies.getObject('currentPlan');
         //
@@ -89,20 +89,12 @@
             });
         };
 
-        // Get a user's created workouts
-        // PlanService.getUserWorkouts()
-        //   .success(function (data) {
-
-        //     $scope.userWorkoutList = data;
-        //   });
-
         // Get full workout list for library and for setting with user's training plan data
         PlanService.getWorkouts()
           .success(function (data) {
             $scope.workoutList = data;
             // Go through workout list and set color value
             _.each($scope.workoutList, function (w) {
-              // w.workoutDate = '';
               PlanService.setWorkoutColor(w);
             });
           })
