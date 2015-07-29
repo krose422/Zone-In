@@ -1,0 +1,445 @@
+@media screen and (max-width: 872px) {
+
+body {
+  min-width: 360px;
+}
+
+/* GENERAL HEADER STYLE
+----------------------- */
+
+  header {
+    // margin-bottom: 2em;
+    overflow: normal;
+    // width: 100%;
+    // background-color: #fff;
+    // @include boxShadow();
+
+    .innerheader {
+      // overflow: hidden;
+      // width: 98%;
+      // margin: auto;
+
+      .logo {
+        float: left;
+        display: inline-block;
+        overflow: hidden;
+        margin: 0;
+
+        // img {
+        //   height: 5em;
+        //   margin: 0;
+        //   float: left;
+        // }
+
+        // h2 {
+        //   // font-family: $fjalla;
+        //   // font-style: italic;
+        //   font-size: 2.4em;
+        //   transform: rotateZ(-16deg);
+        //   padding: .2em .5em;
+        //   color: $darkgrey;
+        //   float: left;
+        // }
+      }
+
+      .rightheader {
+        // overflow: hidden;
+        // float: right;
+
+        .nav-small {
+          display: none;
+          position: absolute;
+          // overflow: hidden;
+          top: 5.5em;
+          right: .5em;
+          z-index: 9999;
+          background-color: $background;
+
+          li {
+            text-align: right;
+            // color: $background;
+            display: block;
+            font-size: 1.5em;
+            padding: .5em 1em;
+          }
+        }
+
+        .show {
+          display: block;
+        }
+
+        .nav-hamburger {
+          overflow: hidden;
+          display: block;
+          float: right;
+          font-size: 3em;
+          position: relative;
+          padding: .2em .5em;
+
+          &:hover {
+            background-color: $darkgrey;
+            color: $background;
+          }
+        }
+
+        nav {
+          display: none;
+
+          // li {
+          //   display: inline-block;
+          //   font-family: $fjalla;
+          //   padding: 1em;
+
+          //   a {
+          //     color: $darkgrey;
+          //   }
+
+          //   &:hover {
+          //     background-color: $blue;
+
+          //     a {
+          //       color: $background;
+          //     }
+          //   }
+          // }
+        }
+
+        .nav-item {
+          overflow: hidden;
+          @include button($grey);
+          border: none;
+          display: inline-block;
+          padding: 0;
+          margin: .5em;
+          float: right;
+          height: 3.5em;
+
+          &:hover {
+            background-color: $darkgrey;
+          }
+
+          i {
+            font-size: 1.6em;
+            padding: .5em;
+            // background-color: $grey;
+            // position: relative;
+          }
+
+          .alert-btn {
+            position: relative;
+          }
+
+          .alert {
+            @include button($red);
+            border: none;
+          }
+
+
+          .user-avatar {
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            display: inline-block;
+            border-radius: 0;
+
+            img {
+              height: 100%;
+            }
+          }
+
+          .user-name {
+          }
+
+          .logout {
+            display: inline-block;
+            float: right;
+            padding: .5em 1.5em;
+            font-size: 1.4em;
+            font-family: $fjalla;
+            // background-color: $grey;
+
+            .fa {
+              padding: 0 .2em 0 0;
+              font-size: 1.5em;
+            }
+          }
+        }
+
+        .alert-dropdown {
+          position: absolute;
+          z-index: 9999;
+          top: 6em;
+          right: 1em;
+          background-color: $darkgrey;
+          padding: 1em;
+          @include boxShadow();
+
+          .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent $darkgrey transparent;
+            top: -13px;
+            right: 8px;
+          }
+
+          .alert-list {
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+            p {
+              font-size: 1.3em;
+              color: $background;
+              padding: 0;
+              margin: 0;
+              border-bottom: 1px solid $grey;
+            }
+
+            li {
+              color: $background;
+              font-family: $tinos;
+              font-size: 1em;
+              padding: 0;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+/* HOMEPAGE VIEW
+---------------- */
+
+.homepage-wrapper {
+  overflow: hidden;
+  background-color: #fff;
+
+  header {
+    margin: 0;
+  }
+
+  .home-head {
+    background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    .title-back {
+      background-color: rgba($darkgrey, .5);
+
+      h1 {
+        span {
+          color: darken($background, 20);
+        }
+      }
+    }
+
+    h1 {
+      // color: $background;
+      font-size: 7em;
+      // text-align: center;
+      // margin-top: 20%;
+    }
+
+    h2 {
+      // text-align: center;
+      // color: $background;
+      font-size: 3em;
+    }
+
+    .scroll-arrow {
+      left: 42%;
+    }
+  }
+
+  .who-we-are {
+    width: 95%;
+    // margin: auto;
+    // background-color: #fff;
+    padding: 3em;
+    // text-align: center;
+    // color: $darkgrey;
+
+    h4 {
+      // color: $darkgrey;
+      font-size: 3em;
+    }
+
+    p {
+      // color: $darkgrey;
+      font-size: 3em;
+    }
+  }
+
+  .how-it-works {
+
+    .hiw-title {
+      // overflow: hidden;
+      // background: url(../../images/fitness_ball.png) no-repeat center fixed;
+      // -webkit-background-size: cover;
+      // -moz-background-size: cover;
+      // -o-background-size: cover;
+      // background-size: cover;
+      // overflow: hidden;
+      // width: 100%;
+      height: 20em;
+
+      h5 {
+        font-size: 5em;
+        // color: $darkgrey;
+        // text-align: center;
+        padding: 1em;
+      }
+    }
+
+    .hiw-box {
+      width: 100%;
+    }
+
+    .box-image {
+      width: 100%;
+    }
+
+    .step-two-img-small {
+      display: block;
+    }
+
+    .step-two-img {
+      display: none;
+    }
+
+    .box-steps {
+      padding: 4em;
+      text-align: center;
+      font-family: $fjalla;
+
+      .inner-box-steps {
+        p {
+          font-size: 2em;
+        }
+      }
+
+      h5 {
+        font-size: 2em;
+      }
+    }
+  }
+
+  // .footer {
+  //     border-top: 1px solid #ccc;
+
+  //   .inner-footer {
+  //     border-top: 1px solid #ccc;
+  //     overflow: hidden;
+  //     width: 70%;
+  //     margin: auto;
+  //     padding: 1em;
+  //     text-align: center;
+  //   }
+
+  //   .footer-logo {
+  //     overflow: hidden;
+  //     // float: left;
+  //     height: 5em;
+
+  //     img {
+  //       height: 100%;
+  //     }
+
+  //   }
+  // }
+
+}
+
+
+/* LOGIN, REGISTER AND WELCOME VIEW
+----------------------------------- */
+
+.login-page {
+  background-color: $darkgrey;
+  height: 100vh;
+}
+
+.login-form, .register-form {
+  padding: 15em;
+  overflow: hidden;
+  width: 70%;
+  margin: auto;
+
+    form {
+
+      input {
+        color: $darkgrey;
+        font-size: 2em;
+      }
+
+      button {
+        font-size: 2em;
+        width: 100%;
+        margin: 0;
+        font-family: $fjalla;
+
+        &:hover {
+          background-color: $lightblue;
+        }
+      }
+    }
+
+
+  .login-header, .register-header {
+    text-align: center;
+    font-family: $fjalla;
+    margin-bottom: 2em;
+
+    span {
+      font-size: 2em;
+      color: darken($grey, 30);
+      padding: 0 2em .2em 2em;
+
+    }
+
+    p {
+      font-size: 3em;
+      color: $background;
+      display: inline-block;
+      margin: 0;
+    }
+
+    .register-btn, .login-btn {
+      @include button($blue);
+      // font-size: 2em;
+      padding: .2;
+
+      &:hover {
+        background-color: $lightblue;
+      }
+    }
+  }
+}
+
+.welcome-form {
+  padding: 5em 10em 10em;
+
+  .name-input {
+    width: 49%;
+    display: inline-block;
+    float: right;
+
+    &:first-of-type {
+      float: left;
+    }
+  }
+}
+
+
+
+}

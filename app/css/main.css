@@ -22,7 +22,8 @@ body {
   font-size: 62.5%;
   color: #424242;
   background-color: #FAFAFA;
-  width: 100%; }
+  max-width: 100%;
+  min-width: 360px; }
 
 input, button {
   border: none;
@@ -111,6 +112,10 @@ header {
     header .innerheader .rightheader {
       overflow: hidden;
       float: right; }
+      header .innerheader .rightheader .nav-small {
+        display: none; }
+      header .innerheader .rightheader .nav-hamburger {
+        display: none; }
       header .innerheader .rightheader nav {
         display: inline-block; }
         header .innerheader .rightheader nav li {
@@ -282,6 +287,8 @@ header {
     width: 50%;
     overflow: hidden;
     float: left; }
+  .homepage-wrapper .how-it-works .step-two-img-small {
+    display: none; }
   .homepage-wrapper .how-it-works .box-steps {
     padding: 6em;
     text-align: center;
@@ -1953,3 +1960,338 @@ ul {
     line-height: 1.2em;
     margin: 0;
     padding: 0.1em 0.5em; }
+
+@media screen and (max-width: 872px) {
+  body {
+    min-width: 360px; }
+  /* GENERAL HEADER STYLE
+----------------------- */
+  header {
+    overflow: normal; }
+    header .innerheader .logo {
+      float: left;
+      display: inline-block;
+      overflow: hidden;
+      margin: 0; }
+    header .innerheader .rightheader .nav-small {
+      display: none;
+      position: absolute;
+      top: 5.5em;
+      right: .5em;
+      z-index: 9999;
+      background-color: #FAFAFA; }
+      header .innerheader .rightheader .nav-small li {
+        text-align: right;
+        display: block;
+        font-size: 1.5em;
+        padding: 0.5em 1em; }
+    header .innerheader .rightheader .show {
+      display: block; }
+    header .innerheader .rightheader .nav-hamburger {
+      overflow: hidden;
+      display: block;
+      float: right;
+      font-size: 3em;
+      position: relative;
+      padding: 0.2em 0.5em; }
+      header .innerheader .rightheader .nav-hamburger:hover {
+        background-color: #424242;
+        color: #FAFAFA; }
+    header .innerheader .rightheader nav {
+      display: none; }
+    header .innerheader .rightheader .nav-item {
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+      color: #FAFAFA;
+      border: 1px solid #D0C8C5;
+      border-radius: 2px;
+      background-color: #D0C8C5;
+      transition: 0.3s all ease;
+      border: none;
+      display: inline-block;
+      padding: 0;
+      margin: .5em;
+      float: right;
+      height: 3.5em; }
+      header .innerheader .rightheader .nav-item:hover {
+        background-color: #424242; }
+      header .innerheader .rightheader .nav-item i {
+        font-size: 1.6em;
+        padding: .5em; }
+      header .innerheader .rightheader .nav-item .alert-btn {
+        position: relative; }
+      header .innerheader .rightheader .nav-item .alert {
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid #FF534E;
+        border-radius: 2px;
+        background-color: #FF534E;
+        transition: 0.3s all ease;
+        border: none; }
+      header .innerheader .rightheader .nav-item .user-avatar {
+        float: left;
+        height: 100%;
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 0; }
+        header .innerheader .rightheader .nav-item .user-avatar img {
+          height: 100%; }
+      header .innerheader .rightheader .nav-item .logout {
+        display: inline-block;
+        float: right;
+        padding: 0.5em 1.5em;
+        font-size: 1.4em;
+        font-family: "Fjalla One", sans-serif; }
+        header .innerheader .rightheader .nav-item .logout .fa {
+          padding: 0 0.2em 0 0;
+          font-size: 1.5em; }
+    header .innerheader .rightheader .alert-dropdown {
+      position: absolute;
+      z-index: 9999;
+      top: 6em;
+      right: 1em;
+      background-color: #424242;
+      padding: 1em;
+      -webkit-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -moz-box-shadow: 0px 0.5px 2px #D0C8C5;
+      -o-box-shadow: 0px 0.5px 2px #D0C8C5;
+      box-shadow: 0px 0.5px 2px #D0C8C5; }
+      header .innerheader .rightheader .alert-dropdown .triangle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 15px 15px;
+        border-color: transparent transparent #424242 transparent;
+        top: -13px;
+        right: 8px; }
+      header .innerheader .rightheader .alert-dropdown .alert-list {
+        padding: 0;
+        margin: 0;
+        position: relative; }
+        header .innerheader .rightheader .alert-dropdown .alert-list p {
+          font-size: 1.3em;
+          color: #FAFAFA;
+          padding: 0;
+          margin: 0;
+          border-bottom: 1px solid #D0C8C5; }
+        header .innerheader .rightheader .alert-dropdown .alert-list li {
+          color: #FAFAFA;
+          font-family: "Tinos", serif;
+          font-size: 1em;
+          padding: 0;
+          display: block; }
+  /* HOMEPAGE VIEW
+---------------- */
+  .homepage-wrapper {
+    overflow: hidden;
+    background-color: #fff; }
+    .homepage-wrapper header {
+      margin: 0; }
+    .homepage-wrapper .home-head {
+      background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100vh; }
+      .homepage-wrapper .home-head .title-back {
+        background-color: rgba(66, 66, 66, 0.5); }
+        .homepage-wrapper .home-head .title-back h1 span {
+          color: #c7c7c7; }
+      .homepage-wrapper .home-head h1 {
+        font-size: 7em; }
+      .homepage-wrapper .home-head h2 {
+        font-size: 3em; }
+      .homepage-wrapper .home-head .scroll-arrow {
+        left: 42%; }
+    .homepage-wrapper .who-we-are {
+      width: 95%;
+      padding: 3em; }
+      .homepage-wrapper .who-we-are h4 {
+        font-size: 3em; }
+      .homepage-wrapper .who-we-are p {
+        font-size: 3em; }
+    .homepage-wrapper .how-it-works .hiw-title {
+      height: 20em; }
+      .homepage-wrapper .how-it-works .hiw-title h5 {
+        font-size: 5em;
+        padding: 1em; }
+    .homepage-wrapper .how-it-works .hiw-box {
+      width: 100%; }
+    .homepage-wrapper .how-it-works .box-image {
+      width: 100%; }
+    .homepage-wrapper .how-it-works .step-two-img-small {
+      display: block; }
+    .homepage-wrapper .how-it-works .step-two-img {
+      display: none; }
+    .homepage-wrapper .how-it-works .box-steps {
+      padding: 4em;
+      text-align: center;
+      font-family: "Fjalla One", sans-serif; }
+      .homepage-wrapper .how-it-works .box-steps .inner-box-steps p {
+        font-size: 2em; }
+      .homepage-wrapper .how-it-works .box-steps h5 {
+        font-size: 2em; }
+  /* LOGIN, REGISTER AND WELCOME VIEW
+----------------------------------- */
+  .login-page {
+    background-color: #424242;
+    height: 100vh; }
+  .login-form, .register-form {
+    padding: 15em;
+    overflow: hidden;
+    width: 70%;
+    margin: auto; }
+    .login-form form input, .register-form form input {
+      color: #424242;
+      font-size: 2em; }
+    .login-form form button, .register-form form button {
+      font-size: 2em;
+      width: 100%;
+      margin: 0;
+      font-family: "Fjalla One", sans-serif; }
+      .login-form form button:hover, .register-form form button:hover {
+        background-color: #25A8D9; }
+    .login-form .login-header, .login-form .register-header, .register-form .login-header, .register-form .register-header {
+      text-align: center;
+      font-family: "Fjalla One", sans-serif;
+      margin-bottom: 2em; }
+      .login-form .login-header span, .login-form .register-header span, .register-form .login-header span, .register-form .register-header span {
+        font-size: 2em;
+        color: #8b7871;
+        padding: 0 2em 0.2em 2em; }
+      .login-form .login-header p, .login-form .register-header p, .register-form .login-header p, .register-form .register-header p {
+        font-size: 3em;
+        color: #FAFAFA;
+        display: inline-block;
+        margin: 0; }
+      .login-form .login-header .register-btn, .login-form .login-header .login-btn, .login-form .register-header .register-btn, .login-form .register-header .login-btn, .register-form .login-header .register-btn, .register-form .login-header .login-btn, .register-form .register-header .register-btn, .register-form .register-header .login-btn {
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        color: #FAFAFA;
+        border: 1px solid #176785;
+        border-radius: 2px;
+        background-color: #176785;
+        transition: 0.3s all ease;
+        padding: .2; }
+        .login-form .login-header .register-btn:hover, .login-form .login-header .login-btn:hover, .login-form .register-header .register-btn:hover, .login-form .register-header .login-btn:hover, .register-form .login-header .register-btn:hover, .register-form .login-header .login-btn:hover, .register-form .register-header .register-btn:hover, .register-form .register-header .login-btn:hover {
+          background-color: #25A8D9; }
+  .welcome-form {
+    padding: 5em 10em 10em; }
+    .welcome-form .name-input {
+      width: 49%;
+      display: inline-block;
+      float: right; }
+      .welcome-form .name-input:first-of-type {
+        float: left; } }
+
+@media screen and (min-width: 872px) and (max-width: 1094px) {
+  /* HOMEPAGE VIEW
+---------------- */
+  .homepage-wrapper {
+    overflow: hidden;
+    background-color: #fff; }
+    .homepage-wrapper header {
+      margin: 0; }
+    .homepage-wrapper .home-head {
+      background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100vh; }
+      .homepage-wrapper .home-head .title-back {
+        background-color: rgba(66, 66, 66, 0.5); }
+        .homepage-wrapper .home-head .title-back h1 span {
+          color: #c7c7c7; }
+      .homepage-wrapper .home-head h1 {
+        color: #FAFAFA;
+        font-size: 10em;
+        text-align: center;
+        margin-top: 20%; }
+      .homepage-wrapper .home-head h2 {
+        text-align: center;
+        color: #FAFAFA; }
+      .homepage-wrapper .home-head .scroll-arrow {
+        color: #FAFAFA;
+        position: absolute;
+        text-align: center;
+        font-size: 10em;
+        top: 80%;
+        left: 48%;
+        opacity: .7;
+        cursor: pointer; }
+        .homepage-wrapper .home-head .scroll-arrow:hover {
+          opacity: 1; }
+    .homepage-wrapper .who-we-are {
+      width: 70%;
+      margin: auto;
+      background-color: #fff;
+      padding: 3em;
+      text-align: center;
+      color: #424242; }
+      .homepage-wrapper .who-we-are h4 {
+        color: #424242;
+        font-size: 4em; }
+      .homepage-wrapper .who-we-are p {
+        color: #424242;
+        font-size: 4em; }
+    .homepage-wrapper .how-it-works .hiw-title {
+      overflow: hidden;
+      background: url(../../images/fitness_ball.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      width: 100%;
+      height: 30em; }
+      .homepage-wrapper .how-it-works .hiw-title h5 {
+        font-size: 6em;
+        color: #424242;
+        text-align: center;
+        padding: 2em; }
+    .homepage-wrapper .how-it-works .hiw-box {
+      width: 50%;
+      overflow: hidden;
+      float: left; }
+    .homepage-wrapper .how-it-works .box-image {
+      width: 50%; }
+    .homepage-wrapper .how-it-works .box-steps {
+      padding: 2em;
+      text-align: center;
+      font-family: "Fjalla One", sans-serif; }
+      .homepage-wrapper .how-it-works .box-steps .inner-box-steps {
+        width: 70%;
+        margin: auto; }
+      .homepage-wrapper .how-it-works .box-steps h5 {
+        font-size: 2em; }
+      .homepage-wrapper .how-it-works .box-steps p {
+        font-size: 2em;
+        font-family: "Tinos", serif; }
+    .homepage-wrapper .footer {
+      border-top: 1px solid #ccc; }
+      .homepage-wrapper .footer .inner-footer {
+        border-top: 1px solid #ccc;
+        overflow: hidden;
+        width: 70%;
+        margin: auto;
+        padding: 1em;
+        text-align: center; }
+      .homepage-wrapper .footer .footer-logo {
+        overflow: hidden;
+        height: 5em; }
+        .homepage-wrapper .footer .footer-logo img {
+          height: 100%; } }

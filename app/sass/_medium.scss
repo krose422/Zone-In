@@ -1,0 +1,167 @@
+@media screen and (min-width: 872px) and (max-width: 1094px) {
+
+  // body {
+  //   min-width: 360px;
+  // }
+
+
+  /* HOMEPAGE VIEW
+---------------- */
+
+.homepage-wrapper {
+  overflow: hidden;
+  background-color: #fff;
+
+  header {
+    margin: 0;
+  }
+
+  .home-head {
+    background: url(../../images/fitness_center_blur.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    .title-back {
+      background-color: rgba($darkgrey, .5);
+
+      h1 {
+        span {
+          color: darken($background, 20);
+        }
+      }
+    }
+
+    h1 {
+      color: $background;
+      font-size: 10em;
+      text-align: center;
+      margin-top: 20%;
+    }
+
+    h2 {
+      text-align: center;
+      color: $background;
+    }
+
+    .scroll-arrow {
+      color: $background;
+      position: absolute;
+      text-align: center;
+      font-size: 10em;
+      top: 80%;
+      left: 48%;
+      opacity: .7;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .who-we-are {
+    width: 70%;
+    margin: auto;
+    background-color: #fff;
+    padding: 3em;
+    text-align: center;
+    color: $darkgrey;
+
+    h4 {
+      color: $darkgrey;
+      font-size: 4em;
+    }
+
+    p {
+      color: $darkgrey;
+      font-size: 4em;
+    }
+  }
+
+  .how-it-works {
+
+    .hiw-title {
+      overflow: hidden;
+      background: url(../../images/fitness_ball.png) no-repeat center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      // position: relative;
+      width: 100%;
+      height: 30em;
+
+      h5 {
+        font-size: 6em;
+        color: $darkgrey;
+        text-align: center;
+        padding: 2em;
+      }
+    }
+
+    .hiw-box {
+      width: 50%;
+      overflow: hidden;
+      float: left;
+    }
+
+    .box-image {
+      width: 50%;
+    }
+
+    .box-steps {
+      padding: 2em;
+      text-align: center;
+      font-family: $fjalla;
+
+      .inner-box-steps {
+        width: 70%;
+        margin: auto;
+      }
+
+      h5 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 2em;
+        font-family: $tinos;
+      }
+    }
+  }
+
+  .footer {
+      border-top: 1px solid #ccc;
+
+    .inner-footer {
+      border-top: 1px solid #ccc;
+      overflow: hidden;
+      width: 70%;
+      margin: auto;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .footer-logo {
+      overflow: hidden;
+      // float: left;
+      height: 5em;
+
+      img {
+        height: 100%;
+      }
+
+    }
+  }
+
+}
+
+
+}

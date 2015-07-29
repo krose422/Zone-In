@@ -47,6 +47,10 @@
         // $scope.demoLogin = function () {
         //   $state.go('home.login');
         // };
+
+        $scope.toggleNav = function () {
+          $('.nav-small').toggleClass('show');
+        };
       }
 
     ]);

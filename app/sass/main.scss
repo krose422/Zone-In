@@ -274,7 +274,9 @@ body {
   font-size: 62.5%;
   color: $darkgrey;
   background-color: $background;
-  width: 100%;
+  // width: 100%;
+  max-width: 100%;
+  min-width: 360px;
 }
 
 input, button {
@@ -386,6 +388,14 @@ h1, h2, h3, h4, h5 {
       .rightheader {
         overflow: hidden;
         float: right;
+
+        .nav-small {
+          display: none;
+        }
+
+        .nav-hamburger {
+          display: none;
+        }
 
         nav {
           display: inline-block;
@@ -626,6 +636,10 @@ h1, h2, h3, h4, h5 {
 
     .box-image {
 
+    }
+
+    .step-two-img-small {
+      display: none;
     }
 
     .box-steps {
@@ -2330,3 +2344,6 @@ ul {
 }
 
 
+
+@import "_small";
+@import "_medium";
