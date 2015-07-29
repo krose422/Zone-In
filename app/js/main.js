@@ -31,6 +31,12 @@
             controller: 'UserCtrl'
           })
 
+          .state('home.demo', {
+            url: 'demologin',
+            templateUrl: 'js/templates/demologin.tpl.html',
+            controller: 'UserCtrl'
+          })
+
           .state('home.register', {
             url: 'register',
             templateUrl: 'js/templates/register.tpl.html',

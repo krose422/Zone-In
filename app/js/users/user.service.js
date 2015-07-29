@@ -67,9 +67,6 @@
           return $http.post(endpoint + '/athletes/signin', user)
             .success( function (data) {
               _successLog(data);
-              // $rootScope.myApp = {
-              //   user: data
-              // }
             });
         };
 

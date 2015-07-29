@@ -106,7 +106,6 @@ $cantarell: 'Cantarell', sans-serif;
       @include border($grey);
       @include boxShadow();
 
-
       .workout-image {
         position: relative;
 
@@ -271,7 +270,9 @@ body {
   font-size: 62.5%;
   color: $darkgrey;
   background-color: $background;
-  width: 100%;
+  // width: 100%;
+  max-width: 100%;
+  min-width: 360px;
 }
 
 input, button {
@@ -383,6 +384,14 @@ h1, h2, h3, h4, h5 {
       .rightheader {
         overflow: hidden;
         float: right;
+
+        .nav-small {
+          display: none;
+        }
+
+        .nav-hamburger {
+          display: none;
+        }
 
         nav {
           display: inline-block;
@@ -538,6 +547,12 @@ h1, h2, h3, h4, h5 {
 
     .title-back {
       background-color: rgba($darkgrey, .5);
+
+      h1 {
+        span {
+          color: darken($background, 20);
+        }
+      }
     }
 
     h1 {
@@ -558,7 +573,7 @@ h1, h2, h3, h4, h5 {
       text-align: center;
       font-size: 10em;
       top: 80%;
-      left: 45%;
+      left: 48%;
       opacity: .7;
       cursor: pointer;
 
@@ -617,6 +632,10 @@ h1, h2, h3, h4, h5 {
 
     .box-image {
 
+    }
+
+    .step-two-img-small {
+      display: none;
     }
 
     .box-steps {
@@ -964,11 +983,16 @@ h1, h2, h3, h4, h5 {
       }
     }
 
+    // .bottom-dash {
+    //   height: 50vh;
+    // }
+
       .upcoming {
         padding: 2em;
         @include span-columns(7);
         background-color: $red;
         overflow: scroll;
+        height: 49vh;
 
         .dash-calendar {
           overflow: hidden;
@@ -1753,7 +1777,7 @@ ul {
 .plan-workout-modal {
   form {
     clear: both;
-    padding-top: 2em;
+    padding-top: 6em;
   }
 }
 
@@ -1762,7 +1786,7 @@ ul {
 
 .planning-page {
   overflow: hidden;
-  @include outer-container(100%);
+  @include outer-container(98%);
 
   .sort-menu {
     // overflow: hidden;
@@ -1872,7 +1896,7 @@ ul {
         color: $darkgrey;
         height: 4em;
         margin: 0;
-        padding: .5em;
+        padding: 1em .5em;
         width: 100%;
 
         .fa {
@@ -1957,7 +1981,6 @@ ul {
     .planning-drops {
       @include span-columns(8);
       padding-top: 0;
-      // float: right;
       clear: none;
       background-color: #fff;
       @include border($grey);
@@ -2001,6 +2024,11 @@ ul {
 
       .planning-dropzone:first-of-type {
         clear: both;
+      }
+
+      .dropzone-wrapper {
+        overflow: hidden;
+        margin-left: 2.5em;
       }
 
       .planning-dropzone {
@@ -2318,3 +2346,6 @@ ul {
 }
 
 
+
+@import "_small";
+@import "_medium";
